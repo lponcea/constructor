@@ -7,17 +7,9 @@
         <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
 
         <div [ngSwitch]="isAuthenticated()">
-            <!-- Component types -->
+            <!-- Left sidebar -->
             <div>
-                <jhi-constructor-component-types></jhi-constructor-component-types>
-            </div>
-            <!-- Filmstrip -->
-            <div>
-                <jhi-constructor-filmstrip></jhi-constructor-filmstrip>
-            </div>
-            <!-- Component subtypes -->
-            <div>
-                <jhi-constructor-component-subtypes></jhi-constructor-component-subtypes>
+                <jhi-left-sidebar></jhi-left-sidebar>
             </div>
             <!-- Visor container -->
             <div>
@@ -27,9 +19,9 @@
             <div>
                 <jhi-constructor-component-container></jhi-constructor-component-container>
             </div>
-            <!-- Por definir -->
+            <!-- Right sidebar -->
             <div>
-                Lateral derecho por definir
+                <jhi-right-sidebar></jhi-right-sidebar>
             </div>
         </div>
     </div>
