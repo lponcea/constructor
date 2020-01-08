@@ -1,28 +1,34 @@
-<div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
-    </div>
-    <div class="col-md-9">
-        <h1 class="display-4" jhiTranslate="home.title">Welcome, Java Hipster!</h1>
-        <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
+<!-- <div id="grid-display-home"> -->
+  <div id="grid-display-home" [ngSwitch]="isAuthenticated()">
 
-        <div [ngSwitch]="isAuthenticated()">
-            <!-- Left sidebar -->
-            <div>
-                <jhi-left-sidebar></jhi-left-sidebar>
-            </div>
-            <!-- Visor container -->
-            <div>
-                <jhi-constructor-visor-container></jhi-constructor-visor-container>
-            </div>
-            <!-- Component container -->
-            <div>
-                <jhi-constructor-component-container></jhi-constructor-component-container>
-            </div>
-            <!-- Right sidebar -->
-            <div>
-                <jhi-right-sidebar></jhi-right-sidebar>
-            </div>
-        </div>
+    <div class="item-grid-1">
+      <!-- Left sidebar -->
+      <div>
+        <jhi-left-sidebar></jhi-left-sidebar>
+      </div>
+
     </div>
-</div>
+
+    <div class="item-grid-2">
+      <!-- Visor container -->
+      <div class="grid-visor-container">
+        <jhi-constructor-visor-container></jhi-constructor-visor-container>
+      </div>
+
+      <!-- Component container -->
+      <div class="grid-component-container">
+        <jhi-constructor-component-container></jhi-constructor-component-container>
+      </div>
+
+    </div>
+
+    <div class="item-grid-3">
+      <!-- Right sidebar -->
+      <div>
+        <jhi-right-sidebar></jhi-right-sidebar>
+      </div>
+
+    </div>
+
+  </div>
+<!-- </div> -->
