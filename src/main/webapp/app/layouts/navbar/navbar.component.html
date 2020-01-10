@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-expand-md bg-dark navbar-menu">
+<!-- <nav class="navbar navbar-dark navbar-expand-md bg-dark navbar-menu">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
         <span jhiTranslate="global.title" class="navbar-title">Constructor</span> <span class="navbar-version">{{version}}</span>
@@ -16,7 +16,7 @@
                     </span>
                 </a>
             </li>
-            <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
@@ -27,7 +27,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+
                 </ul>
             </li>
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -80,7 +80,7 @@
                             <span jhiTranslate="global.menu.admin.apidocs">API</span>
                         </a>
                     </li>
-                    <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+
                     <li *ngIf="!inProduction">
                         <a class="dropdown-item" href='./h2-console' target="_tab" (click)="collapseNavbar()">
                             <fa-icon icon="hdd" fixedWidth="true"></fa-icon>
@@ -149,4 +149,55 @@
             </li>
         </ul>
     </div>
+</nav> -->
+
+<nav class="navbar-menu">
+  <div class="navbar-menu-item1">
+    <div class="row-nbm-i1">
+      <div class="nb-logo"></div>
+      <div class="name-project-navbar">Nombre del proyecto - N3 Lección 2</div>
+      <div class="user-btn-navbar"><div class="arrow-user"></div></div>
+    </div>
+
+  </div>
+  <div class="navbar-menu-item2">
+    <div class="row-nbm-i2">
+      <div class="nbm-i2-set-1">
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-bloques"></div>
+          <div class="nb-text">Bloques</div>
+        </div>
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-text"></div>
+          <div class="nb-text">Texto</div>
+        </div>
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-picture"></div>
+          <div class="nb-text">Imagen</div>
+        </div>
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-media"></div>
+          <div class="nb-text">Media</div>
+        </div>
+
+      </div>
+      <div class="nbm-i2-set-2">
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-desktop"></div>
+          <div class="nb-text">Desktop</div>
+        </div>
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-preview"></div>
+          <div class="nb-text">Preview</div>
+        </div>
+        <div class="nb-icon-tool">
+          <div class="nb-icon icon-upload"></div>
+          <div class="nb-text">Publicar</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
 </nav>
