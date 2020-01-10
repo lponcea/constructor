@@ -11,9 +11,10 @@ import { ConstructorTextComponent } from './../constructor/components/constructo
 import { VisorTextComponent } from './../visor/components/visor-text/visor-text.component';
 import { LeftSidebarComponent } from './../layouts/left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './../layouts/right-sidebar/right-sidebar.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
-  imports: [ConstructorSharedModule, RouterModule.forChild([HOME_ROUTE])],
+  imports: [ConstructorSharedModule, RouterModule.forChild([HOME_ROUTE]), AngularEditorModule],
   declarations: [
     HomeComponent,
     ConstructorFilmstripComponent,
@@ -25,4 +26,4 @@ import { RightSidebarComponent } from './../layouts/right-sidebar/right-sidebar.
     RightSidebarComponent
   ]
 })
-export class ConstructorHomeModule {}
+export class HomeModule {}
