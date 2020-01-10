@@ -1,0 +1,157 @@
+$color-silver: #3a404c;
+$tool-header: lighten($color-silver, 65%);
+
+.constructor-filmstrip {
+  position: relative;
+  width: 100%;
+  height: calc(50vh - 50px);
+  border-bottom: 1px solid silver;
+  display: flex;
+  flex-direction: column;
+  .component-tool-header {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    background-color: $tool-header;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    h4 {
+      position: relative;
+      margin-left: 20px;
+      font-size: 12px;
+      cursor: default;
+    }
+
+    .ctc-name-artboard {
+      position: absolute;
+      top: 32px;
+      left: 0;
+      width: 90%;
+      height: 30px;
+      background-color: #f6f6f6;
+      z-index: 2;
+      p {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-left: 20px;
+        font-size: 12px;
+        cursor: default;
+      }
+    }
+  }
+  .component-tool-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .row-ctc {
+      position: relative;
+      width: 86%;
+      height: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.row-artboard-filmstrip {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  margin-top: 20px;
+
+  .artboard-mini {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    border: 2px solid rgb(213, 213, 213);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: 0.4s;
+    cursor: pointer;
+    &:hover {
+      border: 2px solid rgb(175, 175, 175);
+    }
+    &:hover + .ab-mini-desc p:nth-child(1) {
+      color: #212342;
+    }
+  }
+  .ab-mini-select {
+    border: 2px solid #0059ff;
+    pointer-events: none;
+  }
+  .ab-mini-desc {
+    position: relative;
+    width: 90px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      font-size: 12px;
+      position: relative;
+      width: 100%;
+      height: auto;
+      cursor: default;
+      transition: 0.4s;
+    }
+    .delete-ab {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 5px;
+
+      span {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        background-image: url('../../../content/images/delete_ab_icn.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+      p {
+        position: relative;
+        width: auto;
+        height: auto;
+        font-size: 11px;
+        margin-left: 5px;
+        cursor: pointer;
+        color: #212342;
+      }
+    }
+  }
+}
+
+.ab-mini-1 {
+  background-image: url('../../../content/images/ab1.png');
+}
+.ab-mini-2 {
+  background-image: url('../../../content/images/ab2.png');
+}
+.ab-mini-3 {
+  background-image: url('../../../content/images/ab3.png');
+}
+.ab-mini-4 {
+  background-image: url('../../../content/images/ab4.png');
+}
+.ab-mini-new {
+  background-image: url('../../../content/images/ab_new.png');
+}

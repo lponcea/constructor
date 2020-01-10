@@ -10,7 +10,6 @@ Main page styles
 
 #grid-display-home {
   position: relative;
-  background-color: blue;
   width: 100%;
   height: 100%;
   // height: calc(100vh - 100px);
@@ -19,17 +18,16 @@ Main page styles
 }
 .item-grid-1 {
   position: relative;
-  width: 200px;
+  width: 350px;
   height: 100%;
-  border: 1px solid purple;
-  background-color: grey;
+  background-color: #f6f6f6;
+  border-right: 1px solid silver;
 }
 .item-grid-2 {
   position: relative;
-  width: calc(100% - 400px);
+  // width: calc(100% - 400px);
+  width: 100%;
   height: 100%;
-  border: 1px solid purple;
-  background-color: silver;
   display: flex;
   flex-direction: column;
 
@@ -37,22 +35,19 @@ Main page styles
     position: relative;
     width: 100%;
     height: 100%;
-    border: 1px solid purple;
-    background-color: white;
   }
   .grid-component-container {
     position: relative;
     width: 100%;
     height: 200px;
-    border: 1px solid purple;
-    background-color: silver;
+    background-color: white;
   }
 }
 
 .item-grid-3 {
   position: relative;
-  width: 200px;
+  width: 350px;
   height: 100%;
-  border: 1px solid purple;
-  background-color: grey;
+  background-color: #f6f6f6;
+  border-left: 1px solid silver;
 }
