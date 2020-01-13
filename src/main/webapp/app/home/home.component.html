@@ -9,6 +9,13 @@
       </div>
 
     </div>
+    <div style="position: absolute;right: 0px; z-index: 1;">
+      <button 
+        style="position: relative; left: -70px;" 
+        (click)="isContracted = !isContracted;" 
+        [ngClass]="{'contract-button': !isContracted, 'expand-button': isContracted}"
+        class="">Colapsar</button>
+    </div>
 
     <div class="item-grid-2">
       <!-- Visor container -->
@@ -23,7 +30,7 @@
 
     </div>
 
-    <div class="item-grid-3">
+    <div [ngClass]="{'item-grid-3': !isContracted, 'contracted': isContracted}">
       <!-- Right sidebar -->
       <div>
         <jhi-right-sidebar></jhi-right-sidebar>
