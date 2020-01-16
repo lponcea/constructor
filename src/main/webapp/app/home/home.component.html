@@ -1,7 +1,7 @@
 <!-- <div id="grid-display-home"> -->
   <div id="grid-display-home" [ngSwitch]="isAuthenticated()">
 
-    <div class="item-grid-1">
+    <div [ngClass]="{'item-grid-1': !leftIsContracted, 'contracted': leftIsContracted}">
       <!-- Left sidebar -->
       <div>
         <jhi-left-sidebar></jhi-left-sidebar>
@@ -9,7 +9,11 @@
     </div>
 
 
-    <div class="item-grid-2">
+    <div [ngClass]="{
+      'ninguno': !rightIsContracted && !leftIsContracted,
+      'uno': (rightIsContracted && !leftIsContracted) || (!rightIsContracted && leftIsContracted),
+      'todos': rightIsContracted && leftIsContracted
+    }">
       <!-- Visor container -->
       <div class="grid-visor-container">
         <jhi-constructor-visor-container></jhi-constructor-visor-container>
@@ -22,11 +26,18 @@
 
     </div>
 
-    <div [ngClass]="{'item-grid-3': !isContracted, 'contracted': isContracted}">
+    <div [ngClass]="{'item-grid-3': !rightIsContracted, 'contracted': rightIsContracted}">
       <!-- Right sidebar -->
 
-      <button (click)="isContracted = !isContracted;"
-        [ngClass]="{'contract-button': !isContracted, 'expand-button': isContracted}"
+      <button (click)="leftIsContracted = !leftIsContracted;"
+        [ngClass]="{'contract-button': !leftIsContracted, 'expand-button': leftIsContracted}"
+        class="" style="width: 100px;height: 30px;">
+        Collapse left
+        <div class="icon"></div>
+      </button>
+
+      <button (click)="rightIsContracted = !rightIsContracted;"
+        [ngClass]="{'contract-button': !rightIsContracted, 'expand-button': rightIsContracted}"
         class="btn-contract-right">
         <div class="icon"></div>
       </button>
