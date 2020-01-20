@@ -1,18 +1,24 @@
 <!-- <div id="grid-display-home"> -->
   <div id="grid-display-home" [ngSwitch]="isAuthenticated()">
 
-    <div [ngClass]="{'item-grid-1': !leftIsContracted, 'contracted': leftIsContracted}">
-      <!-- Left sidebar -->
-      <div>
+    <!-- Left sidebar -->
+    <div [ngClass]="{'item-grid-1': !leftIsContracted, 'contracted': leftIsContracted}" id="item-grid-1">
+
+      <button (click)="leftIsContracted = !leftIsContracted;"
+        [ngClass]="{'contract-button': !leftIsContracted, 'expand-button': leftIsContracted}"
+        id="btn-contract-left" class="btn-contract-left">
+        <div class="icon"></div>
+      </button>
+
+      <div class="left-sidebar">
         <jhi-left-sidebar></jhi-left-sidebar>
       </div>
     </div>
 
-
-    <div [ngClass]="{
-      'ninguno': !rightIsContracted && !leftIsContracted,
-      'uno': (rightIsContracted && !leftIsContracted) || (!rightIsContracted && leftIsContracted),
-      'todos': rightIsContracted && leftIsContracted
+    <!-- Main content -->
+    <div [ngClass]="{'item-grid-2': !rightIsContracted && !leftIsContracted,
+      'one-contract': (rightIsContracted && !leftIsContracted) || (!rightIsContracted && leftIsContracted),
+      'two-contract': rightIsContracted && leftIsContracted
     }">
       <!-- Visor container -->
       <div class="grid-visor-container">
@@ -26,15 +32,8 @@
 
     </div>
 
-    <div [ngClass]="{'item-grid-3': !rightIsContracted, 'contracted': rightIsContracted}">
-      <!-- Right sidebar -->
-
-      <button (click)="leftIsContracted = !leftIsContracted;"
-        [ngClass]="{'contract-button': !leftIsContracted, 'expand-button': leftIsContracted}"
-        class="" style="width: 100px;height: 30px;">
-        Collapse left
-        <div class="icon"></div>
-      </button>
+    <!-- Right sidebar -->
+    <div [ngClass]="{'item-grid-3': !rightIsContracted, 'contracted': rightIsContracted}" id="item-grid-3">
 
       <button (click)="rightIsContracted = !rightIsContracted;"
         [ngClass]="{'contract-button': !rightIsContracted, 'expand-button': rightIsContracted}"
