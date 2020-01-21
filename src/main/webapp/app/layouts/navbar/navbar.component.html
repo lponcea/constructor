@@ -156,7 +156,7 @@
     <div class="row-nbm-i1">
       <div class="nb-logo"></div>
       <div class="name-project-navbar">Nombre del proyecto - N3 Lección 2</div>
-      <div class="user-btn-navbar"><div class="arrow-user"></div></div>
+      <div class="user-btn-navbar" (click)="openMenu = !openMenu"><div class="arrow-user"></div></div>
     </div>
 
   </div>
@@ -199,5 +199,15 @@
     </div>
 
   </div>
-
 </nav>
+
+<!-- Main menu -->
+<div class="no-agular" 
+    [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}"
+    style="
+        position: absolute;
+        z-index: 1;
+        right: 0px;
+        top: 50px;">
+    <button (click)="login()">Login</button>
+</div>

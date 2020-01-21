@@ -167,3 +167,9 @@
     background-image: url('../../../content/images/upload_icn.svg');
   }
 }
+.open-menu {
+  display: grid;
+}
+.closed-menu {
+  display: none;
+}
