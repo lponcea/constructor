@@ -1,0 +1,61 @@
+<nav class="navbar-menu">
+    <div class="navbar-menu-item1">
+      <div class="row-nbm-i1">
+        <div class="nb-logo"></div>
+        <div class="name-project-navbar">Nombre del proyecto - N3 Lección 2</div>
+        <div class="user-btn-navbar" (click)="openMenu = !openMenu"><div class="arrow-user"></div></div>
+      </div>
+  
+    </div>
+    <div class="navbar-menu-item2">
+      <div class="row-nbm-i2">
+        <div class="nbm-i2-set-1">
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-bloques"></div>
+            <div class="nb-text">Bloques</div>
+          </div>
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-text"></div>
+            <div class="nb-text">Texto</div>
+          </div>
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-picture"></div>
+            <div class="nb-text">Imagen</div>
+          </div>
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-media"></div>
+            <div class="nb-text">Media</div>
+          </div>
+  
+        </div>
+        <div class="nbm-i2-set-2">
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-desktop"></div>
+            <div class="nb-text">Desktop</div>
+          </div>
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-preview"></div>
+            <div class="nb-text">Preview</div>
+          </div>
+          <div class="nb-icon-tool">
+            <div class="nb-icon icon-upload"></div>
+            <div class="nb-text">Publicar</div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </nav>
+  
+  <!-- Main menu -->
+  <div class="no-agular" 
+      [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}"
+      style="
+          position: absolute;
+          z-index: 1;
+          right: 0px;
+          top: 50px;">
+      <button (click)="login()">Login</button>
+  </div>
+  
