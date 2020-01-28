@@ -13,8 +13,20 @@ import { Account } from 'app/core/user/account.model';
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
-  rightIsContracted = false;
-  leftIsContracted = false;
+  cursos = [
+    {
+      titulo: 'Español',
+      portadaPath: ''
+    },
+    {
+      titulo: 'Matemáticas',
+      portadaPath: ''
+    },
+    {
+      titulo: 'Historia',
+      portadaPath: ''
+    }
+  ];
 
   constructor(private accountService: AccountService, private loginModalService: LoginModalService) {}
 
