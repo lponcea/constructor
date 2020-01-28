@@ -6,6 +6,7 @@ import { ConstructorSharedModule } from 'app/shared/shared.module';
 import { ConstructorCoreModule } from 'app/core/core.module';
 import { ConstructorAppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
+import { ConstructorLayoutModule } from './constructor-layout/constructor-layout.module';
 import { ConstructorEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
@@ -16,6 +17,8 @@ import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CourseConfigurationComponent } from './course-configuration/course-configuration.component';
+import { ConstructorLayoutComponent } from './constructor-layout/constructor-layout.component';
 
 @NgModule({
   imports: [
@@ -23,13 +26,22 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ConstructorSharedModule,
     ConstructorCoreModule,
     HomeModule,
+    ConstructorLayoutModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     ConstructorEntityModule,
     ConstructorAppRoutingModule,
     HttpClientModule,
     AngularEditorModule
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [
+    MainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    CourseConfigurationComponent
+  ],
   bootstrap: [MainComponent]
 })
 export class ConstructorAppModule {}
