@@ -10,11 +10,11 @@ export class ContentBlock1Component {
 
   constructor() {}
 
-  editText() {
+  editText(): void {
     alert('Editar texto');
   }
 
-  editImage() {
+  editImage(): void {
     alert('Editar imagen');
   }
 }
