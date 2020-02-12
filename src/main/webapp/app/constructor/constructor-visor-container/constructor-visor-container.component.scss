@@ -7,10 +7,7 @@
   background-color: #212342;
   background-color: silver;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: block;
 }
 .visor-component-artboard {
   position: relative;
@@ -20,6 +17,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding-top: 40px;
   padding-bottom: 40px;
+  margin: 0 auto;
 
   .artboard-delete {
     position: absolute;
@@ -65,10 +63,10 @@
 .visor-space-up {
   position: relative;
   width: 100%;
-  height: 40px;
+  height: 60px;
 }
 .visor-space-down {
   position: relative;
   width: 100%;
-  height: 40px;
+  height: 60px;
 }

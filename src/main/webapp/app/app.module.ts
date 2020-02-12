@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CourseConfigurationComponent } from './course-configuration/course-configuration.component';
 import { ConstructorLayoutComponent } from './constructor-layout/constructor-layout.component';
+import { ContentBlock2Component } from './constructor/content-blocks/content-block2/content-block2.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { ConstructorLayoutComponent } from './constructor-layout/constructor-lay
     PageRibbonComponent,
     ActiveMenuDirective,
     FooterComponent,
-    CourseConfigurationComponent
+    CourseConfigurationComponent,
+    ContentBlock2Component
   ],
   bootstrap: [MainComponent]
 })
