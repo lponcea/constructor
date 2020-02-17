@@ -168,8 +168,60 @@
   }
 }
 .open-menu {
-  display: grid;
+  display: flex;
 }
 .closed-menu {
   display: none;
+}
+
+.no-agular {
+  position: absolute;
+  z-index: 100;
+  right: 50px;
+  top: 70px;
+  width: 200px;
+  height: auto;
+  min-height: 50px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 6px;
+  background-color: white !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  box-shadow: 0 -4px 42px rgba(33, 36, 66, 0.15), 0 17px 35px rgba(33, 36, 66, 0.15);
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 12px;
+    right: 16px;
+    top: -8px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url('../../../content/images/globe.svg');
+  }
+
+  button {
+    cursor: pointer;
+    margin: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    border-image: none !important;
+    width: 94% !important;
+    height: 36px !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    padding-left: 15px !important;
+    transition: 0.3s !important;
+    border-radius: 4px !important;
+    background-color: transparent !important;
+
+    &:hover {
+      background-color: #f0f2f7 !important;
+    }
+  }
 }
