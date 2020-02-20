@@ -1,14 +1,66 @@
-<div>
-    <form>
-        <div class="form-group">
-            <label for="exampleInputCourseTitle1">Nombre del curso</label>
-            <input type="courseTitle" class="form-control" id="exampleInputCourseTitle1" aria-describedby="courseTitleHelp" placeholder="Enter Course Title">
-            <small id="courseTitleHelp" class="form-text text-muted"></small>
+<div class="container-home-test">
+
+  <div class="c-conf-constructor">
+
+    <div class="header-c-c-c">
+      <div class="ccc-bar">
+        <div class="ccc-title">Configuración</div>
+        <div class="ccc-close" routerLink="/"></div>
+      </div>
+
+      <div class="ccc-menu">
+
+        <div class="col-ccc">
+          <div class="ccc-element active-ccc-element">
+            <div class="c-icon c-icon-1"></div>
+            <div class="c-title">General</div>
+          </div>
+
+          <div class="ccc-element">
+            <div class="c-icon c-icon-2"></div>
+            <div class="c-title">Avanzado</div>
+          </div>
+
+          <div class="ccc-element">
+            <div class="c-icon c-icon-3"></div>
+            <div class="c-title">Recursos</div>
+          </div>
+
         </div>
-        <div class="form-group">
-            <label for="exampleInputDescripcion1">descripcion</label>
-            <input type="descripcion" class="form-control" id="exampleInputdescripcion1" placeholder="descripcion">
+        <div class="mark-element-ccc"></div>
+      </div>
+    </div>
+
+    <div class="body-c-c-c">
+      <div class="col-ccc-elemet1">
+
+        <div class="col-ccc-f">
+          <form>
+              <div class="form-group">
+                  <label for="exampleInputCourseTitle1">Nombre del curso:</label>
+                  <input type="courseTitle" class="form-control" id="exampleInputCourseTitle1" aria-describedby="courseTitleHelp" placeholder="Enter Course Title">
+                  <small id="courseTitleHelp" class="form-text text-muted"></small>
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputDescripcion1">Descripcion:</label>
+                  <input type="descripcion" class="form-control" id="exampleInputdescripcion1" placeholder="descripcion">
+              </div>
+
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary" routerLink="../constructor-layout">Submit</button>
-    </form>
+
+      </div>
+
+    </div>
+
+    <div class="footer-c-c-c">
+      <div class="button-next-new" routerLink="../constructor-layout">
+        Siguiente
+      </div>
+    </div>
+
+
+
+  </div>
+
 </div>
