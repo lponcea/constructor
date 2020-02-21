@@ -15,9 +15,12 @@
 
     </div>
 
-    <div class="body-c-h-c">
+    <div class="body-c-h-c" *ngIf="!cursos.length">
+      No hay libros
+    </div>
+    <div class="body-c-h-c" *ngIf="cursos.length">
       <div class="title-body-chc">
-        <P>Tus elementos recientes ( 6 )</P>
+        <P>Tus elementos recientes ( {{cursos.length}} )</P>
       </div>
 
       <div class="row-body-chc">
