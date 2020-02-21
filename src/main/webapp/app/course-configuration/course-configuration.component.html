@@ -11,23 +11,16 @@
       <div class="ccc-menu">
 
         <div class="col-ccc">
-          <div class="ccc-element active-ccc-element">
-            <div class="c-icon c-icon-1"></div>
-            <div class="c-title">General</div>
-          </div>
 
-          <div class="ccc-element">
-            <div class="c-icon c-icon-2"></div>
-            <div class="c-title">Avanzado</div>
-          </div>
-
-          <div class="ccc-element">
-            <div class="c-icon c-icon-3"></div>
-            <div class="c-title">Recursos</div>
+          <div *ngFor="let tab of tabs; let index = index;" (click)="selectedTabIndex = index">
+            <div class="ccc-element" [ngClass]="{'active-ccc-element': index === selectedTabIndex}">
+              <div class="c-icon" [ngClass]="tab.iconClass"></div>
+              <div class="c-title">{{tab.title}}</div>
+            </div>
           </div>
 
         </div>
-        <div class="mark-element-ccc"></div>
+        <div class="mark-element-ccc" style="transition-duration:0.5s" [style.transform]="'translateX(' + ((15 * (this.selectedTabIndex + 1)) + (this.selectedTabIndex * 95)) + 'px)'"></div>
       </div>
     </div>
 
