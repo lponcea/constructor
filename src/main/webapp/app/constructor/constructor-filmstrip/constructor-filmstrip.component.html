@@ -1,16 +1,15 @@
-<div class="constructor-filmstrip">
-  <div class="component-tool-header">
-    <h4>Mesas de trabajo</h4>
-    <div class="ctc-name-artboard"><p>Nombre de lección</p></div>
-  </div>
+<div class="constructor-f">
+
+  <div class="ctc-name-artboard"><p>Nombre de lección</p></div>
+
   <div class="component-tool-content">
     <div class="row-ctc">
 
       <div class="row-artboard-filmstrip" *ngFor="let contentBlock of contentBlocks; let index = index">
-        <div 
-          class="artboard-mini ab-mini-1" 
-          [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}" 
-          [style.backgroundImage]="'url(' + getContentBlockImage(contentBlock.contentBlockType) + ')'" 
+        <div
+          class="artboard-mini ab-mini-1"
+          [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
+          [style.backgroundImage]="'url(' + getContentBlockImage(contentBlock.contentBlockType) + ')'"
           (click)="selectContentBlock(index)">
         </div>
         <div class="ab-mini-desc">
