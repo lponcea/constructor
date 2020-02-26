@@ -70,27 +70,24 @@
   height: 240px;
 }
 
-/* Let's get this party started */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 18px;
 }
-
-/* Track */
-::-webkit-scrollbar-track {
-  // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  // background: rgba(255,0,0,0.8);
+  height: 6px;
+
+  background-clip: padding-box;
+  -webkit-border-radius: 7px;
+  background-color: rgba(0, 0, 0, 0.15);
   background-color: #e6e8ec;
-  // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
-::-webkit-scrollbar-thumb:window-inactive {
-  // background: rgba(255,0,0,0.4);
-  background-color: #e6e8ec;
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }

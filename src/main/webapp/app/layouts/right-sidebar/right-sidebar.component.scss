@@ -31,3 +31,17 @@ $tool-header: lighten($color-silver, 65%);
   width: 50px;
   height: 50px;
 }
+
+.test-i {
+  position: absolute;
+  top: 50%;
+  margin-top: -55px;
+  left: 50%;
+  margin-left: -60px;
+  width: 120px;
+  height: 120px;
+  background-image: url('../../../content/images/right_empty.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
