@@ -1,0 +1,52 @@
+<h1>Bloque de componente con video</h1>
+
+<button (click)="getVideo()">Obtener video</button>
+
+<video src="http://static.videogular.com/assets/videos/videogular.mp4" controls></video>
+
+<vg-player (onPlayerReady)="onPlayerReady($event)">
+    <vg-overlay-play></vg-overlay-play>
+    <vg-buffering></vg-buffering>
+
+    <vg-controls>
+        <vg-play-pause></vg-play-pause>
+
+        <vg-scrub-bar>
+            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        </vg-scrub-bar>
+
+        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-quality-selector *ngIf="bitrates"
+                             (onBitrateChange)="setBitrate($event)"
+                             [bitrates]="bitrates">
+        </vg-quality-selector>
+
+        <vg-mute></vg-mute>
+        <vg-volume></vg-volume>
+
+        <vg-fullscreen></vg-fullscreen>
+    </vg-controls>
+
+    <video #media
+           (onGetBitrates)="bitrates = $event"
+           [vgMedia]="media"
+           [vgDash]="currentStream.source"
+           [vgHls]="currentStream.source"
+           [vgDRMToken]="currentStream.token"
+           [vgDRMLicenseServer]="currentStream.licenseServers"
+           id="singleVideo"
+           crossorigin>
+    </video>
+</vg-player>
+
+<label>
+    Media Url: <input type="text" [(ngModel)]="currentStream.source">
+</label>
+
+<ul>
+    <li *ngFor="let stream of streams" (click)="onClickStream(stream)" [ngClass]="{'selected': currentStream === stream}">{{ stream.label }}</li>
+</ul>
+                                
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas totam quisquam perferendis harum doloremque nostrum id facere ipsam minus perspiciatis enim ad iusto, veritatis, consectetur voluptatibus. Eligendi beatae labore dignissimos!</p>
