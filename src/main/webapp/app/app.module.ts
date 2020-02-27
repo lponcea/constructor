@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CourseConfigurationComponent } from './course-configuration/course-configuration.component';
 import { ConstructorLayoutComponent } from './constructor-layout/constructor-layout.component';
-import { ContentBlock2Component } from './constructor/content-blocks/content-block2/content-block2.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
@@ -43,7 +42,6 @@ import { HomePageComponent } from './home-page/home-page.component';
     ActiveMenuDirective,
     FooterComponent,
     CourseConfigurationComponent,
-    ContentBlock2Component,
     HomePageComponent
   ],
   bootstrap: [MainComponent]
