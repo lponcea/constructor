@@ -7,13 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileUploadService {
-  public resorceUrl = SERVER_API_URL + '/api/uploadFile';
-
   constructor(private http: HttpClient) {}
 
   pushFileStorage(file: File): Observable<any> {
     const data: FormData = new FormData();
     data.append('file', file);
-    return this.http.post(this.resorceUrl, data);
+    return this.http.post(SERVER_API_URL + '/', data);
+  }
+
+  getFile(): Observable<any> {
+    const data: FormData = new FormData();
+    data.append('file', 'test');
+    return this.http.get(SERVER_API_URL + '/api/loadVideo');
   }
 }

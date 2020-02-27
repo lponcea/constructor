@@ -1,14 +1,53 @@
-<div [ngSwitch]="isAuthenticated()" *jhiHasAnyAuthority="'ROLE_USER'">
-    <div class="row">
-        <div style="border: solid black 1px; width: 100px; height: 100px; margin: 10px; float: left;" routerLink="course-configuration">
-            <span>+</span>
-        </div>    
-    </div>
-    <div class="row">
-        <div *ngFor="let curso of cursos" routerLink="constructor-layout">
-            <div style="border: solid black 1px; width: 100px; height: 100px; margin: 10px; float: left;">
-                <span>{{curso.titulo}}</span>
-            </div>
+<div class="container-home-test">
+
+  <div [ngSwitch]="isAuthenticated()" *jhiHasAnyAuthority="'ROLE_USER'" class="c-home-constructor">
+
+    <div class="header-c-h-c">
+      <div class="r1">
+        <div class="logo-create"></div>
+      </div>
+      <div class="r2">
+        <div class="c1">
+          <div class="button-hc"><div class="icon icn-support"></div>Soporte</div>
+          <div class="button-hc"><div class="icon icn-tutto"></div>Tutorial</div>
         </div>
+      </div>
+
     </div>
+
+    <div class="body-c-h-c" *ngIf="!cursos.length">
+      No hay libros
+    </div>
+    <div class="body-c-h-c" *ngIf="cursos.length">
+      <div class="title-body-chc">
+        <P>Tus elementos recientes ( {{cursos.length}} )</P>
+      </div>
+
+      <div class="row-body-chc">
+
+        <div class="cover-test" *ngFor="let curso of cursos" routerLink="constructor-layout">
+          <div class="cover-home">
+            <div class="cover-home-image"></div>
+          </div>
+          <div class="desc-cover-home">
+            <span class="title-dch">{{curso.titulo}}</span>
+            <span class="descp-dch">Primero</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-c-h-c">
+      <div class="button-create-new" routerLink="course-configuration">
+        Crear
+      </div>
+    </div>
+
+
+
+
+  </div>
+
 </div>

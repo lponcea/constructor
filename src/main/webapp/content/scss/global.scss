@@ -6,6 +6,8 @@
 $color-silver: #3a404c;
 $tool-header: lighten($color-silver, 65%);
 $bg-color: #f6f6f6;
+$bg-white: #f6f6f6;
+$bg-blue: #101233;
 
 // @charset "UTF-8";
 /*Import font*/
@@ -110,11 +112,12 @@ strong {
   display: flex;
   flex-direction: column;
 
-  #grid-navbar-container {
-    position: relative;
-    width: 100%;
-    height: 100px;
-  }
+  // #grid-navbar-container {
+  //   position: relative;
+  //   width: 100%;
+  //   height: 54px;
+  //   background-color: red;
+  // }
 
   #grid-work-container {
     position: relative;

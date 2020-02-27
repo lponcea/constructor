@@ -23,6 +23,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       portadaPath: ''
     },
     {
+      titulo: 'Geografía',
+      portadaPath: ''
+    },
+    {
+      titulo: 'Física',
+      portadaPath: ''
+    },
+    {
+      titulo: 'Test',
+      portadaPath: ''
+    },
+    {
       titulo: 'Historia',
       portadaPath: ''
     }

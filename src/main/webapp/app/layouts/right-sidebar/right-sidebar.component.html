@@ -1,10 +1,15 @@
-{{openTemplateGallery}}
+<!-- {{openTemplateGallery}} -->
 <div id="right-sidebar-grid">
   <div class="component-tool-header">
     <h4>Right Sidebar</h4>
   </div>
+  <!-- Galería de plantillas de bloques de contenido -->
   <div *ngIf="openTemplateGallery">
     <jhi-template-gallery></jhi-template-gallery>
+  </div>
+  <!-- Elemento a mostrar cuando la barra de herramientas está vacía -->
+  <div *ngIf="!openTemplateGallery">
+    Vacía
   </div>
   <div>
     <jhi-file-upload></jhi-file-upload>

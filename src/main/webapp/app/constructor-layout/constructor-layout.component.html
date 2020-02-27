@@ -1,25 +1,28 @@
 <!-- <div id="grid-display-home"> -->
-    {{leftIsContracted}}
-    {{rightIsContracted}}
-    <div style="width: 100%; height: 50px; border: solid 1px black;">
+
+    <!-- {{leftIsContracted}}
+    {{rightIsContracted}} -->
+
+    <!-- <div style="width: 100%; height: 100px;"> -->
+      <div>
         <jhi-top-bar></jhi-top-bar>
       </div>
-      <div id="grid-display-home"> 
-    
+      <div id="grid-display-home">
+
         <!-- Left sidebar -->
         <div [ngClass]="{'item-grid-1': !leftIsContracted, 'contracted': leftIsContracted}" id="item-grid-1">
-    
+
           <button (click)="leftIsContracted = !leftIsContracted;"
             [ngClass]="{'contract-button': !leftIsContracted, 'expand-button': leftIsContracted}"
             id="btn-contract-left" class="btn-contract-left">
             <div class="icon"></div>
           </button>
-    
+
           <div class="left-sidebar">
             <jhi-left-sidebar></jhi-left-sidebar>
           </div>
         </div>
-    
+
         <!-- Main content -->
         <div [ngClass]="{'item-grid-2': !rightIsContracted && !leftIsContracted,
           'one-contract': (rightIsContracted && !leftIsContracted) || (!rightIsContracted && leftIsContracted),
@@ -29,29 +32,28 @@
           <div class="grid-visor-container">
             <jhi-constructor-visor-container></jhi-constructor-visor-container>
           </div>
-    
+
           <!-- Component container -->
           <div class="grid-component-container">
             <jhi-constructor-component-container></jhi-constructor-component-container>
           </div>
-    
+
         </div>
-    
+
         <!-- Right sidebar -->
         <div [ngClass]="{'item-grid-3': !rightIsContracted, 'contracted': rightIsContracted}" id="item-grid-3">
-    
+
           <button (click)="rightIsContracted = !rightIsContracted;"
             [ngClass]="{'contract-button': !rightIsContracted, 'expand-button': rightIsContracted}"
             class="btn-contract-right">
             <div class="icon"></div>
           </button>
-    
+
           <div class="right-sidebar">
             <jhi-right-sidebar></jhi-right-sidebar>
           </div>
-    
+
         </div>
-    
+
       </div>
     <!-- </div> -->
-    
