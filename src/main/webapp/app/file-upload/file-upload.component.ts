@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FileUploadService } from './../services/file-upload.service';
+import { NavigationControlsService } from 'app/services/navigation-controls.service';
 
 @Component({
   selector: 'jhi-file-upload',
@@ -11,7 +12,7 @@ export class FileUploadComponent {
   selectedFiles = FileList;
   currentFileUpload: File;
 
-  constructor(private fileUploadService: FileUploadService) {}
+  constructor(private fileUploadService: FileUploadService, private navigationControlsService: NavigationControlsService) {}
 
   change($event: any): void {
     this.changeImage = true;
@@ -19,7 +20,10 @@ export class FileUploadComponent {
 
   upload(): void {
     this.currentFileUpload = this.selectedFiles[0];
-    this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {});
+    this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {
+      console.error(event);
+      this.navigationControlsService.setVideoPath(event.path);
+    });
   }
 
   selectFile(event: any): void {

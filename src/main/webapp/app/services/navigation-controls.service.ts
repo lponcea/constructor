@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class NavigationControlsService {
   private openTemplateGallery = new Subject<any>();
   private selectedTemplate = new Subject<any>();
+  private videoPath = new Subject<any>();
 
   constructor() {}
 
@@ -28,5 +29,15 @@ export class NavigationControlsService {
 
   getSelectedTemplateType(): Observable<any> {
     return this.selectedTemplate.asObservable();
+  }
+
+  setVideoPath(videoPath: string): void {
+    this.videoPath.next({
+      videoPath
+    });
+  }
+
+  getVideoPath(): Observable<any> {
+    return this.videoPath.asObservable();
   }
 }

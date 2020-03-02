@@ -1,5 +1,11 @@
-<h1>Bloque de componente con video</h1>
+<style>
+    video{
+        width: 500px;
+        height: auto;
+     }
+</style>
+<h3>Bloque de contenido con video</h3>
 
 <button (click)="getVideo()">Obtener video</button>
 
-<video [src]="imageUrl" controls></video>
+<video [src]="videoUrl" controls *ngIf="SafeUrl !== ''"></video>
