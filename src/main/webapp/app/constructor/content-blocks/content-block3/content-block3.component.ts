@@ -20,7 +20,7 @@ export class ContentBlock3Component implements OnInit {
   ) {
     this.subscription = this.navigationControlsService.getVideoPath().subscribe(videoPath => {
       if (videoPath) {
-        this.getVideo(videoPath);
+        this.getVideo(videoPath.videoPath);
       }
     });
   }

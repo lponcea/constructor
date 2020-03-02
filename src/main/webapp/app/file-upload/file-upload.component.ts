@@ -10,7 +10,7 @@ import { NavigationControlsService } from 'app/services/navigation-controls.serv
 export class FileUploadComponent {
   changeImage = false;
   selectedFiles = FileList;
-  currentFileUpload: File;
+  currentFileUpload: File = this.selectedFiles[0];
 
   constructor(private fileUploadService: FileUploadService, private navigationControlsService: NavigationControlsService) {}
 
@@ -21,7 +21,6 @@ export class FileUploadComponent {
   upload(): void {
     this.currentFileUpload = this.selectedFiles[0];
     this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {
-      console.error(event);
       this.navigationControlsService.setVideoPath(event.path);
     });
   }

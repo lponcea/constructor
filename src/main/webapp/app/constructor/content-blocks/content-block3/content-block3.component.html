@@ -5,7 +5,6 @@
      }
 </style>
 <h3>Bloque de contenido con video</h3>
-
-<button (click)="getVideo()">Obtener video</button>
-
-<video [src]="videoUrl" controls *ngIf="SafeUrl !== ''"></video>
+<div *ngIf="videoUrl !== ''">
+    <video [src]="videoUrl" controls autoplay *ngIf="SafeUrl !== ''"></video>
+</div>
