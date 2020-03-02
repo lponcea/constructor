@@ -31,6 +31,7 @@ public class UploadFileService {
 		    VideoResponse videoResponse = new VideoResponse();
 			try {
 					String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+					String replace = null; 
 					videoResponse.setName(file.getOriginalFilename());
 					log.debug("Save File: {}", file);
 					//Create Path
@@ -76,7 +77,9 @@ public class UploadFileService {
 					int i = builder.indexOf("nimbus");
 					log.debug("i {}", builder.indexOf("nimbus"));
 					log.debug("path : {}", builder.substring(i));
-					videoResponse.setPath(builder.substring(i));
+					replace = (builder.substring(i)).replace("\\", "/");
+					log.debug("replace : {}", replace);
+					videoResponse.setPath(replace);
 					return videoResponse;
 				
 			 }catch(IOException e){
