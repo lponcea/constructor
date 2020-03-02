@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class Video {
 	
-	private static final String path =  System.getProperty("user.home") + "/resources" + File.separator + "nimbus" + File.separator + "video" + File.separator + "video1.mp4";
+	private static final String path =  System.getProperty("user.home") + "/resources" + File.separator;
 	
 	@RequestMapping(value = "/loadVideo", method = RequestMethod.GET, produces = "video/mp4")
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public byte[] loadVideo(@RequestParam("file") String nameVideo) {
-		File file = new File(path);
+		File file = new File(path + nameVideo);
 		byte[] fileArray = new byte[(int) file.length()];
 		
 		try { 
