@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.constructor.multimedia.response.VideoResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,11 @@ public class UploadFileService {
 	enum extImage { JPG, PNG};
 	enum extDocs { PDF, CSV};
 	
-	public String saveFile(MultipartFile file) {
+	public VideoResponse saveFile(MultipartFile file) {
+		    VideoResponse videoResponse = new VideoResponse();
 			try {
 					String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+					videoResponse.setName(file.getOriginalFilename());
 					log.debug("Save File: {}", file);
 					//Create Path
 					List<String> image = new ArrayList();
@@ -70,11 +73,14 @@ public class UploadFileService {
 					Path path = Paths.get(builder.toString());
 					Files.write(path, fileBytes);
 					
-					return builder.toString();
+					int i = builder.indexOf("nimbus");
+					log.debug("i {}", builder.indexOf("nimbus"));
+					log.debug("path : {}", builder.substring(i));
+					videoResponse.setPath(builder.substring(i));
+					return videoResponse;
 				
 			 }catch(IOException e){
-				 
-				return "Failed to store file " + e.getMessage();
+				return videoResponse;
 		} 
 	}
 		
