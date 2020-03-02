@@ -25,21 +25,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class Video {
 	
 	private static final String path =  System.getProperty("user.home") + "/resources" + File.separator;
+	private final Logger log = LoggerFactory.getLogger(UploadFileService.class);
 	
 	@RequestMapping(value = "/loadVideo", method = RequestMethod.GET, produces = "video/mp4")
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public byte[] loadVideo(@RequestParam("file") String nameVideo) {
+		log.debug("********Nimbus Video Request******", nameVideo);
+		log.debug("******** Path:  {}******", nameVideo);
 		File file = new File(path + nameVideo);
 		byte[] fileArray = new byte[(int) file.length()];
 		
 		try { 
 			FileInputStream read = new FileInputStream(file);
+			log.debug("******** Reading File *****", nameVideo);
 			read.read(fileArray);
 			read.close();
+			log.debug("******** Sending File *****", nameVideo);
 			return fileArray;
 		
 		}catch(IOException ex){
-			
 			//log.debug("Exception al leer el video: {} ", ex.getMessage());
 			return fileArray;
 		}
