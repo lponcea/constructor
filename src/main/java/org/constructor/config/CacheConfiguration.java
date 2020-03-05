@@ -42,6 +42,27 @@ public class CacheConfiguration {
             createCache(cm, org.constructor.domain.User.class.getName());
             createCache(cm, org.constructor.domain.Authority.class.getName());
             createCache(cm, org.constructor.domain.User.class.getName() + ".authorities");
+            createCache(cm, org.constructor.domain.Asignatura.class.getName());
+            createCache(cm, org.constructor.domain.Asignatura.class.getName() + ".cursos");
+            createCache(cm, org.constructor.domain.NumeroGrado.class.getName());
+            createCache(cm, org.constructor.domain.NumeroGrado.class.getName() + ".cursos");
+            createCache(cm, org.constructor.domain.GradoAcademico.class.getName());
+            createCache(cm, org.constructor.domain.GradoAcademico.class.getName() + ".numeroGrados");
+            createCache(cm, org.constructor.domain.Curso.class.getName());
+            createCache(cm, org.constructor.domain.Ficha.class.getName());
+            createCache(cm, org.constructor.domain.Ficha.class.getName() + ".colaboradors");
+            createCache(cm, org.constructor.domain.Colaborador.class.getName());
+            createCache(cm, org.constructor.domain.Colaborador.class.getName() + ".fichas");
+            createCache(cm, org.constructor.domain.Editorial.class.getName());
+            createCache(cm, org.constructor.domain.Editorial.class.getName() + ".fichas");
+            createCache(cm, org.constructor.domain.RolColaborador.class.getName());
+            createCache(cm, org.constructor.domain.RolColaborador.class.getName() + ".colaboradors");
+            createCache(cm, org.constructor.domain.Categoria.class.getName());
+            createCache(cm, org.constructor.domain.Categoria.class.getName() + ".cursos");
+            createCache(cm, org.constructor.domain.Modalidad.class.getName());
+            createCache(cm, org.constructor.domain.Modalidad.class.getName() + ".cursos");
+            createCache(cm, org.constructor.domain.Version.class.getName());
+            createCache(cm, org.constructor.domain.Version.class.getName() + ".cursos");
             // jhipster-needle-ehcache-add-entry
         };
     }

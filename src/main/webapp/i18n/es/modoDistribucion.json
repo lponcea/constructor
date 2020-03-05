@@ -1,0 +1,10 @@
+{
+  "constructorApp": {
+    "ModoDistribucion": {
+      "null": "",
+      "PAGO": "PAGO",
+      "GRATUITO": "GRATUITO",
+      "LIBRE": "LIBRE"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "RolColaborador",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "colaborador",
+            "otherEntityRelationshipName": "rolColaborador",
+            "relationshipName": "colaborador"
+        }
+    ],
+    "changelogDate": "20200305201123",
+    "entityTableName": "rol_colaborador",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,10 @@
+{
+  "constructorApp": {
+    "EtapaEditorial": {
+      "null": "",
+      "EDICION": "EDICION",
+      "PUBLICADO": "PUBLICADO",
+      "OTRO": "OTRO"
+    }
+  }
+}

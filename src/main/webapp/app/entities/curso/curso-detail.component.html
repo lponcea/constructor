@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="curso">
+            <h2><span jhiTranslate="constructorApp.curso.detail.title">Curso</span> {{curso.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="constructorApp.curso.titulo">Titulo</span></dt>
+                <dd>
+                    <span>{{curso.titulo}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{curso.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.modoDistribucion">Modo Distribucion</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'constructorApp.ModoDistribucion.' + curso.modoDistribucion}}">{{curso.modoDistribucion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.etapaEditorial">Etapa Editorial</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'constructorApp.EtapaEditorial.' + curso.etapaEditorial}}">{{curso.etapaEditorial}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.fechaCreacion">Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{curso.fechaCreacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.fechaCreacionSys">Fecha Creacion Sys</span></dt>
+                <dd>
+                    <span>{{curso.fechaCreacionSys}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.fechaPublicacion">Fecha Publicacion</span></dt>
+                <dd>
+                    <span>{{curso.fechaPublicacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.fechaPublicacionSys">Fecha Publicacion Sys</span></dt>
+                <dd>
+                    <span>{{curso.fechaPublicacionSys}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.numeroEdicion">Numero Edicion</span></dt>
+                <dd>
+                    <span>{{curso.numeroEdicion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.versionStr">Version Str</span></dt>
+                <dd>
+                    <span>{{curso.versionStr}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.palabraClave">Palabra Clave</span></dt>
+                <dd>
+                    <span>{{curso.palabraClave}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.resumenContenido">Resumen Contenido</span></dt>
+                <dd>
+                    <span>{{curso.resumenContenido}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.clave">Clave</span></dt>
+                <dd>
+                    <span>{{curso.clave}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.estatus">Estatus</span></dt>
+                <dd>
+                    <span>{{curso.estatus}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.portadaUrl">Portada Url</span></dt>
+                <dd>
+                    <span>{{curso.portadaUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.modalidad">Modalidad</span></dt>
+                <dd>
+                    <div *ngIf="curso.modalidad">
+                        <a [routerLink]="['/modalidad', curso.modalidad?.id, 'view']">{{curso.modalidad?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.version">Version</span></dt>
+                <dd>
+                    <div *ngIf="curso.version">
+                        <a [routerLink]="['/version', curso.version?.id, 'view']">{{curso.version?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.categoria">Categoria</span></dt>
+                <dd>
+                    <div *ngIf="curso.categoria">
+                        <a [routerLink]="['/categoria', curso.categoria?.id, 'view']">{{curso.categoria?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.asignatura">Asignatura</span></dt>
+                <dd>
+                    <div *ngIf="curso.asignatura">
+                        <a [routerLink]="['/asignatura', curso.asignatura?.id, 'view']">{{curso.asignatura?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.curso.numeroGrado">Numero Grado</span></dt>
+                <dd>
+                    <div *ngIf="curso.numeroGrado">
+                        <a [routerLink]="['/numero-grado', curso.numeroGrado?.id, 'view']">{{curso.numeroGrado?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/curso', curso.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

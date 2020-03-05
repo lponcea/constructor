@@ -1,0 +1,27 @@
+{
+    "name": "Categoria",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "curso",
+            "otherEntityRelationshipName": "categoria",
+            "relationshipName": "curso"
+        }
+    ],
+    "changelogDate": "20200305201124",
+    "entityTableName": "categoria",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Curso.
+    -->
+    <changeSet id="20200305201119-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="modalidad_id"
+                                 baseTableName="curso"
+                                 constraintName="fk_curso_modalidad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="modalidad"/>
+
+        <addForeignKeyConstraint baseColumnNames="version_id"
+                                 baseTableName="curso"
+                                 constraintName="fk_curso_version_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="version"/>
+
+        <addForeignKeyConstraint baseColumnNames="categoria_id"
+                                 baseTableName="curso"
+                                 constraintName="fk_curso_categoria_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categoria"/>
+
+        <addForeignKeyConstraint baseColumnNames="asignatura_id"
+                                 baseTableName="curso"
+                                 constraintName="fk_curso_asignatura_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asignatura"/>
+
+        <addForeignKeyConstraint baseColumnNames="numero_grado_id"
+                                 baseTableName="curso"
+                                 constraintName="fk_curso_numero_grado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="numero_grado"/>
+
+    </changeSet>
+</databaseChangeLog>

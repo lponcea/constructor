@@ -1,0 +1,156 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label>
+                    <input type="text" class="form-control" name="titulo" id="field_titulo"
+                           formControlName="titulo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.descripcion" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.modoDistribucion" for="field_modoDistribucion">Modo Distribucion</label>
+                    <select class="form-control" name="modoDistribucion" formControlName="modoDistribucion" id="field_modoDistribucion">
+                        <option value="PAGO">{{'constructorApp.ModoDistribucion.PAGO' | translate}}</option>
+                        <option value="GRATUITO">{{'constructorApp.ModoDistribucion.GRATUITO' | translate}}</option>
+                        <option value="LIBRE">{{'constructorApp.ModoDistribucion.LIBRE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.etapaEditorial" for="field_etapaEditorial">Etapa Editorial</label>
+                    <select class="form-control" name="etapaEditorial" formControlName="etapaEditorial" id="field_etapaEditorial">
+                        <option value="EDICION">{{'constructorApp.EtapaEditorial.EDICION' | translate}}</option>
+                        <option value="PUBLICADO">{{'constructorApp.EtapaEditorial.PUBLICADO' | translate}}</option>
+                        <option value="OTRO">{{'constructorApp.EtapaEditorial.OTRO' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
+                    <div class="input-group">
+                        <input id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" formControlName="fechaCreacion"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaCreacionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaCreacionSys" for="field_fechaCreacionSys">Fecha Creacion Sys</label>
+                    <div class="input-group">
+                        <input id="field_fechaCreacionSys" type="text" class="form-control" name="fechaCreacionSys" ngbDatepicker  #fechaCreacionSysDp="ngbDatepicker" formControlName="fechaCreacionSys"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaCreacionSysDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaPublicacion" for="field_fechaPublicacion">Fecha Publicacion</label>
+                    <div class="input-group">
+                        <input id="field_fechaPublicacion" type="text" class="form-control" name="fechaPublicacion" ngbDatepicker  #fechaPublicacionDp="ngbDatepicker" formControlName="fechaPublicacion"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaPublicacionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaPublicacionSys" for="field_fechaPublicacionSys">Fecha Publicacion Sys</label>
+                    <div class="input-group">
+                        <input id="field_fechaPublicacionSys" type="text" class="form-control" name="fechaPublicacionSys" ngbDatepicker  #fechaPublicacionSysDp="ngbDatepicker" formControlName="fechaPublicacionSys"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaPublicacionSysDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.numeroEdicion" for="field_numeroEdicion">Numero Edicion</label>
+                    <input type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion"
+                           formControlName="numeroEdicion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.versionStr" for="field_versionStr">Version Str</label>
+                    <input type="text" class="form-control" name="versionStr" id="field_versionStr"
+                           formControlName="versionStr"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.palabraClave" for="field_palabraClave">Palabra Clave</label>
+                    <input type="text" class="form-control" name="palabraClave" id="field_palabraClave"
+                           formControlName="palabraClave"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
+                    <input type="text" class="form-control" name="resumenContenido" id="field_resumenContenido"
+                           formControlName="resumenContenido"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.clave" for="field_clave">Clave</label>
+                    <input type="text" class="form-control" name="clave" id="field_clave"
+                           formControlName="clave"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.estatus" for="field_estatus">Estatus</label>
+                    <input type="text" class="form-control" name="estatus" id="field_estatus"
+                           formControlName="estatus"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.portadaUrl" for="field_portadaUrl">Portada Url</label>
+                    <input type="text" class="form-control" name="portadaUrl" id="field_portadaUrl"
+                           formControlName="portadaUrl"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.modalidad" for="field_modalidad">Modalidad</label>
+                    <select class="form-control" id="field_modalidad" name="modalidad" formControlName="modalidad">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="modalidadOption.id === editForm.get('modalidad')!.value?.id ? editForm.get('modalidad')!.value : modalidadOption" *ngFor="let modalidadOption of modalidads; trackBy: trackById">{{modalidadOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.version" for="field_version">Version</label>
+                    <select class="form-control" id="field_version" name="version" formControlName="version">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="versionOption.id === editForm.get('version')!.value?.id ? editForm.get('version')!.value : versionOption" *ngFor="let versionOption of versions; trackBy: trackById">{{versionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.categoria" for="field_categoria">Categoria</label>
+                    <select class="form-control" id="field_categoria" name="categoria" formControlName="categoria">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categoriaOption.id === editForm.get('categoria')!.value?.id ? editForm.get('categoria')!.value : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackById">{{categoriaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.asignatura" for="field_asignatura">Asignatura</label>
+                    <select class="form-control" id="field_asignatura" name="asignatura" formControlName="asignatura">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="asignaturaOption.id === editForm.get('asignatura')!.value?.id ? editForm.get('asignatura')!.value : asignaturaOption" *ngFor="let asignaturaOption of asignaturas; trackBy: trackById">{{asignaturaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="constructorApp.curso.numeroGrado" for="field_numeroGrado">Numero Grado</label>
+                    <select class="form-control" id="field_numeroGrado" name="numeroGrado" formControlName="numeroGrado">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="numeroGradoOption.id === editForm.get('numeroGrado')!.value?.id ? editForm.get('numeroGrado')!.value : numeroGradoOption" *ngFor="let numeroGradoOption of numerogrados; trackBy: trackById">{{numeroGradoOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

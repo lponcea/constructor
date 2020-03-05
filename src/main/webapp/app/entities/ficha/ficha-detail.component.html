@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ficha">
+            <h2><span jhiTranslate="constructorApp.ficha.detail.title">Ficha</span> {{ficha.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="constructorApp.ficha.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ficha.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.ficha.fechaCreacion">Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ficha.fechaCreacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.ficha.curso">Curso</span></dt>
+                <dd>
+                    <div *ngIf="ficha.curso">
+                        <a [routerLink]="['/curso', ficha.curso?.id, 'view']">{{ficha.curso?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.ficha.colaborador">Colaborador</span></dt>
+                <dd>
+                    <span *ngFor="let colaborador of ficha.colaboradors; let last = last">
+                        <a [routerLink]="['/colaborador', colaborador?.id, 'view' ]">{{colaborador.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.ficha.editorial">Editorial</span></dt>
+                <dd>
+                    <div *ngIf="ficha.editorial">
+                        <a [routerLink]="['/editorial', ficha.editorial?.id, 'view']">{{ficha.editorial?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ficha', ficha.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

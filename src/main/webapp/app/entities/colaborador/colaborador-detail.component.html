@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="colaborador">
+            <h2><span jhiTranslate="constructorApp.colaborador.detail.title">Colaborador</span> {{colaborador.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="constructorApp.colaborador.nombres">Nombres</span></dt>
+                <dd>
+                    <span>{{colaborador.nombres}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.colaborador.apellido1">Apellido 1</span></dt>
+                <dd>
+                    <span>{{colaborador.apellido1}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.colaborador.apellido2">Apellido 2</span></dt>
+                <dd>
+                    <span>{{colaborador.apellido2}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.colaborador.rolColaborador">Rol Colaborador</span></dt>
+                <dd>
+                    <div *ngIf="colaborador.rolColaborador">
+                        <a [routerLink]="['/rol-colaborador', colaborador.rolColaborador?.id, 'view']">{{colaborador.rolColaborador?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/colaborador', colaborador.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "asignatura": "Asignatura",
+        "numeroGrado": "Numero Grado",
+        "gradoAcademico": "Grado Academico",
+        "curso": "Curso",
+        "ficha": "Ficha",
+        "colaborador": "Colaborador",
+        "editorial": "Editorial",
+        "rolColaborador": "Rol Colaborador",
+        "categoria": "Categoria",
+        "modalidad": "Modalidad",
+        "version": "Version",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

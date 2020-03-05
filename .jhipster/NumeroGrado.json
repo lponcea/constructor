@@ -1,0 +1,34 @@
+{
+    "name": "NumeroGrado",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "curso",
+            "otherEntityRelationshipName": "numeroGrado",
+            "relationshipName": "curso"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gradoAcademico",
+            "otherEntityRelationshipName": "numeroGrado",
+            "relationshipName": "gradoAcademico",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200305201117",
+    "entityTableName": "numero_grado",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

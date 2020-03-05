@@ -1,0 +1,23 @@
+{
+  "constructorApp": {
+    "gradoAcademico": {
+      "home": {
+        "title": "Grado Academicos",
+        "createLabel": "Crear nuevo Grado Academico",
+        "createOrEditLabel": "Crear o editar Grado Academico",
+        "notFound": "Ningún Grado Academicos encontrado"
+      },
+      "created": "Un nuevo Grado Academico ha sido creado con el identificador {{ param }}",
+      "updated": "Un Grado Academico ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Grado Academico ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Grado Academico {{ id }}?"
+      },
+      "detail": {
+        "title": "Grado Academico"
+      },
+      "descripcion": "Descripcion",
+      "numeroGrado": "Numero Grado"
+    }
+  }
+}

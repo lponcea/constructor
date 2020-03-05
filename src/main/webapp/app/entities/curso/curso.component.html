@@ -1,0 +1,121 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="constructorApp.curso.home.title">Cursos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-curso" [routerLink]="['/curso/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="constructorApp.curso.home.createLabel">
+            Create a new Curso
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="cursos?.length === 0">
+        <span jhiTranslate="constructorApp.curso.home.notFound">No cursos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="cursos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="titulo"><span jhiTranslate="constructorApp.curso.titulo">Titulo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descripcion"><span jhiTranslate="constructorApp.curso.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="modoDistribucion"><span jhiTranslate="constructorApp.curso.modoDistribucion">Modo Distribucion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="etapaEditorial"><span jhiTranslate="constructorApp.curso.etapaEditorial">Etapa Editorial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaCreacion"><span jhiTranslate="constructorApp.curso.fechaCreacion">Fecha Creacion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaCreacionSys"><span jhiTranslate="constructorApp.curso.fechaCreacionSys">Fecha Creacion Sys</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaPublicacion"><span jhiTranslate="constructorApp.curso.fechaPublicacion">Fecha Publicacion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaPublicacionSys"><span jhiTranslate="constructorApp.curso.fechaPublicacionSys">Fecha Publicacion Sys</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroEdicion"><span jhiTranslate="constructorApp.curso.numeroEdicion">Numero Edicion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="versionStr"><span jhiTranslate="constructorApp.curso.versionStr">Version Str</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="palabraClave"><span jhiTranslate="constructorApp.curso.palabraClave">Palabra Clave</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="resumenContenido"><span jhiTranslate="constructorApp.curso.resumenContenido">Resumen Contenido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="clave"><span jhiTranslate="constructorApp.curso.clave">Clave</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="estatus"><span jhiTranslate="constructorApp.curso.estatus">Estatus</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="portadaUrl"><span jhiTranslate="constructorApp.curso.portadaUrl">Portada Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="modalidad.id"><span jhiTranslate="constructorApp.curso.modalidad">Modalidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="version.id"><span jhiTranslate="constructorApp.curso.version">Version</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="categoria.id"><span jhiTranslate="constructorApp.curso.categoria">Categoria</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="asignatura.id"><span jhiTranslate="constructorApp.curso.asignatura">Asignatura</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroGrado.id"><span jhiTranslate="constructorApp.curso.numeroGrado">Numero Grado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let curso of cursos ;trackBy: trackId">
+                <td><a [routerLink]="['/curso', curso.id, 'view' ]">{{curso.id}}</a></td>
+                <td>{{curso.titulo}}</td>
+                <td>{{curso.descripcion}}</td>
+                <td jhiTranslate="{{'constructorApp.ModoDistribucion.' + curso.modoDistribucion}}">{{curso.modoDistribucion}}</td>
+                <td jhiTranslate="{{'constructorApp.EtapaEditorial.' + curso.etapaEditorial}}">{{curso.etapaEditorial}}</td>
+                <td>{{curso.fechaCreacion | date:'mediumDate'}}</td>
+                <td>{{curso.fechaCreacionSys | date:'mediumDate'}}</td>
+                <td>{{curso.fechaPublicacion | date:'mediumDate'}}</td>
+                <td>{{curso.fechaPublicacionSys | date:'mediumDate'}}</td>
+                <td>{{curso.numeroEdicion}}</td>
+                <td>{{curso.versionStr}}</td>
+                <td>{{curso.palabraClave}}</td>
+                <td>{{curso.resumenContenido}}</td>
+                <td>{{curso.clave}}</td>
+                <td>{{curso.estatus}}</td>
+                <td>{{curso.portadaUrl}}</td>
+                <td>
+                    <div *ngIf="curso.modalidad">
+                        <a [routerLink]="['/modalidad', curso.modalidad?.id, 'view' ]" >{{curso.modalidad?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="curso.version">
+                        <a [routerLink]="['/version', curso.version?.id, 'view' ]" >{{curso.version?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="curso.categoria">
+                        <a [routerLink]="['/categoria', curso.categoria?.id, 'view' ]" >{{curso.categoria?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="curso.asignatura">
+                        <a [routerLink]="['/asignatura', curso.asignatura?.id, 'view' ]" >{{curso.asignatura?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="curso.numeroGrado">
+                        <a [routerLink]="['/numero-grado', curso.numeroGrado?.id, 'view' ]" >{{curso.numeroGrado?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/curso', curso.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/curso', curso.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(curso)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cursos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

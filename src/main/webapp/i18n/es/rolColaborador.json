@@ -1,0 +1,23 @@
+{
+  "constructorApp": {
+    "rolColaborador": {
+      "home": {
+        "title": "Rol Colaboradors",
+        "createLabel": "Crear nuevo Rol Colaborador",
+        "createOrEditLabel": "Crear o editar Rol Colaborador",
+        "notFound": "Ningún Rol Colaboradors encontrado"
+      },
+      "created": "Un nuevo Rol Colaborador ha sido creado con el identificador {{ param }}",
+      "updated": "Un Rol Colaborador ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Rol Colaborador ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Rol Colaborador {{ id }}?"
+      },
+      "detail": {
+        "title": "Rol Colaborador"
+      },
+      "descripcion": "Descripcion",
+      "colaborador": "Colaborador"
+    }
+  }
+}
