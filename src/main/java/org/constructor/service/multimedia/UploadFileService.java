@@ -35,7 +35,6 @@ public class UploadFileService {
 					videoResponse.setName(file.getOriginalFilename());
 					log.debug("Save File: {}", file);
 					//Create Path
-					List<String> image = new ArrayList();
 					StringBuilder builder = new StringBuilder();
 					ValidationPath.createPath(upload_folder);
 					
@@ -73,12 +72,10 @@ public class UploadFileService {
 					byte[] fileBytes = file.getBytes();
 					Path path = Paths.get(builder.toString());
 					Files.write(path, fileBytes);
-					
 					int i = builder.indexOf("nimbus");
 					log.debug("i {}", builder.indexOf("nimbus"));
 					log.debug("path : {}", builder.substring(i));
 					replace = (builder.substring(i)).replace("\\", "/");
-					log.debug("replace : {}", replace);
 					videoResponse.setPath(replace);
 					return videoResponse;
 				
