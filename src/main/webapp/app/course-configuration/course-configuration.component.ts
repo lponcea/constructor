@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { CourseConfigurationService } from 'app/services/course-configuration.service';
 
 @Component({
   selector: 'jhi-course-configuration',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-configuration.component.scss']
 })
 export class CourseConfigurationComponent {
-  selectedTabIndex = 0;
+  @Output() selectedTabIndex = 0;
   tabs = [
     {
       title: 'General',
@@ -25,5 +26,10 @@ export class CourseConfigurationComponent {
     transform: 'translateX(' + this.selectedTabIndex * 80 + 'px)'
   };
 
-  constructor() {}
+  constructor(private courseConfigurationService: CourseConfigurationService) {}
+
+  changeSelectedIndex(index: number): void {
+    this.selectedTabIndex = index;
+    this.courseConfigurationService.setSelectedTab(index);
+  }
 }

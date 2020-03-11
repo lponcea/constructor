@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -19,14 +19,18 @@ import { IAsignatura } from 'app/shared/model/asignatura.model';
 import { AsignaturaService } from 'app/entities/asignatura/asignatura.service';
 import { INumeroGrado } from 'app/shared/model/numero-grado.model';
 import { NumeroGradoService } from 'app/entities/numero-grado/numero-grado.service';
+import { IGradoAcademico } from 'app/shared/model/grado-academico.model';
+import { GradoAcademicoService } from 'app/entities/grado-academico/grado-academico.service';
+import { CourseConfigurationService } from 'app/services/course-configuration.service';
 
-type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado;
+type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
 @Component({
   selector: 'jhi-curso-update',
   templateUrl: './curso-update.component.html'
 })
 export class CursoUpdateComponent implements OnInit {
+  selectedTabIndex = 0;
   isSaving = false;
 
   modalidads: IModalidad[] = [];
@@ -36,7 +40,7 @@ export class CursoUpdateComponent implements OnInit {
   categorias: ICategoria[] = [];
 
   asignaturas: IAsignatura[] = [];
-
+  gradoAcademicos: IGradoAcademico[] = [];
   numerogrados: INumeroGrado[] = [];
   fechaCreacionDp: any;
   fechaCreacionSysDp: any;
@@ -64,8 +68,10 @@ export class CursoUpdateComponent implements OnInit {
     version: [],
     categoria: [],
     asignatura: [],
+    gradoAcademico: [],
     numeroGrado: []
   });
+  subscription: any;
 
   constructor(
     protected cursoService: CursoService,
@@ -74,9 +80,17 @@ export class CursoUpdateComponent implements OnInit {
     protected categoriaService: CategoriaService,
     protected asignaturaService: AsignaturaService,
     protected numeroGradoService: NumeroGradoService,
+    protected gradoAcademicoService: GradoAcademicoService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    private courseConfigurationService: CourseConfigurationService
+  ) {
+    this.subscription = this.courseConfigurationService.getSelectedTab().subscribe(selectedTab => {
+      if (selectedTab) {
+        this.selectedTabIndex = selectedTab.selectedTab;
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ curso }) => {
@@ -118,6 +132,15 @@ export class CursoUpdateComponent implements OnInit {
         )
         .subscribe((resBody: IAsignatura[]) => (this.asignaturas = resBody));
 
+      this.gradoAcademicoService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IGradoAcademico[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: INumeroGrado[]) => (this.gradoAcademicos = resBody));
+
       this.numeroGradoService
         .query()
         .pipe(
@@ -130,6 +153,9 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   updateForm(curso: ICurso): void {
+    if (curso === undefined) {
+      return;
+    }
     this.editForm.patchValue({
       id: curso.id,
       titulo: curso.titulo,
@@ -162,7 +188,11 @@ export class CursoUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const curso = this.createFromForm();
-    if (curso.id !== undefined) {
+    if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
+      alert('Falta título');
+      return;
+    }
+    if (curso.id !== undefined && curso.id !== null) {
       this.subscribeToSaveResponse(this.cursoService.update(curso));
     } else {
       this.subscribeToSaveResponse(this.cursoService.create(curso));
@@ -214,5 +244,18 @@ export class CursoUpdateComponent implements OnInit {
 
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  saveCourse(): void {}
+
+  changeGracoAcademico(e: any): void {
+    this.numeroGradoService
+      .filterByGradoAcademico(e.target.selectedIndex)
+      .pipe(
+        map((res: HttpResponse<IGradoAcademico[]>) => {
+          return res.body ? res.body : [];
+        })
+      )
+      .subscribe((resBody: INumeroGrado[]) => (this.gradoAcademicos = resBody));
   }
 }

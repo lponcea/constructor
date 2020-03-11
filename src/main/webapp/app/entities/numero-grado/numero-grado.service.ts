@@ -11,7 +11,7 @@ type EntityArrayResponseType = HttpResponse<INumeroGrado[]>;
 
 @Injectable({ providedIn: 'root' })
 export class NumeroGradoService {
-  public resourceUrl = SERVER_API_URL + 'api/numero-grados';
+  public resourceUrl = SERVER_API_URL + 'api/numero-grados/';
 
   constructor(protected http: HttpClient) {}
 
@@ -25,6 +25,10 @@ export class NumeroGradoService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<INumeroGrado>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  filterByGradoAcademico(idGradoAcademico: number): Observable<EntityArrayResponseType> {
+    return this.http.get<INumeroGrado[]>(this.resourceUrl + '/grado-academicos/' + idGradoAcademico, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

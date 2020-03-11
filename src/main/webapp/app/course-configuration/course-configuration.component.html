@@ -12,7 +12,7 @@
 
         <div class="col-ccc">
 
-          <div *ngFor="let tab of tabs; let index = index;" (click)="selectedTabIndex = index">
+          <div *ngFor="let tab of tabs; let index = index;" (click)="changeSelectedIndex(index);">
             <div class="ccc-element" [ngClass]="{'active-ccc-element': index === selectedTabIndex}">
               <div class="c-icon" [ngClass]="tab.iconClass"></div>
               <div class="c-title">{{tab.title}}</div>
@@ -25,6 +25,8 @@
     </div>
 
     <div class="body-c-c-c">
+      <jhi-curso-update></jhi-curso-update>
+      <!--
       <div class="col-ccc-elemet1">
 
         <div class="col-ccc-f">
@@ -43,6 +45,7 @@
         </div>
 
       </div>
+      -->
 
     </div>
 

@@ -25,13 +25,14 @@
 
       <div class="row-body-chc">
 
-        <div class="cover-test" *ngFor="let curso of cursos" routerLink="constructor-layout">
-          <div class="cover-home">
+        <div class="cover-test" *ngFor="let curso of cursos">
+          <div class="cover-home" routerLink="constructor-layout">
             <div class="cover-home-image"></div>
           </div>
           <div class="desc-cover-home">
             <span class="title-dch">{{curso.titulo}}</span>
             <span class="descp-dch">Primero</span>
+            <span (click)="deleteCourse(curso.id)">x</span>
           </div>
         </div>
 
