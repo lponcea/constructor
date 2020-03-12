@@ -77,4 +77,11 @@ public class NumeroGradoServiceImpl implements NumeroGradoService {
         log.debug("Request to delete NumeroGrado : {}", id);
         numeroGradoRepository.deleteById(id);
     }
+
+	/*@Override
+	public Page<NumeroGrado> findGrade(Long id) {
+		log.debug("Request to get getNumeroGradoxGradoAcademico  : {}", id);
+		
+		return numeroGradoRepository.findByIdGrade(id);
+	}*/
 }

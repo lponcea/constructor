@@ -110,8 +110,22 @@ public class NumeroGradoResource {
     public ResponseEntity<NumeroGrado> getNumeroGrado(@PathVariable Long id) {
         log.debug("REST request to get NumeroGrado : {}", id);
         Optional<NumeroGrado> numeroGrado = numeroGradoService.findOne(id);
+        log.debug(" numeroGrado : {}", numeroGrado);
         return ResponseUtil.wrapOrNotFound(numeroGrado);
     }
+    
+   /* @GetMapping("/numero-grados-grado-academicos/{id}")
+    public ResponseEntity<List<NumeroGrado>> getNumeroGradoxGradoAcademico(@PathVariable Long id) {
+        log.debug("REST request to get NumeroGrado : {}", id);
+        Page<NumeroGrado> numeroGrado = numeroGradoService.findGrade(id);
+        log.debug("numeroGrado : {}", numeroGrado);
+        if(numeroGrado.isEmpty()) {
+        	log.debug("entro a if : {}", id);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), numeroGrado);
+        
+        return ResponseEntity.ok().headers(headers).body(numeroGrado.getContent());
+    }*/
 
     /**
      * {@code DELETE  /numero-grados/:id} : delete the "id" numeroGrado.
