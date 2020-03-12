@@ -8,6 +8,7 @@ $tool-header: lighten($color-silver, 65%);
 $bg-color: #f6f6f6;
 $bg-white: #f6f6f6;
 $bg-blue: #101233;
+$a-hover: #101233;
 
 // @charset "UTF-8";
 /*Import font*/
@@ -216,12 +217,10 @@ strong {
 }
 // Font styles Bold Italic Underline
 .angular-editor-toolbar-set:nth-child(2) {
-  // margin-left: 15px !important;
   order: 1;
 }
 // Font style
 .angular-editor-toolbar-set:nth-child(6) {
-  // border: 1px solid orange !important;
   order: 3;
   margin-left: 10px;
 }
@@ -415,3 +414,330 @@ strong {
 .fa-remove:before {
   content: '' !important;
 }
+
+// Modal Login
+.modal-dialog {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  pointer-events: none;
+}
+.modal-content {
+  position: relative;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-orient: initial !important;
+  // -webkit-box-direction: normal -webkit-box-orient;
+  width: 100% !important;
+  height: 100vh !important;
+  pointer-events: auto;
+  background-color: rgba(16, 18, 51, 0.6) !important;
+  // background-clip: padding-box;
+  background-clip: initial !important;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: 0;
+}
+@media only screen and (min-width: 576px) {
+  .modal-dialog {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+.modal-login-container {
+  position: relative;
+  width: 600px;
+  height: 650px;
+  margin: 0 auto;
+  background-color: #fefefe;
+  border-radius: 4px;
+
+  .modal-login-header {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .row-modal-login-header {
+      position: relative;
+      width: 90%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .rmlh-1 {
+        position: relative;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        h4 {
+          position: relative;
+          width: auto;
+          height: auto;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: default;
+          color: #1c2447;
+          &:nth-child(1) {
+            margin-right: 30px;
+          }
+        }
+        .tab-login-disabled {
+          cursor: pointer;
+          opacity: 0.6;
+        }
+      }
+      .rmlh-2 {
+        position: relative;
+        width: 20%;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+  .btn-close-modal-login {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: silver;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+  }
+  .mark-login-modal {
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: #1160fb;
+    bottom: 0px;
+    left: 0;
+  }
+
+  .modal-login-body {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px);
+    border: 1px solid silver;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .row-modal-login-modal {
+      position: relative;
+      width: 90%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .logo-login-modal {
+        position: relative;
+        width: 170px;
+        height: 120px;
+        background-image: url('../images/logo_login.svg');
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-bottom: 10px;
+      }
+
+      .col-form-login {
+        position: relative;
+        width: 400px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        form {
+          position: relative;
+          width: 100%;
+          height: auto;
+
+          .form-group {
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+
+            label {
+              color: #1c2447;
+            }
+            input {
+              position: relative;
+              width: 100%;
+              height: 36px;
+              background-color: red !important;
+              border: 0;
+              border-radius: 16px;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.row-modal-l-check {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .rmlc-1 {
+    position: relative;
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+
+    .form-check-label {
+      position: relative;
+      width: auto;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      &:hover > span {
+        color: $a-hover !important;
+      }
+
+      input.form-check-input {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        margin-left: 0;
+        display: flex;
+        align-items: center;
+      }
+      span {
+        position: relative;
+        width: auto;
+        height: auto;
+        color: #1a3d82;
+        font-weight: 600;
+        font-size: 14px;
+        margin-left: 4px;
+        transition: 0.3s;
+      }
+    }
+  }
+  .rmlc-2 {
+    position: relative;
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 700;
+
+    a {
+      position: relative;
+      width: auto;
+      height: auto;
+      font-size: 14px;
+      cursor: pointer;
+      color: #1a3d82;
+      font-weight: 600;
+      transition: 0.3s;
+      &:hover {
+        color: $a-hover;
+      }
+    }
+  }
+}
+
+.row-btn-login-modal {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  .btn-login-modal {
+    position: relative;
+    width: auto;
+    height: 36px;
+    // background-color: blue;
+    background-image: linear-gradient(to right, #00b1ff, #00ceff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    box-shadow: 0 14px 28px rgba(16, 18, 51, 0.25), 0 10px 10px rgba(16, 18, 51, 0.22);
+    transition: 0.4s;
+    &:hover {
+    }
+  }
+}
+
+.row-cfl-register {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+
+  span {
+    margin-right: 5px;
+  }
+  a {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #1a3d82;
+    font-weight: 600;
+    transition: 0.3s;
+    &:hover {
+      color: $a-hover;
+    }
+  }
+}
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover,
+// textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+//   border: 1px solid green;
+//   -webkit-text-fill-color: grey;
+//   -webkit-box-shadow: none;
+//   transition: background-color 5000s ease-in-out 0s;
+// }
