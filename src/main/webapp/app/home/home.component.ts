@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
 
   protected onQuerySuccess(data: ICurso[] | null, headers: HttpHeaders): void {
     this.cursos = data ? data : [];
-    console.error(this.cursos);
   }
 
   ngAfterContentInit(): void {
@@ -80,7 +79,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   }
 
   deleteCourse(id: number): void {
-    console.error('Eliminar');
     this.cursoService.delete(id).subscribe(() => {
       this.cursos.splice(this.findElementById(this.cursos, id), 1);
     });
@@ -88,7 +86,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
 
   protected onDeleteSuccess(data: ICurso[] | null, headers: HttpHeaders): void {
     this.cursos = data ? data : [];
-    console.error(this.cursos);
   }
 
   protected onDeleteError(): void {}

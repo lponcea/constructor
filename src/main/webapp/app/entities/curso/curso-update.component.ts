@@ -140,15 +140,6 @@ export class CursoUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: INumeroGrado[]) => (this.gradoAcademicos = resBody));
-
-      this.numeroGradoService
-        .query()
-        .pipe(
-          map((res: HttpResponse<INumeroGrado[]>) => {
-            return res.body ? res.body : [];
-          })
-        )
-        .subscribe((resBody: INumeroGrado[]) => (this.numerogrados = resBody));
     });
   }
 
@@ -249,13 +240,8 @@ export class CursoUpdateComponent implements OnInit {
   saveCourse(): void {}
 
   changeGracoAcademico(e: any): void {
-    this.numeroGradoService
-      .filterByGradoAcademico(e.target.selectedIndex)
-      .pipe(
-        map((res: HttpResponse<IGradoAcademico[]>) => {
-          return res.body ? res.body : [];
-        })
-      )
-      .subscribe((resBody: INumeroGrado[]) => (this.gradoAcademicos = resBody));
+    this.gradoAcademicoService.find(e.target.selectedIndex).subscribe(res => {
+      if (res.body && res.body.numeroGrados) this.numerogrados = res.body.numeroGrados;
+    });
   }
 }
