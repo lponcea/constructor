@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.constructor.security.AuthoritiesConstants;
-import org.constructor.service.multimedia.FileUploadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +30,18 @@ public class Video {
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public byte[] loadVideo(@RequestParam("file") String nameVideo) {
 		log.debug("********Nimbus Video Request******", nameVideo);
-		log.debug("******** Path:  {}******", nameVideo);
+		log.debug("******** Path:  {}****** ", path + nameVideo);
+		byte[] fileArray = new byte[1];
 		File file = new File(path + nameVideo);
-		byte[] fileArray = new byte[(int) file.length()];
+		if(!file.exists()) {
+			log.debug("******** Path:  {}****** ", path + file.exists());
+			fileArray[0] = 0;
+			log.debug("******** Path:  {}****** ", fileArray.length);
+			return fileArray;
+		} 
+		log.debug("********Load video ******", file);
+		fileArray = new byte[(int) file.length()];
+		//byte[] fileArray = new byte[(int) file.length()];
 		
 		try { 
 			FileInputStream read = new FileInputStream(file);

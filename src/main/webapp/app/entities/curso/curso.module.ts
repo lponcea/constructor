@@ -9,7 +9,7 @@ import { CursoComponent } from './curso.component';
 
 @NgModule({
   imports: [ConstructorSharedModule, RouterModule.forChild(cursoRoute)],
-  declarations: [CursoDetailComponent, CursoDeleteDialogComponent, CursoComponent],
+  declarations: [CursoDetailComponent, CursoDeleteDialogComponent],
   entryComponents: [CursoDeleteDialogComponent]
 })
 export class ConstructorCursoModule {}
