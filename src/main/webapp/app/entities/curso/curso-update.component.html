@@ -75,9 +75,10 @@
                    formControlName="descripcion"/>
         </div>
         <div class="form-group col-md-4">
-            <label class="form-control-label" jhiTranslate="constructorApp.curso.portadaUrl" for="field_portadaUrl">Portada Url</label>
-            <input type="text" class="form-control" name="portadaUrl" id="field_portadaUrl"
-                   formControlName="portadaUrl"/>
+            Subir portada
+            <img src="" alt="">
+            <input type="file" id="customFile" (change)="selectFile($event)">
+            <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload()">Guardar video</button>
         </div>
         <div class="form-group col-md-4">
             <label class="form-control-label" jhiTranslate="constructorApp.curso.gradoAcademico" for="field_gradoAcademico">Grado Academico</label>

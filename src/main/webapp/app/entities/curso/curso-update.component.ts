@@ -22,6 +22,7 @@ import { NumeroGradoService } from 'app/entities/numero-grado/numero-grado.servi
 import { IGradoAcademico } from 'app/shared/model/grado-academico.model';
 import { GradoAcademicoService } from 'app/entities/grado-academico/grado-academico.service';
 import { CourseConfigurationService } from 'app/services/course-configuration.service';
+import { FileUploadService } from 'app/services/file-upload.service';
 
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
@@ -32,13 +33,9 @@ type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INume
 export class CursoUpdateComponent implements OnInit {
   selectedTabIndex = 0;
   isSaving = false;
-
   modalidads: IModalidad[] = [];
-
   versions: IVersion[] = [];
-
   categorias: ICategoria[] = [];
-
   asignaturas: IAsignatura[] = [];
   gradoAcademicos: IGradoAcademico[] = [];
   numerogrados: INumeroGrado[] = [];
@@ -46,6 +43,10 @@ export class CursoUpdateComponent implements OnInit {
   fechaCreacionSysDp: any;
   fechaPublicacionDp: any;
   fechaPublicacionSysDp: any;
+
+  changeImage = false;
+  selectedFiles = FileList;
+  currentFileUpload: File = this.selectedFiles[0];
 
   editForm = this.fb.group({
     id: [],
@@ -83,7 +84,8 @@ export class CursoUpdateComponent implements OnInit {
     protected gradoAcademicoService: GradoAcademicoService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private courseConfigurationService: CourseConfigurationService
+    private courseConfigurationService: CourseConfigurationService,
+    private fileUploadService: FileUploadService
   ) {
     this.subscription = this.courseConfigurationService.getSelectedTab().subscribe(selectedTab => {
       if (selectedTab) {
@@ -243,5 +245,20 @@ export class CursoUpdateComponent implements OnInit {
     this.gradoAcademicoService.find(e.target.selectedIndex).subscribe(res => {
       if (res.body && res.body.numeroGrados) this.numerogrados = res.body.numeroGrados;
     });
+  }
+
+  change($event: any): void {
+    this.changeImage = true;
+  }
+
+  upload(): void {
+    this.currentFileUpload = this.selectedFiles[0];
+    this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {
+      console.error(event);
+    });
+  }
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
   }
 }
