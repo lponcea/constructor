@@ -17,16 +17,21 @@
       </div>
     </div>
 
+    <!-- Anuncio contraseña equivocada -->
+    <!-- <div class="alert-login" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication"> -->
+    <div class="alert-login" *ngIf="authenticationError">
+      <div class="row-alert-login">
+        <div class="icn-al"></div>
+        <!-- <span><strong>Failed to sign in!</strong> Please check your creden.</span> -->
+        <span>¡Error de autentificación! Por favor revisa tus credenciales.</span>
+      </div>
+    </div>
+
   <!-- <div class="modal-body"> -->
   <div class="modal-login-body">
       <div class="row-modal-login-modal">
 
-        <!-- Anuncio contraseña equivocada -->
-          <!-- <div class="col-md-8">
-              <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
-                  <strong>Failed to sign in!</strong> Please check your creden.
-              </div>
-          </div> -->
+
 
           <div class="logo-login-modal"></div>
 
@@ -37,11 +42,15 @@
                       <label class="username-label" for="username" jhiTranslate="global.form.username.label">Login</label>
                       <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
                              formControlName="username" #username>
+                      <div class="icon-form-login icnf-f-l1"></div>
                   </div>
                   <div class="form-group">
                       <label for="password" jhiTranslate="login.form.password">Password</label>
+
+                      <!-- Agregar clase "alert-input" a input cuando el formulario tenga un error -->
                       <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
                              formControlName="password">
+                      <div class="icon-form-login icnf-f-l2"></div>
                   </div>
 
                   <!-- <div class="form-check"> -->
@@ -60,8 +69,15 @@
                   </div>
 
                   <div class="row-btn-login-modal">
-                    <button type="submit" class="btn-login-modal" jhiTranslate="login.form.button">Sign in</button>
+                    <button type="submit" class="btn-hover color-1" jhiTranslate="login.form.button">Sign in</button>
                   </div>
+
+                  <div class="row-btn-login-modal">
+                    <!-- <button type="submit" class="btn-login-modal-test">Sign in</button> -->
+                    <!-- <a href="#" class="btn-login-modal-test"><span>Click Me</span></a> -->
+                  </div>
+
+
 
               </form>
 
