@@ -23,6 +23,7 @@ import { IGradoAcademico } from 'app/shared/model/grado-academico.model';
 import { GradoAcademicoService } from 'app/entities/grado-academico/grado-academico.service';
 import { CourseConfigurationService } from 'app/services/course-configuration.service';
 import { FileUploadService } from 'app/services/file-upload.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
@@ -47,6 +48,8 @@ export class CursoUpdateComponent implements OnInit {
   changeImage = false;
   selectedFiles = FileList;
   currentFileUpload: File = this.selectedFiles[0];
+  coverPath: SafeUrl = '';
+  portadaUrl = '';
 
   editForm = this.fb.group({
     id: [],
@@ -85,7 +88,8 @@ export class CursoUpdateComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private courseConfigurationService: CourseConfigurationService,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadService,
+    private sanitizer: DomSanitizer
   ) {
     this.subscription = this.courseConfigurationService.getSelectedTab().subscribe(selectedTab => {
       if (selectedTab) {
@@ -185,6 +189,7 @@ export class CursoUpdateComponent implements OnInit {
       alert('Falta título');
       return;
     }
+    curso.portadaUrl = this.portadaUrl;
     if (curso.id !== undefined && curso.id !== null) {
       this.subscribeToSaveResponse(this.cursoService.update(curso));
     } else {
@@ -251,11 +256,27 @@ export class CursoUpdateComponent implements OnInit {
     this.changeImage = true;
   }
 
-  upload(): void {
+  upload($event: any): void {
+    $event.preventDefault();
     this.currentFileUpload = this.selectedFiles[0];
     this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {
-      console.error(event);
+      this.portadaUrl = event.path;
+      if (event) this.getCover(event.path);
     });
+  }
+
+  getCover(path: string): void {
+    this.fileUploadService.getFile(path).subscribe(data => {
+      console.error(data);
+      const objectUrl = URL.createObjectURL(data.body);
+      this.coverPath = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+    });
+    /*
+    this.fileUploadService.getFile(path).subscribe(data => {
+      const objectUrl = URL.createObjectURL(data.body);      
+      this.coverPath = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+    });
+    */
   }
 
   selectFile(event: any): void {

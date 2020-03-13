@@ -7,6 +7,8 @@ import { Account } from 'app/core/user/account.model';
 import { CursoService } from './../entities/curso/curso.service';
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { ICurso } from 'app/shared/model/curso.model';
+import { FileUploadService } from 'app/services/file-upload.service';
+import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'jhi-home',
@@ -16,6 +18,7 @@ import { ICurso } from 'app/shared/model/curso.model';
 export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   account: Account | null = null;
   authSubscription?: Subscription;
+  coverPaths = [];
   /*
   cursos = [
     {
@@ -45,8 +48,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   ];
   */
   cursos: any = [];
-
-  constructor(private accountService: AccountService, private loginModalService: LoginModalService, private cursoService: CursoService) {}
+  constructor(
+    private accountService: AccountService,
+    private loginModalService: LoginModalService,
+    private cursoService: CursoService,
+    private fileUploadService: FileUploadService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {}
 
@@ -99,4 +107,21 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     });
     return foundIndex;
   }
+
+  private getCover(path: string): void {
+    /*
+    this.fileUploadService.getFile(path).subscribe(data => {
+      console.error(data);
+    });
+    */
+  }
 }
+
+/* 
+    let objectUrl: any;
+    this.fileUploadService.getFile(path).subscribe(data => {
+      objectUrl = URL.createObjectURL(data.body);      
+    });
+    console.error(this.sanitizer.bypassSecurityTrustUrl(objectUrl));    
+    return this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+    */

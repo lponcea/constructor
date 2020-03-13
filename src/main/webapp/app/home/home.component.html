@@ -27,7 +27,7 @@
 
         <div class="cover-test" *ngFor="let curso of cursos">
           <div class="cover-home" routerLink="constructor-layout">
-            <div class="cover-home-image"></div>
+            <div class="cover-home-image" [ngStyle]="{'backgroundImage': 'url(' + getCover(curso.portadaUrl) + ')'}"></div>
           </div>
           <div class="desc-cover-home">
             <span class="title-dch">{{curso.titulo}}</span>
