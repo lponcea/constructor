@@ -5,10 +5,10 @@ import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
 import { CursoService } from './../entities/curso/curso.service';
-import { HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { ICurso } from 'app/shared/model/curso.model';
 import { FileUploadService } from 'app/services/file-upload.service';
-import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'jhi-home',
@@ -58,14 +58,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
 
   ngOnInit(): void {}
 
-  protected onQuerySuccess(data: ICurso[] | null, headers: HttpHeaders): void {
-    this.cursos = data ? data : [];
+  protected onQuerySuccess(data: ICurso[] | null): void {
+    if (data) {
+      this.cursos = data;
+      for (let i = 0; i < this.cursos.length; i++) {
+        this.getCover(this.cursos[i].portadaUrl, i);
+      }
+    }
   }
 
   ngAfterContentInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
     this.cursoService.query().subscribe(
-      (res: HttpResponse<ICurso[]>) => this.onQuerySuccess(res.body, res.headers),
+      (res: HttpResponse<ICurso[]>) => this.onQuerySuccess(res.body),
       () => this.onQueryError()
     );
   }
@@ -92,7 +97,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     });
   }
 
-  protected onDeleteSuccess(data: ICurso[] | null, headers: HttpHeaders): void {
+  protected onDeleteSuccess(data: ICurso[] | null): void {
     this.cursos = data ? data : [];
   }
 
@@ -108,20 +113,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     return foundIndex;
   }
 
-  private getCover(path: string): void {
-    /*
+  private getCover(path: string, index: number): void {
     this.fileUploadService.getFile(path).subscribe(data => {
-      console.error(data);
+      const coverPath = URL.createObjectURL(data.body);
+      const objectUrl = this.sanitizer.bypassSecurityTrustUrl(coverPath);
+      this.cursos[index].portadaUrl = objectUrl;
     });
-    */
   }
 }
-
-/* 
-    let objectUrl: any;
-    this.fileUploadService.getFile(path).subscribe(data => {
-      objectUrl = URL.createObjectURL(data.body);      
-    });
-    console.error(this.sanitizer.bypassSecurityTrustUrl(objectUrl));    
-    return this.sanitizer.bypassSecurityTrustUrl(objectUrl);
-    */

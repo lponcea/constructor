@@ -5,7 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 
 import { ICurso, Curso } from 'app/shared/model/curso.model';
 import { CursoService } from './curso.service';
@@ -252,7 +252,7 @@ export class CursoUpdateComponent implements OnInit {
     });
   }
 
-  change($event: any): void {
+  change(): void {
     this.changeImage = true;
   }
 
@@ -267,16 +267,9 @@ export class CursoUpdateComponent implements OnInit {
 
   getCover(path: string): void {
     this.fileUploadService.getFile(path).subscribe(data => {
-      console.error(data);
       const objectUrl = URL.createObjectURL(data.body);
       this.coverPath = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
     });
-    /*
-    this.fileUploadService.getFile(path).subscribe(data => {
-      const objectUrl = URL.createObjectURL(data.body);      
-      this.coverPath = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
-    });
-    */
   }
 
   selectFile(event: any): void {
