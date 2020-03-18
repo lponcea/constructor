@@ -19,14 +19,14 @@ export class CursoService {
 
   constructor(protected http: HttpClient) {}
 
-  create(curso: ICurso): Observable<EntityResponseType> {
+  create(curso: any): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(curso);
     return this.http
       .post<ICurso>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
-  update(curso: ICurso): Observable<EntityResponseType> {
+  update(curso: any): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(curso);
     return this.http
       .put<ICurso>(this.resourceUrl, copy, { observe: 'response' })

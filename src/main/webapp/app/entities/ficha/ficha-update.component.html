@@ -1,36 +1,8 @@
 <div class="row justify-content-center">
     <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-ficha-heading" jhiTranslate="constructorApp.ficha.home.createOrEditLabel">Create or edit a Ficha</h2>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">            
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="constructorApp.ficha.descripcion" for="field_descripcion">Descripcion</label>
-                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
-                           formControlName="descripcion"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="constructorApp.ficha.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
-                    <div class="input-group">
-                        <input id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" formControlName="fechaCreacion"/>
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="fechaCreacionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="constructorApp.ficha.curso" for="field_curso">Curso</label>
-                    <select class="form-control" id="field_curso" name="curso" formControlName="curso">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="cursoOption.id === editForm.get('curso')!.value?.id ? editForm.get('curso')!.value : cursoOption" *ngFor="let cursoOption of cursos; trackBy: trackById">{{cursoOption.id}}</option>
-                    </select>
-                </div>
                 <div class="form-group">
                     <label jhiTranslate="constructorApp.ficha.colaborador" for="field_colaboradors">Colaborador</label>
                     <select class="form-control" id="field_colaboradors" multiple name="colaboradors" formControlName="colaboradors">
@@ -45,6 +17,7 @@
                     </select>
                 </div>
             </div>
+            <!--
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
@@ -53,6 +26,7 @@
                     <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
+            -->
         </form>
     </div>
 </div>

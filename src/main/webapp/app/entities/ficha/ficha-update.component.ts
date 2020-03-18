@@ -62,7 +62,7 @@ export class FichaUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: ICurso[]) => {
-          if (!ficha.curso || !ficha.curso.id) {
+          if (!ficha || !ficha.curso || !ficha.curso.id) {
             this.cursos = resBody;
           } else {
             this.cursoService
@@ -99,6 +99,7 @@ export class FichaUpdateComponent implements OnInit {
   }
 
   updateForm(ficha: IFicha): void {
+    if (!ficha) return;
     this.editForm.patchValue({
       id: ficha.id,
       descripcion: ficha.descripcion,
@@ -123,7 +124,7 @@ export class FichaUpdateComponent implements OnInit {
     }
   }
 
-  private createFromForm(): IFicha {
+  public createFromForm(): IFicha {
     return {
       ...new Ficha(),
       id: this.editForm.get(['id'])!.value,

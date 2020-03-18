@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder } from '@angular/forms';
@@ -24,6 +24,7 @@ import { GradoAcademicoService } from 'app/entities/grado-academico/grado-academ
 import { CourseConfigurationService } from 'app/services/course-configuration.service';
 import { FileUploadService } from 'app/services/file-upload.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { FichaUpdateComponent } from '../ficha/ficha-update.component';
 
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
@@ -76,6 +77,7 @@ export class CursoUpdateComponent implements OnInit {
     numeroGrado: []
   });
   subscription: any;
+  @ViewChild(FichaUpdateComponent) fichaUpdateComponent: FichaUpdateComponent;
 
   constructor(
     protected cursoService: CursoService,
@@ -185,15 +187,20 @@ export class CursoUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const curso = this.createFromForm();
+    const ficha = this.fichaUpdateComponent.createFromForm();
+    const cursoFicha = {
+      curso,
+      ficha
+    };
     if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
       alert('Falta título');
       return;
     }
     curso.portadaUrl = this.portadaUrl;
     if (curso.id !== undefined && curso.id !== null) {
-      this.subscribeToSaveResponse(this.cursoService.update(curso));
+      this.subscribeToSaveResponse(this.cursoService.update(cursoFicha));
     } else {
-      this.subscribeToSaveResponse(this.cursoService.create(curso));
+      this.subscribeToSaveResponse(this.cursoService.create(cursoFicha));
     }
   }
 
@@ -243,8 +250,6 @@ export class CursoUpdateComponent implements OnInit {
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
-
-  saveCourse(): void {}
 
   changeGracoAcademico(e: any): void {
     this.gradoAcademicoService.find(e.target.selectedIndex).subscribe(res => {

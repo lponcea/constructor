@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+<form name="editForm" role="form" novalidate [formGroup]="editForm">
     <jhi-alert-error></jhi-alert-error>
     <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
 
@@ -162,18 +162,7 @@
             <input type="text" class="form-control" name="clave" id="field_clave"
                    formControlName="clave"/>
         </div>
+        <jhi-ficha-update></jhi-ficha-update>
     </div>
     <!-- Avanzado Termina -->
-
-    <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-    </button>
-    <!--
-    <button id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-    </button>
-    -->
-    <button (click)="saveCourse()">
-        Guardar
-    </button>
 </form>

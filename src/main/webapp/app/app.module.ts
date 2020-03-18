@@ -20,6 +20,7 @@ import { CourseConfigurationComponent } from './course-configuration/course-conf
 import { ContentBlock2Component } from './constructor/content-blocks/content-block2/content-block2.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CursoUpdateComponent } from './entities/curso/curso-update.component';
+import { FichaUpdateComponent } from './entities/ficha/ficha-update.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { CursoUpdateComponent } from './entities/curso/curso-update.component';
     CourseConfigurationComponent,
     ContentBlock2Component,
     HomePageComponent,
-    CursoUpdateComponent
+    CursoUpdateComponent,
+    FichaUpdateComponent
   ],
   bootstrap: [MainComponent]
 })
