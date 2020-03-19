@@ -26,7 +26,7 @@ export class CourseConfigurationComponent {
   markElementStyles = {
     transform: 'translateX(' + this.selectedTabIndex * 80 + 'px)'
   };
-  @ViewChild(CursoUpdateComponent) cursoUpdateComponent: CursoUpdateComponent;
+  @ViewChild(CursoUpdateComponent, { static: false }) cursoUpdateComponent: CursoUpdateComponent;
 
   constructor(private courseConfigurationService: CourseConfigurationService) {}
 
