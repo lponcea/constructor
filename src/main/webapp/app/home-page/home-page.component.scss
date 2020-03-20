@@ -34,6 +34,9 @@ $blue-nimbus: #1a3d82;
   background-repeat: no-repeat;
   margin-top: 0;
   overflow: hidden;
+  @include smartphone {
+    height: 500px;
+  }
 }
 
 .svg-header {
@@ -368,6 +371,9 @@ $blue-nimbus: #1a3d82;
   background-position: center;
   opacity: 1;
   animation: motion-circle2 14s ease-in-out infinite;
+  @include smartphone {
+    display: none;
+  }
 }
 @keyframes motion-circle2 {
   0% {
@@ -391,6 +397,17 @@ $blue-nimbus: #1a3d82;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
+
+  @include smartphone {
+    width: 350px;
+    height: 240px;
+    left: 50%;
+    margin-left: -175px;
+    bottom: 30px;
+  }
+  @include tablet {
+    border: 2px solid red;
+  }
 }
 .header_hp_circle {
   position: absolute;
@@ -401,6 +418,11 @@ $blue-nimbus: #1a3d82;
   border-radius: 50%;
   background-color: rgba(96, 125, 139, 0.1);
   animation: motion-circle3 20s ease-in-out infinite;
+  @include smartphone {
+    width: 200px;
+    height: 200px;
+    bottom: 0px;
+  }
 }
 @keyframes motion-circle3 {
   0% {
@@ -411,5 +433,24 @@ $blue-nimbus: #1a3d82;
   }
   100% {
     transform: translateX(-60px);
+  }
+}
+.logo_header_hp {
+  position: absolute;
+  width: 240px;
+  height: 155px;
+  top: 200px;
+  left: -400px;
+  background-image: url('../../content/images/logo_constructor.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+
+  @include smartphone {
+    width: 180px;
+    height: 116px;
+    top: -130px;
+    left: 50%;
+    margin-left: -90px;
   }
 }
