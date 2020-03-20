@@ -77,7 +77,7 @@ export class CursoUpdateComponent implements OnInit {
     numeroGrado: []
   });
   subscription: any;
-  @ViewChild(FichaUpdateComponent) fichaUpdateComponent: FichaUpdateComponent;
+  @ViewChild(FichaUpdateComponent, { static: false }) fichaUpdateComponent!: FichaUpdateComponent;
 
   constructor(
     protected cursoService: CursoService,
