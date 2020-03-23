@@ -55,7 +55,7 @@ public class CursoResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new curso, or with status {@code 400 (Bad Request)} if the curso has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    /*@PostMapping("/cursos")
+    @PostMapping("/cursos")
     public ResponseEntity<Curso> createCurso(@RequestBody Curso curso) throws URISyntaxException {
         log.debug("REST request to save Curso : {}", curso);
         if (curso.getId() != null) {
@@ -65,9 +65,9 @@ public class CursoResource {
         return ResponseEntity.created(new URI("/api/cursos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
-    }*/
+    }
 
- @PostMapping("/cursos-ficha")
+ @PostMapping("/curso-ficha")
 public ResponseEntity<CursoFicha> createCursoFicha(@RequestBody String cursoFicha) throws URISyntaxException {
         log.debug("REST request to save Curso : {}", cursoFicha);
         if(cursoFicha == null) {
@@ -84,8 +84,6 @@ public ResponseEntity<CursoFicha> createCursoFicha(@RequestBody String cursoFich
         	log.debug("Exception ", e.getMessage());
         	return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
         }
-        //CursoFicha cf = (CursoFicha)cursoFicha;
-        
     }
     
     /**
