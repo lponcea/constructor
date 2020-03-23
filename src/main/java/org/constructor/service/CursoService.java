@@ -1,7 +1,7 @@
 package org.constructor.service;
 
 import org.constructor.domain.Curso;
-
+import org.constructor.domain.CursoFicha;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,6 +19,8 @@ public interface CursoService {
      * @return the persisted entity.
      */
     Curso save(Curso curso);
+    
+    CursoFicha save(CursoFicha cursoFicha);
 
     /**
      * Get all the cursos.

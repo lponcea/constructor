@@ -1,6 +1,7 @@
 package org.constructor.web.rest;
 
 import org.constructor.domain.Curso;
+import org.constructor.domain.CursoFicha;
 import org.constructor.service.CursoService;
 import org.constructor.web.rest.errors.BadRequestAlertException;
 
@@ -15,6 +16,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +55,7 @@ public class CursoResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new curso, or with status {@code 400 (Bad Request)} if the curso has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/cursos")
+    /*@PostMapping("/cursos")
     public ResponseEntity<Curso> createCurso(@RequestBody Curso curso) throws URISyntaxException {
         log.debug("REST request to save Curso : {}", curso);
         if (curso.getId() != null) {
@@ -61,8 +65,29 @@ public class CursoResource {
         return ResponseEntity.created(new URI("/api/cursos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
-    }
+    }*/
 
+ @PostMapping("/cursos-ficha")
+public ResponseEntity<CursoFicha> createCursoFicha(@RequestBody String cursoFicha) throws URISyntaxException {
+        log.debug("REST request to save Curso : {}", cursoFicha);
+        if(cursoFicha == null) {
+        	throw new BadRequestAlertException("A new curso cannot is empty", ENTITY_NAME, "");
+        }
+        try {
+        CursoFicha cf = new ObjectMapper().readValue(cursoFicha, CursoFicha.class);
+        log.debug("REST request to cf : {}", cf);
+        CursoFicha result = cursoService.save(cf);
+        log.debug("result : {}", result);
+        
+        return new ResponseEntity<>(result,HttpStatus.OK);
+        }catch(Exception e) {
+        	log.debug("Exception ", e.getMessage());
+        	return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+        }
+        //CursoFicha cf = (CursoFicha)cursoFicha;
+        
+    }
+    
     /**
      * {@code PUT  /cursos} : Updates an existing curso.
      *
