@@ -16,13 +16,14 @@ type EntityArrayResponseType = HttpResponse<ICurso[]>;
 @Injectable({ providedIn: 'root' })
 export class CursoService {
   public resourceUrl = SERVER_API_URL + 'api/cursos';
+  public resourceUrlNewBook = SERVER_API_URL + 'api/curso-ficha';
 
   constructor(protected http: HttpClient) {}
 
   create(curso: any): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(curso);
     return this.http
-      .post<ICurso>(this.resourceUrl, copy, { observe: 'response' })
+      .post<ICurso>(this.resourceUrlNewBook, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
