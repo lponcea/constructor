@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 
 import { IFicha, Ficha } from 'app/shared/model/ficha.model';
 import { FichaService } from './ficha.service';
@@ -28,6 +28,9 @@ export class FichaUpdateComponent implements OnInit {
   cursos: ICurso[] = [];
 
   colaboradors: IColaborador[] = [];
+  selectedColaboradors: IColaborador[] = [];
+  foundColaboradors: IColaborador[] = [];
+  @ViewChild('inputstring', { static: false }) searchElement: ElementRef | undefined;
 
   editorials: IEditorial[] = [];
   fechaCreacionDp: any;
@@ -131,7 +134,7 @@ export class FichaUpdateComponent implements OnInit {
       descripcion: this.editForm.get(['descripcion'])!.value,
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value,
       curso: this.editForm.get(['curso'])!.value,
-      colaboradors: this.editForm.get(['colaboradors'])!.value,
+      colaboradors: this.selectedColaboradors,
       editorial: this.editForm.get(['editorial'])!.value
     };
   }
@@ -165,5 +168,54 @@ export class FichaUpdateComponent implements OnInit {
       }
     }
     return option;
+  }
+
+  addTag(index: number, colaborador: IColaborador): void {
+    this.selectedColaboradors.push(colaborador);
+    setTimeout(() => {
+      if (this.searchElement) this.searchElement.nativeElement.focus();
+    }, 0);
+    this.foundColaboradors.splice(index, 1);
+  }
+
+  searchColaborador(value: string): Array<any> {
+    value = value.toLocaleLowerCase();
+    const results: Array<any> = [];
+    for (let i = 0; i < this.colaboradors.length; i++) {
+      const colaboradorName = (
+        this.colaboradors[i].nombres +
+        ' ' +
+        this.colaboradors[i].apellido1 +
+        this.colaboradors[i].apellido2 +
+        this.colaboradors[i].rolColaborador
+      ).toLowerCase();
+      if (colaboradorName.search(value) !== -1 && this.findInArray(this.selectedColaboradors, this.colaboradors[i].id) === -1) {
+        results.push(this.colaboradors[i]);
+      }
+    }
+    return results;
+  }
+
+  removeTag(index: number): void {
+    this.selectedColaboradors.splice(index, 1);
+    setTimeout(() => {
+      if (this.searchElement) this.searchElement.nativeElement.focus();
+    }, 0);
+  }
+
+  findInArray(array: Array<any>, id: number | undefined): number {
+    let index = -1;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
+
+  search(value: string): void {
+    this.foundColaboradors = [];
+    if (value !== '') this.foundColaboradors = this.searchColaborador(value);
   }
 }
