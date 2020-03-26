@@ -284,7 +284,6 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   selectFile(event: any): void {
-    console.error(event);
     if (event.target.files[0].size > this.maxiCoverSize) {
       alert('La imagen debe pesar menos de 30MB.');
       return;
