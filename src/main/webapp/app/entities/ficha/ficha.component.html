@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="constructorApp.ficha.home.title">Fichas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ficha" [routerLink]="['/ficha/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="constructorApp.ficha.home.createLabel">
+            Create a new Ficha
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="fichas?.length === 0">
+        <span jhiTranslate="constructorApp.ficha.home.notFound">No fichas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="fichas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descripcion"><span jhiTranslate="constructorApp.ficha.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fechaCreacion"><span jhiTranslate="constructorApp.ficha.fechaCreacion">Fecha Creacion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="curso.id"><span jhiTranslate="constructorApp.ficha.curso">Curso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="editorial.id"><span jhiTranslate="constructorApp.ficha.editorial">Editorial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ficha of fichas ;trackBy: trackId">
+                <td><a [routerLink]="['/ficha', ficha.id, 'view' ]">{{ficha.id}}</a></td>
+                <td>{{ficha.descripcion}}</td>
+                <td>{{ficha.fechaCreacion | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="ficha.curso">
+                        <a [routerLink]="['/curso', ficha.curso?.id, 'view' ]" >{{ficha.curso?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ficha.editorial">
+                        <a [routerLink]="['/editorial', ficha.editorial?.id, 'view' ]" >{{ficha.editorial?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/ficha', ficha.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ficha', ficha.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(ficha)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="fichas?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

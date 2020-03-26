@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, ViewChild } from '@angular/core';
+import { CourseConfigurationService } from 'app/services/course-configuration.service';
+import { CursoUpdateComponent } from 'app/entities/curso/curso-update.component';
 
 @Component({
   selector: 'jhi-course-configuration',
@@ -6,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-configuration.component.scss']
 })
 export class CourseConfigurationComponent {
-  selectedTabIndex = 0;
+  @Output() selectedTabIndex = 0;
   tabs = [
     {
       title: 'General',
@@ -24,6 +26,16 @@ export class CourseConfigurationComponent {
   markElementStyles = {
     transform: 'translateX(' + this.selectedTabIndex * 80 + 'px)'
   };
+  @ViewChild(CursoUpdateComponent, { static: false }) cursoUpdateComponent!: CursoUpdateComponent;
 
-  constructor() {}
+  constructor(private courseConfigurationService: CourseConfigurationService) {}
+
+  changeSelectedIndex(index: number): void {
+    this.selectedTabIndex = index;
+    this.courseConfigurationService.setSelectedTab(index);
+  }
+
+  saveCourse(): void {
+    this.cursoUpdateComponent.save();
+  }
 }

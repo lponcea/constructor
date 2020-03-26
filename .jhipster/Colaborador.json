@@ -1,0 +1,44 @@
+{
+    "name": "Colaborador",
+    "fields": [
+        {
+            "fieldName": "nombres",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellido1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellido2",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "rolColaborador",
+            "otherEntityRelationshipName": "colaborador",
+            "relationshipName": "rolColaborador",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "ficha",
+            "otherEntityRelationshipName": "colaborador",
+            "relationshipName": "ficha",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200305201121",
+    "entityTableName": "colaborador",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

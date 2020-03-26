@@ -1,0 +1,48 @@
+{
+    "name": "Ficha",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "curso",
+            "otherEntityRelationshipName": "ficha",
+            "relationshipName": "curso",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "colaborador",
+            "otherEntityRelationshipName": "ficha",
+            "relationshipName": "colaborador",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "editorial",
+            "otherEntityRelationshipName": "ficha",
+            "relationshipName": "editorial",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200305201120",
+    "entityTableName": "ficha",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

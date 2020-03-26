@@ -1,0 +1,42 @@
+{
+  "constructorApp": {
+    "curso": {
+      "home": {
+        "title": "Cursos",
+        "createLabel": "Crear nuevo Curso",
+        "createOrEditLabel": "Crear o editar Curso",
+        "notFound": "Ningún Cursos encontrado"
+      },
+      "created": "Un nuevo Curso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Curso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Curso ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Curso {{ id }}?"
+      },
+      "detail": {
+        "title": "Curso"
+      },
+      "titulo": "Titulo",
+      "descripcion": "Descripcion",
+      "modoDistribucion": "Modo Distribucion",
+      "etapaEditorial": "Etapa Editorial",
+      "fechaCreacion": "Fecha Creacion",
+      "fechaCreacionSys": "Fecha Creacion Sys",
+      "fechaPublicacion": "Fecha Publicacion",
+      "fechaPublicacionSys": "Fecha Publicacion Sys",
+      "numeroEdicion": "Numero Edicion",
+      "versionStr": "Version Str",
+      "palabraClave": "Palabra Clave",
+      "resumenContenido": "Resumen Contenido",
+      "clave": "Clave",
+      "estatus": "Estatus",
+      "portadaUrl": "Portada Url",
+      "modalidad": "Modalidad",
+      "version": "Version",
+      "categoria": "Categoria",
+      "asignatura": "Asignatura",
+      "gradoAcademico": "Grado Academico",
+      "numeroGrado": "Numero Grado"
+    }
+  }
+}

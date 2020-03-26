@@ -1,0 +1,26 @@
+{
+  "constructorApp": {
+    "colaborador": {
+      "home": {
+        "title": "Colaboradors",
+        "createLabel": "Crear nuevo Colaborador",
+        "createOrEditLabel": "Crear o editar Colaborador",
+        "notFound": "Ningún Colaboradors encontrado"
+      },
+      "created": "Un nuevo Colaborador ha sido creado con el identificador {{ param }}",
+      "updated": "Un Colaborador ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Colaborador ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Colaborador {{ id }}?"
+      },
+      "detail": {
+        "title": "Colaborador"
+      },
+      "nombres": "Nombres",
+      "apellido1": "Apellido 1",
+      "apellido2": "Apellido 2",
+      "rolColaborador": "Rol Colaborador",
+      "ficha": "Ficha"
+    }
+  }
+}

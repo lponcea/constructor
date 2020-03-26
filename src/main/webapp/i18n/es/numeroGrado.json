@@ -1,0 +1,24 @@
+{
+  "constructorApp": {
+    "numeroGrado": {
+      "home": {
+        "title": "Numero Grados",
+        "createLabel": "Crear nuevo Numero Grado",
+        "createOrEditLabel": "Crear o editar Numero Grado",
+        "notFound": "Ningún Numero Grados encontrado"
+      },
+      "created": "Un nuevo Numero Grado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Numero Grado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Numero Grado ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Numero Grado {{ id }}?"
+      },
+      "detail": {
+        "title": "Numero Grado"
+      },
+      "descripcion": "Descripcion",
+      "curso": "Curso",
+      "gradoAcademico": "Grado Academico"
+    }
+  }
+}

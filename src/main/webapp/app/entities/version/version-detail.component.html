@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="version">
+            <h2><span jhiTranslate="constructorApp.version.detail.title">Version</span> {{version.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="constructorApp.version.version">Version</span></dt>
+                <dd>
+                    <span>{{version.version}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.version.comentario">Comentario</span></dt>
+                <dd>
+                    <span>{{version.comentario}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.version.fechaVersion">Fecha Version</span></dt>
+                <dd>
+                    <span>{{version.fechaVersion}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/version', version.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

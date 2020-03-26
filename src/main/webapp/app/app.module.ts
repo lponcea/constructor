@@ -16,11 +16,11 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CourseConfigurationComponent } from './course-configuration/course-configuration.component';
-import { ConstructorLayoutComponent } from './constructor-layout/constructor-layout.component';
 import { ContentBlock2Component } from './constructor/content-blocks/content-block2/content-block2.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CursoUpdateComponent } from './entities/curso/curso-update.component';
+import { FichaUpdateComponent } from './entities/ficha/ficha-update.component';
 
 @NgModule({
   imports: [
@@ -32,8 +32,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     // jhipster-needle-angular-add-module JHipster will add new module here
     ConstructorEntityModule,
     ConstructorAppRoutingModule,
-    HttpClientModule,
-    AngularEditorModule
+    HttpClientModule
   ],
   declarations: [
     MainComponent,
@@ -44,7 +43,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     FooterComponent,
     CourseConfigurationComponent,
     ContentBlock2Component,
-    HomePageComponent
+    HomePageComponent,
+    CursoUpdateComponent,
+    FichaUpdateComponent
   ],
   bootstrap: [MainComponent]
 })

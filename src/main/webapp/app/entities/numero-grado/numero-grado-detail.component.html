@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="numeroGrado">
+            <h2><span jhiTranslate="constructorApp.numeroGrado.detail.title">Numero Grado</span> {{numeroGrado.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="constructorApp.numeroGrado.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{numeroGrado.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="constructorApp.numeroGrado.gradoAcademico">Grado Academico</span></dt>
+                <dd>
+                    <div *ngIf="numeroGrado.gradoAcademico">
+                        <a [routerLink]="['/grado-academico', numeroGrado.gradoAcademico?.id, 'view']">{{numeroGrado.gradoAcademico?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/numero-grado', numeroGrado.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
