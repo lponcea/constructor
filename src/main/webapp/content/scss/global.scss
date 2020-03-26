@@ -2,17 +2,7 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
-// Color
-$color-silver: #3a404c;
-$tool-header: lighten($color-silver, 65%);
-$bg-color: #f6f6f6;
-$bg-white: #f6f6f6;
-$bg-blue: #101233;
-$a-hover: #101233;
-$alert-color: #e61a34;
-
-$input-border-color: #577ec9;
-$input-border-light: lighten($input-border-color, 35%);
+@import 'variables.scss';
 
 // @charset "UTF-8";
 /*Import font*/
@@ -43,6 +33,12 @@ $input-border-light: lighten($input-border-color, 35%);
   padding: 0;
   font-family: 'Open Sans', sans-serif !important;
   font-weight: 400;
+}
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  background-color: $background-color-light !important;
+  margin: 0 !important;
+  font-size: 14px !important;
 }
 a:-webkit-any-link {
   cursor: pointer;
@@ -85,12 +81,6 @@ h4 {
   font-style: normal;
   color: #4a5161;
 }
-body {
-  font-family: 'Open Sans', sans-serif !important;
-  background-color: #f6f6f6 !important;
-  margin: 0 !important;
-  font-size: 14px !important;
-}
 p {
   /* display: block;
   margin-block-start: 1em;
@@ -129,7 +119,6 @@ strong {
   position: relative;
   width: 100%;
   height: 200px;
-  background-color: $bg-color !important;
   display: flex;
   justify-content: center;
   align-items: center;
