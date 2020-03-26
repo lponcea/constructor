@@ -45,6 +45,8 @@ export class CursoUpdateComponent implements OnInit {
   fechaCreacionSysDp: any;
   fechaPublicacionDp: any;
   fechaPublicacionSysDp: any;
+  maxiCoverSize = 50000000;
+  allowedFileTypes = [];
 
   changeImage = false;
   selectedFiles = FileList;
