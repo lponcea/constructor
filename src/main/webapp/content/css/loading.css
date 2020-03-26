@@ -1,5 +1,4 @@
-html,
-body {
+.app-loading-container {
   background: #101233;
   position: absolute;
   overflow: hidden;
