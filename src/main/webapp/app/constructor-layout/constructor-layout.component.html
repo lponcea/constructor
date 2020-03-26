@@ -15,6 +15,7 @@
           <button (click)="leftIsContracted = !leftIsContracted;"
             [ngClass]="{'contract-button': !leftIsContracted, 'expand-button': leftIsContracted}"
             id="btn-contract-left" class="btn-contract-left">
+            <div class="cr-cirlce"></div>
             <div class="icon"></div>
           </button>
 
@@ -46,6 +47,7 @@
           <button (click)="rightIsContracted = !rightIsContracted;"
             [ngClass]="{'contract-button': !rightIsContracted, 'expand-button': rightIsContracted}"
             class="btn-contract-right">
+            <div class="cr-cirlce"></div>
             <div class="icon"></div>
           </button>
 

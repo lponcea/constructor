@@ -1,152 +1,75 @@
-@keyframes lds-pacman-1 {
+html,
+body {
+  background: #101233;
+  position: absolute;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+@-webkit-keyframes loader-spin {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  50% {
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
   100% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-}
-@-webkit-keyframes lds-pacman-1 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  100% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-}
-@keyframes lds-pacman-2 {
-  0% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  50% {
-    -webkit-transform: rotate(225deg);
-    transform: rotate(225deg);
-  }
-  100% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-}
-@-webkit-keyframes lds-pacman-2 {
-  0% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  50% {
-    -webkit-transform: rotate(225deg);
-    transform: rotate(225deg);
-  }
-  100% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-}
-@keyframes lds-pacman-3 {
-  0% {
-    -webkit-transform: translate(190px, 0);
-    transform: translate(190px, 0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translate(70px, 0);
-    transform: translate(70px, 0);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes lds-pacman-3 {
-  0% {
-    -webkit-transform: translate(190px, 0);
-    transform: translate(190px, 0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translate(70px, 0);
-    transform: translate(70px, 0);
-    opacity: 1;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-.app-loading {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  top: 10em;
+@keyframes loader-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
-.app-loading p {
-  display: block;
-  font-size: 1.17em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: normal;
-}
-
-.app-loading .lds-pacman {
-  position: relative;
-  margin: auto;
-  width: 200px !important;
-  height: 200px !important;
-  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
-  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
-}
-.app-loading .lds-pacman > div:nth-child(2) div {
+.loader {
   position: absolute;
-  top: 40px;
-  left: 40px;
-  width: 120px;
-  height: 60px;
-  border-radius: 120px 120px 0 0;
-  background: #bbcedd;
-  -webkit-animation: lds-pacman-1 1s linear infinite;
-  animation: lds-pacman-1 1s linear infinite;
-  -webkit-transform-origin: 60px 60px;
-  transform-origin: 60px 60px;
+  margin: -18px 0 0 -18px;
+  border: 3.6px solid white;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 36px;
+  height: 36px;
+  left: 50%;
+  top: 50%;
+  animation: loader-spin 2s linear infinite reverse;
+  -webkit-filter: url(#goo);
+  filter: url(#goo);
+  box-shadow: 0 0 0 1px #0059ff inset;
 }
-.app-loading .lds-pacman > div:nth-child(2) div:nth-child(2) {
-  -webkit-animation: lds-pacman-2 1s linear infinite;
-  animation: lds-pacman-2 1s linear infinite;
-}
-.app-loading .lds-pacman > div:nth-child(1) div {
+.loader:before {
+  content: '';
   position: absolute;
-  top: 97px;
-  left: -8px;
-  width: 24px;
-  height: 10px;
-  background-image: url('../images/logo-jhipster.png');
-  background-size: contain;
-  -webkit-animation: lds-pacman-3 1s linear infinite;
-  animation: lds-pacman-3 1.5s linear infinite;
+  -webkit-animation: loader-spin 2s cubic-bezier(0.59, 0.25, 0.4, 0.69) infinite;
+  animation: loader-spin 2s cubic-bezier(0.59, 0.25, 0.4, 0.69) infinite;
+  background: #0059ff;
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  border-radius: 50%;
+  width: 150%;
+  height: 150%;
+  top: 50%;
+  left: -12.5%;
 }
-.app-loading .lds-pacman > div:nth-child(1) div:nth-child(1) {
-  -webkit-animation-delay: -0.67s;
-  animation-delay: -1s;
-}
-.app-loading .lds-pacman > div:nth-child(1) div:nth-child(2) {
-  -webkit-animation-delay: -0.33s;
-  animation-delay: -0.5s;
-}
-.app-loading .lds-pacman > div:nth-child(1) div:nth-child(3) {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
+.nimbus-loader {
+  position: absolute;
+  width: 70px;
+  height: 64px;
+  margin-bottom: 20px;
+  background-image: url('../images/loader.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 50%;
+  margin-top: -132px;
+  left: 50%;
+  margin-left: -35px;
 }
