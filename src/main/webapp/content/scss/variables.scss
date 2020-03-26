@@ -1,0 +1,39 @@
+// Color
+$color-silver: #3a404c;
+$tool-header: lighten($color-silver, 65%);
+$bg-white: #f6f6f6;
+$bg-blue: #101233;
+$a-hover: #101233;
+$alert-color: #e61a34;
+// $background-color-light: #f9fafb;
+$background-color-light: #f7f8f9;
+
+$input-border-color: #577ec9;
+$input-border-light: lighten($input-border-color, 35%);
+
+// Variables
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$max-width: 1200px;
+$blue-nimbus-dark: #171a40;
+$blue-nimbus-light: #0059ff;
+$blue-nimbus: #1a3d82;
+$background-color-light: #f9fafb;
+$footer-bg-color: #f4f5f7;
+
+// Mixin
+@mixin smartphone {
+  @media (min-width: 0px) and (max-width: 600px) {
+    @content;
+  }
+}
+@mixin smartphone1 {
+  @media (min-width: 601px) and (max-width: 800px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 801px) and (max-width: 1200px) {
+    @content;
+  }
+}
