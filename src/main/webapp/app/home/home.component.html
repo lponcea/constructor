@@ -1,54 +1,57 @@
-<div class="container-home-test">
+<div class="main-container-br">
 
-  <div [ngSwitch]="isAuthenticated()" *jhiHasAnyAuthority="'ROLE_USER'" class="c-home-constructor">
+  <div [ngSwitch]="isAuthenticated()" *jhiHasAnyAuthority="'ROLE_USER'" class="window-br">
 
-    <div class="header-c-h-c">
+    <div class="window-br-header">
       <div class="r1">
         <div class="logo-create"></div>
       </div>
       <div class="r2">
         <div class="c1">
           <div class="button-hc"><div class="icon icn-support"></div>Soporte</div>
-          <div class="button-hc"><div class="icon icn-tutto"></div>Tutorial</div>
+          <div class="button-hc"><div class="icon icn-tutto"></div>Ayuda</div>
         </div>
       </div>
 
     </div>
 
-    <div class="body-c-h-c" *ngIf="!cursos.length">
-      No hay libros
-    </div>
-    <div class="body-c-h-c" *ngIf="cursos.length">
-      <div class="title-body-chc">
-        <P>Tus elementos recientes ( {{cursos.length}} )</P>
-      </div>
-
-      <div class="row-body-chc">
-
-        <div class="cover-test" *ngFor="let curso of cursos">
-          <div class="cover-home" routerLink="constructor-layout">
-            <div class="cover-home-image"></div>
-            <img [src]="curso.portadaUrl" alt="" style="width:182px;height:120px;">
-          </div>
-          <div class="desc-cover-home">
-            <span class="title-dch">{{curso.titulo}}</span>
-            <span class="descp-dch">Primero</span>
-            <span (click)="deleteCourse(curso.id)">x</span>
+    <div class="window-br-body" *ngIf="!cursos.length">
+      <div class="container-br-message">
+        <div class="br-message">
+          <div class="brm-1"><div class="br-message-icon"></div></div>
+          <div class="brm-2"><p>¡Hola! <br> Bienvenido a <span>Nimbus Constructor</span>.</p>
+            <p>Para comenzar da click en el botón "Crear nuevo".</p>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="window-br-body-topbar">
+      <P>Tus elementos recientes ( {{cursos.length}} )</P>
+    </div>
+
+    <div class="window-br-body" *ngIf="cursos.length">
+
+      <div class="br-body-row">
+        <div class="course-cover-br" *ngFor="let curso of cursos">
+          <div class="course-cover-br-margin" routerLink="constructor-layout">
+            <img class="course-cover-br-image" [src]="curso.portadaUrl" alt="">
+          </div>
+
+          <div (click)="deleteCourse(curso.id)" class="delete-course-br"></div>
+
+          <div class="course-desc-br-row">
+            <span class="title-course-br">{{curso.titulo}}</span>
+            <span class="desc-course-br">Primero</span>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <div class="footer-c-h-c">
-      <div class="button-create-new" routerLink="course-configuration">
-        Crear
-      </div>
+    <div class="window-br-footer">
+      <button class="main-btn btn-color-1" routerLink="course-configuration">Crear nuevo</button>
     </div>
-
-
-
 
   </div>
 

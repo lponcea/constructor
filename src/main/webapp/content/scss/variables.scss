@@ -7,6 +7,19 @@ $a-hover: #101233;
 $alert-color: #e61a34;
 // $background-color-light: #f9fafb;
 $background-color-light: #f7f8f9;
+$background-color-blue: #101233;
+
+$nimbus-bluedark: #1a3d82;
+$nimbus-bluelight: #0059ff;
+$btn-circle-color: rgba(26, 61, 130, 1);
+$btn-circle-hover-color: #415a8d;
+$linktext-color: #1a3d82;
+
+// Window
+$window-header-color: white;
+$window-body-color: #f7f8f9;
+$window-footer-color: white;
+$window-divider-color: #e7e8ed;
 
 $input-border-color: #577ec9;
 $input-border-light: lighten($input-border-color, 35%);
@@ -34,6 +47,22 @@ $footer-bg-color: #f4f5f7;
 }
 @mixin tablet {
   @media (min-width: 801px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin covers-xl {
+  @media screen and (min-width: 1240px) {
+    @content;
+  }
+}
+@mixin covers-l {
+  @media (min-width: 1115px) and (max-width: 1239px) {
+    @content;
+  }
+}
+@mixin covers-ml {
+  @media (min-width: 900px) and (max-width: 1114px) {
     @content;
   }
 }
