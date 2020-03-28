@@ -1,17 +1,15 @@
-<div class="container-home-test">
+<div class="main-container-br">
 
-  <div class="c-conf-constructor">
+  <div class="window-course-configuration">
 
-    <div class="header-c-c-c">
-      <div class="ccc-bar">
-        <div class="ccc-title">Configuración</div>
-        <div class="ccc-close" routerLink="/"></div>
+    <div class="window-cc-header">
+      <div class="cc-header-topbar">
+        <div class="cch-title">Configuraciónes</div>
+        <!-- <div class="cch-close" routerLink="/"></div> -->
       </div>
 
-      <div class="ccc-menu">
-
-        <div class="col-ccc">
-
+      <div class="cc-header-menu">
+        <div class="cch-menu-row">
           <div *ngFor="let tab of tabs; let index = index;" (click)="changeSelectedIndex(index);">
             <div class="ccc-element" [ngClass]="{'active-ccc-element': index === selectedTabIndex}">
               <div class="c-icon" [ngClass]="tab.iconClass"></div>
@@ -20,21 +18,20 @@
           </div>
 
         </div>
-        <div class="mark-element-ccc" style="transition-duration:0.5s" [style.transform]="'translateX(' + ((15 * (this.selectedTabIndex + 1)) + (this.selectedTabIndex * 95)) + 'px)'"></div>
+        <div class="meenu-course-mark" [style.transform]="'translateX(' + ((15 * (this.selectedTabIndex + 1)) + (this.selectedTabIndex * 95)) + 'px)'"></div>
       </div>
     </div>
 
-    <div class="body-c-c-c">
+    <div class="window-cc-body">
       <jhi-curso-update></jhi-curso-update>
     </div>
 
-    <div class="footer-c-c-c">
-      <div class="button-next-new" (click)="saveCourse()">
-        Guardar
-      </div>
-      <div class="button-next-new" routerLink="../constructor-layout">
-        Siguiente
-      </div>
+    <div class="window-cc-footer">
+
+      <button routerLink="/" class="secondary-btn">Cancelar</button>
+      <button (click)="saveCourse()" class="main-btn btn-color-1">Guardar</button>
+      <!-- <button routerLink="../constructor-layout" class="main-btn btn-color-1">Siguiente</button>  -->
     </div>
   </div>
+
 </div>

@@ -1,58 +1,52 @@
-.container-home-test {
+@import '../../content/scss/variables.scss';
+
+.window-course-configuration {
   position: relative;
-  width: 100%;
-  // height: calc(100vh - 60px);
-  height: 100vh;
-  background-color: #101233;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../../content/images/bg2.png');
-  background-position: center;
-  background-size: 1800px;
-  background-repeat: no-repeat;
-}
-.c-conf-constructor {
-  position: relative;
-  width: 90%;
-  max-width: 1100px;
+  width: 92%;
+  max-width: 1150px;
   height: 700px;
   background-color: white;
-  border-radius: 4px;
+  background-color: silver;
+  border-radius: 6px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  .header-c-c-c {
+  .window-cc-header {
     position: relative;
     width: 100%;
-    height: 120px;
-    background-color: #e7e8ed;
-    border-radius: 4px 4px 0 0;
+    height: 100px;
+    // background-color: #e7e8ed;
+    background-color: $window-header-color;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $window-divider-color;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
-    .ccc-bar {
+    .cc-header-topbar {
       position: relative;
       width: 100%;
       height: 40px;
       background-color: white;
       border-radius: 4px 4px 0 0;
-      border-bottom: 1px solid #cecfd2;
+      // border-bottom: 1px solid $window-divider-color;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      .ccc-title {
+      .cch-title {
         position: relative;
         width: auto;
         height: auto;
-        font-size: 16px;
+        font-size: 15px;
       }
-      .ccc-close {
+      .cch-close {
         position: absolute;
         width: 25px;
         height: 25px;
@@ -72,15 +66,15 @@
         }
       }
     }
-    .ccc-menu {
+    .cc-header-menu {
       position: relative;
       width: 100%;
-      height: 80px;
+      height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      .col-ccc {
+      .cch-menu-row {
         position: relative;
         width: 98%;
         height: 60px;
@@ -109,11 +103,11 @@
 
           .c-icon {
             position: relative;
-            width: 40px;
-            height: 40px;
+            width: 25px;
+            height: 25px;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: 80%;
+            background-size: 100%;
           }
           .c-icon-1 {
             background-image: url('../../content/images/conf_menu_icon1.svg');
@@ -133,7 +127,7 @@
             justify-content: center;
             align-items: flex-start;
             font-weight: 600;
-            color: #142145;
+            color: $nimbus-bluedark;
           }
         }
 
@@ -145,55 +139,31 @@
       }
     }
   }
-
-  .footer-c-c-c {
-    position: relative;
-    width: 100%;
-    height: 80px;
-    border-top: 1px solid #cecfd2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .button-next-new {
-      position: relative;
-      width: 100px;
-      height: 34px;
-      background-color: #0059ff;
-      border-radius: 14px;
-      font-size: 14px;
-      font-weight: 600;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.3s;
-      &:hover {
-        background-color: #003eaf;
-      }
-    }
-  }
 }
 
-.mark-element-ccc {
+.meenu-course-mark {
   position: absolute;
   width: 80px;
-  height: 4px;
-  background-color: #0059ff;
+  height: 2px;
   left: 12px;
   bottom: 0;
+  transition: all 0.4s ease-in-out;
+  background: rgb(24, 199, 251);
+  background: linear-gradient(90deg, rgba(24, 199, 251, 1) 0%, rgba(21, 169, 250, 1) 100%);
 }
 
-.body-c-c-c {
+// Window Body
+.window-cc-body {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 525px;
+  background-color: $window-body-color;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  background-color: #f5f6fa;
+  // overflow-y: auto;
+  // padding-bottom: 30px;
 
   .col-ccc-elemet1 {
     position: relative;
@@ -224,5 +194,23 @@
         }
       }
     }
+  }
+}
+
+// Footer
+.window-cc-footer {
+  position: relative;
+  width: 100%;
+  height: 75px;
+  background-color: $window-footer-color;
+  border-top: 1px solid $window-divider-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 6px 6px;
+
+  button {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }

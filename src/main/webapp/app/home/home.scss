@@ -2,21 +2,6 @@
 
 // height: calc(100vh - 60px);
 
-.main-container-br {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 800px;
-  background-color: $background-color-blue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../../content/images/bg2.png');
-  background-position: center;
-  background-size: 1800px;
-  background-repeat: no-repeat;
-}
-
 .window-br {
   position: relative;
   width: 92%;
@@ -35,7 +20,6 @@
     position: relative;
     width: 100%;
     height: 100px;
-    // background-color: #e7e8ed;
     background-color: $window-header-color;
     border-radius: 6px 6px 0 0;
     display: flex;
