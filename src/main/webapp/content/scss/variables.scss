@@ -11,8 +11,6 @@ $background-color-blue: #101233;
 
 $nimbus-bluedark: #1a3d82;
 $nimbus-bluelight: #0059ff;
-$btn-circle-color: rgba(26, 61, 130, 1);
-$btn-circle-hover-color: #415a8d;
 $linktext-color: #1a3d82;
 
 // Window
@@ -23,9 +21,11 @@ $window-divider-color: #e7e8ed;
 
 // Buttons
 $secondary-btn-color: #1a3d82;
+$secondary-btn-hover: lighten($secondary-btn-color, 10%);
 
-$input-border-color: #577ec9;
-$input-border-light: lighten($input-border-color, 35%);
+$input-border-focus: #577ec9;
+$input-border-light: lighten($input-border-focus, 35%);
+$input-border-hover: lighten($input-border-focus, 20%);
 
 // Variables
 $tablet-width: 768px;

@@ -38,7 +38,7 @@ body {
   font-family: 'Open Sans', sans-serif !important;
   background-color: $background-color-light !important;
   margin: 0 !important;
-  font-size: 14px !important;
+  // font-size: 14px !important;
 }
 a:-webkit-any-link {
   cursor: pointer;
@@ -436,7 +436,7 @@ strong {
 .modal-login-container {
   position: relative;
   width: 600px;
-  height: 650px;
+  height: 600px;
   margin: 0 auto;
   background-color: #fefefe;
   border-radius: 8px;
@@ -444,7 +444,7 @@ strong {
   .modal-login-header {
     position: relative;
     width: 100%;
-    height: 60px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -514,17 +514,18 @@ strong {
   }
   .mark-login-modal {
     position: absolute;
-    width: 50px;
-    height: 4px;
-    background-color: #1160fb;
+    width: 60px;
+    height: 2px;
+    background: rgb(24, 199, 251);
+    background: linear-gradient(90deg, rgba(24, 199, 251, 1) 0%, rgba(21, 169, 250, 1) 100%);
     bottom: 0px;
-    left: 20px;
+    left: 10px;
   }
 
   .modal-login-body {
     position: relative;
     width: 100%;
-    height: calc(100% - 60px);
+    height: calc(100% - 50px);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -682,6 +683,7 @@ strong {
     justify-content: flex-end;
     align-items: center;
     font-weight: 700;
+    margin-top: 10px;
 
     a {
       position: relative;
@@ -706,7 +708,7 @@ strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 20px;
 
   span {
     margin-right: 5px;
@@ -734,7 +736,7 @@ strong {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 // Main button style
 .main-btn {
@@ -794,12 +796,12 @@ strong {
   padding-right: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background-color: $btn-circle-hover-color;
+  background-color: $secondary-btn-color;
   border-radius: 18px;
   transition: all 0.4s ease-in-out;
 
   &:hover {
-    background-color: $secondary-btn-color;
+    background-color: $secondary-btn-hover;
   }
   &:focus {
     outline: none;
@@ -812,7 +814,7 @@ strong {
 // Alerts
 .alert-login {
   position: absolute;
-  top: 61px;
+  top: 51px;
   left: 0px;
   background-color: $alert-color;
   width: 100%;
@@ -895,6 +897,40 @@ strong {
   background-repeat: no-repeat;
 }
 
+// Change backhround color input
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  // border: 1px solid green;
+  // -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: white;
+}
+
+// input:focus, textarea:focus,
+// keygen:focus, select:focus {
+//     outline-offset: -2px;
+//     color: red;
+//     font-size: 10px !important;
+// }
+
+// input[type='text']{
+//  font-size: 14px;
+//  line-height: 14px;
+// }
+input::-webkit-input-placeholder {
+  font-size: 14px !important;
+  color: #aaa;
+  transform: translate3d(0, -4px, 0);
+}
+
 // Window Cnfiguration Course
 .form-window-configuration {
   position: relative;
@@ -925,5 +961,177 @@ strong {
   position: relative;
   width: 100%;
   height: auto;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+
+  .row-wg {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .col-window-g {
+      position: relative;
+      width: 30%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      // border: 1px solid blue;
+    }
+  }
+}
+// Form Nimbus
+.form-nimbus {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    color: #1c2447;
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+
+  input {
+    position: relative;
+    width: 100%;
+    height: 38px;
+    background-color: white;
+    border: 0;
+    border-radius: 14px;
+    border: 2px solid $input-border-light;
+    outline: none;
+    padding-left: 12px;
+    transition: 0.3s;
+    &:hover {
+      border-color: $input-border-hover;
+    }
+    &:focus {
+      outline: none !important;
+      border-color: $input-border-focus;
+      box-shadow: 0 0 10px transparent;
+    }
+    &::placeholder {
+      color: #b0b0b0;
+      font-size: 13px;
+      position: relative;
+      left: 4px;
+      top: 4px;
+    }
+  }
+
+  select {
+    position: relative;
+    width: 100%;
+    height: 38px !important;
+    background-color: white;
+    border: 0;
+    border-radius: 14px !important;
+    border: 2px solid $input-border-light;
+    outline: none;
+    transition: 0.3s;
+    &:hover {
+      border-color: $input-border-hover;
+    }
+    &:focus {
+      outline: none !important;
+      border-color: $input-border-focus;
+      box-shadow: 0 0 10px transparent;
+    }
+  }
+}
+select {
+  border-radius: 16px !important;
+}
+
+.margintop-25 {
+  margin-top: 25px;
+}
+
+// Cover Configuration
+.cover-upload-c {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  label {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 1px;
+  }
+
+  .cover-upload-img-row {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    border: 2px solid $window-divider-color;
+    border-radius: 6px;
+
+    .cover-path-area {
+      position: relative;
+      width: 100%;
+      height: 130px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      div {
+        width: auto;
+        height: auto;
+        border-radius: 4px;
+        position: relative;
+
+        .cover-upload-img {
+          width: 150px;
+          height: 100px;
+          border-radius: 4px;
+        }
+      }
+    }
+    .row-uic {
+      position: relative;
+      width: 100%;
+      height: auto;
+
+      input {
+        position: relative;
+        width: auto;
+        height: 20px;
+        height: auto;
+      }
+    }
+  }
+
+  .row-cover-upload-btn {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+      margin-right: 10px;
+    }
+  }
+}
+
+.text-transform-none {
+  text-transform: none;
 }

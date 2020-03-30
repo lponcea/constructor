@@ -40,15 +40,14 @@
               <form class="form" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
                   <div class="form-group">
                       <label class="username-label" for="username" jhiTranslate="global.form.username.label">Login</label>
-                      <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
+                      <input type="text" class="" name="username" id="username"
                              formControlName="username" #username>
                       <div class="icon-form-login icnf-f-l1"></div>
                   </div>
                   <div class="form-group">
                       <label for="password" jhiTranslate="login.form.password">Password</label>
-
                       <!-- Agregar clase "alert-input" a input cuando el formulario tenga un error -->
-                      <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                      <input type="password" class="" name="password" id="password"
                              formControlName="password">
                       <div class="icon-form-login icnf-f-l2"></div>
                   </div>
