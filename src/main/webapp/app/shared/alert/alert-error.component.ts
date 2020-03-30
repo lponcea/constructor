@@ -22,9 +22,15 @@ export class AlertErrorComponent implements OnDestroy {
   alerts: JhiAlert[] = [];
   errorListener: Subscription;
   httpErrorListener: Subscription;
+  validationErrorListener: Subscription;
 
   constructor(private alertService: JhiAlertService, private eventManager: JhiEventManager, translateService: TranslateService) {
     this.errorListener = eventManager.subscribe('constructorApp.error', (response: JhiEventWithContent<AlertError>) => {
+      const errorResponse = response.content;
+      this.addErrorAlert(errorResponse.message, errorResponse.key, errorResponse.params);
+    });
+
+    this.validationErrorListener = eventManager.subscribe('constructorApp.validationError', (response: JhiEventWithContent<AlertError>) => {
       const errorResponse = response.content;
       this.addErrorAlert(errorResponse.message, errorResponse.key, errorResponse.params);
     });
@@ -112,7 +118,6 @@ export class AlertErrorComponent implements OnDestroy {
       toast: this.alertService.isToast(),
       scoped: true
     };
-
     this.alerts.push(this.alertService.addAlert(newAlert, this.alerts));
   }
 }

@@ -26,6 +26,8 @@ import { FileUploadService } from 'app/services/file-upload.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FichaUpdateComponent } from '../ficha/ficha-update.component';
 
+import { JhiEventManager, JhiAlertService, JhiAlert, JhiEventWithContent } from 'ng-jhipster';
+
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
 @Component({
@@ -48,6 +50,7 @@ export class CursoUpdateComponent implements OnInit {
   maxiCoverSize = 50000000;
   allowedFileTypes: any = ['image/jpg', 'image/jpeg', 'image/png'];
   showUploadButton = false;
+  alerts: JhiAlert[] = [];
 
   changeImage = false;
   selectedFiles = FileList;
@@ -94,7 +97,9 @@ export class CursoUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private courseConfigurationService: CourseConfigurationService,
     private fileUploadService: FileUploadService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private alertService: JhiAlertService,
+    private eventManager: JhiEventManager
   ) {
     this.subscription = this.courseConfigurationService.getSelectedTab().subscribe(selectedTab => {
       if (selectedTab) {
@@ -196,7 +201,11 @@ export class CursoUpdateComponent implements OnInit {
       ficha
     };
     if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
-      alert('Falta título');
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', {
+          message: 'constructorApp.curso.validations.title'
+        })
+      );
       return;
     }
     curso.portadaUrl = this.portadaUrl;
