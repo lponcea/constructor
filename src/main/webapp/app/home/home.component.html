@@ -15,6 +15,12 @@
 
     </div>
 
+    <div class="window-br-body-topbar">
+      <div class="row-wbr-bt" *ngIf="cursos.length">
+        <P>Tus elementos recientes ( {{cursos.length}} )</P>
+      </div>
+    </div>
+
     <div class="window-br-body" *ngIf="!cursos.length">
       <div class="container-br-message">
         <div class="br-message">
@@ -26,9 +32,7 @@
       </div>
     </div>
 
-    <div class="window-br-body-topbar">
-      <P>Tus elementos recientes ( {{cursos.length}} )</P>
-    </div>
+
 
     <div class="window-br-body" *ngIf="cursos.length">
 

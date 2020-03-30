@@ -98,14 +98,23 @@
     width: 100%;
     height: 50px;
     background-color: $window-body-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    p {
+    .row-wbr-bt {
       position: relative;
-      font-size: 14px;
-      color: #292c36;
-      margin-left: 4%;
-      top: 15px;
-      cursor: default;
+      width: 92%;
+      height: auto;
+
+      p {
+        position: relative;
+        font-size: 14px;
+        color: #292c36;
+        // margin-left: 4%;
+        // top: 15px;
+        cursor: default;
+      }
     }
   }
 
@@ -288,7 +297,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100%;
-        animation: handshake 1s ease-in-out 1;
+        animation: handshake 2s ease-in-out 2;
       }
     }
     .brm-2 {

@@ -894,3 +894,36 @@ strong {
   background-size: 1800px;
   background-repeat: no-repeat;
 }
+
+// Window Cnfiguration Course
+.form-window-configuration {
+  position: relative;
+  width: 100%;
+  height: auto;
+  height: 525px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+.row-form-window-c {
+  position: relative;
+  width: 95%;
+  height: auto;
+  h2 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600px;
+    color: $nimbus-bluedark;
+  }
+}
+.row-window-general {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: red;
+}

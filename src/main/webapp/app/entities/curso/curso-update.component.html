@@ -1,5 +1,8 @@
-<form name="editForm" role="form" novalidate [formGroup]="editForm">
+<form name="editForm" role="form" novalidate [formGroup]="editForm" class="form-window-configuration">
+  <div class="row-form-window-c">
+
     <jhi-alert-error></jhi-alert-error>
+
     <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
 
     <!-- Campos que no son obligatorios o se llenan de la base de datos - Inicia -->
@@ -48,10 +51,10 @@
             </select>
         </div>
     </div>
-    <!-- Campos que no son obligatorios o se llenan de la base de datos - Termina -->    
+    <!-- Campos que no son obligatorios o se llenan de la base de datos - Termina -->
 
     <!-- Generales Inicia -->
-    <div [hidden]="selectedTabIndex !== 0" class="row">
+    <div [hidden]="selectedTabIndex !== 0" class="row row-generales">
         <div class="form-group col-md-4">
             <label class="form-control-label" jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="field_titulo"
@@ -78,7 +81,7 @@
             Subir portada
             <div *ngIf="coverPath !== ''">
                 <img [src]="coverPath" alt="" style="width: 50px; height: 50px;">
-            </div>            
+            </div>
             <input type="file" id="customFile" (change)="selectFile($event)">
             <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload($event)">Subir video</button>
         </div>
@@ -165,4 +168,6 @@
         <jhi-ficha-update></jhi-ficha-update>
     </div>
     <!-- Avanzado Termina -->
+
+  </div>
 </form>
