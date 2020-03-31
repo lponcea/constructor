@@ -81,36 +81,37 @@ public class CursoServiceImpl implements CursoService {
      * @param id the id of the entity.
      */
     @Override
+    @Transactional
     public void delete(Long id) {
         log.debug("Request to delete Curso : {}", id);
         cursoRepository.deleteById(id);
     }
 
 	@Override
+	@Transactional
 	public CursoFicha save(CursoFicha cursoFicha) {
 	
-		log.debug("Request to save Curso : {}", cursoFicha);
-		Curso curso = new Curso();
-		Ficha ficha =  new Ficha();
-		CursoFicha cf = new CursoFicha();
-		
-		curso = cursoFicha.getCurso();
-		ficha = cursoFicha.getFicha();
-		
-		log.debug("Request to save Curso : {}", curso);
-		log.debug("Request to save ficha : {}", ficha);
-		
-		curso = cursoRepository.save(curso);
-		
-		ficha.setCurso(curso);
-		ficha = fichaService.save(ficha);
-		
-		log.debug("ficha id {}", ficha.getCurso().getId());
-		log.debug("curso id {}", curso.getId());
-		
-		cf.setCurso(curso);
-		cf.setFicha(ficha);
-		
+			log.debug("Request to save Curso : {}", cursoFicha);
+			Curso curso = new Curso();
+			Ficha ficha =  new Ficha();
+			CursoFicha cf = new CursoFicha();
+			
+			curso = cursoFicha.getCurso();
+			ficha = cursoFicha.getFicha();
+			log.debug("Request to save Curso : {}", curso);
+			log.debug("Request to save ficha : {}", ficha);
+			
+			curso = cursoRepository.save(curso);
+			
+			ficha.setCurso(curso);
+			ficha = fichaService.save(ficha);
+			
+			log.debug("ficha id {}", ficha.getCurso().getId());
+			log.debug("curso id {}", curso.getId());
+			
+			cf.setCurso(curso);
+			cf.setFicha(ficha);
+			
 		return cf;
 	}
 }
