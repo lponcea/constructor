@@ -23,10 +23,12 @@
         display: inline-block;
         height: 26px;
         line-height: 25px;
-        border: 1px solid #acacac;
-        border-radius: 3px;
-        background: -webkit-linear-gradient(top,#f0f9ff 0,#cbebff 47%,#a1dbff 100%);
-        background: linear-gradient(to bottom,#f0f9ff 0,#cbebff 47%,#a1dbff 100%);
+        border: 0;
+        border-radius: 4px;
+        background-color: #1a3d82;
+        /* background: -webkit-linear-gradient(top,#f0f9ff 0,#cbebff 47%,#a1dbff 100%);
+        background: linear-gradient(to bottom,#f0f9ff 0,#cbebff 47%,#a1dbff 100%); */
+        color: white;
     }
     .auto-complete {
         margin-top: 5px;
@@ -66,12 +68,12 @@
         cursor: pointer;
         vertical-align: middle;
         font: 700 16px Arial,sans-serif;
-        color: #585858;
+        color: silver;
     }
 </style>
 <div class="row justify-content-center">
     <div class="col-10">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">            
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <!-- Colaboradores -->
@@ -82,7 +84,7 @@
                         <ul [hidden]="!selectedColaboradors.length">
                             <li *ngFor="let colaborador of selectedColaboradors; let selectedIndex = index" class="selected-option">
                                 <span>{{colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador}}</span>
-                                <a class="remove-button" (click)="removeTag(selectedIndex)">×</a>                                
+                                <a class="remove-button" (click)="removeTag(selectedIndex)">×</a>
                             </li>
                         </ul>
                         <input type="text" #inputstring (keyup)="search(inputstring.value)" class="search">

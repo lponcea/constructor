@@ -1,53 +1,48 @@
-.container-home-test {
+@import '../../content/scss/variables.scss';
+
+// height: calc(100vh - 60px);
+
+.window-br {
   position: relative;
-  width: 100%;
-  // height: calc(100vh - 60px);
-  height: 100vh;
-  background-color: #101233;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../../content/images/bg2.png');
-  background-position: center;
-  background-size: 1800px;
-  background-repeat: no-repeat;
-}
-.c-home-constructor {
-  position: relative;
-  width: 90%;
-  max-width: 1100px;
+  width: 92%;
+  max-width: 1150px;
   height: 700px;
   background-color: white;
-  border-radius: 4px;
+  background-color: silver;
+  border-radius: 6px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  .header-c-h-c {
+  // Window Header
+  .window-br-header {
     position: relative;
     width: 100%;
-    height: 120px;
-    background-color: #e7e8ed;
-    border-radius: 4px 4px 0 0;
+    height: 100px;
+    background-color: $window-header-color;
+    border-radius: 6px 6px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid $window-divider-color;
+
     .r1 {
       position: relative;
       width: 30%;
       height: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       .logo-create {
         position: relative;
-        width: 192px;
-        height: 68px;
+        width: 152px;
+        height: 54px;
         background-image: url('../../content/images/logo_create.svg');
         background-position: center;
         background-size: 100%;
         background-repeat: no-repeat;
+        margin-left: 12%;
       }
     }
     .r2 {
@@ -71,10 +66,10 @@
           position: relative;
           width: 100px;
           height: auto;
-          font-size: 14px;
+          font-size: 13px;
           line-height: 18px;
           font-weight: 600;
-          color: #142145;
+          color: $linktext-color;
           cursor: pointer;
           margin-right: 8px;
           .icon {
@@ -82,7 +77,7 @@
             float: left;
             width: 20px;
             height: 20px;
-            margin-right: 8px;
+            margin-right: 6px;
             background-position: center;
             background-size: 100%;
             background-repeat: no-repeat;
@@ -91,140 +86,264 @@
             background-image: url('../../content/images/icn_support.svg');
           }
           .icn-tutto {
-            background-image: url('../../content/images/icn_tutto.svg');
+            background-image: url('../../content/images/icn_help.svg');
           }
         }
       }
     }
   }
-  .body-c-h-c {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    background-color: #f5f6fa;
-    overflow-y: auto;
 
-    .title-body-chc {
-      position: absolute;
-      width: 100%;
-      height: 50px;
-      background-color: #f5f6fa;
-      left: 0;
-      top: 0px;
-      z-index: 2;
-      p {
-        position: relative;
-        font-size: 14px;
-        color: #292c36;
-        margin-left: 4%;
-        top: 15px;
-        cursor: default;
-      }
-    }
-  }
-  .footer-c-h-c {
+  .window-br-body-topbar {
     position: relative;
     width: 100%;
-    height: 80px;
-    border-top: 1px solid #cecfd2;
+    height: 50px;
+    background-color: $window-body-color;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    .button-create-new {
+    .row-wbr-bt {
       position: relative;
-      width: 100px;
-      height: 34px;
-      background-color: #0059ff;
-      border-radius: 14px;
-      font-size: 14px;
-      font-weight: 600;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.3s;
-      &:hover {
-        background-color: #003eaf;
+      width: 92%;
+      height: auto;
+
+      p {
+        position: relative;
+        font-size: 14px;
+        color: #292c36;
+        // margin-left: 4%;
+        // top: 15px;
+        cursor: default;
       }
     }
   }
+
+  // Window body
+  .window-br-body {
+    position: relative;
+    width: 100%;
+    height: 475px;
+    // background-color: #f5f6fa;
+    background-color: $window-body-color;
+    overflow-y: auto;
+    padding-bottom: 30px;
+  }
+  .window-br-footer {
+    position: relative;
+    width: 100%;
+    height: 75px;
+    background-color: $window-footer-color;
+    border-top: 1px solid $window-divider-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 6px 6px;
+  }
 }
 
-.row-body-chc {
+.br-body-row {
   position: relative;
   width: 94%;
   height: auto;
   margin: 0 auto;
-  margin-top: 60px;
   z-index: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  @include covers-l {
+    width: 98%;
+  }
 }
-.cover-test {
+// Course element
+.course-cover-br {
   position: relative;
   width: 182px;
-  height: 170px;
-  margin: 12px;
-  margin-top: 15px;
+  height: auto;
+  min-height: 175px;
+  margin-left: 14px;
+  margin-right: 14px;
+  margin-top: 16px;
+  margin-bottom: 4px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer !important;
-
-  &:hover > .cover-home {
-    background-color: rgba(16, 18, 51, 0.2) !important;
+  @include covers-xl {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  @include covers-l {
+    margin-left: 9px;
+    margin-right: 9px;
+  }
+  @include covers-ml {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
-  .cover-home {
+  &:hover > .course-cover-br-margin {
+    background-color: rgba(135, 135, 150, 0.3) !important;
+  }
+  .course-cover-br-margin {
     position: relative;
     width: 182px;
     height: 120px;
-    background-color: rgba(16, 18, 51, 0.1);
+    background-color: rgba(135, 135, 150, 0.1);
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.4s;
-    cursor: pointer;
+    z-index: 1;
 
-    .cover-home-image {
+    .course-cover-br-image {
       position: relative;
-      width: 172px;
-      height: 110px;
-      // background-image: url('../../content/images/cover_test5.png');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
+      width: 176px;
+      height: 114px;
       border-radius: 4px;
       cursor: pointer;
+      background-color: white;
+      transition: 0.4s;
+      opacity: 1;
     }
   }
-  .desc-cover-home {
+  .course-desc-br-row {
     position: relative;
     width: 100%;
-    height: 45px;
+    height: auto;
+    min-height: 45px;
     display: flex;
     flex-direction: column;
+    z-index: 1;
+    margin-top: 5px;
 
-    .title-dch {
+    .title-course-br {
       position: relative;
       width: 100%;
       height: auto;
-      font-size: 14px;
-      color: #142145;
+      font-size: 13px;
+      color: $nimbus-bluedark;
+      line-height: 16px;
+      font-weight: 400;
     }
-    .descp-dch {
+    .desc-course-br {
       position: relative;
       width: 100%;
       height: auto;
       font-size: 12px;
-      color: #54565d;
     }
+  }
+}
+.delete-course-br {
+  position: absolute;
+  right: 10px;
+  // top: 10px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: $secondary-btn-color;
+  z-index: 2;
+  transition: 0.3s;
+  border-radius: 50%;
+  background-image: url('../../content/images/delete_art_icn.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  &:hover {
+    background-color: $secondary-btn-hover;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.container-br-message {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .br-message {
+    position: relative;
+    width: 250px;
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .brm-1 {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .br-message-icon {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background-image: url('../../content/images/icn_sessage_hand.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        animation: handshake 2s ease-in-out 2;
+      }
+    }
+    .brm-2 {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      text-align: center;
+      p {
+        color: $blue-nimbus-dark;
+        line-height: 22px;
+        cursor: default;
+
+        span {
+          color: $blue-nimbus-light;
+        }
+      }
+    }
+  }
+}
+
+@keyframes handshake {
+  0% {
+    transform: rotate(0);
+  }
+  15% {
+    transform: rotate(5deg);
+  }
+  30% {
+    transform: rotate(-5deg);
+  }
+  45% {
+    transform: rotate(4deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+  85% {
+    transform: rotate(-2deg);
+  }
+  92% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0);
   }
 }
