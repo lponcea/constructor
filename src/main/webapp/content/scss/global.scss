@@ -914,17 +914,6 @@ select:-webkit-autofill:focus {
   background-color: white;
 }
 
-// input:focus, textarea:focus,
-// keygen:focus, select:focus {
-//     outline-offset: -2px;
-//     color: red;
-//     font-size: 10px !important;
-// }
-
-// input[type='text']{
-//  font-size: 14px;
-//  line-height: 14px;
-// }
 input::-webkit-input-placeholder {
   font-size: 14px !important;
   color: #aaa;
@@ -934,7 +923,7 @@ input::-webkit-input-placeholder {
 // Window Cnfiguration Course
 .form-window-configuration {
   position: relative;
-  width: 100%;
+  width: 100% !important;
   height: auto;
   height: 525px;
   display: flex;
@@ -945,7 +934,6 @@ input::-webkit-input-placeholder {
   position: relative;
   width: 95%;
   height: auto;
-  // width: 1000px;
   h2 {
     position: relative;
     width: 100%;
@@ -1134,4 +1122,122 @@ select {
 
 .text-transform-none {
   text-transform: none;
+}
+
+// Avanzado
+.row-colaboradores {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 25px;
+}
+
+// Colaboradores
+.container-colaboradores {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .col-colaboradores {
+    position: relative;
+    width: 65%;
+    height: auto;
+    min-height: 100px;
+
+    label {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+  }
+  .col-editorial {
+    position: relative;
+    width: 30%;
+    height: auto;
+  }
+}
+.search-field-colaboradores {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  word-wrap: break-word;
+  cursor: text;
+  background-color: white;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px;
+}
+.search-colaboradores {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  float: left;
+  border-bottom: 2px solid $window-divider-color;
+}
+.selected-option {
+  margin: 2px;
+  padding: 0 5px;
+  float: left;
+  display: inline-block;
+  height: 26px;
+  line-height: 25px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #1a3d82;
+  color: white;
+  font-size: 13px;
+}
+.auto-complete {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  background-color: white;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow-y: auto;
+}
+.suggestion-list {
+  position: relative;
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+  // max-height: 280px;
+  // overflow-y: auto;
+}
+.suggestion-item {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: $nimbus-bluedark;
+  position: relative;
+  width: 100%;
+  height: auto;
+  // border-bottom: 1px solid $window-divider-color;
+  padding: 5px;
+  padding-left: 10px;
+  transition: 0.3s;
+  &:hover {
+    background-color: #f4f4f4;
+  }
+}
+.remove-button {
+  // margin: 0 0 0 5px;
+  padding: 0;
+  border: none;
+  background: 0 0;
+  cursor: pointer;
+  vertical-align: middle;
+  color: silver;
 }
