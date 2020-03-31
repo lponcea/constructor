@@ -26,6 +26,8 @@ import { FileUploadService } from 'app/services/file-upload.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FichaUpdateComponent } from '../ficha/ficha-update.component';
 
+import { JhiEventManager, JhiAlertService, JhiAlert, JhiEventWithContent } from 'ng-jhipster';
+
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
 @Component({
@@ -46,7 +48,9 @@ export class CursoUpdateComponent implements OnInit {
   fechaPublicacionDp: any;
   fechaPublicacionSysDp: any;
   maxiCoverSize = 50000000;
-  allowedFileTypes = [];
+  allowedFileTypes: any = ['image/jpg', 'image/jpeg', 'image/png'];
+  showUploadButton = false;
+  alerts: JhiAlert[] = [];
 
   changeImage = false;
   selectedFiles = FileList;
@@ -93,7 +97,9 @@ export class CursoUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private courseConfigurationService: CourseConfigurationService,
     private fileUploadService: FileUploadService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private alertService: JhiAlertService,
+    private eventManager: JhiEventManager
   ) {
     this.subscription = this.courseConfigurationService.getSelectedTab().subscribe(selectedTab => {
       if (selectedTab) {
@@ -195,7 +201,11 @@ export class CursoUpdateComponent implements OnInit {
       ficha
     };
     if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
-      alert('Falta título');
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', {
+          message: 'constructorApp.curso.validations.title'
+        })
+      );
       return;
     }
     curso.portadaUrl = this.portadaUrl;
@@ -268,7 +278,10 @@ export class CursoUpdateComponent implements OnInit {
     this.currentFileUpload = this.selectedFiles[0];
     this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {
       this.portadaUrl = event.path;
-      if (event) this.getCover(event.path);
+      if (event) {
+        this.getCover(event.path);
+        this.showUploadButton = false;
+      }
     });
   }
 
@@ -280,6 +293,15 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
+    if (event.target.files[0].size > this.maxiCoverSize) {
+      alert('La imagen debe pesar menos de 30MB.');
+      return;
+    } else if (!this.allowedFileTypes.includes(event.target.files[0].type)) {
+      alert('Tipo de archivo no permitido.');
+      return;
+    } else {
+      this.selectedFiles = event.target.files;
+      this.showUploadButton = true;
+    }
   }
 }

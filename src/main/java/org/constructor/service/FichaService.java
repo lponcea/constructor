@@ -5,6 +5,8 @@ import org.constructor.domain.Ficha;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.sun.mail.imap.protocol.ID;
+
 import java.util.Optional;
 
 /**
@@ -49,4 +51,5 @@ public interface FichaService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
 }
