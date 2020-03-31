@@ -4,15 +4,25 @@
   <!-- Colaboradores -->
   <div class="col-colaboradores">
     <label jhiTranslate="constructorApp.ficha.colaborador" for="field_colaboradors">Colaborador</label>
-      <!-- Input y etiquetas -->
-      <div class="search-field-colaboradores">
-        <ul [hidden]="!selectedColaboradors.length">
-          <li *ngFor="let colaborador of selectedColaboradors; let selectedIndex = index" class="selected-option">
-            <span>{{colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador}}</span>
-            <a class="remove-button" (click)="removeTag(selectedIndex)">×</a>
-          </li>
-        </ul>
-        <input type="text" #inputstring (keyup)="search(inputstring.value)" class="search-colaboradores">
+      <div class="area-colaboradores">
+
+        <!-- Input y etiquetas -->
+        <div class="search-field-colaboradores">
+          <ul [hidden]="!selectedColaboradors.length">
+            <li *ngFor="let colaborador of selectedColaboradors; let selectedIndex = index" class="selected-option">
+              <span>{{colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador}}</span>
+              <a class="remove-button" (click)="removeTag(selectedIndex)"></a>
+            </li>
+          </ul>
+
+          <div class="search-tag-colaborador">
+            <span></span>
+            <input type="text" #inputstring (keyup)="search(inputstring.value)">
+          </div>
+
+
+        </div>
+
         <!-- Opciones -->
         <div class="auto-complete" [hidden]="!foundColaboradors.length">
           <ul class="suggestion-list">
@@ -21,7 +31,6 @@
         </div>
 
       </div>
-
 
   </div>
 
