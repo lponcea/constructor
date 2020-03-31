@@ -16,6 +16,9 @@
       "detail": {
         "title": "Curso"
       },
+      "validations": {
+        "title": "Por favor ingresa un título."
+      },
       "titulo": "Titulo",
       "descripcion": "Descripcion",
       "modoDistribucion": "Modo Distribucion",

@@ -16,8 +16,8 @@ export class FileUploadService {
     return this.http.post(SERVER_API_URL + '/api/fileUpload', data);
   }
 
-  getFile(videoPath: string): Observable<HttpResponse<Blob>> {
-    return this.http.get(SERVER_API_URL + '/api/loadVideo?file=' + videoPath, {
+  getFile(filePath: string): Observable<HttpResponse<Blob>> {
+    return this.http.get(SERVER_API_URL + '/api/loadImage?file=' + filePath, {
       observe: 'response',
       responseType: 'blob'
     });

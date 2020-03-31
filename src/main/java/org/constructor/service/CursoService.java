@@ -45,4 +45,5 @@ public interface CursoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
 }

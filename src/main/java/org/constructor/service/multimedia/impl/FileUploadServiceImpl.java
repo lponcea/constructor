@@ -29,10 +29,10 @@ public class FileUploadServiceImpl implements FileUploadService {
 	public VideoResponse saveFile(MultipartFile file) {
 	    VideoResponse videoResponse = new VideoResponse();
 		try {
+			log.debug("*********************** FileUploadServiceImplement **********************");
 				String extension = FilenameUtils.getExtension(file.getOriginalFilename());
 				String replace = null; 
 				videoResponse.setName(file.getOriginalFilename());
-				log.debug("Save File: {}", file);
 				//Create Path
 				StringBuilder builder = new StringBuilder();
 				PathValidation.createPath(upload_folder);
@@ -62,6 +62,8 @@ public class FileUploadServiceImpl implements FileUploadService {
 						builder.append("docs");
 						log.debug("builder docs : {}", builder);
 						PathValidation.createPath(builder.toString());
+					}else {
+						videoResponse.setPath(null);
 					}
 					
 				builder.append(File.separator);

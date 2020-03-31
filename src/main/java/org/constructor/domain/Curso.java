@@ -1,4 +1,5 @@
 package org.constructor.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -73,8 +74,12 @@ public class Curso implements Serializable {
     @Column(name = "portada_url")
     private String portadaUrl;
 
+    
+    @OneToOne(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Ficha ficha;
+    
     @ManyToOne
-    @JsonIgnoreProperties("cursos")
+    @JsonIgnoreProperties("cursos") 
     private Modalidad modalidad;
 
     @ManyToOne
@@ -295,6 +300,19 @@ public class Curso implements Serializable {
 
     public void setPortadaUrl(String portadaUrl) {
         this.portadaUrl = portadaUrl;
+    }
+    
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public Curso ficha(Ficha ficha) {
+        this.ficha = ficha;
+        return this;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
     }
 
     public Modalidad getModalidad() {

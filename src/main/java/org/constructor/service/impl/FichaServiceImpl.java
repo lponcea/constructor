@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sun.mail.imap.protocol.ID;
+
 import java.util.Optional;
 
 /**
@@ -76,6 +78,7 @@ public class FichaServiceImpl implements FichaService {
         return fichaRepository.findOneWithEagerRelationships(id);
     }
 
+
     /**
      * Delete the ficha by id.
      *
@@ -86,4 +89,5 @@ public class FichaServiceImpl implements FichaService {
         log.debug("Request to delete Ficha : {}", id);
         fichaRepository.deleteById(id);
     }
+
 }

@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     if (data) {
       this.cursos = data;
       for (let i = 0; i < this.cursos.length; i++) {
-        this.getCover(this.cursos[i].portadaUrl, i);
+        if (this.cursos[i].portadaUrl !== '') this.getCover(this.cursos[i].portadaUrl, i);
       }
     }
   }
