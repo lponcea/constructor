@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.sun.mail.imap.protocol.ID;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +27,5 @@ public interface FichaRepository extends JpaRepository<Ficha, Long> {
 
     @Query("select ficha from Ficha ficha left join fetch ficha.colaboradors where ficha.id =:id")
     Optional<Ficha> findOneWithEagerRelationships(@Param("id") Long id);
-
+    
 }
