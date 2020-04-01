@@ -137,30 +137,62 @@
 
       </div>
       <!-- End row-wg -->
-
     </div>
     <!-- Generales Termina -->
 
-
     <!-- Avanzado Inicia -->
-
     <div [hidden]="selectedTabIndex !== 1" class="row-window-general">
       <!-- Start row -->
-      <div class="row-wg">
+      <div class="row-wg z-index-3">
         <!-- Start col -->
         <div class="col-window-g">
-
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
               <div class="input-group">
                   <input id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" formControlName="fechaCreacion"/>
                   <span class="input-group-append">
-                      <button type="button" class="btn btn-secondary" (click)="fechaCreacionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                      <button type="button" class="btn-calendar-select" (click)="fechaCreacionDp.toggle()"></button>
                   </span>
               </div>
           </div>
+        </div>
+        <!-- End Col -->
+        <!-- Start col -->
+        <div class="col-window-g">
+          <div class="form-nimbus">
+              <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaPublicacion" for="field_fechaPublicacion">Fecha Publicacion</label>
+              <div class="input-group">
+                  <input id="field_fechaPublicacion" type="text" class="form-control" name="fechaPublicacion" ngbDatepicker  #fechaPublicacionDp="ngbDatepicker" formControlName="fechaPublicacion"/>
+                  <span class="input-group-append">
+                      <button type="button" class="btn-calendar-select" (click)="fechaPublicacionDp.toggle()"></button>
+                  </span>
+              </div>
+          </div>
+        </div>
+        <!-- End Col -->
+        <!-- Start col -->
+        <div class="col-window-g">
+          <div class="form-nimbus">
+              <label jhiTranslate="constructorApp.curso.numeroEdicion" for="field_numeroEdicion">Numero Edicion</label>
+              <input type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion"
+                     formControlName="numeroEdicion"/>
+          </div>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
 
-          <div class="form-nimbus margintop-25">
+      <!-- Start row colaboradores -->
+      <div class="row-colaboradores z-index-2">
+        <jhi-ficha-update></jhi-ficha-update>
+      </div>
+      <!-- End row colaboradores -->
+
+      <!-- Start row 2 -->
+      <div class="row-wg margintop-25">
+        <!-- Start col -->
+        <div class="col-window-g">
+          <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.modoDistribucion" for="field_modoDistribucion">Modo Distribucion</label>
               <select class="form-control" name="modoDistribucion" formControlName="modoDistribucion" id="field_modoDistribucion">
                   <option value="PAGO">{{'constructorApp.ModoDistribucion.PAGO' | translate}}</option>
@@ -168,78 +200,63 @@
                   <option value="LIBRE">{{'constructorApp.ModoDistribucion.LIBRE' | translate}}</option>
               </select>
           </div>
-
-          <div class="form-nimbus margintop-25">
-              <label class="form-control-label" jhiTranslate="constructorApp.curso.versionStr" for="field_versionStr">Version Str</label>
-              <input type="text" class="form-control" name="versionStr" id="field_versionStr"
-                     formControlName="versionStr"/>
-          </div>
-
         </div>
-        <!-- End Col -->
-
+        <!-- End col   -->
         <!-- Start col -->
         <div class="col-window-g">
-
           <div class="form-nimbus">
-              <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaPublicacion" for="field_fechaPublicacion">Fecha Publicacion</label>
-              <div class="input-group">
-                  <input id="field_fechaPublicacion" type="text" class="form-control" name="fechaPublicacion" ngbDatepicker  #fechaPublicacionDp="ngbDatepicker" formControlName="fechaPublicacion"/>
-                  <span class="input-group-append">
-                      <button type="button" class="btn btn-secondary" (click)="fechaPublicacionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                  </span>
-              </div>
-          </div>
-
-          <div class="form-nimbus margintop-25">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.modalidad" for="field_modalidad">Modalidad</label>
               <select class="form-control" id="field_modalidad" name="modalidad" formControlName="modalidad">
                   <option [ngValue]="null"></option>
                   <option [ngValue]="modalidadOption.id === editForm.get('modalidad')!.value?.id ? editForm.get('modalidad')!.value : modalidadOption" *ngFor="let modalidadOption of modalidads; trackBy: trackById">{{modalidadOption.descripcion}}</option>
               </select>
           </div>
-
-          <div class="form-nimbus margintop-25">
-              <label class="form-control-label" jhiTranslate="constructorApp.curso.palabraClave" for="field_palabraClave">Palabra Clave</label>
-              <input type="text" class="form-control" name="palabraClave" id="field_palabraClave"
-                     formControlName="palabraClave"/>
-          </div>
-
         </div>
-        <!-- End Col -->
-
+        <!-- End col   -->
         <!-- Start col -->
         <div class="col-window-g">
-
           <div class="form-nimbus">
-              <label jhiTranslate="constructorApp.curso.numeroEdicion" for="field_numeroEdicion">Numero Edicion</label>
-              <input type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion"
-                     formControlName="numeroEdicion"/>
-          </div>
-
-          <div class="form-nimbus margintop-25">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.categoria" for="field_categoria">Categoria</label>
               <select class="form-control" id="field_categoria" name="categoria" formControlName="categoria">
                   <option [ngValue]="null"></option>
                   <option [ngValue]="categoriaOption.id === editForm.get('categoria')!.value?.id ? editForm.get('categoria')!.value : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackById">{{categoriaOption.descripcion}}</option>
               </select>
           </div>
-
-          <div class="form-nimbus margintop-25">
+        </div>
+        <!-- End col   -->
+      </div>
+      <!-- End row   -->
+      <!-- Start row 3 -->
+      <div class="row-wg margintop-25 z-index-1">
+        <!-- Start col -->
+        <div class="col-window-g">
+          <div class="form-nimbus">
+              <label class="form-control-label" jhiTranslate="constructorApp.curso.versionStr" for="field_versionStr">Version Str</label>
+              <input type="text" class="form-control" name="versionStr" id="field_versionStr"
+                     formControlName="versionStr"/>
+          </div>
+        </div>
+        <!-- End col   -->
+        <!-- Start col -->
+        <div class="col-window-g">
+          <div class="form-nimbus">
+              <label class="form-control-label" jhiTranslate="constructorApp.curso.palabraClave" for="field_palabraClave">Palabra Clave</label>
+              <input type="text" class="form-control" name="palabraClave" id="field_palabraClave"
+                     formControlName="palabraClave"/>
+          </div>
+        </div>
+        <!-- End col   -->
+        <!-- Start col -->
+        <div class="col-window-g">
+          <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.clave" for="field_clave">Clave</label>
               <input type="text" class="form-control" name="clave" id="field_clave"
                      formControlName="clave"/>
           </div>
-
         </div>
-        <!-- End Col -->
-
+        <!-- End col   -->
       </div>
-      <!-- End Row -->
-
-      <div class="row-colaboradores">
-        <jhi-ficha-update></jhi-ficha-update>
-      </div>
+      <!-- End row   -->
 
     </div>
     <!-- Avanzado Termina -->
