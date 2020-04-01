@@ -6,9 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.constructor.multimedia.response.MultimediaResponse;
 import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.service.CursoService;
-import org.constructor.service.multimedia.FileUploadService;
+import org.constructor.service.multimedia.MultimediaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.slf4j.Logger;
@@ -18,8 +20,12 @@ import liquibase.util.file.FilenameUtils;
 
 
 @Service
-public class FileUploadServiceImpl implements FileUploadService {
-	private final Logger log = LoggerFactory.getLogger(FileUploadServiceImpl.class);
+public class MultimediaServiceImpl implements MultimediaService {
+	@Autowired
+	private  CursoService cursoService;
+	
+	private static final String path =  System.getProperty("user.home") + "/resources" + File.separator;
+	private final Logger log = LoggerFactory.getLogger(MultimediaServiceImpl.class);
 	private static final String upload_folder =  System.getProperty("user.home") + "/resources" + File.separator + "nimbus";
 	enum extVideo { MP4, VGA};
 	enum extImage { JPG, PNG};
@@ -84,5 +90,57 @@ public class FileUploadServiceImpl implements FileUploadService {
 			return videoResponse;
 		 } 
 	}
+
+	@Override
+	public MultimediaResponse deleteCourseCover(Long id) {
+		MultimediaResponse multimediaResponse = new MultimediaResponse();
+		boolean status = false;
+		String filePath = "";
+		String response = "";
+		
+		log.debug("*************************   deleteCourseCover *******************");
+		
+		filePath =  cursoService.FindCourseCover(id);
+		log.debug("filePath : {}", filePath);
+		
+		if(filePath == null) {
+			log.debug("ID no encontrado ");
+			multimediaResponse.setStatus(false);
+			multimediaResponse.setMessage("Id not found");
+			return multimediaResponse;
+		}
+			
+		status = deleteFile(filePath);
+		
+		if(status) {
+			multimediaResponse.setStatus(true);
+			multimediaResponse.setMessage("File removed successfully");
+		}else {
+			multimediaResponse.setStatus(false);
+			multimediaResponse.setMessage("File not found");
+		}
+		
+		
+		
+		return multimediaResponse;
+	}
+
+	@Override
+	public boolean deleteFile(String pathfile) {
+		log.debug("deleteFile: {} ", pathfile);
+		boolean status = false; 
+		File file = new File(path+pathfile);
+		if (file.exists()) {
+
+			if (file.delete()) {
+				status = true;
+			} else {
+				status = false;
+			}
+		}
+		return status;
+	}
+	
+	
 
 }
