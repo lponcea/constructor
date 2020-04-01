@@ -46,4 +46,6 @@ public interface CursoService {
      */
     void delete(Long id);
     
+    String FindCourseCover(Long id);
+    
 }

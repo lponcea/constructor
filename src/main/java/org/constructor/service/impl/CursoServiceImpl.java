@@ -114,4 +114,11 @@ public class CursoServiceImpl implements CursoService {
 			
 		return cf;
 	}
+
+	@Override
+	public String FindCourseCover(Long id) {
+		
+		
+		return cursoRepository.findByCourseCoverId(id);
+	}
 }
