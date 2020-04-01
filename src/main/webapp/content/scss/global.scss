@@ -976,6 +976,27 @@ input::-webkit-input-placeholder {
     }
   }
 }
+.rwg-header {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+
+  h2 {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+  p {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    font-size: 12;
+    color: grey;
+    text-align: right;
+  }
+}
 // Form Nimbus
 .form-nimbus {
   position: relative;
@@ -1193,7 +1214,10 @@ select {
   transition: 0.3s;
   border: 2px solid $input-border-light;
   &:hover {
-    border: 2px solid $input-border-hover;
+    border-color: $input-border-hover;
+  }
+  &:focus {
+    border-color: $input-border-hover;
   }
 
   span {

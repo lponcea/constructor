@@ -3,7 +3,7 @@
 
     <jhi-alert-error></jhi-alert-error>
 
-    <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
+    <!-- <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2> -->
 
     <!-- Campos que no son obligatorios o se llenan de la base de datos - Inicia -->
     <div style="display: none;">
@@ -55,11 +55,15 @@
 
     <!-- Generales Inicia -->
     <div [hidden]="selectedTabIndex !== 0" class=" row-window-general">
-
-      <div class="row-wg">
+      <div class="rwg-header">
+        <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
+        <p>*Campo obligatorio</p>
+      </div>
+      <div class="row-wg margintop-25">
         <div class="col-window-g">
           <div class="form-nimbus">
-              <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label>
+              <!-- <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label> -->
+              <label for="field_titulo">Titulo*</label>
               <input type="text" class="form-control" name="titulo" id="field_titulo"
                      formControlName="titulo"/>
           </div>
@@ -102,7 +106,6 @@
 
         </div>
 
-
         <div class="col-window-g">
           <div class="cover-upload-c">
               <label class="label-cover-c">Subir portada</label>
@@ -142,8 +145,12 @@
 
     <!-- Avanzado Inicia -->
     <div [hidden]="selectedTabIndex !== 1" class="row-window-general">
+      <div class="rwg-header">
+        <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
+        <p>*Campo obligatorio</p>
+      </div>
       <!-- Start row -->
-      <div class="row-wg z-index-3">
+      <div class="row-wg z-index-3 margintop-25">
         <!-- Start col -->
         <div class="col-window-g">
           <div class="form-nimbus">
