@@ -293,15 +293,19 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   selectFile(event: any): void {
-    if (event.target.files[0].size > this.maxiCoverSize) {
-      alert('La imagen debe pesar menos de 30MB.');
-      return;
-    } else if (!this.allowedFileTypes.includes(event.target.files[0].type)) {
-      alert('Tipo de archivo no permitido.');
-      return;
-    } else {
-      this.selectedFiles = event.target.files;
-      this.showUploadButton = true;
+    if (event.target.files.length) {
+      if (event.target.files[0].size > this.maxiCoverSize) {
+        alert('La imagen debe pesar menos de 30MB.');
+        return;
+      } else if (!this.allowedFileTypes.includes(event.target.files[0].type)) {
+        alert('Tipo de archivo no permitido.');
+        return;
+      } else {
+        this.selectedFiles = event.target.files;
+        this.showUploadButton = true;
+      }
     }
   }
+
+  deteleCover(): void {}
 }

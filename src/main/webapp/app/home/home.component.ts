@@ -19,34 +19,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   account: Account | null = null;
   authSubscription?: Subscription;
   coverPaths = [];
-  /*
-  cursos = [
-    {
-      titulo: 'Español',
-      portadaPath: ''
-    },
-    {
-      titulo: 'Matemáticas',
-      portadaPath: ''
-    },
-    {
-      titulo: 'Geografía',
-      portadaPath: ''
-    },
-    {
-      titulo: 'Física',
-      portadaPath: ''
-    },
-    {
-      titulo: 'Test',
-      portadaPath: ''
-    },
-    {
-      titulo: 'Historia',
-      portadaPath: ''
-    }
-  ];
-  */
   cursos: any = [];
   constructor(
     private accountService: AccountService,
@@ -56,24 +28,28 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit(): void {}
-
-  protected onQuerySuccess(data: ICurso[] | null): void {
-    if (data) {
-      this.cursos = data;
-      for (let i = 0; i < this.cursos.length; i++) {
-        if (this.cursos[i].portadaUrl !== '') this.getCover(this.cursos[i].portadaUrl, i);
-      }
-    }
-  }
-
-  ngAfterContentInit(): void {
+  ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
     this.cursoService.query().subscribe(
       (res: HttpResponse<ICurso[]>) => this.onQuerySuccess(res.body),
       () => this.onQueryError()
     );
   }
+
+  protected onQuerySuccess(data: ICurso[] | null): void {
+    if (data) {
+      this.cursos = data;
+      for (let i = 0; i < this.cursos.length; i++) {
+        if (this.cursos[i].portadaUrl !== '') {
+          this.getCover(this.cursos[i].portadaUrl, i);
+        } else {
+          this.cursos[i].sanitizedPortadaUrl = '../../../content/images/no_cover.png';
+        }
+      }
+    }
+  }
+
+  ngAfterContentInit(): void {}
 
   protected onQueryError(): void {}
 
@@ -117,7 +93,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     this.fileUploadService.getFile(path).subscribe(data => {
       const coverPath = URL.createObjectURL(data.body);
       const objectUrl = this.sanitizer.bypassSecurityTrustUrl(coverPath);
-      this.cursos[index].portadaUrl = objectUrl;
+      this.cursos[index].sanitizedPortadaUrl = objectUrl;
     });
   }
 }

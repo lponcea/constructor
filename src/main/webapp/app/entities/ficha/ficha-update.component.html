@@ -8,7 +8,7 @@
       <div class="search-field-colaboradores">
         <ul [hidden]="!selectedColaboradors.length">
           <li *ngFor="let colaborador of selectedColaboradors; let selectedIndex = index" class="selected-option">
-            <span>{{colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador}}</span>
+            <span>{{(colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador).substring(1, 30)}}</span>
             <a class="remove-button" (click)="removeTag(selectedIndex)">×</a>
           </li>
         </ul>
@@ -16,7 +16,7 @@
         <!-- Opciones -->
         <div class="auto-complete" [hidden]="!foundColaboradors.length">
           <ul class="suggestion-list">
-            <li class="suggestion-item" *ngFor="let colaborador of foundColaboradors; let foundIndex = index" (click)="addTag(foundIndex, colaborador);">{{colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador}}</li>
+            <li class="suggestion-item" *ngFor="let colaborador of foundColaboradors; let foundIndex = index" (click)="addTag(foundIndex, colaborador);">{{(colaborador.nombres + " " + colaborador.apellido1 + " " + colaborador.apellido2 + " - " + colaborador.rolColaborador).substring(1, 30)}}</li>
           </ul>
         </div>
 

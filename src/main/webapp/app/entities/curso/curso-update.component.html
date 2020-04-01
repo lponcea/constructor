@@ -54,7 +54,7 @@
     <!-- Campos que no son obligatorios o se llenan de la base de datos - Termina -->
 
     <!-- Generales Inicia -->
-    <div [hidden]="selectedTabIndex !== 1" class=" row-window-general">
+    <div [hidden]="selectedTabIndex !== 0" class=" row-window-general">
 
       <div class="row-wg">
         <div class="col-window-g">
@@ -113,16 +113,22 @@
                   <div *ngIf="coverPath !== ''">
                       <img [src]="coverPath" alt="" class="cover-upload-img">
                   </div>
+                  <div *ngIf="coverPath === ''">
+                      <div>
+                            El libro no tiene portada
+                      </div>
+                  </div>
                 </div>
 
                 <div class="row-uic">
 
                   <input type="file" id="customFile" (change)="selectFile($event)">
+                  <button (click)="deteleCover()">Eliminar portada</button>
                 </div>
               </div>
 
               <div class="row-cover-upload-btn">
-                <button [disabled]="!selectedFiles || admincheck || status" (click)="upload($event)" class="secondary-btn text-transform-none">Subir imagen</button>
+                <button [hidden]="!selectedFiles.length" [disabled]="admincheck || status" (click)="upload($event)" class="secondary-btn text-transform-none">Subir imagen</button>
               </div>
 
               <!-- <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload($event)">Subir video</button> -->
@@ -138,7 +144,7 @@
 
     <!-- Avanzado Inicia -->
 
-    <div [hidden]="selectedTabIndex !== 0" class="row-window-general">
+    <div [hidden]="selectedTabIndex !== 1" class="row-window-general">
       <!-- Start row -->
       <div class="row-wg">
         <!-- Start col -->
