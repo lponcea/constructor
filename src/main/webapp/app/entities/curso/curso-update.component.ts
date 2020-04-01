@@ -295,14 +295,23 @@ export class CursoUpdateComponent implements OnInit {
   selectFile(event: any): void {
     if (event.target.files.length) {
       if (event.target.files[0].size > this.maxiCoverSize) {
-        alert('La imagen debe pesar menos de 30MB.');
+        this.eventManager.broadcast(
+          new JhiEventWithContent('constructorApp.validationError', {
+            message: 'constructorApp.curso.validations.fileSize'
+          })
+        );
         return;
       } else if (!this.allowedFileTypes.includes(event.target.files[0].type)) {
-        alert('Tipo de archivo no permitido.');
+        this.eventManager.broadcast(
+          new JhiEventWithContent('constructorApp.validationError', {
+            message: 'constructorApp.curso.validations.fileType'
+          })
+        );
         return;
       } else {
         this.selectedFiles = event.target.files;
         this.showUploadButton = true;
+        this.upload(event);
       }
     }
   }

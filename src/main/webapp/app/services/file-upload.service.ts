@@ -22,4 +22,8 @@ export class FileUploadService {
       responseType: 'blob'
     });
   }
+
+  deleteFile(filePath: string): Observable<any> {
+    return this.http.get(SERVER_API_URL + '/api/deleteFile?file=' + filePath);
+  }
 }

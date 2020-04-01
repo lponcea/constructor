@@ -1,3 +1,8 @@
+<style>
+    input[type="file"] {
+        display: none;
+    }
+</style>
 <form name="editForm" role="form" novalidate [formGroup]="editForm" class="form-window-configuration">
   <div class="row-form-window-c">
 
@@ -60,7 +65,7 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label>
-              <input type="text" class="form-control" name="titulo" id="field_titulo"
+              <input [ngClass]="{'alert-input': false}" type="text" class="form-control-label" name="titulo" id="field_titulo"
                      formControlName="titulo"/>
           </div>
 
@@ -106,9 +111,7 @@
         <div class="col-window-g">
           <div class="cover-upload-c">
               <label class="label-cover-c">Subir portada</label>
-
               <div class="cover-upload-img-row">
-
                 <div class="cover-path-area">
                   <div *ngIf="coverPath !== ''">
                       <img [src]="coverPath" alt="" class="cover-upload-img">
@@ -119,17 +122,21 @@
                       </div>
                   </div>
                 </div>
-
                 <div class="row-uic">
-
-                  <input type="file" id="customFile" (change)="selectFile($event)">
-                  <button (click)="deteleCover()">Eliminar portada</button>
+                    <button type="button" (click)="fileInput.click()">
+                        <span>Upload</span>
+                        <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" />
+                    </button>
+                    
+                    <button (click)="deteleCover()">Eliminar portada</button>
                 </div>
               </div>
 
+              <!--
               <div class="row-cover-upload-btn">
                 <button [hidden]="!selectedFiles.length" [disabled]="admincheck || status" (click)="upload($event)" class="secondary-btn text-transform-none">Subir imagen</button>
               </div>
+              -->
 
               <!-- <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload($event)">Subir video</button> -->
           </div>

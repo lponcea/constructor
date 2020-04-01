@@ -17,7 +17,9 @@
         "title": "Curso"
       },
       "validations": {
-        "title": "Por favor ingresa un título."
+        "title": "Por favor ingresa un título.",
+        "fileSize": "La imagen debe pesar menos de 30MB.",
+        "fileType": "Tipo de archivo no permitido."
       },
       "titulo": "Titulo",
       "descripcion": "Descripcion",
