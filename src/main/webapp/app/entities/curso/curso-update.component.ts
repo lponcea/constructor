@@ -27,7 +27,6 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FichaUpdateComponent } from '../ficha/ficha-update.component';
 
 import { JhiEventManager, JhiAlertService, JhiAlert, JhiEventWithContent } from 'ng-jhipster';
-import { emit } from 'cluster';
 
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
