@@ -27,6 +27,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FichaUpdateComponent } from '../ficha/ficha-update.component';
 
 import { JhiEventManager, JhiAlertService, JhiAlert, JhiEventWithContent } from 'ng-jhipster';
+import { emit } from 'cluster';
 
 type SelectableEntity = IModalidad | IVersion | ICategoria | IAsignatura | INumeroGrado | IGradoAcademico;
 
@@ -203,16 +204,18 @@ export class CursoUpdateComponent implements OnInit {
     if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
       this.eventManager.broadcast(
         new JhiEventWithContent('constructorApp.validationError', {
-          message: 'constructorApp.curso.validations.title'
+          message: 'constructorApp.curso.validations.formError'
         })
       );
-      return;
+      this.makeInvalid('titulo');
     }
     curso.portadaUrl = this.portadaUrl;
-    if (curso.id !== undefined && curso.id !== null) {
-      this.subscribeToSaveResponse(this.cursoService.update(cursoFicha));
-    } else {
-      this.subscribeToSaveResponse(this.cursoService.create(cursoFicha));
+    if (this.editForm.valid) {
+      if (curso.id !== undefined && curso.id !== null) {
+        this.subscribeToSaveResponse(this.cursoService.update(cursoFicha));
+      } else {
+        this.subscribeToSaveResponse(this.cursoService.create(cursoFicha));
+      }
     }
   }
 
@@ -316,5 +319,18 @@ export class CursoUpdateComponent implements OnInit {
     }
   }
 
-  deteleCover(): void {}
+  deteleCover(): void {
+    this.fileUploadService.deleteFile(this.portadaUrl).subscribe(data => {
+      console.error(data);
+    });
+    this.coverPath = '';
+  }
+
+  isValid(controlName: string): boolean {
+    return this.editForm.controls[controlName].status === 'VALID';
+  }
+
+  makeInvalid(controlName: string): void {
+    this.editForm.controls[controlName].setErrors(new Error());
+  }
 }

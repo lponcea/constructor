@@ -65,13 +65,14 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label>
-              <input [ngClass]="{'alert-input': false}" type="text" class="form-control-label" name="titulo" id="field_titulo"
+              <input [ngClass]="{'alert-input': !isValid('titulo')}" type="text" class="form-control-label" name="titulo" id="field_titulo"
                      formControlName="titulo"/>
+              <span *ngIf="!isValid('titulo')" style="color: red;">El título es obligatorio.</span>
           </div>
 
           <div class="form-nimbus margintop-25">
               <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
-              <input type="text" class="form-control" name="resumenContenido" id="field_resumenContenido"
+              <input [ngClass]="{'alert-input': !isValid('resumenContenido')}" type="text" class="form-control" name="resumenContenido" id="field_resumenContenido"
                      formControlName="resumenContenido"/>
           </div>
           <div class="form-nimbus margintop-25">

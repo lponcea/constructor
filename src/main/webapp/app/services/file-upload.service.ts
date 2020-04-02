@@ -24,6 +24,8 @@ export class FileUploadService {
   }
 
   deleteFile(filePath: string): Observable<any> {
-    return this.http.get(SERVER_API_URL + '/api/deleteFile?file=' + filePath);
+    const data: FormData = new FormData();
+    data.append('file', filePath);
+    return this.http.delete(SERVER_API_URL + '/api/deleteFile?file=' + filePath);
   }
 }
