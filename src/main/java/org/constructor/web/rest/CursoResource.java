@@ -81,7 +81,7 @@ public ResponseEntity<CursoFicha> createCursoFicha(@RequestBody String cursoFich
         
         return new ResponseEntity<>(result,HttpStatus.OK);
         }catch(Exception e) {
-        	log.debug("Exception ", e.getMessage());
+        	log.debug("Exception : {} ", e);
         	return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
         }
     }

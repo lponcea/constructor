@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.constructor.domain.enumeration.ModoDistribucion;
 
@@ -97,6 +98,10 @@ public class Curso implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("cursos")
     private NumeroGrado numeroGrado;
+    
+    /*@ManyToOne
+    @JsonIgnore
+    private User user;*/
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -168,8 +173,13 @@ public class Curso implements Serializable {
         return this;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFechaCreacion(String fechaCreacion) {
+		if (fechaCreacion == null) {
+			this.fechaCreacion = null;
+		} else {
+			this.fechaCreacion = LocalDate.parse(fechaCreacion,
+					DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSz"));
+		}
     }
 
     public LocalDate getFechaCreacionSys() {
@@ -194,8 +204,13 @@ public class Curso implements Serializable {
         return this;
     }
 
-    public void setFechaPublicacion(LocalDate fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void setFechaPublicacion(String fechaPublicacion) {
+    	
+    	if(fechaPublicacion == null) {
+    		this.fechaPublicacion = null;
+    	}else {
+    		this.fechaPublicacion = LocalDate.parse(fechaPublicacion, DateTimeFormatter.ofPattern ( "yyyy-MM-dd'T'HH:mm:ss.SSSz" ));	
+    	}
     }
 
     public LocalDate getFechaPublicacionSys() {

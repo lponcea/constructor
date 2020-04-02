@@ -57,6 +57,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(min = 5, max = 254)
     @Column(length = 254, unique = true)
     private String email;
+    
+   /* @OneToMany
+    @JsonIgnore
+    private Curso curso;*/
 
     @NotNull
     @Column(nullable = false)
