@@ -64,14 +64,15 @@
           <div class="form-nimbus">
               <!-- <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label> -->
               <label for="field_titulo">Titulo*</label>
-              <input type="text" class="form-control" name="titulo" id="field_titulo"
-                     formControlName="titulo"/>
+              <input type="text" class="form-control" name="titulo" id="field_titulo" formControlName="titulo"/>
+              <!-- Aquí va la alerta por campo del formulario -->
+              <div class="form-alert show-form-alert"><p>Mensaje de corrección</p></div>
           </div>
 
           <div class="form-nimbus margintop-25">
               <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
-              <input type="text" class="form-control" name="resumenContenido" id="field_resumenContenido"
-                     formControlName="resumenContenido"/>
+              <input type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
+              <div class="form-alert"><p></p></div>
           </div>
           <div class="form-nimbus margintop-25">
               <label jhiTranslate="constructorApp.curso.gradoAcademico" for="field_gradoAcademico">Grado Academico</label>
@@ -79,6 +80,7 @@
                   <option [ngValue]="null"></option>
                   <option [ngValue]="gradoAcademicoOption.id === editForm.get('gradoAcademico')!.value?.id ? editForm.get('gradoAcademico')!.value : gradoAcademicoOption" *ngFor="let gradoAcademicoOption of gradoAcademicos; trackBy: trackById">{{gradoAcademicoOption.descripcion}}</option>
               </select>
+              <div class="form-alert"></div>
           </div>
         </div>
 
@@ -89,12 +91,13 @@
                   <option [ngValue]="null"></option>
                   <option [ngValue]="asignaturaOption.id === editForm.get('asignatura')!.value?.id ? editForm.get('asignatura')!.value : asignaturaOption" *ngFor="let asignaturaOption of asignaturas; trackBy: trackById">{{asignaturaOption.descripcion}}</option>
               </select>
+              <div class="form-alert"><p></p></div>
           </div>
 
           <div class="form-nimbus margintop-25">
               <label jhiTranslate="constructorApp.curso.descripcion" for="field_descripcion">Descripcion</label>
-              <input type="text" class="form-control" name="descripcion" id="field_descripcion"
-                     formControlName="descripcion"/>
+              <input type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion"/>
+              <div class="form-alert"><p></p></div>
           </div>
           <div class="form-nimbus margintop-25">
               <label jhiTranslate="constructorApp.curso.numeroGrado" for="field_numeroGrado">Numero Grado</label>
@@ -102,6 +105,7 @@
                   <option [ngValue]="null"></option>
                   <option [ngValue]="numeroGradoOption.id === editForm.get('numeroGrado')!.value?.id ? editForm.get('numeroGrado')!.value : numeroGradoOption" *ngFor="let numeroGradoOption of numerogrados; trackBy: trackById">{{numeroGradoOption.descripcion}}</option>
               </select>
+              <div class="form-alert"><p></p></div>
           </div>
 
         </div>
@@ -161,6 +165,7 @@
                       <button type="button" class="btn-calendar-select" (click)="fechaCreacionDp.toggle()"></button>
                   </span>
               </div>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End Col -->
@@ -174,6 +179,7 @@
                       <button type="button" class="btn-calendar-select" (click)="fechaPublicacionDp.toggle()"></button>
                   </span>
               </div>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End Col -->
@@ -181,8 +187,8 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label jhiTranslate="constructorApp.curso.numeroEdicion" for="field_numeroEdicion">Numero Edicion</label>
-              <input type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion"
-                     formControlName="numeroEdicion"/>
+              <input type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion" formControlName="numeroEdicion"/>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End Col -->
@@ -206,6 +212,7 @@
                   <option value="GRATUITO">{{'constructorApp.ModoDistribucion.GRATUITO' | translate}}</option>
                   <option value="LIBRE">{{'constructorApp.ModoDistribucion.LIBRE' | translate}}</option>
               </select>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -217,6 +224,7 @@
                   <option [ngValue]="null"></option>
                   <option [ngValue]="modalidadOption.id === editForm.get('modalidad')!.value?.id ? editForm.get('modalidad')!.value : modalidadOption" *ngFor="let modalidadOption of modalidads; trackBy: trackById">{{modalidadOption.descripcion}}</option>
               </select>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -228,6 +236,7 @@
                   <option [ngValue]="null"></option>
                   <option [ngValue]="categoriaOption.id === editForm.get('categoria')!.value?.id ? editForm.get('categoria')!.value : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackById">{{categoriaOption.descripcion}}</option>
               </select>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -239,8 +248,8 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.versionStr" for="field_versionStr">Version Str</label>
-              <input type="text" class="form-control" name="versionStr" id="field_versionStr"
-                     formControlName="versionStr"/>
+              <input type="text" class="form-control" name="versionStr" id="field_versionStr" formControlName="versionStr"/>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -248,8 +257,8 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.palabraClave" for="field_palabraClave">Palabra Clave</label>
-              <input type="text" class="form-control" name="palabraClave" id="field_palabraClave"
-                     formControlName="palabraClave"/>
+              <input type="text" class="form-control" name="palabraClave" id="field_palabraClave" formControlName="palabraClave"/>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -257,8 +266,8 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.clave" for="field_clave">Clave</label>
-              <input type="text" class="form-control" name="clave" id="field_clave"
-                     formControlName="clave"/>
+              <input type="text" class="form-control" name="clave" id="field_clave" formControlName="clave"/>
+              <div class="form-alert"><p></p></div>
           </div>
         </div>
         <!-- End col   -->

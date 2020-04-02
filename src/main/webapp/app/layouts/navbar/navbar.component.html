@@ -1,4 +1,24 @@
-<nav class="navbar navbar-dark navbar-expand-md navbar-menu">
+<div class="navbar-nimbus">
+  <div class="row-nb-nimbus">
+    <div class="nb-logo" routerLink="/"></div>
+    <div class="user-btn-navbar" (click)="openMenu = !openMenu">
+      <div class="circle-btn-user"></div>
+      <div class="name-user-navbar">Admin</div>
+      <div class="arrow-user" [ngClass]="{'open-arrow': openMenu, 'closed-arrow': !openMenu}"></div>
+    </div>
+
+    <!-- Main menu Expand -->
+    <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}">
+        <button class="dropdown-item" (click)="login()" id="login">Iniciar sesión</button>
+        <button class="dropdown-item" (click)="logout()" id="logout">Cerrar sesión</button>
+        <button class="dropdown-item" routerLink="/home-page" >Home page</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- <nav class="navbar navbar-dark navbar-expand-md navbar-menu">
 
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -146,4 +166,4 @@
             </li>
         </ul>
     </div>
-</nav>
+</nav> -->

@@ -46,7 +46,7 @@
           <div (click)="deleteCourse(curso.id)" class="delete-course-br"></div>
 
           <div class="course-desc-br-row">
-            <span class="title-course-br">{{curso.titulo.length > 40 ? curso.titulo.substring(1, 40) + "..." : curso.titulo}}</span>
+            <span class="title-course-br">{{curso.titulo.length > 48 ? curso.titulo.substring(0, 48) + "..." : curso.titulo}}</span>
             <span class="desc-course-br">Primero</span>
           </div>
         </div>
