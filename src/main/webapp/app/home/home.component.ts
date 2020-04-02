@@ -29,11 +29,15 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   ) {}
 
   ngOnInit(): void {
-    this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
-    this.cursoService.query().subscribe(
-      (res: HttpResponse<ICurso[]>) => this.onQuerySuccess(res.body),
-      () => this.onQueryError()
-    );
+    this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => {
+      this.account = account;
+      if (this.account) {
+        this.cursoService.query().subscribe(
+          (res: HttpResponse<ICurso[]>) => this.onQuerySuccess(res.body),
+          () => this.onQueryError()
+        );
+      }
+    });
   }
 
   protected onQuerySuccess(data: ICurso[] | null): void {
@@ -51,7 +55,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
 
   ngAfterContentInit(): void {}
 
-  protected onQueryError(): void {}
+  protected onQueryError(): void {
+    console.error('Error');
+  }
 
   isAuthenticated(): boolean {
     return this.accountService.isAuthenticated();
