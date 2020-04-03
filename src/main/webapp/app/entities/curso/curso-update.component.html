@@ -67,7 +67,7 @@
               <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label>
               <input [ngClass]="{'alert-input': !isValid('titulo')}" type="text" class="form-control-label" name="titulo" id="field_titulo"
                      formControlName="titulo"/>
-              <span *ngIf="!isValid('titulo')" style="color: red;">El título es obligatorio.</span>
+              <span *ngIf="!isValid('titulo')"  style="color: red;">El título es obligatorio.</span>
           </div>
 
           <div class="form-nimbus margintop-25">
