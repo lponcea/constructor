@@ -1390,3 +1390,42 @@ dl {
   background-color: orange !important;
   border: 2px solid blue !important;
 }
+// Generales
+.row-generales {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .rg-col-1 {
+    position: relative;
+    width: 65%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .rgc-row {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      .rgc-item {
+        position: relative;
+        height: auto;
+        width: 46%;
+      }
+    }
+  }
+  .rg-col-2 {
+    position: relative;
+    width: 30%;
+    height: auto;
+  }
+}

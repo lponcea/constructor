@@ -59,58 +59,79 @@
         <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
         <p>*Campo obligatorio</p>
       </div>
-      <div class="row-wg margintop-25">
-        <div class="col-window-g">
-          <div class="form-nimbus">
-              <!-- <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label> -->
-              <label for="field_titulo">Titulo*</label>
-              <input type="text" class="form-control" name="titulo" id="field_titulo" formControlName="titulo"/>
-              <!-- Aquí va la alerta por campo del formulario -->
-              <div class="form-alert show-form-alert"><p>Mensaje de corrección</p></div>
+
+
+      <div class="row-generales margintop-25">
+        <!-- Col left -->
+        <div class="rg-col-1">
+          <!-- Row -->
+          <div class="rgc-row">
+            <div class="rgc-item">
+              <div class="form-nimbus">
+                  <!-- <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label> -->
+                  <label for="field_titulo">Titulo*</label>
+                  <input type="text" class="form-control" name="titulo" id="field_titulo" formControlName="titulo"/>
+                  <!-- Aquí va la alerta por campo del formulario -->
+                  <div class="form-alert show-form-alert"><p>Mensaje de corrección</p></div>
+              </div>
+            </div>
+            <div class="rgc-item">
+              <div class="form-nimbus">
+                  <label jhiTranslate="constructorApp.curso.asignatura" for="field_asignatura">Asignatura</label>
+                  <select id="field_asignatura" name="asignatura" formControlName="asignatura">
+                      <option [ngValue]="null"></option>
+                      <option [ngValue]="asignaturaOption.id === editForm.get('asignatura')!.value?.id ? editForm.get('asignatura')!.value : asignaturaOption" *ngFor="let asignaturaOption of asignaturas; trackBy: trackById">{{asignaturaOption.descripcion}}</option>
+                  </select>
+                  <div class="form-alert"><p></p></div>
+              </div>
+            </div>
+          </div>
+          <!-- Row -->
+          <div class="rgc-row margintop-25">
+            <div class="rgc-item">
+              <div class="form-nimbus">
+                  <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
+                  <input type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
+                  <div class="form-alert"><p></p></div>
+              </div>
+            </div>
+            <div class="rgc-item">
+              <div class="form-nimbus">
+                  <label jhiTranslate="constructorApp.curso.descripcion" for="field_descripcion">Descripcion</label>
+                  <input type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion"/>
+                  <div class="form-alert"><p></p></div>
+              </div>
+            </div>
+          </div>
+          <!-- Row -->
+          <div class="rgc-row margintop-25">
+            <div class="rgc-item">
+              <div class="form-nimbus">
+                  <label jhiTranslate="constructorApp.curso.gradoAcademico" for="field_gradoAcademico">Grado Academico</label>
+                  <select id="field_gradoAcademico" name="gradoAcademico" (change)="changeGracoAcademico($event)">
+                      <option [ngValue]="null"></option>
+                      <option [ngValue]="gradoAcademicoOption.id === editForm.get('gradoAcademico')!.value?.id ? editForm.get('gradoAcademico')!.value : gradoAcademicoOption" *ngFor="let gradoAcademicoOption of gradoAcademicos; trackBy: trackById">{{gradoAcademicoOption.descripcion}}</option>
+                  </select>
+                  <div class="form-alert"></div>
+              </div>
+            </div>
+            <div class="rgc-item">
+              <div class="form-nimbus">
+                  <label jhiTranslate="constructorApp.curso.numeroGrado" for="field_numeroGrado">Numero Grado</label>
+                  <select id="field_numeroGrado" name="numeroGrado" formControlName="numeroGrado">
+                      <option [ngValue]="null"></option>
+                      <option [ngValue]="numeroGradoOption.id === editForm.get('numeroGrado')!.value?.id ? editForm.get('numeroGrado')!.value : numeroGradoOption" *ngFor="let numeroGradoOption of numerogrados; trackBy: trackById">{{numeroGradoOption.descripcion}}</option>
+                  </select>
+                  <div class="form-alert"><p></p></div>
+              </div>
+
+            </div>
           </div>
 
-          <div class="form-nimbus margintop-25">
-              <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
-              <input type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
-              <div class="form-alert"><p></p></div>
-          </div>
-          <div class="form-nimbus margintop-25">
-              <label jhiTranslate="constructorApp.curso.gradoAcademico" for="field_gradoAcademico">Grado Academico</label>
-              <select id="field_gradoAcademico" name="gradoAcademico" (change)="changeGracoAcademico($event)">
-                  <option [ngValue]="null"></option>
-                  <option [ngValue]="gradoAcademicoOption.id === editForm.get('gradoAcademico')!.value?.id ? editForm.get('gradoAcademico')!.value : gradoAcademicoOption" *ngFor="let gradoAcademicoOption of gradoAcademicos; trackBy: trackById">{{gradoAcademicoOption.descripcion}}</option>
-              </select>
-              <div class="form-alert"></div>
-          </div>
         </div>
-
-        <div class="col-window-g">
-          <div class="form-nimbus">
-              <label jhiTranslate="constructorApp.curso.asignatura" for="field_asignatura">Asignatura</label>
-              <select id="field_asignatura" name="asignatura" formControlName="asignatura">
-                  <option [ngValue]="null"></option>
-                  <option [ngValue]="asignaturaOption.id === editForm.get('asignatura')!.value?.id ? editForm.get('asignatura')!.value : asignaturaOption" *ngFor="let asignaturaOption of asignaturas; trackBy: trackById">{{asignaturaOption.descripcion}}</option>
-              </select>
-              <div class="form-alert"><p></p></div>
-          </div>
-
-          <div class="form-nimbus margintop-25">
-              <label jhiTranslate="constructorApp.curso.descripcion" for="field_descripcion">Descripcion</label>
-              <input type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion"/>
-              <div class="form-alert"><p></p></div>
-          </div>
-          <div class="form-nimbus margintop-25">
-              <label jhiTranslate="constructorApp.curso.numeroGrado" for="field_numeroGrado">Numero Grado</label>
-              <select id="field_numeroGrado" name="numeroGrado" formControlName="numeroGrado">
-                  <option [ngValue]="null"></option>
-                  <option [ngValue]="numeroGradoOption.id === editForm.get('numeroGrado')!.value?.id ? editForm.get('numeroGrado')!.value : numeroGradoOption" *ngFor="let numeroGradoOption of numerogrados; trackBy: trackById">{{numeroGradoOption.descripcion}}</option>
-              </select>
-              <div class="form-alert"><p></p></div>
-          </div>
-
-        </div>
-
-        <div class="col-window-g">
+        <!-- End col left -->
+        <!-- Col right -->
+        <div class="rg-col-2">
           <div class="cover-upload-c">
               <label class="label-cover-c">Subir portada</label>
 
@@ -140,6 +161,22 @@
 
               <!-- <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload($event)">Subir video</button> -->
           </div>
+        </div>
+        <!-- End col right -->
+      </div>
+      <!-- End row generales -->
+
+
+
+      <div class="row-wg margintop-25">
+        <div class="col-window-g">
+
+        </div>
+
+        <div class="col-window-g">
+        </div>
+
+        <div class="col-window-g">
         </div>
 
       </div>

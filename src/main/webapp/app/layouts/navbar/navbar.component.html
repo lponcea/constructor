@@ -1,6 +1,6 @@
 <div class="navbar-nimbus">
   <div class="row-nb-nimbus">
-    <div class="nb-logo" routerLink="/"></div>
+    <div class="nb-logo" routerLink="/home-page"></div>
     <div class="user-btn-navbar" (click)="openMenu = !openMenu">
       <div class="circle-btn-user"></div>
       <div class="name-user-navbar">Admin</div>
@@ -11,7 +11,7 @@
     <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}">
         <button class="dropdown-item" (click)="login()" id="login">Iniciar sesión</button>
         <button class="dropdown-item" (click)="logout()" id="logout">Cerrar sesión</button>
-        <button class="dropdown-item" routerLink="/home-page" >Home page</button>
+        <button class="dropdown-item" routerLink="/" >Home</button>
     </div>
 
   </div>
