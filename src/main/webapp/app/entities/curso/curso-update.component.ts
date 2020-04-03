@@ -319,10 +319,9 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   deteleCover(): void {
-    this.fileUploadService.deleteFile(this.portadaUrl).subscribe(data => {
-      console.error(data);
+    this.fileUploadService.deleteFile(this.portadaUrl).subscribe(() => {
+      this.coverPath = '';
     });
-    this.coverPath = '';
   }
 
   isValid(controlName: string): boolean {
