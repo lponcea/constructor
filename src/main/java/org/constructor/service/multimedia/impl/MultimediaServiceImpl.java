@@ -94,7 +94,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 	@Override
 	public MultimediaResponse deleteCourseCover(Long id) {
 		MultimediaResponse multimediaResponse = new MultimediaResponse();
-		boolean status = false;
+		String status = "";
 		String filePath = "";
 		String response = "";
 		
@@ -112,13 +112,20 @@ public class MultimediaServiceImpl implements MultimediaService {
 			
 		status = deleteFile(filePath);
 		
-		if(status) {
+		if(status.equals("successful")) {
 			multimediaResponse.setStatus(true);
 			multimediaResponse.setMessage("File removed successfully");
-		}else {
+		}
+		if (status.equals("failed")) {
 			multimediaResponse.setStatus(false);
 			multimediaResponse.setMessage("File not found");
 		}
+		
+		if (status.equals("dependent")) {
+			multimediaResponse.setStatus(false);
+			multimediaResponse.setMessage("File not found");
+		}
+		
 		
 		
 		
@@ -126,21 +133,42 @@ public class MultimediaServiceImpl implements MultimediaService {
 	}
 
 	@Override
-	public boolean deleteFile(String pathfile) {
+	public String deleteFile(String pathfile) {
 		log.debug("deleteFile: {} ", pathfile);
-		boolean status = false; 
+		String status = "";
+		boolean found = false;
+		
+		found = otherCourseCoverExists(pathfile);
+		
+		if(found) {
+			status = "dependent";
+			return status;
+		}
+		
 		File file = new File(path+pathfile);
 		if (file.exists()) {
 
 			if (file.delete()) {
-				status = true;
+				status = "successful";
 			} else {
-				status = false;
+				status = "failed";
 			}
 		}
 		return status;
 	}
 	
+	public boolean otherCourseCoverExists(String content) {
+		boolean isExists = false;
+	    long find = 0;
+		
+		find = cursoService.FindByContentCourseCover(content);	
+		
+		if(find > 0) {
+			isExists = true;
+		}else {
+			isExists = false;
+		}
+		return isExists;
+	}
 	
-
 }

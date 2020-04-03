@@ -75,18 +75,20 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 		log.debug("*************************   deleteFile  *******************");
 		
 		log.debug("Path : {}", file);
-		boolean response = false;
+		String response = "";
 
 		response = multimediaService.deleteFile(file);
 
-		if (response) {
-			log.debug("File removed successfully");
-			return new ResponseEntity<>("File removed successfully", HttpStatus.OK);
-		} else {
-			log.debug("File not found");
-			return new ResponseEntity<>("File not found", HttpStatus.NO_CONTENT);
+		if (response.equals("successful")) {
+			log.debug("file removed successfully");
+			return new ResponseEntity<String>("file removed successfully", HttpStatus.OK);
+		}
+		if (response.equals("failed")) {
+			log.debug("file not found");
+			return new ResponseEntity<String>("file not found", HttpStatus.NO_CONTENT);
+		}else {
+			log.debug("resource with dependency");
+			return new ResponseEntity<String>("resource with dependency", HttpStatus.ACCEPTED);
 		}
 	}
-	
-	
 }
