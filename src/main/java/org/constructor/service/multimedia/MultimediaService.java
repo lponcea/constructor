@@ -10,5 +10,7 @@ public interface MultimediaService {
 	
 	MultimediaResponse deleteCourseCover (Long id );
 	
-	boolean deleteFile(String file);
+	String deleteFile(String file);
+	
+    boolean otherCourseCoverExists(String content);
 }

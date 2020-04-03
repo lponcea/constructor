@@ -15,5 +15,8 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
 	
 	@Query("SELECT c.portadaUrl from Curso c where c.id = :id ")
 	String findByCourseCoverId(@Param("id")Long Id);
+	
+	@Query("SELECT count(*) from Curso c where c.portadaUrl LIKE %:content%")
+	Long findByContentCourseCover(@Param("content")String content);
 
 }

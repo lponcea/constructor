@@ -48,4 +48,6 @@ public interface CursoService {
     
     String FindCourseCover(Long id);
     
+    Long FindByContentCourseCover(String content);
+    
 }
