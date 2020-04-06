@@ -173,9 +173,21 @@ export class FichaUpdateComponent implements OnInit {
   addTag(index: number, colaborador: IColaborador): void {
     this.selectedColaboradors.push(colaborador);
     setTimeout(() => {
-      if (this.searchElement) this.searchElement.nativeElement.focus();
+      if (this.searchElement) {
+        this.searchElement.nativeElement.focus();
+        this.foundColaboradors.splice(index, 1);
+        this.removeResults();
+      }
     }, 0);
-    this.foundColaboradors.splice(index, 1);
+  }
+
+  removeResults(): void {
+    setTimeout(() => {
+      if (this.searchElement) {
+        this.searchElement.nativeElement.value = '';
+        this.foundColaboradors = [];
+      }
+    }, 10);
   }
 
   searchColaborador(value: string): Array<any> {
