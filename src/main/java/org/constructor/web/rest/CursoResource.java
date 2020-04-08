@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -67,24 +68,24 @@ public class CursoResource {
             .body(result);
     }
 
- @PostMapping("/curso-ficha")
-public ResponseEntity<CursoFicha> createCursoFicha(@RequestBody String cursoFicha) throws URISyntaxException {
-        log.debug("REST request to save Curso : {}", cursoFicha);
-        if(cursoFicha == null) {
-        	throw new BadRequestAlertException("A new curso cannot is empty", ENTITY_NAME, "");
+    @PostMapping("/curso-ficha")
+    public ResponseEntity<CursoFicha> createCursoFicha(Authentication authentication, @RequestBody String cursoFicha) throws URISyntaxException {
+            log.debug("REST request to save Curso : {}", cursoFicha);
+            if(cursoFicha == null) {
+            	throw new BadRequestAlertException("A new curso cannot is empty", ENTITY_NAME, "");
+            }
+            try {
+            CursoFicha cf = new ObjectMapper().readValue(cursoFicha, CursoFicha.class);
+            log.debug("REST request to cf : {}", cf);
+            CursoFicha result = cursoService.save(authentication, cf); 
+            log.debug("result : {}", result);
+            
+            return new ResponseEntity<>(result,HttpStatus.OK);
+            }catch(Exception e) {
+            	log.debug("Exception : {} ", e);
+            	return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+            }
         }
-        try {
-        CursoFicha cf = new ObjectMapper().readValue(cursoFicha, CursoFicha.class);
-        log.debug("REST request to cf : {}", cf);
-        CursoFicha result = cursoService.save(cf);
-        log.debug("result : {}", result);
-        
-        return new ResponseEntity<>(result,HttpStatus.OK);
-        }catch(Exception e) {
-        	log.debug("Exception : {} ", e);
-        	return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
-        }
-    }
     
     /**
      * {@code PUT  /cursos} : Updates an existing curso.
@@ -115,12 +116,20 @@ public ResponseEntity<CursoFicha> createCursoFicha(@RequestBody String cursoFich
 
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of cursos in body.
      */
-    @GetMapping("/cursos")
+    @GetMapping("/cursos-all")
     public ResponseEntity<List<Curso>> getAllCursos(Pageable pageable) {
         log.debug("REST request to get a page of Cursos");
         Page<Curso> page = cursoService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    @GetMapping("/cursos")
+    public ResponseEntity<List<Curso>> getAllCursoUser(Authentication authentication ) {
+    	
+        log.debug("REST request to get a page of Cursos");
+        List<Curso> page = cursoService.findAllCursoUserId(authentication);
+        return ResponseEntity.ok().body(page);
     }
 
     /**

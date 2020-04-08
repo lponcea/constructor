@@ -58,9 +58,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(length = 254, unique = true)
     private String email;
     
-   /* @OneToMany
     @JsonIgnore
-    private Curso curso;*/
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Curso> curso = new HashSet<>();
 
     @NotNull
     @Column(nullable = false)

@@ -303,4 +303,8 @@ public class UserService {
             Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
         }
     }
+    
+    public Set<User> findUserByLogin(String name ){
+    	return userRepository.findByLogin(name);
+    }
 }

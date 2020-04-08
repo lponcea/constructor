@@ -14,12 +14,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service Implementation for managing {@link Curso}.
@@ -66,6 +70,23 @@ public class CursoServiceImpl implements CursoService {
         log.debug("Request to get all Cursos");
         return cursoRepository.findAll(pageable);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Curso> findAllCursoUserId(Authentication authentication) {
+        log.debug("Request to get all Cursos");
+        Set<User> user = new HashSet<>();
+        User userName = new User();
+        
+        String usuarioNombre = authentication.getName();
+        user = userService.findUserByLogin(usuarioNombre);
+        
+        for (User usuario : user ) {
+        	userName = usuario;
+        }
+        
+        return cursoRepository.findAllCursoUserId(userName.getId());
+    }
 
 
     /**
@@ -93,21 +114,25 @@ public class CursoServiceImpl implements CursoService {
         cursoRepository.deleteById(id);
     }
 
-	@Override
+    @Override
 	@Transactional
-	public CursoFicha save(CursoFicha cursoFicha) {
+	public CursoFicha save(Authentication authentication, CursoFicha cursoFicha) {
 			log.debug("Request to save Curso : {}", cursoFicha);
-			User user = new User();
+			Set<User> user = new HashSet<>();
 			Curso curso = new Curso();
 			Ficha ficha =  new Ficha();
 			CursoFicha cf = new CursoFicha();
 			
-			//user = userService.findUserByLogin(userName);
+			String usuarioNombre = authentication.getName();
+			user = userService.findUserByLogin(usuarioNombre);
+			
+			
 			curso = cursoFicha.getCurso();
 			ficha = cursoFicha.getFicha();
 			
 			log.debug("Request to save Curso : {}", curso);
-			//curso.setUser(user);
+			curso.setUser(user);
+			log.debug("Curso Actualizado  : {}", curso.getUser());
 			curso = cursoRepository.save(curso);
 			
 			log.debug("Request to save ficha : {}", ficha);

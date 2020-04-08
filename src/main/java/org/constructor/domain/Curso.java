@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.constructor.domain.enumeration.ModoDistribucion;
 
@@ -98,6 +100,15 @@ public class Curso implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("cursos")
     private NumeroGrado numeroGrado;
+    
+    @JsonIgnore
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(
+            name = "curso_usuario", 
+            joinColumns = @JoinColumn(name = "curso_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="usuario_id", referencedColumnName = "id", nullable = false))
+    private Set<User> user = new HashSet<>();
     
     /*@ManyToOne
     @JsonIgnore
@@ -394,9 +405,19 @@ public class Curso implements Serializable {
     public void setNumeroGrado(NumeroGrado numeroGrado) {
         this.numeroGrado = numeroGrado;
     }
+    
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
-    @Override
+    public Set<User> getUser() {
+		return user;
+	}
+
+	public void setUser(Set<User> user) {
+		this.user = user;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

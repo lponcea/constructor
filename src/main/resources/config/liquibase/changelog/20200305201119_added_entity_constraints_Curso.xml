@@ -37,6 +37,19 @@
                                  constraintName="fk_curso_numero_grado_id"
                                  referencedColumnNames="id"
                                  referencedTableName="numero_grado"/>
+                                 
+       <addForeignKeyConstraint baseColumnNames="usuario_id"
+                                 baseTableName="curso_usuario"
+                                 constraintName="fk_curso_usuario_usuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="curso_id"
+                                 baseTableName="curso_usuario"
+                                 constraintName="fk_curso_usuario_curso_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="curso"/>
+                                 
 
     </changeSet>
 </databaseChangeLog>

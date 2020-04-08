@@ -4,7 +4,9 @@ import org.constructor.domain.Curso;
 import org.constructor.domain.CursoFicha;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -20,7 +22,7 @@ public interface CursoService {
      */
     Curso save(Curso curso);
     
-    CursoFicha save(CursoFicha cursoFicha);
+    CursoFicha save(Authentication authentication, CursoFicha cursoFicha);
 
     /**
      * Get all the cursos.
@@ -29,7 +31,8 @@ public interface CursoService {
      * @return the list of entities.
      */
     Page<Curso> findAll(Pageable pageable);
-
+    
+    List<Curso> findAllCursoUserId(Authentication authentication);
 
     /**
      * Get the "id" curso.
