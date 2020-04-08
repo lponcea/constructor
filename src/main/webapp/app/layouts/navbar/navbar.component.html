@@ -9,7 +9,7 @@
       <div class="arrow-user" [ngClass]="{'open-arrow': openMenu, 'closed-arrow': !openMenu}"></div>
     </div>
     <!-- Main menu Expand -->
-    <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}">
+    <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}" (click)="openMenu = !openMenu">
         <button class="dropdown-item" (click)="login()" id="login" *ngSwitchCase="false">Iniciar sesión</button>
         <button class="dropdown-item" (click)="logout()" id="logout" *ngSwitchCase="true">Cerrar sesión</button>
         <button class="dropdown-item" routerLink="/" >Home</button>
