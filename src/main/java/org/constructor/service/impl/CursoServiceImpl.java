@@ -78,6 +78,7 @@ public class CursoServiceImpl implements CursoService {
         Set<User> user = new HashSet<>();
         User userName = new User();
         
+        //Get userbyLogin
         String usuarioNombre = authentication.getName();
         user = userService.findUserByLogin(usuarioNombre);
         

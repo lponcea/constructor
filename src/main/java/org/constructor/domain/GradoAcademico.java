@@ -97,6 +97,7 @@ public class GradoAcademico implements Serializable {
     public String toString() {
         return "GradoAcademico{" +
             "id=" + getId() +
+            " numeroGrados=" + getNumeroGrados() +
             ", descripcion='" + getDescripcion() + "'" +
             "}";
     }

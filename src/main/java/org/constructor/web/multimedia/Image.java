@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +26,7 @@ public class Image {
 	private final Logger log = LoggerFactory.getLogger(Video.class);
 	
 	@RequestMapping(value = "/loadImage", method = RequestMethod.GET)
-	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
+	@Secured({ AuthoritiesConstants.ADMIN, AuthoritiesConstants.USER })
 	public ResponseEntity<byte[]> loadImage(@RequestParam("file") String nameImage) {
 		
 		HttpHeaders headers = new HttpHeaders();
