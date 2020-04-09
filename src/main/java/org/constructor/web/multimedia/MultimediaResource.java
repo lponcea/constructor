@@ -3,6 +3,7 @@ package org.constructor.web.multimedia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +29,9 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 		
 	@PostMapping("/fileUpload")
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST, produces = "application/json")
-	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file) {
 		VideoResponse vr = new VideoResponse();
-		log.debug("Upload File", file);
+		log.debug("Upload File", file); 
 		String path = "";
 		if (!file.isEmpty()) {
 			vr = multimediaService.saveFile(file);
@@ -49,7 +49,6 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 	
 	
 	@RequestMapping(value = "/deleteCourseCover", method = RequestMethod.DELETE, produces = "application/json")
-	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public ResponseEntity<String> deleteCourseCover(@RequestParam("id") Long id) {
 		
 		log.debug("*************************   deleteCourseCover  *******************");
@@ -69,7 +68,6 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 	}
 	
 	@RequestMapping(value = "/deleteFile", method = RequestMethod.DELETE, produces = "application/json")
-	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public ResponseEntity<String> deleteFile(@RequestParam("file") String file) {
 		
 		log.debug("*************************   deleteFile  *******************");

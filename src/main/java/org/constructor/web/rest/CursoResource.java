@@ -126,8 +126,7 @@ public class CursoResource {
     
     @GetMapping("/cursos")
     public ResponseEntity<List<Curso>> getAllCursoUser(Authentication authentication ) {
-    	
-        log.debug("REST request to get a page of Cursos");
+        log.debug("REST request to get a page of Cursos by User");
         List<Curso> page = cursoService.findAllCursoUserId(authentication);
         return ResponseEntity.ok().body(page);
     }
