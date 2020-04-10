@@ -202,11 +202,51 @@ export class CursoUpdateComponent implements OnInit {
     };
     if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
       this.eventManager.broadcast(
-        new JhiEventWithContent('constructorApp.validationError', {
-          message: 'constructorApp.curso.validations.formError'
-        })
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
       );
       this.makeInvalid('titulo');
+    }
+    if (curso.titulo !== null && curso.titulo !== undefined && curso.titulo.length > 80) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('titulo');
+    }
+    if (curso.resumenContenido !== null && curso.resumenContenido !== undefined && curso.resumenContenido.length > 2000) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('resumenContenido');
+    }
+    if (curso.numeroEdicion !== null && curso.numeroEdicion !== undefined && curso.numeroEdicion.length > 30) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('numeroEdicion');
+    }
+    if (curso.versionStr !== null && curso.versionStr !== undefined && curso.versionStr.length > 30) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('versionStr');
+    }
+    if (curso.descripcion !== null && curso.descripcion !== undefined && curso.descripcion.length > 50) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('descripcion');
+    }
+    if (curso.clave !== null && curso.clave !== undefined && curso.clave.length > 45) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('clave');
+    }
+    if (curso.palabraClave !== null && curso.palabraClave !== undefined && curso.palabraClave.length > 80) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
+      );
+      this.makeInvalid('palabraClave');
     }
     curso.portadaUrl = this.portadaUrl;
     if (this.editForm.valid) {
