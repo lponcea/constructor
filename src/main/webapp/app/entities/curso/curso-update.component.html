@@ -61,7 +61,6 @@
     <!-- Generales Inicia -->
     <div [hidden]="selectedTabIndex !== 0" class=" row-window-general">
       <div class="rwg-header">
-        <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
         <p>*Campo obligatorio</p>
       </div>
 
@@ -84,10 +83,12 @@
             <div class="rgc-item">
               <div class="form-nimbus">
                   <label jhiTranslate="constructorApp.curso.asignatura" for="field_asignatura">Asignatura</label>
-                  <select id="field_asignatura" name="asignatura" formControlName="asignatura">
-                      <option [ngValue]="null"></option>
-                      <option [ngValue]="asignaturaOption.id === editForm.get('asignatura')!.value?.id ? editForm.get('asignatura')!.value : asignaturaOption" *ngFor="let asignaturaOption of asignaturas; trackBy: trackById">{{asignaturaOption.descripcion}}</option>
-                  </select>
+                    <div class="selectWrap">
+                      <select id="field_asignatura" name="asignatura" formControlName="asignatura">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="asignaturaOption.id === editForm.get('asignatura')!.value?.id ? editForm.get('asignatura')!.value : asignaturaOption" *ngFor="let asignaturaOption of asignaturas; trackBy: trackById">{{asignaturaOption.descripcion}}</option>
+                      </select>
+                  </div>
                   <div class="form-alert"><p></p></div>
               </div>
             </div>
@@ -116,20 +117,24 @@
             <div class="rgc-item">
               <div class="form-nimbus">
                   <label jhiTranslate="constructorApp.curso.gradoAcademico" for="field_gradoAcademico">Grado Academico</label>
-                  <select id="field_gradoAcademico" name="gradoAcademico" (change)="changeGracoAcademico($event)">
-                      <option [ngValue]="null"></option>
-                      <option [ngValue]="gradoAcademicoOption.id === editForm.get('gradoAcademico')!.value?.id ? editForm.get('gradoAcademico')!.value : gradoAcademicoOption" *ngFor="let gradoAcademicoOption of gradoAcademicos; trackBy: trackById">{{gradoAcademicoOption.descripcion}}</option>
-                  </select>
+                  <div class="selectWrap">
+                    <select id="field_gradoAcademico" name="gradoAcademico" (change)="changeGracoAcademico($event)">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="gradoAcademicoOption.id === editForm.get('gradoAcademico')!.value?.id ? editForm.get('gradoAcademico')!.value : gradoAcademicoOption" *ngFor="let gradoAcademicoOption of gradoAcademicos; trackBy: trackById">{{gradoAcademicoOption.descripcion}}</option>
+                    </select>
+                  </div>
                   <div class="form-alert"></div>
               </div>
             </div>
             <div class="rgc-item">
               <div class="form-nimbus">
                   <label jhiTranslate="constructorApp.curso.numeroGrado" for="field_numeroGrado">Numero Grado</label>
-                  <select id="field_numeroGrado" name="numeroGrado" formControlName="numeroGrado">
-                      <option [ngValue]="null"></option>
-                      <option [ngValue]="numeroGradoOption.id === editForm.get('numeroGrado')!.value?.id ? editForm.get('numeroGrado')!.value : numeroGradoOption" *ngFor="let numeroGradoOption of numerogrados; trackBy: trackById">{{numeroGradoOption.descripcion}}</option>
-                  </select>
+                  <div class="selectWrap">
+                    <select id="field_numeroGrado" name="numeroGrado" formControlName="numeroGrado">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="numeroGradoOption.id === editForm.get('numeroGrado')!.value?.id ? editForm.get('numeroGrado')!.value : numeroGradoOption" *ngFor="let numeroGradoOption of numerogrados; trackBy: trackById">{{numeroGradoOption.descripcion}}</option>
+                    </select>
+                  </div>
                   <div class="form-alert"><p></p></div>
               </div>
 
@@ -144,22 +149,21 @@
               <label class="label-cover-c">Subir portada</label>
               <div class="cover-upload-img-row">
                 <div class="cover-path-area">
+
                   <div *ngIf="coverPath !== ''">
-                      <img [src]="coverPath" alt="" class="cover-upload-img">
+                    <img [src]="coverPath" alt="" class="cover-upload-img">
                   </div>
                   <div *ngIf="coverPath === ''">
-                      <div>
-                            El libro no tiene portada
-                      </div>
+                    <div class="cover-empty-img"></div>
                   </div>
+
                 </div>
                 <div class="row-uic">
-                    <button type="button" (click)="fileInput.click()">
-                        <span>Upload</span>
+                  <button (click)="deteleCover()" class="secondary-btn text-transform-none">Eliminar portada</button>
+                    <button type="button" class="main-btn btn-color-1 text-transform-none" (click)="fileInput.click()">
+                        <span>Subir</span>
                         <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" />
                     </button>
-                    
-                    <button (click)="deteleCover()">Eliminar portada</button>
                 </div>
               </div>
 
@@ -255,11 +259,13 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.modoDistribucion" for="field_modoDistribucion">Modo Distribucion</label>
-              <select class="form-control" name="modoDistribucion" formControlName="modoDistribucion" id="field_modoDistribucion">
-                  <option value="PAGO">{{'constructorApp.ModoDistribucion.PAGO' | translate}}</option>
-                  <option value="GRATUITO">{{'constructorApp.ModoDistribucion.GRATUITO' | translate}}</option>
-                  <option value="LIBRE">{{'constructorApp.ModoDistribucion.LIBRE' | translate}}</option>
-              </select>
+              <div class="selectWrap">
+                <select class="form-control" name="modoDistribucion" formControlName="modoDistribucion" id="field_modoDistribucion">
+                    <option value="PAGO">{{'constructorApp.ModoDistribucion.PAGO' | translate}}</option>
+                    <option value="GRATUITO">{{'constructorApp.ModoDistribucion.GRATUITO' | translate}}</option>
+                    <option value="LIBRE">{{'constructorApp.ModoDistribucion.LIBRE' | translate}}</option>
+                </select>
+              </div>
               <div class="form-alert"><p></p></div>
           </div>
         </div>
@@ -268,10 +274,12 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.modalidad" for="field_modalidad">Modalidad</label>
-              <select class="form-control" id="field_modalidad" name="modalidad" formControlName="modalidad">
-                  <option [ngValue]="null"></option>
-                  <option [ngValue]="modalidadOption.id === editForm.get('modalidad')!.value?.id ? editForm.get('modalidad')!.value : modalidadOption" *ngFor="let modalidadOption of modalidads; trackBy: trackById">{{modalidadOption.descripcion}}</option>
-              </select>
+              <div class="selectWrap">
+                <select class="form-control" id="field_modalidad" name="modalidad" formControlName="modalidad">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="modalidadOption.id === editForm.get('modalidad')!.value?.id ? editForm.get('modalidad')!.value : modalidadOption" *ngFor="let modalidadOption of modalidads; trackBy: trackById">{{modalidadOption.descripcion}}</option>
+                </select>
+              </div>
               <div class="form-alert"><p></p></div>
           </div>
         </div>
@@ -280,10 +288,12 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.categoria" for="field_categoria">Categoria</label>
-              <select class="form-control" id="field_categoria" name="categoria" formControlName="categoria">
-                  <option [ngValue]="null"></option>
-                  <option [ngValue]="categoriaOption.id === editForm.get('categoria')!.value?.id ? editForm.get('categoria')!.value : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackById">{{categoriaOption.descripcion}}</option>
-              </select>
+              <div class="selectWrap">
+                <select class="form-control" id="field_categoria" name="categoria" formControlName="categoria">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="categoriaOption.id === editForm.get('categoria')!.value?.id ? editForm.get('categoria')!.value : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackById">{{categoriaOption.descripcion}}</option>
+                </select>
+              </div>  
               <div class="form-alert"><p></p></div>
           </div>
         </div>
