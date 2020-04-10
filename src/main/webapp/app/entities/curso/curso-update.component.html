@@ -100,7 +100,7 @@
                   <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
                   <input [ngClass]="{'alert-input': !isValid('resumenContenido')}" type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
                   <!-- Aquí va la alerta por campo del formulario -->
-                  <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+                  <div *ngIf="!isValid('resumenContenido')" class="form-alert"><p>Mensaje de corrección</p></div>
               </div>
             </div>
             <div class="rgc-item">
@@ -108,7 +108,7 @@
                   <label jhiTranslate="constructorApp.curso.descripcion" for="field_descripcion">Descripcion</label>
                   <input [ngClass]="{'alert-input': !isValid('descripcion')}" type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion"/>
                   <!-- Aquí va la alerta por campo del formulario -->
-                  <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+                  <div *ngIf="!isValid('descripcion')" class="form-alert"><p>Mensaje de corrección</p></div>
               </div>
             </div>
           </div>
@@ -240,7 +240,7 @@
               <label jhiTranslate="constructorApp.curso.numeroEdicion" for="field_numeroEdicion">Numero Edicion</label>
               <input [ngClass]="{'alert-input': !isValid('numeroEdicion')}" type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion" formControlName="numeroEdicion"/>
               <!-- Aquí va la alerta por campo del formulario -->
-              <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+              <div *ngIf="!isValid('numeroEdicion')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
         </div>
         <!-- End Col -->
@@ -308,7 +308,7 @@
               <label class="form-control-label" jhiTranslate="constructorApp.curso.versionStr" for="field_versionStr">Version Str</label>
               <input [ngClass]="{'alert-input': !isValid('versionStr')}" type="text" class="form-control" name="versionStr" id="field_versionStr" formControlName="versionStr"/>
               <!-- Aquí va la alerta por campo del formulario -->
-              <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+              <div *ngIf="!isValid('versionStr')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -318,7 +318,7 @@
               <label class="form-control-label" jhiTranslate="constructorApp.curso.palabraClave" for="field_palabraClave">Palabra Clave</label>
               <input [ngClass]="{'alert-input': !isValid('palabraClave')}" type="text" class="form-control" name="palabraClave" id="field_palabraClave" formControlName="palabraClave"/>
               <!-- Aquí va la alerta por campo del formulario -->
-              <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+              <div *ngIf="!isValid('palabraClave')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
         </div>
         <!-- End col   -->
@@ -328,7 +328,7 @@
               <label class="form-control-label" jhiTranslate="constructorApp.curso.clave" for="field_clave">Clave</label>
               <input [ngClass]="{'alert-input': !isValid('clave')}" type="text" class="form-control" name="clave" id="field_clave" formControlName="clave"/>
               <!-- Aquí va la alerta por campo del formulario -->
-              <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+              <div *ngIf="!isValid('clave')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
         </div>
         <!-- End col   -->
