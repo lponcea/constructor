@@ -17,10 +17,6 @@ export class CourseConfigurationComponent {
     {
       title: 'Avanzado',
       iconClass: 'c-icon-2'
-    },
-    {
-      title: 'Recursos',
-      iconClass: 'c-icon-3'
     }
   ];
   markElementStyles = {
