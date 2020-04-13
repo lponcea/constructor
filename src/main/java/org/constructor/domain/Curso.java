@@ -101,6 +101,7 @@ public class Curso implements Serializable {
     @JsonIgnoreProperties("cursos")
     private NumeroGrado numeroGrado;
     
+    // ManyToMany to user relationship (JAM)
     @JsonIgnore
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -110,10 +111,7 @@ public class Curso implements Serializable {
             inverseJoinColumns = @JoinColumn(name="usuario_id", referencedColumnName = "id", nullable = false))
     private Set<User> user = new HashSet<>();
     
-    /*@ManyToOne
-    @JsonIgnore
-    private User user;*/
-
+    
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;

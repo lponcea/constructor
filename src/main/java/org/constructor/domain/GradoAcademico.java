@@ -25,8 +25,7 @@ public class GradoAcademico implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToMany(mappedBy = "gradoAcademico")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @OneToMany(mappedBy = "gradoAcademico", fetch = FetchType.EAGER)
     private Set<NumeroGrado> numeroGrados = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

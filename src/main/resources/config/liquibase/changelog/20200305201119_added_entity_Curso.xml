@@ -79,7 +79,10 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
-
+    
+    <!--
+        Added the curso_usuario table for ManyToMany.
+    -->
     <changeSet id="20200305201119-1-relations" author="jhipster">
     	<createTable tableName="curso_usuario">
             <column name="usuario_id" type="bigint">
@@ -90,6 +93,11 @@
             </column>
         </createTable>
     </changeSet>
+    
+    <!--
+       Terminate, the curso_usuario table for ManyToMany.
+    -->
+    
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
     <!--

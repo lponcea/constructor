@@ -74,7 +74,7 @@ public class CursoServiceImpl implements CursoService {
     @Override
     @Transactional(readOnly = true)
     public List<Curso> findAllCursoUserId(Authentication authentication) {
-        log.debug("Request to get all Cursos");
+        log.debug("Request to get all Cursos by User ");
         Set<User> user = new HashSet<>();
         User userName = new User();
         
@@ -85,7 +85,6 @@ public class CursoServiceImpl implements CursoService {
         for (User usuario : user ) {
         	userName = usuario;
         }
-        
         return cursoRepository.findAllCursoUserId(userName.getId());
     }
 
@@ -132,8 +131,9 @@ public class CursoServiceImpl implements CursoService {
 			ficha = cursoFicha.getFicha();
 			
 			log.debug("Request to save Curso : {}", curso);
+			//Insert User whit Curso (JAM)
 			curso.setUser(user);
-			log.debug("Curso Actualizado  : {}", curso.getUser());
+			log.debug("update curso whit user  : {}", curso.getUser());
 			curso = cursoRepository.save(curso);
 			
 			log.debug("Request to save ficha : {}", ficha);
