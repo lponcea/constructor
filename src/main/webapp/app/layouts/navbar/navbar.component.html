@@ -4,8 +4,7 @@
     <div class="user-btn-navbar" (click)="openMenu = !openMenu">
       <div class="circle-btn-user"></div>
       <div class="name-user-navbar" *ngSwitchCase="true">
-          <!-- {{accountService.userIdentity.firstName + " " + accountService.userIdentity.lastName}} -->
-          {{accountService.userIdentity.firstName}}
+          {{accountService.userIdentity ? accountService.userIdentity.firstName : ''}}
       </div>
       <div class="arrow-user" [ngClass]="{'open-arrow': openMenu, 'closed-arrow': !openMenu}"></div>
     </div>
