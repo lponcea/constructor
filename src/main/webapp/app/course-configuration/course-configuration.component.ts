@@ -12,19 +12,35 @@ export class CourseConfigurationComponent {
   tabs = [
     {
       title: 'General',
-      iconClass: 'c-icon-1'
+      iconClass: 'c-icon-1',
+      error: false
     },
     {
       title: 'Avanzado',
-      iconClass: 'c-icon-2'
+      iconClass: 'c-icon-2',
+      error: false
     }
   ];
   markElementStyles = {
     transform: 'translateX(' + this.selectedTabIndex * 80 + 'px)'
   };
   @ViewChild(CursoUpdateComponent, { static: false }) cursoUpdateComponent!: CursoUpdateComponent;
+  subscription: any;
 
-  constructor(private courseConfigurationService: CourseConfigurationService) {}
+  constructor(private courseConfigurationService: CourseConfigurationService) {
+    this.subscription = this.courseConfigurationService.getErrorTabIndex().subscribe(errorTabIndex => {
+      if (errorTabIndex) {
+        this.tabs[errorTabIndex.errorTabIndex].error = true;
+      }
+    });
+    this.subscription = this.courseConfigurationService.getClearTabsMessage().subscribe(clearTabErrorsMessage => {
+      if (clearTabErrorsMessage) {
+        for (let i = 0; i < this.tabs.length; i++) {
+          this.tabs[i].error = false;
+        }
+      }
+    });
+  }
 
   changeSelectedIndex(index: number): void {
     this.selectedTabIndex = index;

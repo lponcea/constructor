@@ -14,7 +14,7 @@
             <div class="ccc-element" [ngClass]="{'active-ccc-element': index === selectedTabIndex}">
               <div class="c-icon" [ngClass]="tab.iconClass"></div>
               <div class="c-title">{{tab.title}}</div>
-              <div class="alert-menu-conf"></div>
+              <div class="alert-menu-conf" *ngIf="tab.error"></div>
             </div>
           </div>
 
