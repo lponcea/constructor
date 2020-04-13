@@ -213,7 +213,7 @@
 .navbar {
   position: fixed !important;
   top: 0px;
-  height: 50px !important;
+  height: 40px !important;
   width: 400px !important;
   left: 50%;
   padding: 0;
@@ -221,8 +221,8 @@
   z-index: 100 !important;
   border-radius: 0 0 16px 16px !important;
   box-shadow: 2px 6px 32px rgba(60, 60, 60, 0.1), 1px 8px 12px rgba(60, 60, 60, 0.07) !important;
-  background: rgb(213, 218, 227);
-  background: linear-gradient(0deg, rgba(213, 218, 227, 1) 0%, rgba(179, 196, 227, 1) 100%);
+  background: white;
+  background: linear-gradient(0deg, rgba(247, 247, 247, 0.2) 0%, rgba(218, 225, 238, 1) 100%);
 
   a {
     color: $nimbus-bluedark !important;
