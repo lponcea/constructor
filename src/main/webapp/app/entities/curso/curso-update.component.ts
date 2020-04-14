@@ -48,7 +48,7 @@ export class CursoUpdateComponent implements OnInit {
   fechaPublicacionDp: any;
   fechaPublicacionSysDp: any;
   maxiCoverSize = 50000000;
-  allowedFileTypes: any = ['image/jpg', 'image/png'];
+  allowedFileTypes: any = ['image/jpg', 'image/png', 'image/jpeg'];
   showUploadButton = false;
   alerts: JhiAlert[] = [];
 
