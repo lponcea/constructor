@@ -420,7 +420,8 @@ strong {
   width: 100% !important;
   height: 100vh !important;
   pointer-events: auto;
-  background-color: rgba(16, 18, 51, 0.6) !important;
+  // background-color: rgba(16, 18, 51, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
   background-clip: initial !important;
   border: none !important;
   border-radius: 0 !important;
@@ -751,6 +752,11 @@ strong {
 .main-btn.btn-color-1 {
   background-image: linear-gradient(to right, #00ceff, #00b1ff, #00b1ff, #0083c5);
   box-shadow: 0 20px 30px rgba(16, 18, 51, 0.1), 0 6px 18px rgba(16, 18, 51, 0.12);
+}
+.main-btn.disabled,
+.main-btn:disabled {
+  opacity: 0.7;
+  pointer-events: none;
 }
 // Secondary button
 .secondary-btn {
@@ -1525,6 +1531,209 @@ dl {
   position: relative;
   width: 100%;
   height: auto;
-  background-color: red;
   margin-top: 45px;
+  display: flex;
+  justify-content: center;
+
+  .bg-container-registrer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #e2e9ef;
+    z-index: 1;
+
+    .svg-curve-register {
+      position: absolute;
+      top: 198px;
+    }
+    .wrap-register {
+      fill: #e2e9ef;
+      // fill: $background-color-light;
+    }
+  }
+
+  .row-register {
+    position: relative;
+    width: 98%;
+    max-width: 900px;
+    height: auto;
+    margin-top: 40px;
+    background-color: white;
+    border-radius: 12px;
+    z-index: 2;
+
+    .heder-register {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .logo-register {
+        position: relative;
+        width: 70px;
+        height: 60px;
+        margin-right: 20px;
+        background-image: url('../images/logo_register.svg');
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+
+      h2 {
+        position: relative;
+        width: auto;
+        height: auto;
+        font-size: 24px;
+        color: $nimbus-bluedark;
+      }
+    }
+
+    .form-register {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .row-form-register {
+        position: relative;
+        width: 92%;
+        height: auto;
+        // border: 1px solid grey;
+      }
+
+      .row-conditions-register {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 80px;
+
+        p {
+          font-size: 13px;
+          color: #8e928f;
+          padding-top: 10px;
+          padding-bottom: 10px;
+
+          span {
+            color: $a-color;
+            cursor: pointer;
+            transition: 0.3s;
+            &:hover {
+              color: $a-hover;
+            }
+          }
+        }
+      }
+
+      .row-btn-register {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        background-color: $nimbus-bluedark;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        border-radius: 0 0 12px 12px;
+      }
+    }
+  }
+}
+.item-divider-form {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  &:nth-child(2) {
+    margin-top: 50px;
+  }
+
+  .col-form-register {
+    position: relative;
+    width: 45%;
+    height: auto;
+  }
+}
+
+// Logo Svg prueba animación
+// .logo-test {
+//   position: relative;
+//   width: 70px;
+//   height: 60px;
+//   margin-right: 20px;
+//   cursor: pointer;
+// }
+// .st0{fill: $blue-nimbus-dark;}
+// .st1 {
+//   fill: rgb(24, 199, 251);
+//   fill: linear-gradient(90deg, rgba(24, 199, 251, 1) 0%, rgba(21, 169, 250, 1) 100%);
+// }
+// .st2{fill: $blue-nimbus-dark; opacity: .4;}
+// Fin Logo Svg prueba animación
+
+// Alert Register form
+.alert-register-input {
+  position: absolute;
+  bottom: -44px;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  small {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-size: 13px;
+    line-height: 16px;
+    color: $alert-color;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+.pass-register-security {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 100px;
+  left: 0;
+}
+.termporary-message-register {
+  position: absolute;
+  width: 420px;
+  height: 80px;
+  bottom: -100px;
+  left: 50%;
+  margin-left: -210px;
+  span {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    color: grey;
+    line-height: 8px !important;
+  }
+  a {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-size: 13px;
+    transition: 0.3s;
+    cursor: pointer;
+    color: $a-color;
+    &:hover {
+      color: $a-hover;
+    }
+  }
 }

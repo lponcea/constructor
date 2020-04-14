@@ -28,7 +28,7 @@
       height: 30px;
       left: 10px;
       top: 6px;
-      background-image: url('../../../content/images/logo_nb_nimbus.svg');
+      background-image: url('../../../content/images/logo_nb.svg');
       background-position: center;
       background-size: 100%;
       background-repeat: no-repeat;
@@ -96,10 +96,10 @@
   margin-right: 20px;
   font-weight: 400;
   transition: 0.3s;
-  color: $secondary-btn-color;
+  color: $a-color;
 
   &:hover {
-    color: $secondary-btn-hover;
+    color: $a-hover;
   }
 }
 
@@ -239,14 +239,18 @@
   margin-left: -200px;
   z-index: 100 !important;
   border-radius: 0 0 16px 16px !important;
-  box-shadow: 2px 6px 32px rgba(60, 60, 60, 0.1), 1px 8px 12px rgba(60, 60, 60, 0.07) !important;
+  // box-shadow: 2px 6px 32px rgba(60, 60, 60, 0.1), 1px 8px 12px rgba(60, 60, 60, 0.07) !important;
+  box-shadow: none !important;
   background: white;
-  background: linear-gradient(0deg, rgba(247, 247, 247, 0.2) 0%, rgba(218, 225, 238, 1) 100%);
+  // background: linear-gradient(0deg, rgba(247, 247, 247, 0.2) 0%, rgba(218, 225, 238, 1) 100%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(218, 225, 238, 0.4) 100%);
+  border: 1px solid #dfe6ea;
 
   a {
     color: $nimbus-bluedark !important;
   }
 }
+
 ul.dropdown-menu {
   .dropdown-item {
     transition: 0.3s;
