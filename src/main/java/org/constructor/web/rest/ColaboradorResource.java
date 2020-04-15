@@ -1,6 +1,7 @@
 package org.constructor.web.rest;
 
 import org.constructor.domain.Colaborador;
+import org.constructor.domain.RolesColaboradores;
 import org.constructor.service.ColaboradorService;
 import org.constructor.web.rest.errors.BadRequestAlertException;
 
@@ -20,9 +21,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing {@link org.constructor.domain.Colaborador}.
@@ -93,11 +96,22 @@ public class ColaboradorResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of colaboradors in body.
      */
     @GetMapping("/colaboradors")
-    public ResponseEntity<List<Colaborador>> getAllColaboradors(Pageable pageable) {
-        log.debug("REST request to get a page of Colaboradors");
+    public ResponseEntity<List<Colaborador>> getAllColaborador(Pageable pageable) {
+        log.debug("REST request to get a page of Colaboradors"); 
         Page<Colaborador> page = colaboradorService.findAll(pageable);
+        Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
+        List<Colaborador> page1 = new ArrayList<>();
+        for (Colaborador col : page) {
+        	Set<RolesColaboradores> rc = col.getRolesColaboradores();
+        	for(RolesColaboradores roles : rc) {
+        		roles.setColaborador(null);
+        		rolesColaboradores.add(roles);
+        	}
+        	log.debug("RolesColaboradores:  {}", col.getRolesColaboradores());
+        	page1.add(col);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+        return ResponseEntity.ok().headers(headers).body(page1);
     }
 
     /**

@@ -7,12 +7,16 @@
         Added the constraints for entity Colaborador.
     -->
     <changeSet id="20200305201121-2" author="jhipster">
-        
+         <addForeignKeyConstraint baseColumnNames="colaborador_id"
+                                 baseTableName="roles_colaboradores"
+                                 constraintName="fk_roles_colaboradores_colaborador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="colaborador"/>
+
         <addForeignKeyConstraint baseColumnNames="rol_colaborador_id"
-                                 baseTableName="colaborador"
-                                 constraintName="fk_colaborador_rol_colaborador_id"
+                                 baseTableName="roles_colaboradores"
+                                 constraintName="fk_roles_colaboradores_rolColaborador_id"
                                  referencedColumnNames="id"
                                  referencedTableName="rol_colaborador"/>
-
     </changeSet>
 </databaseChangeLog>

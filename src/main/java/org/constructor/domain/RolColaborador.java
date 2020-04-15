@@ -24,10 +24,9 @@ public class RolColaborador implements Serializable {
 
     @Column(name = "descripcion")
     private String descripcion;
-
+    
     @OneToMany(mappedBy = "rolColaborador")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Colaborador> colaboradors = new HashSet<>();
+    private Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -51,29 +50,17 @@ public class RolColaborador implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Set<Colaborador> getColaboradors() {
-        return colaboradors;
+    public Set<RolesColaboradores> getRolesColaboradores() {
+        return rolesColaboradores;
     }
 
-    public RolColaborador colaboradors(Set<Colaborador> colaboradors) {
-        this.colaboradors = colaboradors;
+    public RolColaborador rolesColaboradores(Set<RolesColaboradores> rolesColaboradores) {
+        this.rolesColaboradores = rolesColaboradores;
         return this;
     }
 
-    public RolColaborador addColaborador(Colaborador colaborador) {
-        this.colaboradors.add(colaborador);
-        colaborador.setRolColaborador(this);
-        return this;
-    }
-
-    public RolColaborador removeColaborador(Colaborador colaborador) {
-        this.colaboradors.remove(colaborador);
-        colaborador.setRolColaborador(null);
-        return this;
-    }
-
-    public void setColaboradors(Set<Colaborador> colaboradors) {
-        this.colaboradors = colaboradors;
+    public void setRolesColaboradores(Set<RolesColaboradores> rolesColaboradores) {
+        this.rolesColaboradores = rolesColaboradores;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
