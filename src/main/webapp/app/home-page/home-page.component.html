@@ -1,3 +1,15 @@
+<style>
+  .change-box {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    z-index: 10;
+    bottom: 50px;
+  }
+</style>
+<div class="change-box" [style.left.%]="changeBoxLeft" [style.background]="background" [style.border-radius.%]="changeBoxLeft">
+
+</div>
 
 <!-- Header -->
 <div class="header-curve">
