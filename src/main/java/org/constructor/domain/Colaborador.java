@@ -38,7 +38,6 @@ public class Colaborador implements Serializable {
     @JsonIgnore
     private Set<Ficha> fichas = new HashSet<>();
     
-    @JsonIgnore
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER )
     private Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
 
