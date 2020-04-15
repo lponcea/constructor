@@ -33,14 +33,14 @@ public class Colaborador implements Serializable {
     @Column(name = "apellido_2")
     private String apellido2;
 
-    @ManyToOne
-    @JsonIgnoreProperties("colaboradors")
-    private RolColaborador rolColaborador;
-
     @ManyToMany(mappedBy = "colaboradors")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JsonIgnore
     private Set<Ficha> fichas = new HashSet<>();
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER )
+    private Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -90,19 +90,6 @@ public class Colaborador implements Serializable {
         this.apellido2 = apellido2;
     }
 
-    public RolColaborador getRolColaborador() {
-        return rolColaborador;
-    }
-
-    public Colaborador rolColaborador(RolColaborador rolColaborador) {
-        this.rolColaborador = rolColaborador;
-        return this;
-    }
-
-    public void setRolColaborador(RolColaborador rolColaborador) {
-        this.rolColaborador = rolColaborador;
-    }
-
     public Set<Ficha> getFichas() {
         return fichas;
     }
@@ -127,7 +114,21 @@ public class Colaborador implements Serializable {
     public void setFichas(Set<Ficha> fichas) {
         this.fichas = fichas;
     }
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    public Set<RolesColaboradores> getRolesColaboradores() {
+        return rolesColaboradores;
+    }
+    
+    public Colaborador rolesColaboradores(Set<RolesColaboradores> rolesColaboradores) {
+        this.rolesColaboradores = rolesColaboradores;
+        return this;
+    }
+
+
+    public void setRolesColaboradores(Set<RolesColaboradores> rolesColaboradores) {
+        this.rolesColaboradores = rolesColaboradores;
+    }
 
     @Override
     public boolean equals(Object o) {
