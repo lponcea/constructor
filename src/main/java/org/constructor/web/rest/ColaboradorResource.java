@@ -99,19 +99,8 @@ public class ColaboradorResource {
     public ResponseEntity<List<Colaborador>> getAllColaborador(Pageable pageable) {
         log.debug("REST request to get a page of Colaboradors"); 
         Page<Colaborador> page = colaboradorService.findAll(pageable);
-        Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
-        List<Colaborador> page1 = new ArrayList<>();
-        for (Colaborador col : page) {
-        	Set<RolesColaboradores> rc = col.getRolesColaboradores();
-        	for(RolesColaboradores roles : rc) {
-        		roles.setColaborador(null);
-        		rolesColaboradores.add(roles);
-        	}
-        	log.debug("RolesColaboradores:  {}", col.getRolesColaboradores());
-        	page1.add(col);
-        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page1);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
