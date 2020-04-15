@@ -1,8 +1,8 @@
 <div class="navbar-nimbus">
   <div class="row-nb-nimbus" [ngSwitch]="isAuthenticated()">
     <div class="nb-logo" routerLink="/home-page"></div>
-    <div class="create-account-navbar li-navbar-home" routerLink="/account/register" *ngSwitchCase="false">Crea tu cuenta</div>
-    <div class="login-navbar li-navbar-home" (click)="login()" *ngSwitchCase="false">Ingresa</div>
+    <div class="create-account-navbar li-navbar-home" routerLink="/account/register" *ngSwitchCase="false" jhiTranslate="global.menu.register">Crea tu cuenta</div>
+    <div class="login-navbar li-navbar-home" (click)="login()" *ngSwitchCase="false" jhiTranslate="global.menu.login">Ingresa</div>
     <div class="user-btn-navbar" (click)="openMenu = !openMenu" *ngSwitchCase="true">
       <div class="circle-btn-user"></div>
       <div class="name-user-navbar" *ngSwitchCase="true">
@@ -12,9 +12,9 @@
     </div>
     <!-- Main menu Expand -->
     <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}" (click)="openMenu = !openMenu">
-        <button class="dropdown-item" (click)="login()" id="login" *ngSwitchCase="false">Iniciar sesión</button>
-        <button class="dropdown-item" (click)="logout()" id="logout" *ngSwitchCase="true">Cerrar sesión</button>
-        <button class="dropdown-item" routerLink="/account/register" *ngSwitchCase="false">Crear tu cuenta</button>
+        <button class="dropdown-item" (click)="login()" id="login" *ngSwitchCase="false" jhiTranslate="global.menu.login">Iniciar sesión</button>
+        <button class="dropdown-item" (click)="logout()" id="logout" *ngSwitchCase="true" jhiTranslate="global.menu.logout">Cerrar sesión</button>
+        <button class="dropdown-item" routerLink="/account/register" *ngSwitchCase="false" jhiTranslate="global.menu.register">Crear tu cuenta</button>
         <button class="dropdown-item" routerLink="/" >Home</button>
     </div>
 
