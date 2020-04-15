@@ -2,6 +2,8 @@ package org.constructor.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -25,6 +27,7 @@ public class RolColaborador implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "rolColaborador")
     private Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
 
