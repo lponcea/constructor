@@ -26,7 +26,7 @@ public class RolesColaboradores implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @JsonIgnore
+    
     @ManyToOne
     @JoinColumn(name = "colaborador_id")
     private Colaborador colaborador;
@@ -35,6 +35,11 @@ public class RolesColaboradores implements Serializable{
     @ManyToOne
     @JoinColumn(name = "rol_colaborador_id")
     private RolColaborador rolColaborador;
+    
+    //RolesColaboradores puede tener muchas Fichas (JAM)
+    @ManyToMany(mappedBy = "creditosEditoriales")
+    @JsonIgnore
+    private Set<Ficha> fichas = new HashSet<>();
 
 
 	public Long getId() {
@@ -73,6 +78,18 @@ public class RolesColaboradores implements Serializable{
 
 	public void setRolColaborador(RolColaborador rolColaborador) {
 		this.rolColaborador = rolColaborador;
+	}
+	
+	
+
+
+	public Set<Ficha> getFichas() {
+		return fichas;
+	}
+
+
+	public void setFichas(Set<Ficha> fichas) {
+		this.fichas = fichas;
 	}
 
 

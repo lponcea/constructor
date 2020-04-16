@@ -27,9 +27,6 @@ public class RolColaborador implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "rolColaborador")
-    private Set<RolesColaboradores> rolesColaboradores = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -53,18 +50,6 @@ public class RolColaborador implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Set<RolesColaboradores> getRolesColaboradores() {
-        return rolesColaboradores;
-    }
-
-    public RolColaborador rolesColaboradores(Set<RolesColaboradores> rolesColaboradores) {
-        this.rolesColaboradores = rolesColaboradores;
-        return this;
-    }
-
-    public void setRolesColaboradores(Set<RolesColaboradores> rolesColaboradores) {
-        this.rolesColaboradores = rolesColaboradores;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

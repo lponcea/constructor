@@ -31,6 +31,18 @@
                                  constraintName="fk_ficha_editorial_id"
                                  referencedColumnNames="id"
                                  referencedTableName="editorial"/>
+                                 
+       <addForeignKeyConstraint baseColumnNames="ficha_id"
+                                 baseTableName="creditos_editoriales"
+                                 constraintName="fk_creditos_editoriales_ficha_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ficha"/>
+
+        <addForeignKeyConstraint baseColumnNames="roles_colaboradores_id"
+                                 baseTableName="creditos_editoriales"
+                                 constraintName="fk_creditos_editoriales_roles_colaboradores_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles_colaboradores"/>
 
     </changeSet>
 </databaseChangeLog>

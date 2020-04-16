@@ -42,6 +42,14 @@ public class Ficha implements Serializable {
                joinColumns = @JoinColumn(name = "ficha_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "colaborador_id", referencedColumnName = "id"))
     private Set<Colaborador> colaboradors = new HashSet<>();
+    
+    //Ficha puede tener muchos RolesColaboradores (JAM)
+    @ManyToMany
+    @JoinTable(
+            name = "creditos_editoriales", 
+            joinColumns = @JoinColumn(name = "ficha_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="roles_colaboradores_id", referencedColumnName = "id", nullable = false))
+    private Set<RolesColaboradores> creditosEditoriales = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("fichas")
@@ -133,6 +141,13 @@ public class Ficha implements Serializable {
         this.editorial = editorial;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    public Set<RolesColaboradores> getCreditosEditoriales() {
+		return creditosEditoriales;
+	}
+
+	public void setCreditosEditoriales(Set<RolesColaboradores> creditosEditoriales) {
+		this.creditosEditoriales = creditosEditoriales;
+	}
 
     @Override
     public boolean equals(Object o) {
@@ -145,7 +160,8 @@ public class Ficha implements Serializable {
         return id != null && id.equals(((Ficha) o).id);
     }
 
-    @Override
+
+	@Override
     public int hashCode() {
         return 31;
     }
