@@ -159,7 +159,7 @@
 
                 </div>
                 <div class="row-uic">
-                  <button (click)="deteleCover()" class="secondary-btn text-transform-none">Eliminar portada</button>
+                  <button (click)="deteleCover()" class="secondary-btn text-transform-none" *ngIf="this.coverPath">Eliminar portada</button>
                     <button type="button" class="main-btn btn-color-1 text-transform-none" (click)="fileInput.click()">
                         <span>Subir</span>
                         <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" />
