@@ -12,11 +12,5 @@
                                  constraintName="fk_roles_colaboradores_colaborador_id"
                                  referencedColumnNames="id"
                                  referencedTableName="colaborador"/>
-
-        <addForeignKeyConstraint baseColumnNames="rol_colaborador_id"
-                                 baseTableName="roles_colaboradores"
-                                 constraintName="fk_roles_colaboradores_rolColaborador_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="rol_colaborador"/>
     </changeSet>
 </databaseChangeLog>
