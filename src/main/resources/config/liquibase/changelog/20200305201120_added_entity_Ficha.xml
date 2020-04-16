@@ -45,6 +45,17 @@
 
         <addPrimaryKey columnNames="ficha_id, colaborador_id" tableName="ficha_colaborador"/>
         
+        <createTable tableName="creditos_editoriales">
+            <column name="roles_colaboradores_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ficha_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey columnNames="ficha_id, roles_colaboradores_id" tableName="creditos_editoriales"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
