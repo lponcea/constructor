@@ -13,4 +13,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="colaborador"/>
     </changeSet>
+    
 </databaseChangeLog>
