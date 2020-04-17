@@ -19,12 +19,6 @@
                         <a [routerLink]="['/curso', ficha.curso?.id, 'view']">{{ficha.curso?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="constructorApp.ficha.colaborador">Colaborador</span></dt>
-                <dd>
-                    <span *ngFor="let colaborador of ficha.colaboradors; let last = last">
-                        <a [routerLink]="['/colaborador', colaborador?.id, 'view' ]">{{colaborador.id}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
                 <dt><span jhiTranslate="constructorApp.ficha.editorial">Editorial</span></dt>
                 <dd>
                     <div *ngIf="ficha.editorial">
