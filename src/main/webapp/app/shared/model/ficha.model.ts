@@ -9,7 +9,6 @@ export interface IFicha {
   descripcion?: string;
   fechaCreacion?: Moment;
   curso?: ICurso;
-  colaboradors?: IColaborador[];
   editorial?: IEditorial;
   creditosEditoriales?: IRolesColaboradores[];
 }
@@ -20,7 +19,6 @@ export class Ficha implements IFicha {
     public descripcion?: string,
     public fechaCreacion?: Moment,
     public curso?: ICurso,
-    public colaboradors?: IColaborador[],
     public editorial?: IEditorial,
     public creditosEditoriales?: IRolesColaboradores[]
   ) {}

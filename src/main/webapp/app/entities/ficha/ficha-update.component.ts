@@ -124,7 +124,6 @@ export class FichaUpdateComponent implements OnInit {
       descripcion: ficha.descripcion,
       fechaCreacion: ficha.fechaCreacion,
       curso: ficha.curso,
-      colaboradors: ficha.colaboradors,
       editorial: ficha.editorial
     });
   }
@@ -150,7 +149,6 @@ export class FichaUpdateComponent implements OnInit {
       descripcion: this.editForm.get(['descripcion'])!.value,
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value,
       curso: this.editForm.get(['curso'])!.value,
-      colaboradors: undefined,
       creditosEditoriales: this.selectedColaboradors,
       editorial: this.editForm.get(['editorial'])!.value
     };
