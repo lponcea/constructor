@@ -66,7 +66,7 @@
         position: relative;
         width: auto;
         height: auto;
-        font-size: 13px;
+        font-size: 14px;
         color: $nimbus-bluedark;
         margin-right: 10px;
         font-weight: 400;
@@ -149,7 +149,7 @@
     width: 94% !important;
     height: 36px !important;
     text-align: left !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
     color: $blue-nimbus-dark;
     padding-left: 15px !important;
@@ -158,9 +158,7 @@
     background-color: white !important;
     user-select: none;
     &:hover {
-      background-color: #dadde6 !important;
-      // background: $gradient-color !important;
-      // color: white !important;
+      background-color: rgba(192, 205, 212, 0.4) !important;
     }
     &:focus {
       outline: none;
@@ -230,28 +228,73 @@
 }
 
 // Navbar Dev
-.navbar {
-  position: fixed !important;
+.navbar-dev {
+  position: relative;
   top: 0px;
-  height: 40px !important;
-  width: 400px !important;
-  left: 50%;
+  height: 45px !important;
+  width: auto !important;
   padding: 0;
-  margin-left: -200px;
+  margin: 0;
   z-index: 100 !important;
-  border-radius: 0 0 16px 16px !important;
-  // box-shadow: 2px 6px 32px rgba(60, 60, 60, 0.1), 1px 8px 12px rgba(60, 60, 60, 0.07) !important;
   box-shadow: none !important;
   background: white;
-  // background: linear-gradient(0deg, rgba(247, 247, 247, 0.2) 0%, rgba(218, 225, 238, 1) 100%);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(218, 225, 238, 0.4) 100%);
-  border: 1px solid #dfe6ea;
-
+  border: 0;
+  margin-right: 30px;
   a {
     color: $nimbus-bluedark !important;
   }
-}
+  .navbar-collapse {
+    ul.navbar-nav {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin: 0;
 
+      li.nav-item {
+        margin-right: 10px;
+
+        a.dropdown-item {
+          margin-left: 0;
+          margin-right: 0;
+          padding: 0;
+          position: relative;
+          padding-left: 10px;
+          padding-right: 8px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+        .active {
+          background-color: #b6c1c5;
+        }
+        // Menu float
+        ul {
+          top: 0px;
+          left: 0px;
+          position: absolute;
+          transform: translate(2px, 48px) !important;
+          font-size: 14px;
+          padding: 0;
+          margin: 0;
+          // border-radius: 0px;
+          background-color: white;
+
+          width: 180px;
+          height: auto;
+          min-height: 50px;
+          padding-top: 7px;
+          padding-bottom: 7px;
+          border-radius: 6px;
+          box-shadow: 0 -4px 42px rgba(33, 36, 66, 0.15), 0 17px 35px rgba(33, 36, 66, 0.15);
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
 ul.dropdown-menu {
   .dropdown-item {
     transition: 0.3s;
@@ -270,38 +313,9 @@ ul.dropdown-menu {
 .dropdown-item:hover fa-icon {
   color: #0059ff;
 }
-.navbar-nav {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  .nav-link {
-    margin-left: 2px;
-    margin-right: 2px;
-
-    span {
-      font-size: 14px !important;
-    }
-  }
-}
 .nav-link span fa-icon {
   transition: 0.3s;
 }
-
 .nav-link:hover span fa-icon {
   color: #0059ff !important;
-}
-.logo-navbar-dev {
-  position: relative;
-  width: 70px;
-  height: 40px;
-  background-position: center;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-image: url('../../../content/images/logo_nb_dev.svg');
-  margin-right: 10px;
 }

@@ -32,12 +32,7 @@ public class Colaborador implements Serializable {
 
     @Column(name = "apellido_2")
     private String apellido2;
-
-    @ManyToMany(mappedBy = "colaboradors")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JsonIgnore
-    private Set<Ficha> fichas = new HashSet<>();
-    
+   
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -85,31 +80,6 @@ public class Colaborador implements Serializable {
 
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
-    }
-
-    public Set<Ficha> getFichas() {
-        return fichas;
-    }
-
-    public Colaborador fichas(Set<Ficha> fichas) {
-        this.fichas = fichas;
-        return this;
-    }
-
-    public Colaborador addFicha(Ficha ficha) {
-        this.fichas.add(ficha);
-        ficha.getColaboradors().add(this);
-        return this;
-    }
-
-    public Colaborador removeFicha(Ficha ficha) {
-        this.fichas.remove(ficha);
-        ficha.getColaboradors().remove(this);
-        return this;
-    }
-
-    public void setFichas(Set<Ficha> fichas) {
-        this.fichas = fichas;
     }
     
 

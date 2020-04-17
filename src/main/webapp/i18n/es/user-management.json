@@ -14,17 +14,21 @@
     "detail": {
       "title": "Usuario"
     },
-    "login": "Login",
+    "login": "Usuario",
     "firstName": "Nombre",
     "lastName": "Apellidos",
     "email": "Email",
+    "status": "Estatus",
     "activated": "Activado",
     "deactivated": "Desactivado",
     "profiles": "Perfiles",
     "langKey": "Idioma",
     "createdBy": "Creado por",
-    "createdDate": "Fecha de creación",
+    "createdDate": "Creación",
     "lastModifiedBy": "Modificado por",
-    "lastModifiedDate": "Fecha de modificación"
+    "lastModifiedDate": "Modificación",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar"
   }
 }

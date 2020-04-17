@@ -18,7 +18,7 @@ import java.util.Optional;
 @Repository
 public interface FichaRepository extends JpaRepository<Ficha, Long> {
 
-    @Query(value = "select distinct ficha from Ficha ficha left join fetch ficha.colaboradors",
+    /*@Query(value = "select distinct ficha from Ficha ficha left join fetch ficha.colaboradors",
         countQuery = "select count(distinct ficha) from Ficha ficha")
     Page<Ficha> findAllWithEagerRelationships(Pageable pageable);
 
@@ -26,6 +26,6 @@ public interface FichaRepository extends JpaRepository<Ficha, Long> {
     List<Ficha> findAllWithEagerRelationships();
 
     @Query("select ficha from Ficha ficha left join fetch ficha.colaboradors where ficha.id =:id")
-    Optional<Ficha> findOneWithEagerRelationships(@Param("id") Long id);
+    Optional<Ficha> findOneWithEagerRelationships(@Param("id") Long id);*/
     
 }

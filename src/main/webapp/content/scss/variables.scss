@@ -6,6 +6,8 @@ $bg-blue: #101233;
 $a-color: #1a3d82;
 $a-hover: #15a9fa;
 $alert-color: #e61a34;
+$alert-hover-color: #bf0f26;
+$succes-color: #4caf50;
 
 $background-color-light: #f7f8f9;
 $background-color-blue: #101233;
@@ -69,6 +71,11 @@ $footer-bg-color: #f4f5f7;
 }
 @mixin covers-ml {
   @media (min-width: 900px) and (max-width: 1114px) {
+    @content;
+  }
+}
+@mixin table {
+  @media (min-width: 0px) and (max-width: 1000px) {
     @content;
   }
 }
