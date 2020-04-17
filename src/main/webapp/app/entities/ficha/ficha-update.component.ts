@@ -103,7 +103,6 @@ export class FichaUpdateComponent implements OnInit {
         )
         .subscribe((resBody: IRolesColaboradores[]) => {
           this.rolesColaboradores = resBody;
-          console.error(this.rolesColaboradores);
         });
 
       this.editorialService
