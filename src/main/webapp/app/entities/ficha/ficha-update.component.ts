@@ -15,6 +15,8 @@ import { IColaborador } from 'app/shared/model/colaborador.model';
 import { ColaboradorService } from 'app/entities/colaborador/colaborador.service';
 import { IEditorial } from 'app/shared/model/editorial.model';
 import { EditorialService } from 'app/entities/editorial/editorial.service';
+import { RolesColaboradoresService } from 'app/entities/roles-colaboradores/roles-colaboradores.service';
+import { IRolesColaboradores } from 'app/shared/model/roles-colaboraderes.model';
 
 type SelectableEntity = ICurso | IColaborador | IEditorial;
 
@@ -28,8 +30,9 @@ export class FichaUpdateComponent implements OnInit {
   cursos: ICurso[] = [];
 
   colaboradors: IColaborador[] = [];
-  selectedColaboradors: IColaborador[] = [];
-  foundColaboradors: IColaborador[] = [];
+  rolesColaboradores: IRolesColaboradores[] = [];
+  selectedColaboradors: IRolesColaboradores[] = [];
+  foundColaboradors: IRolesColaboradores[] = [];
   @ViewChild('inputstring', { static: false }) searchElement: ElementRef | undefined;
 
   editorials: IEditorial[] = [];
@@ -50,6 +53,7 @@ export class FichaUpdateComponent implements OnInit {
     protected colaboradorService: ColaboradorService,
     protected editorialService: EditorialService,
     protected activatedRoute: ActivatedRoute,
+    protected rolesColaboradoresService: RolesColaboradoresService,
     private fb: FormBuilder
   ) {}
 
@@ -89,6 +93,18 @@ export class FichaUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IColaborador[]) => (this.colaboradors = resBody));
+
+      this.rolesColaboradoresService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IRolesColaboradores[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IRolesColaboradores[]) => {
+          this.rolesColaboradores = resBody;
+          console.error(this.rolesColaboradores);
+        });
 
       this.editorialService
         .query()
@@ -134,7 +150,8 @@ export class FichaUpdateComponent implements OnInit {
       descripcion: this.editForm.get(['descripcion'])!.value,
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value,
       curso: this.editForm.get(['curso'])!.value,
-      colaboradors: this.selectedColaboradors,
+      colaboradors: undefined,
+      creditosEditoriales: this.selectedColaboradors,
       editorial: this.editForm.get(['editorial'])!.value
     };
   }
@@ -170,8 +187,8 @@ export class FichaUpdateComponent implements OnInit {
     return option;
   }
 
-  addTag(index: number, colaborador: IColaborador): void {
-    this.selectedColaboradors.push(colaborador);
+  addTag(index: number, rolesColaboradores: IRolesColaboradores): void {
+    this.selectedColaboradors.push(rolesColaboradores);
     setTimeout(() => {
       if (this.searchElement) {
         this.searchElement.nativeElement.focus();
@@ -190,19 +207,19 @@ export class FichaUpdateComponent implements OnInit {
     }, 10);
   }
 
-  searchColaborador(value: string): Array<any> {
+  searchColaborador(value: string): Array<IRolesColaboradores> {
     value = value.toLocaleLowerCase();
-    const results: Array<any> = [];
-    for (let i = 0; i < this.colaboradors.length; i++) {
-      const colaboradorName = (
-        this.colaboradors[i].nombres +
-        ' ' +
-        this.colaboradors[i].apellido1 +
-        this.colaboradors[i].apellido2 +
-        this.colaboradors[i].rolColaborador
-      ).toLowerCase();
-      if (colaboradorName.search(value) !== -1 && this.findInArray(this.selectedColaboradors, this.colaboradors[i].id) === -1) {
-        results.push(this.colaboradors[i]);
+    const results: Array<IRolesColaboradores> = [];
+    for (let i = 0; i < this.rolesColaboradores.length; i++) {
+      let colaboradorName = '';
+      colaboradorName += this.rolesColaboradores[i].colaborador!.nombres + ' ' ? this.rolesColaboradores[i].colaborador!.nombres : '';
+      colaboradorName += this.rolesColaboradores[i].colaborador!.apellido1 + ' ' ? this.rolesColaboradores[i].colaborador!.apellido1 : '';
+      colaboradorName += this.rolesColaboradores[i].colaborador!.apellido2 + ' ' ? this.rolesColaboradores[i].colaborador!.apellido2 : '';
+      colaboradorName += this.rolesColaboradores[i].rolColaborador!.descripcion;
+      colaboradorName.toLowerCase();
+
+      if (colaboradorName.search(value) !== -1 && this.findInArray(this.selectedColaboradors, this.rolesColaboradores[i].id) === -1) {
+        results.push(this.rolesColaboradores[i]);
       }
     }
     return results;
