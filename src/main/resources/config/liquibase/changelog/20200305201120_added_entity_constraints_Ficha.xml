@@ -14,17 +14,7 @@
                                  referencedColumnNames="id"
                                  referencedTableName="curso"/>
 
-        <addForeignKeyConstraint baseColumnNames="ficha_id"
-                                 baseTableName="ficha_colaborador"
-                                 constraintName="fk_ficha_colaborador_ficha_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="ficha"/>
 
-        <addForeignKeyConstraint baseColumnNames="colaborador_id"
-                                 baseTableName="ficha_colaborador"
-                                 constraintName="fk_ficha_colaborador_colaborador_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="colaborador"/>
         
         <addForeignKeyConstraint baseColumnNames="editorial_id"
                                  baseTableName="ficha"

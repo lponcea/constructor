@@ -36,12 +36,6 @@ public class Ficha implements Serializable {
     @JsonIgnore
     private Curso curso;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "ficha_colaborador",
-               joinColumns = @JoinColumn(name = "ficha_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "colaborador_id", referencedColumnName = "id"))
-    private Set<Colaborador> colaboradors = new HashSet<>();
     
     //Ficha puede tener muchos RolesColaboradores (JAM)
     @ManyToMany
@@ -103,30 +97,6 @@ public class Ficha implements Serializable {
         this.curso = curso;
     }
 
-    public Set<Colaborador> getColaboradors() {
-        return colaboradors;
-    }
-
-    public Ficha colaboradors(Set<Colaborador> colaboradors) {
-        this.colaboradors = colaboradors;
-        return this;
-    }
-
-    public Ficha addColaborador(Colaborador colaborador) {
-        this.colaboradors.add(colaborador);
-        colaborador.getFichas().add(this);
-        return this;
-    }
-
-    public Ficha removeColaborador(Colaborador colaborador) {
-        this.colaboradors.remove(colaborador);
-        colaborador.getFichas().remove(this);
-        return this;
-    }
-
-    public void setColaboradors(Set<Colaborador> colaboradors) {
-        this.colaboradors = colaboradors;
-    }
 
     public Editorial getEditorial() {
         return editorial;

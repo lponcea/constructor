@@ -61,7 +61,8 @@ public class FichaServiceImpl implements FichaService {
      * @return the list of entities.
      */
     public Page<Ficha> findAllWithEagerRelationships(Pageable pageable) {
-        return fichaRepository.findAllWithEagerRelationships(pageable);
+    	//fichaRepository.findAllWithEagerRelationships(pageable);
+    	return null;
     }
     
 
@@ -75,7 +76,7 @@ public class FichaServiceImpl implements FichaService {
     @Transactional(readOnly = true)
     public Optional<Ficha> findOne(Long id) {
         log.debug("Request to get Ficha : {}", id);
-        return fichaRepository.findOneWithEagerRelationships(id);
+        return fichaRepository.findById(id);
     }
 
 

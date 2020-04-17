@@ -33,17 +33,6 @@
     </changeSet>
 
     <changeSet id="20200305201120-1-relations" author="jhipster">
-
-        <createTable tableName="ficha_colaborador">
-            <column name="colaborador_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ficha_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="ficha_id, colaborador_id" tableName="ficha_colaborador"/>
         
         <createTable tableName="creditos_editoriales">
             <column name="roles_colaboradores_id" type="bigint">
