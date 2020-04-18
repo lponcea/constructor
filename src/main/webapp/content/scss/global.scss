@@ -713,8 +713,8 @@ strong {
   text-align: center;
   border: none;
   background-size: 300% 100%;
-  padding-left: 18px;
-  padding-right: 18px;
+  padding-left: 16px;
+  padding-right: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
   display: flex;
@@ -833,6 +833,13 @@ strong {
     background-color: $alert-hover-color;
   }
 }
+.color-danger {
+  background-color: $alert-color;
+  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
+  &:hover {
+    background-color: $alert-hover-color;
+  }
+}
 .btn-status.disabled,
 .btn-status:disabled {
   opacity: 0.7;
@@ -846,7 +853,7 @@ strong {
   width: 22px;
   height: 22px;
   background-color: rgba(255, 255, 255, 0.3);
-  margin-right: 10px;
+  margin-right: 6px;
   border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
@@ -869,6 +876,7 @@ strong {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 55%;
+  box-shadow: 0 20px 30px rgba(26, 61, 130, 0.1), 0 6px 18px rgba(26, 61, 130, 0.12);
   &:hover {
     background-color: $secondary-btn-hover;
   }
@@ -877,7 +885,6 @@ strong {
   }
   &:active {
     outline: none;
-    transform: scale(0.99);
   }
 }
 .btn-circle-um1 {
@@ -889,6 +896,7 @@ strong {
 .btn-circle-um3 {
   background-image: url('../images/icn_delete_white.svg');
   background-color: $alert-color;
+  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
   &:hover {
     background-color: $alert-hover-color;
   }
@@ -1898,7 +1906,6 @@ dl {
     position: relative;
     width: 100%;
     height: 80px;
-    // background-color: $window-divider-color;
     background-color: $blue-nimbus-dark;
     display: flex;
     justify-content: center;
@@ -1912,10 +1919,13 @@ dl {
       position: relative;
       width: 96%;
       height: auto;
-      max-width: 1300px;
+      max-width: $max-width;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      @include smartphone {
+        width: 90%;
+      }
       .title-um {
         position: relative;
         width: auto;
@@ -1928,6 +1938,9 @@ dl {
           height: auto;
           font-size: 22px;
           font-weight: 600;
+          @include smartphone {
+            font-size: 18px;
+          }
         }
       }
       .buttons-um {
@@ -1940,55 +1953,53 @@ dl {
         .total-users-um {
           position: relative;
           width: auto;
-          height: 50px;
-          margin-right: 80px;
+          height: auto;
+          margin-right: 70px;
           display: flex;
-          justify-content: center;
+          flex-direction: column;
+
           .i1 {
             position: relative;
-            width: 50px;
-            height: 50px;
-            background-image: url('../images/icn_users_white.svg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 80%;
-            margin-right: 10px;
+            width: 100%;
+            height: auto;
+            height: 16px;
+            line-height: 1 !important;
+            span {
+              font-size: 13px;
+              color: white;
+            }
           }
+
           .i2 {
             position: relative;
-            width: 90px;
-            height: 50px;
+            width: 100%;
+            height: 40px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: flex-start;
 
-            span {
+            .icon {
+              position: relative;
+              width: 40px;
+              height: 40px;
+              background-image: url('../images/icn_users_white.svg');
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 90%;
+              margin-right: 12px;
+            }
+
+            .number {
               position: relative;
               width: auto;
               height: auto;
-              color: white;
               padding: 0;
-              // &:nth-child(1) {
-              //   font-size: 13px;
-              //   font-weight: 600;
-              //   height: 15px;
-              // }
-              &:nth-child(1) {
-                font-size: 26px !important;
-                font-weight: 400;
-                color: #18c7fb;
-                height: 26px;
-                padding: 0;
-                line-height: 26px;
-                div {
-                  position: absolute;
-                  font-size: 13px;
-                  color: white;
-                  top: 2px;
-                  right: -60px;
-                }
-              }
+              font-size: 26px;
+              font-weight: 400;
+              color: #18c7fb;
+              height: 26px;
+              padding: 0;
+              line-height: 26px;
             }
           }
         }
@@ -1999,7 +2010,7 @@ dl {
   .row-um {
     position: relative;
     width: 96%;
-    max-width: 1300px;
+    max-width: $max-width;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -2112,34 +2123,28 @@ dl {
       color: $blue-nimbus-dark;
       text-align: center;
       &:nth-child(1) {
-        width: 5%;
+        width: 6%;
       }
       &:nth-child(2) {
-        width: 11%;
-      }
-      &:nth-child(3) {
         width: 15%;
       }
+      &:nth-child(3) {
+        width: 22%;
+      }
       &:nth-child(4) {
-        width: 8%;
+        width: 10%;
       }
       &:nth-child(5) {
-        width: 6%;
+        width: 10%;
       }
       &:nth-child(6) {
         width: 10%;
       }
       &:nth-child(7) {
-        width: 8%;
+        width: 10%;
       }
       &:nth-child(8) {
-        width: 11%;
-      }
-      &:nth-child(9) {
-        width: 11%;
-      }
-      &:nth-child(10) {
-        width: 15%;
+        width: 17%;
       }
       span {
         font-weight: 600;
@@ -2186,51 +2191,40 @@ dl {
       font-size: 14px;
       text-align: center;
       &:nth-child(1) {
-        width: 5%;
+        width: 6%;
         a {
           color: $a-color;
         }
       }
       &:nth-child(2) {
-        width: 11%;
-      }
-      &:nth-child(3) {
         width: 15%;
       }
+      &:nth-child(3) {
+        width: 22%;
+      }
       &:nth-child(4) {
-        width: 8%;
+        width: 10%;
         button {
           margin: 0 auto;
         }
       }
       &:nth-child(5) {
-        width: 6%;
+        width: 10%;
       }
       &:nth-child(6) {
         width: 10%;
       }
       &:nth-child(7) {
-        width: 8%;
+        width: 10%;
       }
       &:nth-child(8) {
-        width: 11%;
-      }
-      &:nth-child(9) {
-        width: 11%;
-      }
-      &:nth-child(10) {
-        width: 15%;
+        width: 17%;
       }
     }
   }
 }
-td {
-  div {
-    .badge-info {
-      color: $blue-nimbus;
-      background-color: $window-divider-color;
-    }
-  }
+.badge-info {
+  background-color: $badge-color;
 }
 .row-btn-title-um {
   position: relative;
@@ -2238,13 +2232,19 @@ td {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+
   span {
     position: relative;
-    width: auto;
+    width: 55px;
     height: auto;
     font-size: 14px;
     font-weight: 600;
+    text-align: center;
+    &:nth-child(2) {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
   }
 }
 .um-row-buttons {
@@ -2256,8 +2256,8 @@ td {
   justify-content: center;
   button {
     &:nth-child(2) {
-      margin-left: 13px;
-      margin-right: 13px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
   }
 }
@@ -2265,7 +2265,7 @@ td {
 .row-um-create {
   position: relative;
   width: 96%;
-  max-width: 1300px;
+  max-width: $max-width;
   height: auto;
   margin-top: 20px;
   form {
@@ -2281,22 +2281,20 @@ td {
       width: 100%;
       height: auto;
       position: relative;
-      // border: 1px solid red;
     }
-
-    .footer-um-create {
-      position: relative;
-      width: 100%;
-      height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-top: 1px solid $window-divider-color;
-      margin-top: 40px;
-      button:nth-child(1) {
-        margin-right: 40px;
-      }
-    }
+  }
+}
+.footer-um-create {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $window-divider-color;
+  margin-top: 40px;
+  button:nth-child(1) {
+    margin-right: 40px;
   }
 }
 .row-col-form-um {
@@ -2313,5 +2311,255 @@ td {
     position: relative;
     width: 30%;
     height: auto;
+  }
+}
+// View user
+.row-um-view {
+  position: relative;
+  width: 96%;
+  max-width: $max-width;
+  height: auto;
+  margin-top: 20px;
+
+  .row-view-user {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .row-vu {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      @include smartphone {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .col-vu-1 {
+        position: relative;
+        width: 30%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        @include smartphone {
+          width: 100%;
+          margin-bottom: 30px;
+        }
+      }
+      .col-vu-2 {
+        position: relative;
+        width: 70%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        @include smartphone {
+          width: 100%;
+        }
+      }
+    }
+
+    .footer-um-create {
+      margin-top: 20px;
+    }
+  }
+}
+.logo-nimbus-view {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 100px;
+  right: 20px;
+  background-image: url('../images/view_user_img.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  @include smartphone {
+    display: none;
+  }
+}
+.row-vu-name {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .profile-vu-img {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: $blue-nimbus;
+    background-image: url('../images/user_navbar.svg');
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+  }
+  .desc-vu {
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    h2 {
+      font-size: 22px;
+      position: relative;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+.row-vu-details {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.row-vu-name-extra {
+  position: relative;
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 2px solid $window-divider-color;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-left: 10px;
+  @include smartphone {
+    width: 100%;
+  }
+
+  span {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    color: $text-color;
+    &:nth-child(1) {
+      margin-right: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      color: $blue-nimbus;
+    }
+  }
+}
+.badge {
+  color: white !important;
+}
+.row-vu-profile {
+  position: relative;
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid $window-divider-color;
+  @include smartphone {
+    width: 100%;
+    max-width: 500px;
+  }
+  span {
+    position: relative;
+    width: auto;
+    height: auto;
+    color: $blue-nimbus;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .list-unstyled {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 10px !important;
+  }
+}
+.row-data-vu {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  span {
+    position: relative;
+    width: auto;
+    height: auto;
+    color: $text-color;
+    &:nth-child(1) {
+      color: $blue-nimbus;
+      font-weight: 600;
+      font-size: 15px;
+    }
+  }
+}
+// Modal
+.modal-confirm-delete {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border: 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 30px rgba(16, 18, 51, 0.05), 0 6px 18px rgba(16, 18, 51, 0.1);
+  .modal-header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: $window-body-color;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    h4 {
+      color: $blue-nimbus;
+      margin-left: 15px;
+      font-size: 16px;
+    }
+  }
+  .modal-body {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+  }
+  .modal-footer {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-top: 1px solid $window-divider-color;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    button {
+      &:nth-child(2) {
+        margin-left: 20px !important;
+        margin-right: 20px;
+      }
+    }
   }
 }

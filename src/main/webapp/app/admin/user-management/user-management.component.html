@@ -3,19 +3,18 @@
   <div class="header-um">
     <div class="row-header-um">
       <div class="title-um">
-        <h2 class="h2-um" jhiTranslate="userManagement.home.title">Users</h2>
+        <h2 jhiTranslate="userManagement.home.title">Users</h2>
       </div>
       <div class="buttons-um">
         <div class="total-users-um">
-          <div class="i1"></div>
+          <div class="i1"><span jhiTranslate="userManagement.home.totalUsers">Total de usuarios:</span></div>
           <div class="i2">
-            <!-- Colocar número de usuariios aquí -->
-            <!-- <span>Total:</span> -->
-            <span>3<div>Usuarios</div></span>
+            <div class="icon"></div>
+            <span class="number">3</span>
           </div>
         </div>
         <button class="main-btn btn-color-1 jh-create-entity" [routerLink]="['./new']">
-          <div class="icon-btn icn-um-1"></div>
+          <!-- <div class="icon-btn icn-um-1"></div> -->
             <span jhiTranslate="userManagement.home.createLabel">Create a new User</span>
         </button>
       </div>
@@ -40,8 +39,8 @@
                 <th  jhiSortBy="langKey"> <span jhiTranslate="userManagement.langKey">Lang Key</span></th>
                 <th><span jhiTranslate="userManagement.profiles">Profiles</span></th>
                 <th jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span> </th>
-                <th jhiSortBy="lastModifiedDate"><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <!-- <th jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span> </th> -->
+                <!-- <th jhiSortBy="lastModifiedDate"><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
                 <th>
                   <div class="row-btn-title-um">
                     <span jhiTranslate="userManagement.view">Ver</span>  <span jhiTranslate="userManagement.edit">Editar</span> <span jhiTranslate="userManagement.delete">Eliminar</span>
@@ -68,17 +67,15 @@
                 <td>{{user.langKey}}</td>
                 <!-- td 6 -->
                 <td>
-                    <div *ngFor="let authority of user.authorities">
-                        <span class="badge badge-info">{{ authority }}</span>
-                    </div>
+                  <div *ngFor="let authority of user.authorities">
+                    <span class="badge badge-info">{{ authority }}</span>
+                  </div>
                 </td>
                 <!-- rd 7 -->
                 <td>{{user.createdDate | date:'dd/MM/yy HH:mm'}} 20/10/20</td>
+                <!-- <td>{{user.lastModifiedBy}}</td> -->
+                <!-- <td>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}} 20/10/20</td> -->
                 <!-- td 8 -->
-                <td>{{user.lastModifiedBy}}</td>
-                <!-- td 9 -->
-                <td>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}} 20/10/20</td>
-                <!-- td 10 -->
                 <td class="um-row-buttons">
                   <button type="submit" [routerLink]="['./', user.login, 'view']" class="btn-circle btn-circle-um1">
                     <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->

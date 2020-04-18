@@ -1,49 +1,105 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <div *ngIf="user">
-            <h2>
-                <span jhiTranslate="userManagement.detail.title">User</span> [<b>{{user.login}}</b>]
-            </h2>
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="userManagement.login">Login</span></dt>
-                <dd>
-                    <span>{{user.login}}</span>
-                    <jhi-boolean
-                        [value]="user.activated"
-                        [textTrue]="'userManagement.activated' | translate"
-                        [textFalse]="'userManagement.deactivated' | translate">
-                    </jhi-boolean>
-                </dd>
-                <dt><span jhiTranslate="userManagement.firstName">First Name</span></dt>
-                <dd>{{user.firstName}}</dd>
-                <dt><span jhiTranslate="userManagement.lastName">Last Name</span></dt>
-                <dd>{{user.lastName}}</dd>
-                <dt><span jhiTranslate="userManagement.email">Email</span></dt>
-                <dd>{{user.email}}</dd>
-                <dt><span jhiTranslate="userManagement.langKey">Lang Key</span></dt>
-                <dd>{{user.langKey}}</dd>
-                <dt><span jhiTranslate="userManagement.createdBy">Created By</span></dt>
-                <dd>{{user.createdBy}}</dd>
-                <dt><span jhiTranslate="userManagement.createdDate">Created Date</span></dt>
-                <dd>{{user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
-                <dt><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span></dt>
-                <dd>{{user.lastModifiedBy}}</dd>
-                <dt><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
-                <dd>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
-                <dt><span jhiTranslate="userManagement.profiles">Profiles</span></dt>
-                <dd>
-                    <ul class="list-unstyled">
-                        <li *ngFor="let authority of user.authorities">
-                            <span class="badge badge-info">{{authority}}</span>
-                        </li>
-                    </ul>
-                </dd>
-            </dl>
-            <button type="submit"
-                    routerLink="../../"
-                    class="btn btn-info">
-                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-            </button>
+<div class="container-user-management">
+  <!-- Header -->
+  <div class="header-um">
+    <div class="row-header-um">
+      <div class="title-um">
+        <h2 jhiTranslate="userManagement.detail.title">Ver usuario </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-um-view">
+    <div *ngIf="user" class="row-view-user">
+      <div class="row-vu">
+        <div class="logo-nimbus-view"></div>
+        <div class="col-vu-1">
+          <div class="row-vu-name">
+            <div class="profile-vu-img"></div>
+            <div class="desc-vu">
+              <p jhiTranslate="userManagement.userNameDes">Nombre de usuario</p>
+              <h2><b>{{user.login}}</b></h2>
+            </div>
+          </div>
+          <div class="row-vu-name-extra">
+            <span jhiTranslate="userManagement.email">Email</span>
+            <span>{{user.email}}</span>
+          </div>
+          <div class="row-vu-name-extra">
+            <span jhiTranslate="userManagement.status">Estatus</span>
+            <div>
+            <jhi-boolean
+                [value]="user.activated"
+                [textTrue]="'userManagement.activated' | translate"
+                [textFalse]="'userManagement.deactivated' | translate">
+            </jhi-boolean>
+            </div>
+          </div>
+          <div class="row-vu-profile">
+            <span jhiTranslate="userManagement.profiles">Profiles</span>
+            <ul class="list-unstyled">
+              <li *ngFor="let authority of user.authorities">
+                <span class="badge badge-info">{{authority}}</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-vu-2">
+
+          <div class="row-vu-details jh-entity-details">
+            <div class="row-data-vu">
+              <span jhiTranslate="userManagement.firstName">First Name</span>
+              <span>{{user.firstName}}</span>
+            </div>
+              <!-- <dt><span jhiTranslate="userManagement.login">Login</span></dt>
+              <dd>
+                  <span>{{user.login}}</span>
+                  <jhi-boolean
+                      [value]="user.activated"
+                      [textTrue]="'userManagement.activated' | translate"
+                      [textFalse]="'userManagement.deactivated' | translate">
+                  </jhi-boolean>
+              </dd> -->
+              <div class="row-data-vu">
+                <span jhiTranslate="userManagement.lastName">Last Name</span>
+                <span>{{user.lastName}}</span>
+              </div>
+
+              <div class="row-data-vu">
+                <span jhiTranslate="userManagement.langKey">Lang Key</span>
+                <span>{{user.langKey}}</span>
+              </div>
+
+              <div class="row-data-vu">
+                <span jhiTranslate="userManagement.createdBy">Created By</span>
+                <span>{{user.createdBy}}</span>
+              </div>
+
+              <div class="row-data-vu">
+                <span jhiTranslate="userManagement.createdDate">Created Date</span>
+                <span>{{user.createdDate | date:'dd/MM/yy HH:mm' }}</span>
+              </div>
+
+              <div class="row-data-vu">
+                <span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span>
+                <span>{{user.lastModifiedBy}}</span>
+              </div>
+
+              <div class="row-data-vu">
+                <span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span>
+                <span>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</span>
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+            <div class="footer-um-create">
+                <button type="submit" class="secondary-btn" routerLink="../../" jhiTranslate="entity.action.back">Back</button>
+            </div>
+
         </div>
     </div>
 </div>

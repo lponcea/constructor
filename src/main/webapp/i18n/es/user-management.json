@@ -3,6 +3,7 @@
     "home": {
       "title": "Administración de usuarios",
       "createLabel": "Crear usuario",
+      "totalUsers": "Total de usuarios",
       "createOrEditLabel": "Crear o editar usuario"
     },
     "created": "Se creó un nuevo usuario con identificador {{ param }}",
@@ -12,12 +13,13 @@
       "question": "¿Seguro que quieres eliminar el usuario {{ login }}?"
     },
     "detail": {
-      "title": "Usuario"
+      "title": "Ver usuario"
     },
     "login": "Usuario",
     "firstName": "Nombre",
     "lastName": "Apellidos",
     "email": "Email",
+    "userNameDes": "Nombre de usuario",
     "status": "Estatus",
     "activated": "Activado",
     "deactivated": "Desactivado",
