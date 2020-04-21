@@ -8,14 +8,14 @@ p {
   }
 }
 h2 {
-  color: $blue-nimbus-dark;
+  color: $blue-nimbus;
 
   @include smartphone {
     font-size: 24px;
   }
 }
 h3 {
-  color: $blue-nimbus-light;
+  color: $a-hover;
 
   @include smartphone {
     font-size: 16px;
@@ -539,6 +539,70 @@ h5 {
 .img-hp-2 {
   background-image: url('../../content/images/img_hp_2.png');
 }
+.dots-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../content/images/img_hp_1_dots.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  animation: motion-dots-img 15s ease-in-out infinite;
+  -webkit-animation: motion-dots-img 15s ease-in-out infinite;
+}
+.dots-img-2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../content/images/img_hp_2_dots.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  animation: motion-dots-img 15s ease-in-out infinite;
+  -webkit-animation: motion-dots-img 15s ease-in-out infinite;
+}
+.spining-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  margin-top: -1px;
+  // top: 223px;
+  right: 9%;
+  background-image: url('../../content/images/spining_icn.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  animation: motion-spining 6s ease-in-out infinite;
+  -webkit-animation: motion-spining 6s ease-in-out infinite;
+  @include smartphone {
+    // top: 145px;
+    right: 6%;
+  }
+  @include smartphone1 {
+    // top: 50%;
+    right: 6%;
+  }
+}
+@keyframes motion-dots-img {
+  0% {
+    transform: translateX(-40px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-40px);
+  }
+}
+@keyframes motion-spining {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 // Footer
 .footer-gradient {
@@ -546,11 +610,9 @@ h5 {
   width: 100%;
   height: 200px;
   background: rgb(255, 255, 255);
-  // background: linear-gradient(0deg, rgba(255,255,255,1) 43%, rgba(249,250,251,1) 100%);
   background: linear-gradient(0deg, rgba(255, 255, 255, 1) 43%, rgba(247, 248, 249, 0.5) 100%);
   top: -200px;
 }
-
 .footer_hp {
   position: relative;
   width: 100%;
