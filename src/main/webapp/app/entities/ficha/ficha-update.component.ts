@@ -215,6 +215,7 @@ export class FichaUpdateComponent implements OnInit {
       colaboradorName += this.rolesColaboradores[i].rolColaborador!.descripcion;
       colaboradorName = colaboradorName.toLowerCase();
       colaboradorName = this.removeTildes(colaboradorName);
+      value = this.removeTildes(value);
       if (colaboradorName.search(value) !== -1 && this.findInArray(this.selectedColaboradors, this.rolesColaboradores[i].id) === -1) {
         results.push(this.rolesColaboradores[i]);
       }
