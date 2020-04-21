@@ -209,12 +209,12 @@ export class FichaUpdateComponent implements OnInit {
     const results: Array<IRolesColaboradores> = [];
     for (let i = 0; i < this.rolesColaboradores.length; i++) {
       let colaboradorName = '';
-      colaboradorName += this.rolesColaboradores[i].colaborador!.nombres + ' ' ? this.rolesColaboradores[i].colaborador!.nombres : '';
-      colaboradorName += this.rolesColaboradores[i].colaborador!.apellido1 + ' ' ? this.rolesColaboradores[i].colaborador!.apellido1 : '';
-      colaboradorName += this.rolesColaboradores[i].colaborador!.apellido2 + ' ' ? this.rolesColaboradores[i].colaborador!.apellido2 : '';
+      colaboradorName += this.rolesColaboradores[i].colaborador!.nombres ? this.rolesColaboradores[i].colaborador!.nombres + ' ' : '';
+      colaboradorName += this.rolesColaboradores[i].colaborador!.apellido1 ? this.rolesColaboradores[i].colaborador!.apellido1 + ' ' : '';
+      colaboradorName += this.rolesColaboradores[i].colaborador!.apellido2 ? this.rolesColaboradores[i].colaborador!.apellido2 + ' ' : '';
       colaboradorName += this.rolesColaboradores[i].rolColaborador!.descripcion;
-      colaboradorName.toLowerCase();
-
+      colaboradorName = colaboradorName.toLowerCase();
+      colaboradorName = this.removeTildes(colaboradorName);
       if (colaboradorName.search(value) !== -1 && this.findInArray(this.selectedColaboradors, this.rolesColaboradores[i].id) === -1) {
         results.push(this.rolesColaboradores[i]);
       }
@@ -243,5 +243,19 @@ export class FichaUpdateComponent implements OnInit {
   search(value: string): void {
     this.foundColaboradors = [];
     if (value !== '') this.foundColaboradors = this.searchColaborador(value);
+  }
+
+  removeTildes(word: string): string {
+    const tildes = [
+      ['á', 'a'],
+      ['é', 'e'],
+      ['í', 'i'],
+      ['ó', 'o'],
+      ['ú', 'u']
+    ];
+    for (let i = 0; i < tildes.length; i++) {
+      word = word.replace(tildes[i][0], tildes[i][1]);
+    }
+    return word;
   }
 }
