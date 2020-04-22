@@ -1,6 +1,15 @@
 #component-text-row {
   position: relative;
   width: 100%;
-  height: 200px;
-  background-color: silver;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .header-co-text {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    background-color: #e7e8ed;
+  }
 }

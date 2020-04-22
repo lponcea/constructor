@@ -44,24 +44,24 @@
                                 <span jhiTranslate="global.menu.admin.metrics">Metrics</span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="dropdown-item" routerLink="admin/health" routerLinkActive="active" (click)="collapseNavbar()">
                                 <fa-icon icon="heart" fixedWidth="true"></fa-icon>
                                 <span jhiTranslate="global.menu.admin.health">Health</span>
                             </a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="dropdown-item" routerLink="admin/configuration" routerLinkActive="active" (click)="collapseNavbar()">
                                 <fa-icon icon="list" fixedWidth="true"></fa-icon>
                                 <span jhiTranslate="global.menu.admin.configuration">Configuration</span>
                             </a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="dropdown-item" routerLink="admin/audits" routerLinkActive="active" (click)="collapseNavbar()">
                                 <fa-icon icon="bell" fixedWidth="true"></fa-icon>
                                 <span jhiTranslate="global.menu.admin.audits">Audits</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a class="dropdown-item" routerLink="admin/logs" routerLinkActive="active" (click)="collapseNavbar()">
                                 <fa-icon icon="tasks" fixedWidth="true"></fa-icon>
@@ -139,9 +139,10 @@
     <!-- Main menu Expand -->
     <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}" (click)="openMenu = !openMenu">
         <button class="dropdown-item" (click)="login()" id="login" *ngSwitchCase="false" jhiTranslate="global.menu.login">Iniciar sesión</button>
-        <button class="dropdown-item" (click)="logout()" id="logout" *ngSwitchCase="true" jhiTranslate="global.menu.logout">Cerrar sesión</button>
-        <button class="dropdown-item" routerLink="/account/register" *ngSwitchCase="false" jhiTranslate="global.menu.register">Crear tu cuenta</button>
         <button class="dropdown-item" routerLink="/" >Home</button>
+        <button class="dropdown-item" routerLink="/account/register" *ngSwitchCase="false" jhiTranslate="global.menu.register">Crear tu cuenta</button>
+        <button class="dropdown-item" (click)="logout()" id="logout" *ngSwitchCase="true" jhiTranslate="global.menu.logout">Cerrar sesión</button>
+
     </div>
 
   </div>
