@@ -1164,6 +1164,7 @@ input::-webkit-input-placeholder {
     -webkit-appearance: none;
     appearance: none;
     padding-left: 12px;
+    padding-right: 30px;
 
     &:hover {
       border-color: $input-border-hover;
@@ -2561,5 +2562,13 @@ dl {
         margin-right: 20px;
       }
     }
+  }
+}
+
+.btn-go-homepage {
+  position: absolute;
+  bottom: 140px;
+  @include smartphone {
+    bottom: 15px;
   }
 }
