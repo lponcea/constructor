@@ -1794,6 +1794,9 @@ dl {
         align-items: center;
         margin-top: 20px;
         border-radius: 0 0 12px 12px;
+        button:nth-child(2) {
+          margin-left: 40px;
+        }
       }
     }
   }
@@ -1870,6 +1873,7 @@ dl {
   bottom: -100px;
   left: 50%;
   margin-left: -210px;
+  display: none;
   span {
     position: relative;
     width: auto;
