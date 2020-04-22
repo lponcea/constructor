@@ -25,7 +25,7 @@
     top: -24px;
     width: 35px;
     height: 24px;
-    background-color: #0059ff;
+    background-color: #15a9fa;
     border-radius: 10px 10px 0 0;
     z-index: 2;
     background-image: url('../../../content/images/delete_art_icn.svg');
@@ -35,7 +35,7 @@
     transition: 0.4s;
     cursor: pointer;
     &:hover {
-      background-color: #2c75fc;
+      background-color: #05c3f3;
     }
   }
   .artboard-name {
@@ -44,7 +44,7 @@
     top: -24px;
     width: 80px;
     height: 24px;
-    background-color: #0047cb;
+    background-color: #1a3d82;
     border-radius: 10px 0px 0 0;
     z-index: 1;
     display: flex;
@@ -91,4 +91,35 @@
 }
 ::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+.m1-space {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .icn-m1-s {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../../content/images/icn_empty.svg');
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+  }
+  p {
+    position: relative;
+    width: auto;
+    height: auto;
+    color: #a9a8a8;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+  }
 }

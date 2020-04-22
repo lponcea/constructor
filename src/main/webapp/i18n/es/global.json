@@ -45,7 +45,7 @@
       "language": "Idioma",
       "register": "Crea tu cuenta",
       "login": "Ingresa",
-      "logout": "Salir"
+      "logout": "Cerrar sesión"
     },
     "form": {
       "username.label": "Usuario",

@@ -69,7 +69,8 @@
           line-height: 18px;
           font-weight: 600;
           color: $linktext-color;
-          cursor: pointer;
+          cursor: default;
+          opacity: 0.7;
           margin-right: 8px;
           .icon {
             position: relative;
@@ -310,7 +311,8 @@
         cursor: default;
 
         span {
-          color: $blue-nimbus-light;
+          color: #687c99;
+          font-weight: 700;
         }
       }
     }
