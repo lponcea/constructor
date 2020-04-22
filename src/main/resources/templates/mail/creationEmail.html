@@ -1,25 +1,107 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
-    <head>
-        <title th:text="#{email.activation.title}">JHipster creation</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
-    </head>
-    <body>
-        <p th:text="#{email.activation.greeting(${user.login})}">
-            Dear
-        </p>
-        <p th:text="#{email.creation.text1}">
-            Your JHipster account has been created, please click on the URL below to access it:
-        </p>
-        <p>
-            <a th:with="url=(@{|${baseUrl}/account/reset/finish?key=${user.resetKey}|})" th:href="${url}"
-            th:text="${url}">Login link</a>
-        </p>
-        <p>
-            <span th:text="#{email.activation.text2}">Regards, </span>
-            <br/>
-            <em th:text="#{email.signature}">JHipster.</em>
-        </p>
-    </body>
-</html>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
+<center>
+  <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #171a40;">
+    <tbody>
+      <tr>
+        <td align="center" valign="top" id="bodyCell" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0px;padding-top: 30px;padding-bottom: 30px;width: 100%;border-top: 0;">
+          <!-- BEGIN TEMPLATE // -->
+
+          <table border="0" cellpadding="0" cellspacing="0" width="90%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
+            <tbody>
+              <tr>
+                <td valign="top" id="templatePreheader" style="border-radius: 8px 8px 0 0; border-bottom: 1px solid #e7e8ed; background:white;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #f2f1f1;background-image: url(http://baheme.com/assets/img/logo_login.png);background-repeat: no-repeat;background-position: center;background-size: 180px;border-top: 0;border-bottom: 0;padding-top: 0px;padding-bottom: 0px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+                    <tbody class="mcnDividerBlockOuter">
+                      <tr>
+                        <td class="mcnDividerBlockInner" style="min-width: 100%;padding: 180px 0px 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top" id="templateBody" style="background-color: #ffffff;padding-top: 30px;padding-bottom: 30px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody class="mcnTextBlockOuter">
+                      <tr>
+                        <td valign="top" class="mcnTextBlockInner" style="padding-top: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+
+                          <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                            <tbody>
+                              <tr>
+                                <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-size: 16px;line-height: 150%;text-align: left;">
+
+                <p style="text-align: center;position: relative; font-family: roboto,helvetica neue,helvetica,arial; font-size: 22px; font-weight: 400; font-style: normal; color: #1a3d82; line-height: 24px;" th:text="#{email.activation.greeting(${user.login})}">
+                    Dear
+                </p>
+                <p style="width:60%; margin: auto; position: relative; font-family: roboto,helvetica neue,helvetica,arial; font-size: 16px; font-weight: 400; font-style: normal; color: #7a7a7a; line-height: 24px;" th:text="#{email.creation.text1}">
+                    Your JHipster account has been created, please click on the URL below to access it:
+                </p>
+                <br>
+                <p style="width:60%; margin: auto; position: relative; text-align: center;">
+                <a  style="position: relative; cursor: pointer; text-align:center;  font-style: italic; color: #15a9fa;  font-size: 16px;" th:with="url=(@{|${baseUrl}/account/reset/finish?key=${user.resetKey}|})" th:href="${url}"
+                th:text="${url}">Login link</a>
+                </p>
+
+
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top" id="templateFooter" style="background-color: white;border-top: 1px solid #e7e8ed;border-bottom: 0;padding-top: 12px;padding-bottom: 12px; border-radius:0 0 8px 8px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody class="mcnTextBlockOuter">
+                      <tr>
+                        <td valign="top" class="mcnTextBlockInner" style="padding-top: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+
+                          <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                            <tbody>
+                              <tr>
+                                <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helvetica;font-size: 12px;line-height: 130%;text-align: center;">
+                                  <em>
+                                    <span style="font-size:14px">
+                                      <span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">
+                                        <span th:text="#{email.activation.text2}">Regards,</span>
+                                        <br/>
+                                        <em th:text="#{email.signature}">JHipster.</em>
+                                      </span>
+                                    </span>
+                                  </em>
+                                  <br>
+
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+                        <!-- // END TEMPLATE -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</center>
