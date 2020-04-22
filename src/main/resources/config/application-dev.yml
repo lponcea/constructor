@@ -43,17 +43,17 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:h2:file:./target/h2db/db/constructor;DB_CLOSE_DELAY=-1
     username: constructor
-    password:
+    password: 
     hikari:
       poolName: Hikari
       auto-commit: false
   h2:
     console:
-      enabled: false
+      enabled: false  
   jpa:
     database-platform: io.github.jhipster.domain.util.FixedH2Dialect
     database: H2
-    show-sql: true
+    show-sql: true 
     properties:
       hibernate.id.new_generator_mappings: true
       hibernate.connection.provider_disables_autocommit: true
@@ -64,10 +64,16 @@ spring:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
   mail:
-    host: localhost
-    port: 25
-    username:
-    password:
+    host: smtp.gmail.com
+    port: 587
+    username: jmaldonado@grupoeducare.com
+    password: Soyelmejor16
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+        auth: true
+        starttls.enable: true
+        ssl.trust: smtp.gmail.com
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
@@ -104,7 +110,7 @@ jhipster:
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
   mail: # specific JHipster mail property, for standard properties see MailProperties
-    base-url: http://127.0.0.1:8080
+    base-url: http://192.168.2.23:8081
   metrics:
     logs: # Reports metrics in the logs
       enabled: false
@@ -115,7 +121,7 @@ jhipster:
       enabled: false
       host: localhost
       port: 5000
-      queue-size: 512
+      queue-size: 512 
   audit-events:
     retention-period: 30 # Number of days before audit events are deleted.
 
