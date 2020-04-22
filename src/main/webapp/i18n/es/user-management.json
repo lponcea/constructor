@@ -9,9 +9,7 @@
     "created": "Se creó un nuevo usuario con identificador {{ param }}",
     "updated": "Se actualizó el usuario con identificador {{ param }}",
     "deleted": "Se borró el usuario con identificador {{ param }}",
-    "delete": {
-      "question": "¿Seguro que quieres eliminar el usuario {{ login }}?"
-    },
+    "deleteQuestion": "¿Seguro que quieres eliminar el usuario {{ login }}?",
     "detail": {
       "title": "Ver usuario"
     },
