@@ -867,7 +867,7 @@ h5 {
   justify-content: center;
   align-items: center;
   margin-top: 100px;
-  background-color: $blue-nimbus;
+  background-color: $blue-nimbus-dark;
   margin-top: 40px;
   margin-bottom: 140px;
   .col-carousel {
@@ -893,8 +893,8 @@ h5 {
     transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(calc(-250px * 7));
-    transform: translateX(calc(-250px * 7));
+    -webkit-transform: translateX(calc(-500px * 3));
+    transform: translateX(calc(-500px * 3));
     // transform: translateX(calc(-250px * 10));
   }
 }
@@ -905,27 +905,38 @@ h5 {
   overflow: hidden;
 }
 .slide-track-c {
-  -webkit-animation: scroll 40s linear infinite;
-  animation: scroll 40s linear infinite;
+  -webkit-animation: scroll 55s linear infinite;
+  animation: scroll 55s linear infinite;
   // animation: scroll 30s linear infinite;
   display: flex;
   // width: calc(250px * 20);
-  width: calc(250px * 14);
+  width: calc(500px * 6);
 }
 .ca-item {
-  width: 250px;
+  width: 500px;
   height: 400px;
-  background-color: teal;
   background-position: center;
-  background-size: 100%;
+  background-size: 500px;
   background-repeat: no-repeat;
+  transition: all 0.2s ease;
   &:nth-child(2n + 1) {
-    background-color: silver;
   }
   &:nth-child(1) {
-    background-image: url('../../content/images/t1.png');
+    background-image: url('../../content/images/fi1.png');
   }
   &:nth-child(2) {
-    background-image: url('../../content/images/t2.png');
+    background-image: url('../../content/images/fi2.png');
+  }
+  &:nth-child(3) {
+    background-image: url('../../content/images/fi3.png');
+  }
+  &:nth-child(4) {
+    background-image: url('../../content/images/fi4.png');
+  }
+  &:nth-child(5) {
+    background-image: url('../../content/images/fi5.png');
+  }
+  &:nth-child(6) {
+    background-image: url('../../content/images/fi6.png');
   }
 }
