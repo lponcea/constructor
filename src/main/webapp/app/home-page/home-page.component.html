@@ -1,12 +1,4 @@
-<style>
-  .change-box {
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    z-index: 10;
-    bottom: 50px;
-  }
-</style>
+
 <div class="change-box" [style.left.%]="changeBoxLeft" [style.background]="background" [style.border-radius.%]="changeBoxLeft">
 
 </div>
@@ -21,6 +13,9 @@
   <div class="row-header-hp">
     <div class="col-rh-hp">
       <div class="logo_header_hp"></div>
+      <!-- <button class="main-btn btn-color-1 btn-navbar" (click)="login()" *ngSwitchCase="false" jhiTranslate="global.menu.login"></button> -->
+      <!-- <button class="main-btn btn-color-1 btn-navbar btn-go-homepage">Ir a constructor</button> -->
+
     </div>
     <div class="col-rh-hp">
       <div class="img-heder_hp"></div>
@@ -113,7 +108,9 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quibusdam repudiandae reiciendis neque ratione delectus molestiae, ex corrupti ab exercitationem corporis illo animi odit. Atque quaerat aperiam fuga cum deleniti, nulla rerum impedit itaque asperiores!</p>
     </div>
     <div class="item-curv-2 justify-content-right">
-      <div class="img img-hp-1"></div>
+      <div class="img img-hp-1">
+        <div class="dots-img"></div>
+      </div>
     </div>
   </div>
 
@@ -129,7 +126,10 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quibusdam repudiandae reiciendis neque ratione delectus molestiae, ex corrupti ab exercitationem corporis illo animi odit. Atque quaerat aperiam fuga cum deleniti, nulla rerum impedit itaque asperiores!</p>
     </div>
     <div class="item-curv-2">
-      <div class="img img-hp-2"></div>
+      <div class="img img-hp-2">
+        <div class="dots-img-2"></div>
+        <div class="spining-icon"></div>
+      </div>
     </div>
 
   </div>
@@ -138,4 +138,56 @@
 
 <div class="footer_hp">
   <div class="footer-gradient"></div>
+
+  <div class="row-footer">
+    <div class="footer-logo-small">
+      <div class="logo"></div>
+    </div>
+
+    <div class="row-columns">
+      <div class="col-footer-logo"><div class="logo-footer"></div></div>
+      <div class="col-footer">
+        <div class="cf-1">
+          <p>Header</p>
+          <p>Lorem 1</p>
+          <p>Lorem 2</p>
+          <p>Lorem 3</p>
+          <p>Lorem 4</p>
+        </div>
+        <div class="cf-2">
+          <p>Header</p>
+          <p>Lorem 1</p>
+          <p>Lorem 2</p>
+          <p>Lorem 3</p>
+          <p>Lorem 4</p>
+        </div>
+      </div>
+      <div class="col-footer">
+        <div class="cf-1">
+          <p>Header</p>
+          <p>Lorem 1</p>
+          <p>Lorem 2</p>
+          <p>Lorem 3</p>
+          <p>Lorem 4</p>
+        </div>
+        <div class="cf-2">
+          <p>Header</p>
+          <p>Lorem 1</p>
+          <p>Lorem 2</p>
+          <p>Lorem 3</p>
+          <p>Lorem 4</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="line-footer">
+    <p>Copyright © 2020 Nimbus</p>
+    <div class="social-row">
+      <div class="item-social i-s1"></div>
+      <div class="item-social i-s2"></div>
+      <div class="item-social i-s3"></div>
+    </div>
+  </div>
 </div>
