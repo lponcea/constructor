@@ -222,7 +222,7 @@ export class CursoUpdateComponent implements OnInit {
       this.makeInvalid('resumenContenido');
       this.courseConfigurationService.setErrorTabIndex(0);
     }
-    if (curso.descripcion !== null && curso.descripcion !== undefined && curso.descripcion.length > 50) {
+    if (curso.descripcion !== null && curso.descripcion !== undefined && curso.descripcion.length > 255) {
       this.eventManager.broadcast(
         new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
       );
