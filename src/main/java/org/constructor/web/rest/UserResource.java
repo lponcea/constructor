@@ -10,6 +10,7 @@ import org.constructor.service.dto.UserDTO;
 import org.constructor.web.rest.errors.BadRequestAlertException;
 import org.constructor.web.rest.errors.EmailAlreadyUsedException;
 import org.constructor.web.rest.errors.LoginAlreadyUsedException;
+import org.constructor.web.rest.errors.UserCursoException;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -184,7 +185,11 @@ public class UserResource {
     @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Void> deleteUser(@PathVariable String login) {
         log.debug("REST request to delete User: {}", login);
+        try {
         userService.deleteUser(login);
+        }catch(Exception e) {
+        	throw new UserCursoException();
+        }
         return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName,  "userManagement.deleted", login)).build();
     }
 }

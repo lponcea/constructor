@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class Image {
 	
-	private static final String path =  System.getProperty("user.home") + "/resources" + File.separator;
-	private final Logger log = LoggerFactory.getLogger(Video.class);
+	private static final String PATH =  System.getProperty("user.home") + "/resources" + File.separator;
+	private final Logger log = LoggerFactory.getLogger(Image.class);
 	
 	@RequestMapping(value = "/loadImage", method = RequestMethod.GET)
 	@Secured({ AuthoritiesConstants.ADMIN, AuthoritiesConstants.USER })
@@ -31,18 +31,18 @@ public class Image {
 		
 		HttpHeaders headers = new HttpHeaders();
 		log.debug("*************Nimbus Image Request*************");
-		log.debug("******** Path:  {}****** ", path + nameImage);
+		log.debug("******** Path:  {}****** ", PATH + nameImage);
 		byte[] fileArray = new byte[1];
-		File file = new File(path + nameImage);
+		File file = new File(PATH + nameImage);
 		
 		if(!file.exists()) {
 			fileArray[0] = 0;
 			log.debug("******** Path not found****** ");
 			headers.setContentType(MediaType.IMAGE_PNG);
-			return new ResponseEntity<byte[]>(fileArray,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(fileArray,HttpStatus.BAD_REQUEST);
 		} 
 		
-		log.debug("********Load Image ******", file);
+		log.debug("********Load Image ******: {}", file);
 		fileArray = new byte[(int) file.length()];
 		
 		try { 
@@ -52,12 +52,11 @@ public class Image {
 			read.close();
 			log.debug("******** Sending File *****", nameImage);
 			headers.setContentType(MediaType.IMAGE_PNG);
-			return new ResponseEntity<byte[]>(fileArray,headers,HttpStatus.OK);
-			//return fileArray;
+			return new ResponseEntity<>(fileArray,headers,HttpStatus.OK);
 		
 		}catch(IOException ex){
 			headers.setContentType(MediaType.IMAGE_PNG);
-			return new ResponseEntity<byte[]>(fileArray,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(fileArray,HttpStatus.BAD_REQUEST);
 		}
 		
 	}
