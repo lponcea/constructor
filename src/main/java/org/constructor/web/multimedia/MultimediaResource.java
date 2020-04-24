@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +28,10 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 	@Autowired
     private MultimediaService multimediaService;
 		
-	@PostMapping("/fileUpload")
-	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST, produces = "application/json")
+	@PostMapping(value = "/fileUpload",  produces = "application/json")
 	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file) {
 		VideoResponse vr = new VideoResponse();
-		log.debug("Upload File", file); 
-		String path = "";
+		log.debug("Upload File: {}", file); 
 		if (!file.isEmpty()) {
 			vr = multimediaService.saveFile(file);
 		} else {
@@ -43,18 +42,18 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 			vr.setName("invalid file");
 			return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
 		}
-		log.debug("vr", vr.getName());
+		log.debug(vr.getName(),"vr: {}");
 	  return  new ResponseEntity<>(vr,HttpStatus.OK);
 	}
 	
 	
-	@RequestMapping(value = "/deleteCourseCover", method = RequestMethod.DELETE, produces = "application/json")
+	@DeleteMapping(value = "/deleteCourseCover", produces = "application/json")
 	public ResponseEntity<String> deleteCourseCover(@RequestParam("id") Long id) {
 		
 		log.debug("*************************   deleteCourseCover  *******************");
 		
 		log.debug("Id : {}", id);
-		MultimediaResponse response = new MultimediaResponse();
+		MultimediaResponse response;
 
 		response = multimediaService.deleteCourseCover(id);
 
@@ -67,7 +66,7 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 		}
 	}
 	
-	@RequestMapping(value = "/deleteFile", method = RequestMethod.DELETE, produces = "application/json")
+	@DeleteMapping(value = "/deleteFile",  produces = "application/json")
 	public ResponseEntity<String> deleteFile(@RequestParam("file") String file) {
 		
 		log.debug("*************************   deleteFile  *******************");
@@ -79,14 +78,14 @@ private final Logger log = LoggerFactory.getLogger(MultimediaResource.class);
 
 		if (response.equals("successful")) {
 			log.debug("file removed successfully");
-			return new ResponseEntity<String>("file removed successfully", HttpStatus.OK);
+			return new ResponseEntity<>("file removed successfully", HttpStatus.OK);
 		}
 		if (response.equals("failed")) {
 			log.debug("file not found");
-			return new ResponseEntity<String>("file not found", HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>("file not found", HttpStatus.NO_CONTENT);
 		}else {
 			log.debug("resource with dependency");
-			return new ResponseEntity<String>("resource with dependency", HttpStatus.ACCEPTED);
+			return new ResponseEntity<>("resource with dependency", HttpStatus.ACCEPTED);
 		}
 	}
 }
