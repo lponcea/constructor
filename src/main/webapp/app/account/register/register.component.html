@@ -53,8 +53,17 @@
         <h2 jhiTranslate="register.title">Registration</h2>
       </div>
 
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.success">
+                <strong>Registration saved!</strong> Please check your email for confirmation.
+            </div>
+        </div>
+      </div>
+
       <form name="form" class="form-register" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
         <div class="row-form-register">
+          <jhi-alert-error></jhi-alert-error>
           <!-- Row 1 -->
           <div class="item-divider-form">
             <!-- Col 1 -->
@@ -62,7 +71,7 @@
               <div class="form-nimbus">
 
                 <label class="form-control-label" for="login" jhiTranslate="global.form.username.label">Username</label>
-                <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}" formControlName="login" #login>
+                <input  [ngClass]="{'alert-input': !isValid('login') && !isEmpty('login')}" type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}" formControlName="login" #login>
                   <div *ngIf="registerForm.get('login')!.invalid && (registerForm.get('login')!.dirty || registerForm.get('login')!.touched)" class="alert-register-input">
                     <small *ngIf="registerForm.get('login')?.errors?.required" jhiTranslate="register.messages.validate.login.required">
                       Your username is required.

@@ -6,6 +6,7 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared/constants/error.constants';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { RegisterService } from './register.service';
+import { JhiEventManager, JhiAlertService, JhiAlert, JhiEventWithContent } from 'ng-jhipster';
 
 @Component({
   selector: 'jhi-register',
@@ -20,6 +21,7 @@ export class RegisterComponent implements AfterViewInit {
   errorEmailExists = false;
   errorUserExists = false;
   success = false;
+  alerts: JhiAlert[] = [];
 
   registerForm = this.fb.group({
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
@@ -33,7 +35,9 @@ export class RegisterComponent implements AfterViewInit {
     private loginModalService: LoginModalService,
     private registerService: RegisterService,
     private renderer: Renderer,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private alertService: JhiAlertService,
+    private eventManager: JhiEventManager
   ) {}
 
   ngAfterViewInit(): void {
@@ -55,7 +59,9 @@ export class RegisterComponent implements AfterViewInit {
       const login = this.registerForm.get(['login'])!.value;
       const email = this.registerForm.get(['email'])!.value;
       this.registerService.save({ login, email, password, langKey: this.languageService.getCurrentLanguage() }).subscribe(
-        () => (this.success = true),
+        response => {
+          this.success = true;
+        },
         response => this.processError(response)
       );
     }
@@ -66,6 +72,9 @@ export class RegisterComponent implements AfterViewInit {
   }
 
   private processError(response: HttpErrorResponse): void {
+    this.eventManager.broadcast(
+      new JhiEventWithContent('constructorApp.validationError', { message: 'register.messages.' + response.error.message })
+    );
     if (response.status === 400 && response.error.type === LOGIN_ALREADY_USED_TYPE) {
       this.errorUserExists = true;
     } else if (response.status === 400 && response.error.type === EMAIL_ALREADY_USED_TYPE) {
@@ -73,5 +82,9 @@ export class RegisterComponent implements AfterViewInit {
     } else {
       this.error = true;
     }
+  }
+
+  isValid(controlName: string): boolean {
+    return this.registerForm.controls[controlName].status === 'VALID';
   }
 }

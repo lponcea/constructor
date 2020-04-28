@@ -4,6 +4,7 @@
     "form": {
       "button": "Crear la cuenta"
     },
+    "formError": "Por favor revisa la infromación y vuelve a intentarlo.",
     "messages": {
       "validate": {
         "login": {
