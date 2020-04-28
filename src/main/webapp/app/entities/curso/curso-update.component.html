@@ -28,7 +28,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaCreacionSys" for="field_fechaCreacionSys">Fecha Creacion Sys</label>
             <div class="input-group">
-                <input id="field_fechaCreacionSys" type="text" class="form-control" name="fechaCreacionSys" ngbDatepicker  #fechaCreacionSysDp="ngbDatepicker" formControlName="fechaCreacionSys"/>
+                <input [ngClass]="{'alert-input': !isValid('fechaCreacion')}" id="field_fechaCreacionSys" type="text" class="form-control" name="fechaCreacionSys" ngbDatepicker  #fechaCreacionSysDp="ngbDatepicker" formControlName="fechaCreacionSys"/>
                 <span class="input-group-append">
                     <button type="button" class="btn btn-secondary" (click)="fechaCreacionSysDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                 </span>
@@ -37,7 +37,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaPublicacionSys" for="field_fechaPublicacionSys">Fecha Publicacion Sys</label>
             <div class="input-group">
-                <input id="field_fechaPublicacionSys" type="text" class="form-control" name="fechaPublicacionSys" ngbDatepicker  #fechaPublicacionSysDp="ngbDatepicker" formControlName="fechaPublicacionSys"/>
+                <input [ngClass]="{'alert-input': !isValid('fechaPublicacion')}" id="field_fechaPublicacionSys" type="text" class="form-control" name="fechaPublicacionSys" ngbDatepicker  #fechaPublicacionSysDp="ngbDatepicker" formControlName="fechaPublicacionSys"/>
                 <span class="input-group-append">
                     <button type="button" class="btn btn-secondary" (click)="fechaPublicacionSysDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                 </span>

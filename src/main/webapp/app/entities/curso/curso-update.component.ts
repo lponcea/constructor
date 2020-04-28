@@ -5,7 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-// import * as moment from 'moment';
+import * as moment from 'moment';
 
 import { ICurso, Curso } from 'app/shared/model/curso.model';
 import { CursoService } from './curso.service';
@@ -255,6 +255,14 @@ export class CursoUpdateComponent implements OnInit {
         new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
       );
       this.makeInvalid('palabraClave');
+      this.courseConfigurationService.setErrorTabIndex(1);
+    }
+    if (curso.fechaCreacion && curso.fechaPublicacion && curso.fechaCreacion.isAfter(curso.fechaPublicacion)) {
+      this.eventManager.broadcast(
+        new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.dates' })
+      );
+      this.makeInvalid('fechaCreacion');
+      this.makeInvalid('fechaPublicacion');
       this.courseConfigurationService.setErrorTabIndex(1);
     }
     curso.portadaUrl = this.portadaUrl;

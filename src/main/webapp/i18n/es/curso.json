@@ -19,7 +19,8 @@
       "validations": {
         "formError": "Por favor revisa la infromación y vuelve a intentarlo.",
         "fileSize": "La imagen debe pesar menos de 30MB.",
-        "fileType": "Tipo de archivo no permitido."
+        "fileType": "Tipo de archivo no permitido.",
+        "dates": "La fecha de creación no puede ser posterior a la fecha de publicación."
       },
       "titulo": "Título",
       "descripcion": "Descripción",
