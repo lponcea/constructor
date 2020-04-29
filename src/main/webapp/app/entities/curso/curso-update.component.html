@@ -98,7 +98,8 @@
             <div class="rgc-item">
               <div class="form-nimbus">
                   <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
-                  <input [ngClass]="{'alert-input': !isValid('resumenContenido')}" type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
+                  <textarea [ngClass]="{'alert-input': !isValid('resumenContenido')}" type="text" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido" class="textarea-nimbus">Write something here</textarea>
+                  <!-- <input [ngClass]="{'alert-input': !isValid('resumenContenido')}" type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/> -->
                   <!-- Aquí va la alerta por campo del formulario -->
                   <div *ngIf="!isValid('resumenContenido')" class="form-alert"><p>Mensaje de corrección</p></div>
               </div>
@@ -293,7 +294,7 @@
                     <option [ngValue]="null"></option>
                     <option [ngValue]="categoriaOption.id === editForm.get('categoria')!.value?.id ? editForm.get('categoria')!.value : categoriaOption" *ngFor="let categoriaOption of categorias; trackBy: trackById">{{categoriaOption.descripcion}}</option>
                 </select>
-              </div>  
+              </div>
               <div class="form-alert"><p></p></div>
           </div>
         </div>
