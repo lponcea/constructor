@@ -211,7 +211,7 @@
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
               <div class="input-group">
-                  <input id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" formControlName="fechaCreacion"/>
+                  <input [ngClass]="{'alert-input': !isValid('fechaCreacion')}" id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" formControlName="fechaCreacion"/>
                   <span class="input-group-append">
                       <button type="button" class="btn-calendar-select" (click)="fechaCreacionDp.toggle()"></button>
                   </span>
@@ -225,7 +225,7 @@
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.fechaPublicacion" for="field_fechaPublicacion">Fecha Publicacion</label>
               <div class="input-group">
-                  <input id="field_fechaPublicacion" type="text" class="form-control" name="fechaPublicacion" ngbDatepicker  #fechaPublicacionDp="ngbDatepicker" formControlName="fechaPublicacion"/>
+                  <input [ngClass]="{'alert-input': !isValid('fechaPublicacion')}" id="field_fechaPublicacion" type="text" class="form-control" name="fechaPublicacion" ngbDatepicker  #fechaPublicacionDp="ngbDatepicker" formControlName="fechaPublicacion"/>
                   <span class="input-group-append">
                       <button type="button" class="btn-calendar-select" (click)="fechaPublicacionDp.toggle()"></button>
                   </span>
