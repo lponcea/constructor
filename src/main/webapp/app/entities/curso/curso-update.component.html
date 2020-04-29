@@ -75,9 +75,9 @@
               <div class="form-nimbus">
                   <!-- <label jhiTranslate="constructorApp.curso.titulo" for="field_titulo">Titulo</label> -->
                   <label for="field_titulo">Titulo*</label>
-                  <input [ngClass]="{'alert-input': !isValid('titulo')}" type="text" class="form-control" name="titulo" id="field_titulo" formControlName="titulo"/>
+                  <input [ngClass]="{'alert-input': !isValid('titulo')}" maxlength="80" type="text" class="form-control" name="titulo" id="field_titulo" formControlName="titulo"/>
                   <!-- Aquí va la alerta por campo del formulario -->
-                  <div *ngIf="!isValid('titulo')" class="form-alert"><p>Mensaje de corrección</p></div>
+                  <div *ngIf="!isValid('titulo')" class="form-alert"><p jhiTranslate="constructorApp.curso.validations.requiredField"></p></div>
               </div>
             </div>
             <div class="rgc-item">
@@ -98,7 +98,7 @@
             <div class="rgc-item">
               <div class="form-nimbus">
                   <label jhiTranslate="constructorApp.curso.resumenContenido" for="field_resumenContenido">Resumen Contenido</label>
-                  <input [ngClass]="{'alert-input': !isValid('resumenContenido')}" type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
+                  <input [ngClass]="{'alert-input': !isValid('resumenContenido')}" maxlength="2000" type="text" class="form-control" name="resumenContenido" id="field_resumenContenido" formControlName="resumenContenido"/>
                   <!-- Aquí va la alerta por campo del formulario -->
                   <div *ngIf="!isValid('resumenContenido')" class="form-alert"><p>Mensaje de corrección</p></div>
               </div>
@@ -106,7 +106,7 @@
             <div class="rgc-item">
               <div class="form-nimbus">
                   <label jhiTranslate="constructorApp.curso.descripcion" for="field_descripcion">Descripcion</label>
-                  <input [ngClass]="{'alert-input': !isValid('descripcion')}" type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion"/>
+                  <input [ngClass]="{'alert-input': !isValid('descripcion')}" maxlength="255" type="text" class="form-control" name="descripcion" id="field_descripcion" formControlName="descripcion"/>
                   <!-- Aquí va la alerta por campo del formulario -->
                   <div *ngIf="!isValid('descripcion')" class="form-alert"><p>Mensaje de corrección</p></div>
               </div>
@@ -238,7 +238,7 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label jhiTranslate="constructorApp.curso.numeroEdicion" for="field_numeroEdicion">Numero Edicion</label>
-              <input [ngClass]="{'alert-input': !isValid('numeroEdicion')}" type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion" formControlName="numeroEdicion"/>
+              <input [ngClass]="{'alert-input': !isValid('numeroEdicion')}" maxlength="30" type="text" class="form-control" name="numeroEdicion" id="field_numeroEdicion" formControlName="numeroEdicion"/>
               <!-- Aquí va la alerta por campo del formulario -->
               <div *ngIf="!isValid('numeroEdicion')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
@@ -306,7 +306,7 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.versionStr" for="field_versionStr">Version Str</label>
-              <input [ngClass]="{'alert-input': !isValid('versionStr')}" type="text" class="form-control" name="versionStr" id="field_versionStr" formControlName="versionStr"/>
+              <input [ngClass]="{'alert-input': !isValid('versionStr')}" maxlength="30" type="text" class="form-control" name="versionStr" id="field_versionStr" formControlName="versionStr"/>
               <!-- Aquí va la alerta por campo del formulario -->
               <div *ngIf="!isValid('versionStr')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
@@ -316,7 +316,7 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.palabraClave" for="field_palabraClave">Palabra Clave</label>
-              <input [ngClass]="{'alert-input': !isValid('palabraClave')}" type="text" class="form-control" name="palabraClave" id="field_palabraClave" formControlName="palabraClave"/>
+              <input [ngClass]="{'alert-input': !isValid('palabraClave')}"  maxlength="80" type="text" class="form-control" name="palabraClave" id="field_palabraClave" formControlName="palabraClave"/>
               <!-- Aquí va la alerta por campo del formulario -->
               <div *ngIf="!isValid('palabraClave')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
@@ -326,7 +326,7 @@
         <div class="col-window-g">
           <div class="form-nimbus">
               <label class="form-control-label" jhiTranslate="constructorApp.curso.clave" for="field_clave">Clave</label>
-              <input [ngClass]="{'alert-input': !isValid('clave')}" type="text" class="form-control" name="clave" id="field_clave" formControlName="clave"/>
+              <input [ngClass]="{'alert-input': !isValid('clave')}" maxlength="45" type="text" class="form-control" name="clave" id="field_clave" formControlName="clave"/>
               <!-- Aquí va la alerta por campo del formulario -->
               <div *ngIf="!isValid('clave')" class="form-alert"><p>Mensaje de corrección</p></div>
           </div>
