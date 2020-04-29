@@ -5,7 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as moment from 'moment';
 
 import { ICurso, Curso } from 'app/shared/model/curso.model';
 import { CursoService } from './curso.service';
@@ -201,6 +200,8 @@ export class CursoUpdateComponent implements OnInit {
       curso,
       ficha
     };
+    this.makeValid('fechaCreacion');
+    this.makeValid('fechaPublicacion');
     if (curso.titulo === '' || curso.titulo === null || curso.titulo === undefined) {
       this.eventManager.broadcast(
         new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.validations.formError' })
@@ -388,5 +389,9 @@ export class CursoUpdateComponent implements OnInit {
 
   makeInvalid(controlName: string): void {
     this.editForm.controls[controlName].setErrors(new Error());
+  }
+
+  makeValid(controlName: string): void {
+    this.editForm.controls[controlName].setErrors(null);
   }
 }
