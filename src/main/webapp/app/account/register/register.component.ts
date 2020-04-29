@@ -87,4 +87,8 @@ export class RegisterComponent implements AfterViewInit {
   isValid(controlName: string): boolean {
     return this.registerForm.controls[controlName].status === 'VALID';
   }
+
+  isEmpty(controlName: string): boolean {
+    return this.registerForm.controls[controlName].value === '';
+  }
 }

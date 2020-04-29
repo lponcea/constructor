@@ -71,7 +71,7 @@
               <div class="form-nimbus">
 
                 <label class="form-control-label" for="login" jhiTranslate="global.form.username.label">Username</label>
-                <input  [ngClass]="{'alert-input': !isValid('login') && !isEmpty('login')}" type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}" formControlName="login" #login>
+                <input [ngClass]="{'alert-input': !isValid('login') && !isEmpty('login')}" type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}" formControlName="login" #login>
                   <div *ngIf="registerForm.get('login')!.invalid && (registerForm.get('login')!.dirty || registerForm.get('login')!.touched)" class="alert-register-input">
                     <small *ngIf="registerForm.get('login')?.errors?.required" jhiTranslate="register.messages.validate.login.required">
                       Your username is required.
