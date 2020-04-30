@@ -1,12 +1,10 @@
-<style>
-    input[type="file"] {
-        display: none;
-    }
-</style>
+
 <form name="editForm" role="form" novalidate [formGroup]="editForm" class="form-window-configuration">
   <div class="row-form-window-c">
 
-    <jhi-alert-error></jhi-alert-error>
+    <div class="alert-course-configuration">
+      <jhi-alert-error></jhi-alert-error>
+    </div>
 
     <!-- <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2> -->
 
@@ -61,6 +59,7 @@
     <!-- Generales Inicia -->
     <div [hidden]="selectedTabIndex !== 0" class=" row-window-general">
       <div class="rwg-header">
+        <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.titleGeneralConfg">Configuración general</h2>
         <p>*Campo obligatorio</p>
       </div>
 
@@ -202,7 +201,7 @@
     <!-- Avanzado Inicia -->
     <div [hidden]="selectedTabIndex !== 1" class="row-window-general">
       <div class="rwg-header">
-        <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.createOrEditLabel">Create or edit a Curso</h2>
+        <h2 id="jhi-curso-heading" jhiTranslate="constructorApp.curso.home.titleAdvancelConfg">Configuración avanzada</h2>
         <p>*Campo obligatorio</p>
       </div>
       <!-- Start row -->

@@ -5,6 +5,8 @@
         "title": "Cursos",
         "createLabel": "Crear nuevo Curso",
         "createOrEditLabel": "Crear o editar Curso",
+        "titleGeneralConfg": "Configuración general",
+        "titleAdvancelConfg": "Configuración avanzada",
         "notFound": "Ningún Cursos encontrado"
       },
       "created": "Un nuevo Curso ha sido creado con el identificador {{ param }}",
