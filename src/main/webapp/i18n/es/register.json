@@ -2,7 +2,9 @@
   "register": {
     "title": "Registro",
     "form": {
-      "button": "Crear la cuenta"
+      "button": "Crear la cuenta",
+      "firstName": "Nombre (s)",
+      "lastName": "Apellidos"
     },
     "formError": "Por favor revisa la infromación y vuelve a intentarlo.",
     "messages": {
