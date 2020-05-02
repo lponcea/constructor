@@ -97,4 +97,8 @@ export class RegisterComponent implements AfterViewInit {
   isEmpty(controlName: string): boolean {
     return this.registerForm.controls[controlName].value === '';
   }
+
+  passwordDoNotMatch(): boolean {
+    return this.registerForm.get(['password'])!.value !== this.registerForm.get(['confirmPassword'])!.value;
+  }
 }
