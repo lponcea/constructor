@@ -89,13 +89,13 @@ public class UserService {
 
     public User registerUser(UserDTO userDTO, String password) {
         userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
-            boolean removed = removeNonActivatedUser(existingUser);
+            boolean removed = removeNonActivatedUser(existingUser, userDTO);
             if (!removed) {
                 throw new UsernameAlreadyUsedException();
             }
         });
         userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()).ifPresent(existingUser -> {
-            boolean removed = removeNonActivatedUser(existingUser);
+            boolean removed = removeNonActivatedUser(existingUser, userDTO);
             if (!removed) {
                 throw new EmailAlreadyUsedException();
             }
@@ -125,10 +125,12 @@ public class UserService {
         return newUser;
     }
 
-    private boolean removeNonActivatedUser(User existingUser){
+    private boolean removeNonActivatedUser(User existingUser, UserDTO userDTO){
         if (existingUser.getActivated()) {
              return false;
         }
+        if (existingUser.getLogin().toUpperCase().equalsIgnoreCase(userDTO.getLogin())) return false; 
+        if (existingUser.getEmail().toUpperCase().equalsIgnoreCase(userDTO.getEmail())) return false; 
         userRepository.delete(existingUser);
         userRepository.flush();
         this.clearUserCaches(existingUser);
