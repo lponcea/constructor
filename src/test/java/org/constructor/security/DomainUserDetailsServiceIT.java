@@ -51,7 +51,9 @@ public class DomainUserDetailsServiceIT {
         userOne.setActivated(true);
         userOne.setEmail(USER_ONE_EMAIL);
         userOne.setFirstName("userOne");
-        userOne.setLastName("doe");
+        userOne.setLastName1("doe");
+        userOne.setLastName2("doe");
+        userOne.setPhone("55-555-55-555");
         userOne.setLangKey("en");
         userRepository.save(userOne);
 
@@ -61,7 +63,9 @@ public class DomainUserDetailsServiceIT {
         userTwo.setActivated(true);
         userTwo.setEmail(USER_TWO_EMAIL);
         userTwo.setFirstName("userTwo");
-        userTwo.setLastName("doe");
+        userTwo.setLastName1("doe");
+        userTwo.setLastName2("doe");
+        userTwo.setPhone("55-555-55-555");
         userTwo.setLangKey("en");
         userRepository.save(userTwo);
 
@@ -71,7 +75,9 @@ public class DomainUserDetailsServiceIT {
         userThree.setActivated(false);
         userThree.setEmail(USER_THREE_EMAIL);
         userThree.setFirstName("userThree");
-        userThree.setLastName("doe");
+        userThree.setLastName1("doe");
+        userThree.setLastName2("doe");
+        userThree.setPhone("55-555-55-555");
         userThree.setLangKey("en");
         userRepository.save(userThree);
     }

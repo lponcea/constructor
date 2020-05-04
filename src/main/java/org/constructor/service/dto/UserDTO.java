@@ -26,7 +26,13 @@ public class UserDTO {
     private String firstName;
 
     @Size(max = 50)
-    private String lastName;
+    private String lastName1;
+    
+    @Size(max = 50)
+    private String lastName2;
+    
+    @Size(max = 50)
+    private String phone;
 
     @Email
     @Size(min = 5, max = 254)
@@ -58,7 +64,8 @@ public class UserDTO {
         this.id = user.getId();
         this.login = user.getLogin();
         this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
+        this.lastName1 = user.getLastName1();
+        this.lastName2 = user.getLastName2();
         this.email = user.getEmail();
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
@@ -96,12 +103,28 @@ public class UserDTO {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastName1() {
+        return lastName1;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName1(String lastName1) {
+        this.lastName1 = lastName1;
+    }
+    
+    public String getLastName2() {
+        return lastName2;
+    }
+
+    public void setLastName2(String lastName2) {
+        this.lastName2 = lastName2;
+    }
+    
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -181,7 +204,9 @@ public class UserDTO {
         return "UserDTO{" +
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
+            ", lastName1='" + lastName1 + '\'' +
+            ", lastName2='" + lastName2 + '\'' +
+            ", phone='" + phone + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +

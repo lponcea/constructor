@@ -59,6 +59,9 @@ public class UserResourceIT {
 
     private static final String DEFAULT_IMAGEURL = "http://placehold.it/50x50";
     private static final String UPDATED_IMAGEURL = "http://placehold.it/40x40";
+    
+    private static final String DEFAULT_PHONE = "55-5555-555-55";
+    private static final String UPDATED_PHONE = "22-222-222-22";
 
     private static final String DEFAULT_LANGKEY = "en";
     private static final String UPDATED_LANGKEY = "fr";
@@ -120,7 +123,9 @@ public class UserResourceIT {
         user.setActivated(true);
         user.setEmail(RandomStringUtils.randomAlphabetic(5) + DEFAULT_EMAIL);
         user.setFirstName(DEFAULT_FIRSTNAME);
-        user.setLastName(DEFAULT_LASTNAME);
+        user.setLastName1(DEFAULT_LASTNAME);
+        user.setLastName2(DEFAULT_LASTNAME);
+        user.setPhone(DEFAULT_PHONE);
         user.setImageUrl(DEFAULT_IMAGEURL);
         user.setLangKey(DEFAULT_LANGKEY);
         return user;
@@ -143,7 +148,9 @@ public class UserResourceIT {
         managedUserVM.setLogin(DEFAULT_LOGIN);
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
-        managedUserVM.setLastName(DEFAULT_LASTNAME);
+        managedUserVM.setLastName1(DEFAULT_LASTNAME);
+        managedUserVM.setLastName2(DEFAULT_LASTNAME);
+        managedUserVM.setPhone(DEFAULT_PHONE);
         managedUserVM.setEmail(DEFAULT_EMAIL);
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
@@ -161,7 +168,8 @@ public class UserResourceIT {
         User testUser = userList.get(userList.size() - 1);
         assertThat(testUser.getLogin()).isEqualTo(DEFAULT_LOGIN);
         assertThat(testUser.getFirstName()).isEqualTo(DEFAULT_FIRSTNAME);
-        assertThat(testUser.getLastName()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(testUser.getLastName1()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(testUser.getLastName2()).isEqualTo(DEFAULT_LASTNAME);
         assertThat(testUser.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testUser.getImageUrl()).isEqualTo(DEFAULT_IMAGEURL);
         assertThat(testUser.getLangKey()).isEqualTo(DEFAULT_LANGKEY);
@@ -177,7 +185,8 @@ public class UserResourceIT {
         managedUserVM.setLogin(DEFAULT_LOGIN);
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
-        managedUserVM.setLastName(DEFAULT_LASTNAME);
+        managedUserVM.setLastName1(DEFAULT_LASTNAME);
+        managedUserVM.setLastName2(DEFAULT_LASTNAME);
         managedUserVM.setEmail(DEFAULT_EMAIL);
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
@@ -206,7 +215,8 @@ public class UserResourceIT {
         managedUserVM.setLogin(DEFAULT_LOGIN);// this login should already be used
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
-        managedUserVM.setLastName(DEFAULT_LASTNAME);
+        managedUserVM.setLastName1(DEFAULT_LASTNAME);
+        managedUserVM.setLastName2(DEFAULT_LASTNAME);
         managedUserVM.setEmail("anothermail@localhost");
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
@@ -235,7 +245,8 @@ public class UserResourceIT {
         managedUserVM.setLogin("anotherlogin");
         managedUserVM.setPassword(DEFAULT_PASSWORD);
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
-        managedUserVM.setLastName(DEFAULT_LASTNAME);
+        managedUserVM.setLastName1(DEFAULT_LASTNAME);
+        managedUserVM.setLastName2(DEFAULT_LASTNAME);
         managedUserVM.setEmail(DEFAULT_EMAIL);// this email should already be used
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
@@ -316,7 +327,9 @@ public class UserResourceIT {
         managedUserVM.setLogin(updatedUser.getLogin());
         managedUserVM.setPassword(UPDATED_PASSWORD);
         managedUserVM.setFirstName(UPDATED_FIRSTNAME);
-        managedUserVM.setLastName(UPDATED_LASTNAME);
+        managedUserVM.setLastName1(UPDATED_LASTNAME);
+        managedUserVM.setLastName2(UPDATED_LASTNAME);
+        managedUserVM.setPhone(UPDATED_PHONE);
         managedUserVM.setEmail(UPDATED_EMAIL);
         managedUserVM.setActivated(updatedUser.getActivated());
         managedUserVM.setImageUrl(UPDATED_IMAGEURL);
@@ -337,7 +350,8 @@ public class UserResourceIT {
         assertThat(userList).hasSize(databaseSizeBeforeUpdate);
         User testUser = userList.get(userList.size() - 1);
         assertThat(testUser.getFirstName()).isEqualTo(UPDATED_FIRSTNAME);
-        assertThat(testUser.getLastName()).isEqualTo(UPDATED_LASTNAME);
+        assertThat(testUser.getLastName1()).isEqualTo(UPDATED_LASTNAME);
+        assertThat(testUser.getLastName2()).isEqualTo(UPDATED_LASTNAME);
         assertThat(testUser.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testUser.getImageUrl()).isEqualTo(UPDATED_IMAGEURL);
         assertThat(testUser.getLangKey()).isEqualTo(UPDATED_LANGKEY);
@@ -358,7 +372,8 @@ public class UserResourceIT {
         managedUserVM.setLogin(UPDATED_LOGIN);
         managedUserVM.setPassword(UPDATED_PASSWORD);
         managedUserVM.setFirstName(UPDATED_FIRSTNAME);
-        managedUserVM.setLastName(UPDATED_LASTNAME);
+        managedUserVM.setLastName1(UPDATED_LASTNAME);
+        managedUserVM.setLastName2(UPDATED_LASTNAME);
         managedUserVM.setEmail(UPDATED_EMAIL);
         managedUserVM.setActivated(updatedUser.getActivated());
         managedUserVM.setImageUrl(UPDATED_IMAGEURL);
@@ -380,7 +395,8 @@ public class UserResourceIT {
         User testUser = userList.get(userList.size() - 1);
         assertThat(testUser.getLogin()).isEqualTo(UPDATED_LOGIN);
         assertThat(testUser.getFirstName()).isEqualTo(UPDATED_FIRSTNAME);
-        assertThat(testUser.getLastName()).isEqualTo(UPDATED_LASTNAME);
+        assertThat(testUser.getLastName1()).isEqualTo(UPDATED_LASTNAME);
+        assertThat(testUser.getLastName2()).isEqualTo(UPDATED_LASTNAME);
         assertThat(testUser.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testUser.getImageUrl()).isEqualTo(UPDATED_IMAGEURL);
         assertThat(testUser.getLangKey()).isEqualTo(UPDATED_LANGKEY);
@@ -398,7 +414,8 @@ public class UserResourceIT {
         anotherUser.setActivated(true);
         anotherUser.setEmail("jhipster@localhost");
         anotherUser.setFirstName("java");
-        anotherUser.setLastName("hipster");
+        anotherUser.setLastName1("hipster");
+        anotherUser.setLastName2("hipster");
         anotherUser.setImageUrl("");
         anotherUser.setLangKey("en");
         userRepository.saveAndFlush(anotherUser);
@@ -411,7 +428,8 @@ public class UserResourceIT {
         managedUserVM.setLogin(updatedUser.getLogin());
         managedUserVM.setPassword(updatedUser.getPassword());
         managedUserVM.setFirstName(updatedUser.getFirstName());
-        managedUserVM.setLastName(updatedUser.getLastName());
+        managedUserVM.setLastName1(updatedUser.getLastName1());
+        managedUserVM.setLastName2(updatedUser.getLastName2());
         managedUserVM.setEmail("jhipster@localhost");// this email should already be used by anotherUser
         managedUserVM.setActivated(updatedUser.getActivated());
         managedUserVM.setImageUrl(updatedUser.getImageUrl());
@@ -440,7 +458,8 @@ public class UserResourceIT {
         anotherUser.setActivated(true);
         anotherUser.setEmail("jhipster@localhost");
         anotherUser.setFirstName("java");
-        anotherUser.setLastName("hipster");
+        anotherUser.setLastName1("hipster");
+        anotherUser.setLastName2("hipster");
         anotherUser.setImageUrl("");
         anotherUser.setLangKey("en");
         userRepository.saveAndFlush(anotherUser);
@@ -453,7 +472,8 @@ public class UserResourceIT {
         managedUserVM.setLogin("jhipster");// this login should already be used by anotherUser
         managedUserVM.setPassword(updatedUser.getPassword());
         managedUserVM.setFirstName(updatedUser.getFirstName());
-        managedUserVM.setLastName(updatedUser.getLastName());
+        managedUserVM.setLastName1(updatedUser.getLastName1());
+        managedUserVM.setLastName2(updatedUser.getLastName2());
         managedUserVM.setEmail(updatedUser.getEmail());
         managedUserVM.setActivated(updatedUser.getActivated());
         managedUserVM.setImageUrl(updatedUser.getImageUrl());
@@ -522,7 +542,9 @@ public class UserResourceIT {
         userDTO.setId(DEFAULT_ID);
         userDTO.setLogin(DEFAULT_LOGIN);
         userDTO.setFirstName(DEFAULT_FIRSTNAME);
-        userDTO.setLastName(DEFAULT_LASTNAME);
+        userDTO.setLastName1(DEFAULT_LASTNAME);
+        userDTO.setLastName2(DEFAULT_LASTNAME);
+        userDTO.setPhone(DEFAULT_PHONE);
         userDTO.setEmail(DEFAULT_EMAIL);
         userDTO.setActivated(true);
         userDTO.setImageUrl(DEFAULT_IMAGEURL);
@@ -535,7 +557,8 @@ public class UserResourceIT {
         assertThat(user.getId()).isEqualTo(DEFAULT_ID);
         assertThat(user.getLogin()).isEqualTo(DEFAULT_LOGIN);
         assertThat(user.getFirstName()).isEqualTo(DEFAULT_FIRSTNAME);
-        assertThat(user.getLastName()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(user.getLastName1()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(user.getLastName2()).isEqualTo(DEFAULT_LASTNAME);
         assertThat(user.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(user.getActivated()).isEqualTo(true);
         assertThat(user.getImageUrl()).isEqualTo(DEFAULT_IMAGEURL);
@@ -565,7 +588,8 @@ public class UserResourceIT {
         assertThat(userDTO.getId()).isEqualTo(DEFAULT_ID);
         assertThat(userDTO.getLogin()).isEqualTo(DEFAULT_LOGIN);
         assertThat(userDTO.getFirstName()).isEqualTo(DEFAULT_FIRSTNAME);
-        assertThat(userDTO.getLastName()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(userDTO.getLastName1()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(userDTO.getLastName2()).isEqualTo(DEFAULT_LASTNAME);
         assertThat(userDTO.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(userDTO.isActivated()).isEqualTo(true);
         assertThat(userDTO.getImageUrl()).isEqualTo(DEFAULT_IMAGEURL);

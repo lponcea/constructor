@@ -70,7 +70,7 @@ public class UserServiceIT {
         user.setActivated(true);
         user.setEmail(DEFAULT_EMAIL);
         user.setFirstName(DEFAULT_FIRSTNAME);
-        user.setLastName(DEFAULT_LASTNAME);
+        user.setLastName1(DEFAULT_LASTNAME);
         user.setImageUrl(DEFAULT_IMAGEURL);
         user.setLangKey(DEFAULT_LANGKEY);
 

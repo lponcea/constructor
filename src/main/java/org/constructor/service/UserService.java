@@ -106,7 +106,9 @@ public class UserService {
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(userDTO.getFirstName());
-        newUser.setLastName(userDTO.getLastName());
+        newUser.setLastName1(userDTO.getLastName1());
+        newUser.setLastName2(userDTO.getLastName2());
+        newUser.setPhone(userDTO.getPhone());
         if (userDTO.getEmail() != null) {
             newUser.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -141,7 +143,9 @@ public class UserService {
         User user = new User();
         user.setLogin(userDTO.getLogin().toLowerCase());
         user.setFirstName(userDTO.getFirstName());
-        user.setLastName(userDTO.getLastName());
+        user.setLastName1(userDTO.getLastName1());
+        user.setLastName2(userDTO.getLastName2());
+        user.setPhone(userDTO.getPhone());
         if (userDTO.getEmail() != null) {
             user.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -179,12 +183,14 @@ public class UserService {
      * @param langKey   language key.
      * @param imageUrl  image URL of user.
      */
-    public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
+    public void updateUser(String firstName, String lastName1, String lastName2, String phone, String email, String langKey, String imageUrl) {
         SecurityUtils.getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
             .ifPresent(user -> {
                 user.setFirstName(firstName);
-                user.setLastName(lastName);
+                user.setLastName1(lastName1);
+                user.setLastName2(lastName2);
+                user.setPhone(phone);
                 if (email != null) {
 	                user.setEmail(email.toLowerCase());
                 }
@@ -210,7 +216,9 @@ public class UserService {
                 this.clearUserCaches(user);
                 user.setLogin(userDTO.getLogin().toLowerCase());
                 user.setFirstName(userDTO.getFirstName());
-                user.setLastName(userDTO.getLastName());
+                user.setLastName1(userDTO.getLastName1());
+                user.setLastName2(userDTO.getLastName2());
+                user.setPhone(userDTO.getPhone());
                 if (userDTO.getEmail() != null) {
                     user.setEmail(userDTO.getEmail().toLowerCase());
                 }
