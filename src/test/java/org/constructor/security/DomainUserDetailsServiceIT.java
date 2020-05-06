@@ -53,7 +53,6 @@ public class DomainUserDetailsServiceIT {
         userOne.setFirstName("userOne");
         userOne.setLastName1("doe");
         userOne.setLastName2("doe");
-        userOne.setPhone("55-555-55-555");
         userOne.setLangKey("en");
         userRepository.save(userOne);
 
@@ -65,7 +64,6 @@ public class DomainUserDetailsServiceIT {
         userTwo.setFirstName("userTwo");
         userTwo.setLastName1("doe");
         userTwo.setLastName2("doe");
-        userTwo.setPhone("55-555-55-555");
         userTwo.setLangKey("en");
         userRepository.save(userTwo);
 
@@ -77,7 +75,6 @@ public class DomainUserDetailsServiceIT {
         userThree.setFirstName("userThree");
         userThree.setLastName1("doe");
         userThree.setLastName2("doe");
-        userThree.setPhone("55-555-55-555");
         userThree.setLangKey("en");
         userRepository.save(userThree);
     }

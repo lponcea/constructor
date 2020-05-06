@@ -125,7 +125,6 @@ public class UserResourceIT {
         user.setFirstName(DEFAULT_FIRSTNAME);
         user.setLastName1(DEFAULT_LASTNAME);
         user.setLastName2(DEFAULT_LASTNAME);
-        user.setPhone(DEFAULT_PHONE);
         user.setImageUrl(DEFAULT_IMAGEURL);
         user.setLangKey(DEFAULT_LANGKEY);
         return user;

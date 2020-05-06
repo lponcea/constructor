@@ -108,7 +108,6 @@ public class UserService {
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setLastName1(userDTO.getLastName1());
         newUser.setLastName2(userDTO.getLastName2());
-        newUser.setPhone(userDTO.getPhone());
         if (userDTO.getEmail() != null) {
             newUser.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -145,7 +144,6 @@ public class UserService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName1(userDTO.getLastName1());
         user.setLastName2(userDTO.getLastName2());
-        user.setPhone(userDTO.getPhone());
         if (userDTO.getEmail() != null) {
             user.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -190,7 +188,6 @@ public class UserService {
                 user.setFirstName(firstName);
                 user.setLastName1(lastName1);
                 user.setLastName2(lastName2);
-                user.setPhone(phone);
                 if (email != null) {
 	                user.setEmail(email.toLowerCase());
                 }
@@ -218,7 +215,6 @@ public class UserService {
                 user.setFirstName(userDTO.getFirstName());
                 user.setLastName1(userDTO.getLastName1());
                 user.setLastName2(userDTO.getLastName2());
-                user.setPhone(userDTO.getPhone());
                 if (userDTO.getEmail() != null) {
                     user.setEmail(userDTO.getEmail().toLowerCase());
                 }
