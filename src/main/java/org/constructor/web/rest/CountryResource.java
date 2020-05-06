@@ -25,6 +25,7 @@ import io.github.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link org.constructor.domain.Country}.
  */
 @RestController
+@RequestMapping("/api")
 public class CountryResource {
 	
 	 private final Logger log = LoggerFactory.getLogger(CountryResource.class);
