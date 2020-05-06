@@ -69,7 +69,8 @@ export class UserManagementUpdateComponent implements OnInit {
       id: user.id,
       login: user.login,
       firstName: user.firstName,
-      lastName: user.lastName,
+      lastName1: user.lastName1,
+      lastName2: user.lastName2,
       email: user.email,
       activated: user.activated,
       langKey: user.langKey,
@@ -80,7 +81,8 @@ export class UserManagementUpdateComponent implements OnInit {
   private updateUser(user: User): void {
     user.login = this.editForm.get(['login'])!.value;
     user.firstName = this.editForm.get(['firstName'])!.value;
-    user.lastName = this.editForm.get(['lastName'])!.value;
+    user.lastName1 = this.editForm.get(['lastName1'])!.value;
+    user.lastName2 = this.editForm.get(['lastName2'])!.value;
     user.email = this.editForm.get(['email'])!.value;
     user.activated = this.editForm.get(['activated'])!.value;
     user.langKey = this.editForm.get(['langKey'])!.value;
