@@ -11,7 +11,7 @@ type EntityArrayResponseType = HttpResponse<ICountry[]>;
   providedIn: 'root'
 })
 export class CountryService {
-  public resourceUrl = SERVER_API_URL + 'api/countrys';
+  public resourceUrl = SERVER_API_URL + 'api/country';
 
   constructor(protected http: HttpClient) {}
 

@@ -33,8 +33,8 @@ export class RegisterComponent implements AfterViewInit {
     firstName: ['', [Validators.maxLength(50)]],
     lastName1: ['', [Validators.maxLength(50)]],
     lastName2: ['', [Validators.maxLength(50)]],
-    countryLada: [''],
-    phoneNumber: ['', [Validators.maxLength(10)]],
+    country: [''],
+    phoneNumber: ['', [Validators.minLength(10), Validators.maxLength(10)]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
   });
@@ -54,15 +54,14 @@ export class RegisterComponent implements AfterViewInit {
     if (this.login) {
       this.renderer.invokeElementMethod(this.login.nativeElement, 'focus', []);
     }
-    /*
-    this.countryService.query()
-    .pipe(
-      map((res: HttpResponse<ICountry[]>) => {
-        return res.body ? res.body : [];
-      })
-    )
-    .subscribe((resBody: ICountry[]) => (this.countrys = resBody));
-    */
+    this.countryService
+      .query()
+      .pipe(
+        map((res: HttpResponse<ICountry[]>) => {
+          return res.body ? res.body : [];
+        })
+      )
+      .subscribe((resBody: ICountry[]) => (this.countrys = resBody));
   }
 
   register(): void {
@@ -70,6 +69,11 @@ export class RegisterComponent implements AfterViewInit {
     this.error = false;
     this.errorEmailExists = false;
     this.errorUserExists = false;
+
+    if (this.registerForm.get(['phoneNumber'])!.value && !this.registerForm.get(['country'])!.value) {
+      this.registerForm.controls['country'].setErrors(new Error());
+      return;
+    }
 
     const password = this.registerForm.get(['password'])!.value;
     if (password !== this.registerForm.get(['confirmPassword'])!.value) {
@@ -80,7 +84,12 @@ export class RegisterComponent implements AfterViewInit {
       const firstName = this.registerForm.get(['firstName'])!.value;
       const lastName1 = this.registerForm.get(['lastName1'])!.value;
       const lastName2 = this.registerForm.get(['lastName2'])!.value;
-      const phoneNumbers = [this.registerForm.get(['phoneNumber'])!.value];
+      const phoneNumbers = [
+        {
+          phoneNumber: this.registerForm.get(['phoneNumber'])!.value,
+          country: this.registerForm.get(['country'])!.value
+        }
+      ];
       this.registerService
         .save({ login, firstName, lastName1, lastName2, email, phoneNumbers, password, langKey: this.languageService.getCurrentLanguage() })
         .subscribe(
