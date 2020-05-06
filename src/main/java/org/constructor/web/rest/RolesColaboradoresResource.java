@@ -35,7 +35,7 @@ public class RolesColaboradoresResource {
 
     private final Logger log = LoggerFactory.getLogger(RolesColaboradoresResource.class);
 
-    private static final String ENTITY_NAME = "rolColaborador";
+    private static final String ENTITY_NAME = "rolesColaboradores";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -47,7 +47,7 @@ public class RolesColaboradoresResource {
     }
 
     /**
-     * {@code POST  /rol-colaboradors} : Create a new rolColaborador.
+     * {@code POST  /roles-colaboradores} : Create a new rolColaborador.
      *
      * @param rolColaborador the rolColaborador to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new rolColaborador, or with status {@code 400 (Bad Request)} if the rolColaborador has already an ID.

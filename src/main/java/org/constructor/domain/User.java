@@ -62,9 +62,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(length = 254, unique = true)
     private String email;
     
-    @Size(max = 50)
-    @Column(name = "phone", length = 50)
-    private String phone;
+    
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="user", fetch = FetchType.EAGER)
+    private Set<PhoneNumber> phone = new HashSet<>();;
     
     // ManyToMany to curso relationship (JAM)
     @JsonIgnore
@@ -164,16 +164,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    public String getPhone() {
-        return phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
-    public String getImageUrl() {
+    public Set<PhoneNumber> getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Set<PhoneNumber> phone) {
+		this.phone = phone;
+	}
+
+	public String getImageUrl() {
         return imageUrl;
     }
 
@@ -252,7 +253,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", firstName='" + firstName + '\'' +
             ", lastName1='" + lastName1 + '\'' +
             ", lastName2='" + lastName2 + '\'' +
-            ", phone='" + phone + '\'' +
+            ", phone=  '" + phone + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated='" + activated + '\'' +
