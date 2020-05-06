@@ -4,7 +4,9 @@
     "form": {
       "button": "Crear la cuenta",
       "firstName": "Nombre (s)",
-      "lastName": "Apellidos"
+      "lastName1": "Primer apellido",
+      "lastName2": "Segundo apellido",
+      "phoneNumber": "Número de teléfono"
     },
     "formError": "Por favor revisa la infromación y vuelve a intentarlo.",
     "messages": {

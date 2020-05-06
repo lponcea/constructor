@@ -121,17 +121,55 @@
               </div>
             </div>
             <div class="col-form-register">
-              <!-- Apellidos -->
+              <!-- Primer apellido -->
               <div class="form-nimbus">
-                  <label jhiTranslate="register.form.lastName">Last Name</label>
+                  <label jhiTranslate="register.form.lastName1">Last Name 1</label>
                   <input type="text" class="form-control" name="lastName"
-                      formControlName="lastName">
+                      formControlName="lastName1">
 
-                  <div *ngIf="registerForm.get('lastName')!.invalid && (registerForm.get('lastName')!.dirty || registerForm.get('lastName')!.touched)">
+                  <div *ngIf="registerForm.get('lastName1')!.invalid && (registerForm.get('lastName1')!.dirty || registerForm.get('lastName1')!.touched)">
                       <small class="form-text text-danger"
-                      *ngIf="registerForm.get('lastName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
+                      *ngIf="registerForm.get('lastName1')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
                       [translateValues]="{max: 50}">
                           This field cannot be longer than 50 characters.
+                      </small>
+                  </div>
+              </div>
+            </div>
+            <div class="col-form-register">
+              <!-- Segundo apellido -->
+              <div class="form-nimbus">
+                  <label jhiTranslate="register.form.lastName2">Last Name 2</label>
+                  <input type="text" class="form-control" name="lastName2"
+                      formControlName="lastName2">
+
+                  <div *ngIf="registerForm.get('lastName2')!.invalid && (registerForm.get('lastName2')!.dirty || registerForm.get('lastName2')!.touched)">
+                      <small class="form-text text-danger"
+                      *ngIf="registerForm.get('lastName2')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
+                      [translateValues]="{max: 50}">
+                          This field cannot be longer than 50 characters.
+                      </small>
+                  </div>
+              </div>
+            </div>
+            <div class="col-form-register">
+              <!-- Teléfono -->
+              <div class="form-nimbus">
+                  <div class="selectWrap">
+                    <select id="field_Country" name="country" (change)="changeCountry($event)">
+                      <option [ngValue]="null"></option>
+                      <option [ngValue]="CountryOption.id === editForm.get('Country')!.value?.id ? editForm.get('Country')!.value : CountryOption" *ngFor="let CountryOption of Countrys; trackBy: trackById">{{CountryOption.descripcion}}</option>
+                    </select>
+                    </div>
+                  <label jhiTranslate="register.form.phoneNumber">Phone number</label>
+                  <input type="text" class="form-control" name="phone"
+                      formControlName="phoneNumber">
+
+                  <div *ngIf="registerForm.get('phoneNumber')!.invalid && (registerForm.get('phoneNumber')!.dirty || registerForm.get('phoneNumber')!.touched)">
+                      <small class="form-text text-danger"
+                      *ngIf="registerForm.get('phoneNumber')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
+                      [translateValues]="{max: 50}">
+                          This field cannot be longer than 14 characters.
                       </small>
                   </div>
               </div>

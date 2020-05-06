@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, Renderer, ElementRef, ViewChild } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { JhiLanguageService } from 'ng-jhipster';
 
@@ -7,6 +7,9 @@ import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared/con
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { RegisterService } from './register.service';
 import { JhiEventManager, JhiAlertService, JhiAlert, JhiEventWithContent } from 'ng-jhipster';
+import { CountryService } from 'app/entities/country/country.service';
+import { ICountry } from 'app/shared/model/country.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'jhi-register',
@@ -22,12 +25,16 @@ export class RegisterComponent implements AfterViewInit {
   errorUserExists = false;
   success = false;
   alerts: JhiAlert[] = [];
+  countrys: ICountry[] = [];
 
   registerForm = this.fb.group({
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     firstName: ['', [Validators.maxLength(50)]],
-    lastName: ['', [Validators.maxLength(50)]],
+    lastName1: ['', [Validators.maxLength(50)]],
+    lastName2: ['', [Validators.maxLength(50)]],
+    countryLada: [''],
+    phoneNumber: ['', [Validators.maxLength(10)]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
   });
@@ -36,6 +43,7 @@ export class RegisterComponent implements AfterViewInit {
     private languageService: JhiLanguageService,
     private loginModalService: LoginModalService,
     private registerService: RegisterService,
+    private countryService: CountryService,
     private renderer: Renderer,
     private fb: FormBuilder,
     private alertService: JhiAlertService,
@@ -46,6 +54,15 @@ export class RegisterComponent implements AfterViewInit {
     if (this.login) {
       this.renderer.invokeElementMethod(this.login.nativeElement, 'focus', []);
     }
+    /*
+    this.countryService.query()
+    .pipe(
+      map((res: HttpResponse<ICountry[]>) => {
+        return res.body ? res.body : [];
+      })
+    )
+    .subscribe((resBody: ICountry[]) => (this.countrys = resBody));
+    */
   }
 
   register(): void {
@@ -61,9 +78,11 @@ export class RegisterComponent implements AfterViewInit {
       const login = this.registerForm.get(['login'])!.value;
       const email = this.registerForm.get(['email'])!.value;
       const firstName = this.registerForm.get(['firstName'])!.value;
-      const lastName = this.registerForm.get(['lastName'])!.value;
+      const lastName1 = this.registerForm.get(['lastName1'])!.value;
+      const lastName2 = this.registerForm.get(['lastName2'])!.value;
+      const phoneNumbers = [this.registerForm.get(['phoneNumber'])!.value];
       this.registerService
-        .save({ login, firstName, lastName, email, password, langKey: this.languageService.getCurrentLanguage() })
+        .save({ login, firstName, lastName1, lastName2, email, phoneNumbers, password, langKey: this.languageService.getCurrentLanguage() })
         .subscribe(
           () => {
             this.success = true;

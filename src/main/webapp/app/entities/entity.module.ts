@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { PhoneNumberComponent } from './phone-number/phone-number.component';
+import { CountryComponent } from './country/country.component';
 
 @NgModule({
   imports: [
@@ -50,6 +52,7 @@ import { RouterModule } from '@angular/router';
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
-  ]
+  ],
+  declarations: [PhoneNumberComponent, CountryComponent]
 })
 export class ConstructorEntityModule {}
