@@ -3,6 +3,7 @@ package org.constructor.service.dto;
 import org.constructor.config.Constants;
 
 import org.constructor.domain.Authority;
+import org.constructor.domain.PhoneNumber;
 import org.constructor.domain.User;
 
 import javax.validation.constraints.*;
@@ -31,8 +32,8 @@ public class UserDTO {
     @Size(max = 50)
     private String lastName2;
     
-    @Size(max = 50)
-    private String phone;
+   
+    private Set<PhoneNumber> phone;
 
     @Email
     @Size(min = 5, max = 254)
@@ -66,6 +67,7 @@ public class UserDTO {
         this.firstName = user.getFirstName();
         this.lastName1 = user.getLastName1();
         this.lastName2 = user.getLastName2();
+        this.phone = user.getPhone();
         this.email = user.getEmail();
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
@@ -119,11 +121,11 @@ public class UserDTO {
         this.lastName2 = lastName2;
     }
     
-    public String getPhone() {
+    public Set<PhoneNumber> getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Set<PhoneNumber> phone) {
         this.phone = phone;
     }
 

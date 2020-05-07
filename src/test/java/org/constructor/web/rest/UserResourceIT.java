@@ -149,7 +149,6 @@ public class UserResourceIT {
         managedUserVM.setFirstName(DEFAULT_FIRSTNAME);
         managedUserVM.setLastName1(DEFAULT_LASTNAME);
         managedUserVM.setLastName2(DEFAULT_LASTNAME);
-        managedUserVM.setPhone(DEFAULT_PHONE);
         managedUserVM.setEmail(DEFAULT_EMAIL);
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
@@ -328,7 +327,6 @@ public class UserResourceIT {
         managedUserVM.setFirstName(UPDATED_FIRSTNAME);
         managedUserVM.setLastName1(UPDATED_LASTNAME);
         managedUserVM.setLastName2(UPDATED_LASTNAME);
-        managedUserVM.setPhone(UPDATED_PHONE);
         managedUserVM.setEmail(UPDATED_EMAIL);
         managedUserVM.setActivated(updatedUser.getActivated());
         managedUserVM.setImageUrl(UPDATED_IMAGEURL);
@@ -543,7 +541,6 @@ public class UserResourceIT {
         userDTO.setFirstName(DEFAULT_FIRSTNAME);
         userDTO.setLastName1(DEFAULT_LASTNAME);
         userDTO.setLastName2(DEFAULT_LASTNAME);
-        userDTO.setPhone(DEFAULT_PHONE);
         userDTO.setEmail(DEFAULT_EMAIL);
         userDTO.setActivated(true);
         userDTO.setImageUrl(DEFAULT_IMAGEURL);
