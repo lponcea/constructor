@@ -2288,7 +2288,7 @@ jhi-password-strength-bar {
 // Create or edit user
 .row-um-create {
   position: relative;
-  width: 96%;
+  width: 92%;
   max-width: $max-width;
   height: auto;
   margin-top: 20px;
@@ -2340,6 +2340,7 @@ jhi-password-strength-bar {
     height: auto;
   }
 }
+
 // View user
 .row-um-view {
   position: relative;
@@ -2682,6 +2683,9 @@ input[type='file'] {
 .mt-20 {
   margin-top: 30px;
 }
+.mt-40 {
+  margin-top: 40px;
+}
 .row-alert {
   position: absolute;
   left: 0;
@@ -2756,5 +2760,54 @@ input[type='file'] {
     strong {
       font-weight: 600;
     }
+  }
+}
+.alert-warning-nimbus {
+  padding-left: 10px !important;
+  border: 0 !important;
+  background-color: whitesmoke !important;
+}
+// Reset pass
+.row-footer-button {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $window-divider-color;
+  margin-top: 40px;
+}
+.row-message-pass {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.alert-pass-reset {
+  top: -15px;
+}
+// Alert pass reset form
+.alert-pass-input {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
+
+  small {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    color: $alert-color;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    background-color: $background-color-light;
+    z-index: 2;
   }
 }
