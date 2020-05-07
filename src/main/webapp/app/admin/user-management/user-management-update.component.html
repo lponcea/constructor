@@ -15,10 +15,6 @@
             <div *ngIf="user" class="row-form-um-create">
 
                 <jhi-alert-error></jhi-alert-error>
-                <!-- <div class="form-group" [hidden]="!user.id">
-                    <label jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" name="id" formControlName="id" readonly>
-                </div> -->
 
                 <div class="row-col-form-um">
                   <div class="col-fum">
@@ -28,19 +24,19 @@
                         <input type="text" class="form-control" name="login"
                                formControlName="login">
 
-                        <div *ngIf="editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)">
-                            <small class="form-text text-danger"
+                        <div *ngIf="editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)" class="alert-register-input">
+                            <small
                             *ngIf="editForm.get('login')?.errors?.required" jhiTranslate="entity.validation.required">
                                 This field is required.
                             </small>
 
-                            <small class="form-text text-danger"
+                            <small
                             *ngIf="editForm.get('login')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
                             [translateValues]="{max: 50}">
                                 This field cannot be longer than 50 characters.
                             </small>
 
-                            <small class="form-text text-danger"
+                            <small
                             *ngIf="editForm.get('login')?.errors?.pattern" jhiTranslate="entity.validation.patternLogin">
                                 This field can only contain letters, digits and e-mail addresses.
                             </small>
@@ -54,8 +50,8 @@
                         <input type="text" class="form-control" name="firstName"
                                formControlName="firstName">
 
-                        <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
-                            <small class="form-text text-danger"
+                        <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)" class="alert-register-input">
+                            <small
                             *ngIf="editForm.get('firstName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
                             [translateValues]="{max: 50}">
                                 This field cannot be longer than 50 characters.
@@ -70,23 +66,9 @@
                         <input type="text" class="form-control" name="lastName1"
                             formControlName="lastName1">
 
-                        <div *ngIf="editForm.get('lastName1')!.invalid && (editForm.get('lastName1')!.dirty || editForm.get('lastName1')!.touched)">
-                            <small class="form-text text-danger"
+                        <div *ngIf="editForm.get('lastName1')!.invalid && (editForm.get('lastName1')!.dirty || editForm.get('lastName1')!.touched)" class="alert-register-input">
+                            <small
                             *ngIf="editForm.get('lastName1')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
-                            [translateValues]="{max: 50}">
-                                This field cannot be longer than 50 characters.
-                            </small>
-                        </div>
-                    </div>
-                    <!-- Segundo Apellido -->
-                    <div class="form-nimbus">
-                        <label jhiTranslate="userManagement.lastName2">Last Name 2</label>
-                        <input type="text" class="form-control" name="lastName2"
-                            formControlName="lastName2">
-
-                        <div *ngIf="editForm.get('lastName2')!.invalid && (editForm.get('lastName2')!.dirty || editForm.get('lastName2')!.touched)">
-                            <small class="form-text text-danger"
-                            *ngIf="editForm.get('lastName2')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
                             [translateValues]="{max: 50}">
                                 This field cannot be longer than 50 characters.
                             </small>
@@ -99,30 +81,46 @@
                 <!-- Row 2 -->
                 <div class="row-col-form-um">
                   <div class="col-fum">
+                    <!-- Segundo Apellido -->
+                    <div class="form-nimbus">
+                        <label jhiTranslate="userManagement.lastName2">Last Name 2</label>
+                        <input type="text" class="form-control" name="lastName2"
+                            formControlName="lastName2">
+
+                        <div *ngIf="editForm.get('lastName2')!.invalid && (editForm.get('lastName2')!.dirty || editForm.get('lastName2')!.touched)" class="alert-register-input">
+                            <small
+                            *ngIf="editForm.get('lastName2')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
+                            [translateValues]="{max: 50}">
+                                This field cannot be longer than 50 characters.
+                            </small>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-fum">
                     <!-- Email -->
                     <div class="form-nimbus">
                         <label class="form-control-label" jhiTranslate="userManagement.email">Email</label>
                         <input type="email" class="form-control" name="email" formControlName="email">
 
-                        <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
-                            <small class="form-text text-danger"
+                        <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)" class="alert-register-input">
+                            <small
                             *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
                                 This field is required.
                             </small>
 
-                            <small class="form-text text-danger"
+                            <small
                             *ngIf="editForm.get('email')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength"
                             [translateValues]="{max: 100}">
                                 This field cannot be longer than 100 characters.
                             </small>
 
-                            <small class="form-text text-danger"
+                            <small
                             *ngIf="editForm.get('email')?.errors?.minlength" jhiTranslate="entity.validation.minlength"
                             [translateValues]="{min: 5}">
                                 This field is required to be at least 5 characters.
                             </small>
 
-                            <small class="form-text text-danger"
+                            <small
                             *ngIf="editForm.get('email')?.errors?.email" jhiTranslate="global.messages.validate.email.invalid">
                                 Your email is invalid.
                             </small>
@@ -131,14 +129,6 @@
                   </div>
                   <div class="col-fum">
                     <!-- Idioma -->
-                    <!-- <div class="form-check">
-                        <label class="form-check-label" for="activated">
-                            <input class="form-check-input" [attr.disabled]="user.id === undefined ? 'disabled' : null"
-                            type="checkbox" id="activated" name="activated" formControlName="activated">
-                            <span jhiTranslate="userManagement.activated">Activated</span>
-                        </label>
-                    </div> -->
-
                     <div class="form-nimbus" *ngIf="languages && languages.length > 0">
                         <label jhiTranslate="userManagement.langKey">Lang Key</label>
                         <div class="selectWrap">
@@ -148,8 +138,11 @@
                         </div>
                         <div class="form-alert"><p></p></div>
                     </div>
-
                   </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="row-col-form-um">
                   <div class="col-fum">
                     <!-- Perfiles -->
                     <div class="form-nimbus-profile">
@@ -159,6 +152,8 @@
                       </select>
                     </div>
                   </div>
+                  <div class="col-fum"></div>
+                  <div class="col-fum"></div>
                 </div>
 
             </div>
