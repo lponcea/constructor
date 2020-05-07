@@ -84,20 +84,29 @@ export class RegisterComponent implements AfterViewInit {
       const firstName = this.registerForm.get(['firstName'])!.value;
       const lastName1 = this.registerForm.get(['lastName1'])!.value;
       const lastName2 = this.registerForm.get(['lastName2'])!.value;
-      const phoneNumbers = [
-        {
-          phoneNumber: this.registerForm.get(['phoneNumber'])!.value,
-          country: this.registerForm.get(['country'])!.value
-        }
-      ];
-      this.registerService
-        .save({ login, firstName, lastName1, lastName2, email, phoneNumbers, password, langKey: this.languageService.getCurrentLanguage() })
-        .subscribe(
-          () => {
-            this.success = true;
-          },
-          response => this.processError(response)
-        );
+      const userPhoneNumber = {
+        user: {
+          login,
+          firstName,
+          lastName1,
+          lastName2,
+          email,
+          password,
+          langKey: this.languageService.getCurrentLanguage()
+        },
+        phoneNumbers: [
+          {
+            phoneNumber: this.registerForm.get(['phoneNumber'])!.value,
+            country: this.registerForm.get(['country'])!.value
+          }
+        ]
+      };
+      this.registerService.save(userPhoneNumber).subscribe(
+        () => {
+          this.success = true;
+        },
+        response => this.processError(response)
+      );
     }
   }
 
