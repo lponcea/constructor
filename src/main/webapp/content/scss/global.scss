@@ -1253,7 +1253,23 @@ input::-webkit-input-placeholder {
   background-repeat: no-repeat;
   pointer-events: none;
 }
-
+.select-code {
+  position: absolute;
+  width: 100px;
+  height: 38px;
+  top: 32px;
+  left: 0;
+  z-index: 2;
+  select {
+    border-radius: 16px 0px 0px 16px !important;
+  }
+}
+.input-phone-register {
+  z-index: 1;
+  width: calc(100% - 100px) !important;
+  margin-left: 100px;
+  border-radius: 0px 16px 16px 0px !important;
+}
 .margintop-25 {
   margin-top: 30px;
 }
@@ -1733,8 +1749,7 @@ dl {
   .row-register {
     position: relative;
     width: 98%;
-    max-width: 900px;
-    // max-width: 1150px;
+    max-width: $max-width;
     height: auto;
     min-height: 350px;
     margin-top: 40px;
@@ -1781,7 +1796,7 @@ dl {
 
       .row-form-register {
         position: relative;
-        width: 80%;
+        width: 90%;
         height: auto;
         margin-top: 10px;
       }
@@ -1839,7 +1854,7 @@ dl {
 
   .col-form-register {
     position: relative;
-    width: 45%;
+    width: 30%;
     height: auto;
     height: 76px;
   }
@@ -1873,6 +1888,7 @@ dl {
   height: 20px;
   top: 74px;
   left: 0;
+  padding-left: 10px;
 }
 #strength {
   position: relative;
