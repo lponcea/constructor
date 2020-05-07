@@ -2,6 +2,7 @@ package org.constructor.service;
 
 import org.constructor.config.Constants;
 import org.constructor.domain.Authority;
+import org.constructor.domain.PhoneNumber;
 import org.constructor.domain.User;
 import org.constructor.repository.AuthorityRepository;
 import org.constructor.repository.UserRepository;
@@ -40,13 +41,16 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
+    
+    private final PhoneNumberService phoneNumberService;
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository,PhoneNumberService phoneNumberService, CacheManager cacheManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
+        this.phoneNumberService = phoneNumberService;
         this.cacheManager = cacheManager;
     }
 
@@ -86,8 +90,8 @@ public class UserService {
                 return user;
             });
     }
-
-    public User registerUser(UserDTO userDTO, String password) {
+    
+        public User registerUser(User userDTO, String password, Set<PhoneNumber> phoneNumber) {
         userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = removeNonActivatedUser(existingUser, userDTO);
             if (!removed) {
@@ -100,6 +104,7 @@ public class UserService {
                 throw new EmailAlreadyUsedException();
             }
         });
+        log.debug("Creando nuevo usuario:");
         User newUser = new User();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin().toLowerCase());
@@ -122,11 +127,15 @@ public class UserService {
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
-        log.debug("Created Information for User: {}", newUser);
+        log.debug("Created Information for User: {}", newUser.getId());
+        for(PhoneNumber phone : phoneNumber) {
+        	phone.setUser(newUser);
+        	phoneNumberService.save(phone);
+        }
         return newUser;
     }
 
-    private boolean removeNonActivatedUser(User existingUser, UserDTO userDTO){
+    private boolean removeNonActivatedUser(User existingUser, User userDTO){
         if (existingUser.getActivated()) {
              return false;
         }
@@ -181,7 +190,7 @@ public class UserService {
      * @param langKey   language key.
      * @param imageUrl  image URL of user.
      */
-    public void updateUser(String firstName, String lastName1, String lastName2, String phone, String email, String langKey, String imageUrl) {
+    public void updateUser(String firstName, String lastName1, String lastName2, Set<PhoneNumber> phone, String email, String langKey, String imageUrl) {
         SecurityUtils.getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
             .ifPresent(user -> {

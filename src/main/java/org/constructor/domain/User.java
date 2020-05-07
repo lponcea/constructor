@@ -39,7 +39,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(length = 50, unique = true, nullable = false)
     private String login;
 
-    @JsonIgnore
     @NotNull
     @Size(min = 60, max = 60)
     @Column(name = "password_hash", length = 60, nullable = false)
@@ -64,7 +63,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     
     
     @OneToMany(cascade = CascadeType.ALL,mappedBy="user", fetch = FetchType.EAGER)
-    private Set<PhoneNumber> phoneNumber = new HashSet<>();;
+    private Set<PhoneNumber> phoneNumber = new HashSet<>();
     
     // ManyToMany to curso relationship (JAM)
     @JsonIgnore

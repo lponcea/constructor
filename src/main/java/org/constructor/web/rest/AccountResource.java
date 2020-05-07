@@ -1,6 +1,7 @@
 package org.constructor.web.rest;
 
 
+import org.constructor.domain.PhoneNumber;
 import org.constructor.domain.User;
 import org.constructor.repository.UserRepository;
 import org.constructor.security.SecurityUtils;
@@ -8,6 +9,7 @@ import org.constructor.service.MailService;
 import org.constructor.service.UserService;
 import org.constructor.service.dto.PasswordChangeDTO;
 import org.constructor.service.dto.UserDTO;
+import org.constructor.service.dto.UserPhoneDTO;
 import org.constructor.web.rest.errors.*;
 import org.constructor.web.rest.vm.KeyAndPasswordVM;
 import org.constructor.web.rest.vm.ManagedUserVM;
@@ -58,7 +60,7 @@ public class AccountResource {
      * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
      * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
      */
-    @PostMapping("/register")
+    /*@PostMapping("/register-all")
     @ResponseStatus(HttpStatus.CREATED)
     public void registerAccount(@Valid @RequestBody ManagedUserVM managedUserVM) {
         if (!checkPasswordLength(managedUserVM.getPassword())) {
@@ -66,6 +68,17 @@ public class AccountResource {
         }
         log.debug("Creacion de cuenta:");
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        mailService.sendActivationEmail(user);
+    }*/
+    
+    @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void registerAccountUser(@Valid @RequestBody UserPhoneDTO userPhoneDTO) {
+    	log.debug("userPhoneDTO: {}", userPhoneDTO);
+    	User newUser = userPhoneDTO.getUser();
+    	Set<PhoneNumber> listPhone =  userPhoneDTO.getPhoneNumbers();
+        log.debug("Creacion de cuenta:");
+        User user = userService.registerUser(newUser, newUser.getPassword(), listPhone);
         mailService.sendActivationEmail(user);
     }
 

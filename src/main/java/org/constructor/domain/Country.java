@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * A Country.
  */
@@ -27,9 +29,11 @@ public class Country implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@JsonIgnore
 	@Column(name = "nombre")
     private String nombre;
 
+	@JsonIgnore
 	@Column(name = "name")
     private String name;
 			
