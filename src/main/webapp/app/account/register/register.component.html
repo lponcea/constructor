@@ -14,7 +14,7 @@
 
 
       <!-- Alerts -->
-      <div class="row-alert">
+      <div class="row-alert alert-s">
 
         <div class="alert alert-success alert-success-register" *ngIf="success">
           <div class="icn-success"></div>
@@ -118,7 +118,7 @@
           </div>
 
           <!-- Row 2 -->
-          <div class="item-divider-form mt-20">
+          <div class="item-divider-form mt-20 nomargin-s">
             <!-- Col 4 -->
             <div class="col-form-register">
               <!-- Primer apellido -->
@@ -198,7 +198,7 @@
           </div>
 
           <!-- Row 3 -->
-          <div class="item-divider-form mt-20">
+          <div class="item-divider-form mt-20 nomargin-s">
             <!-- Col 7 -->
             <div class="col-form-register ">
               <div class="form-nimbus">
@@ -219,7 +219,7 @@
               </div>
             </div>
             <!-- Col 8 -->
-            <div class="col-form-register">
+            <div class="col-form-register margin-s">
               <div class="form-nimbus">
                 <label class="form-control-label" for="confirmPassword" jhiTranslate="global.form.confirmpassword.label">New password confirmation</label>
                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}" formControlName="confirmPassword">
@@ -242,13 +242,12 @@
             </div>
           </div>
             <!-- Col 9 -->
-            <div class="col-form-register">
+            <div class="col-form-register hide-s">
             </div>
 
         </div>
 
         <div class="row-conditions-register">
-          <!-- <p>Al registrarme, declaro que acepto los <span>Términos y condiciones</span> y las Políticas de privacidad de Nimbus GED.</p> -->
           <p>Al registrarme, declaro que acepto los Términos y condiciones y las Políticas de privacidad de Nimbus GED.</p>
         </div>
 

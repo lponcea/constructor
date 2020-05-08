@@ -38,7 +38,6 @@ body {
   font-family: 'Open Sans', sans-serif !important;
   background-color: $background-color-light !important;
   margin: 0 !important;
-  // font-size: 14px !important;
 }
 a:-webkit-any-link {
   cursor: pointer;
@@ -95,6 +94,9 @@ p {
   font-style: normal;
   color: #7a7a7a;
   line-height: 24px;
+  @include smartphone {
+    font-size: 13px;
+  }
 }
 strong {
   font-weight: 700;
@@ -111,7 +113,6 @@ strong {
     position: relative;
     width: 100%;
     height: calc(100vh - 100px);
-    // min-height: 800px;
   }
 }
 
@@ -418,14 +419,9 @@ strong {
 }
 .modal-content {
   position: relative;
-  // display: flex !important;
-  // flex-direction: row;
-  // justify-content: center;
-  // -webkit-box-orient: initial !important;
   width: 100% !important;
   height: 100vh !important;
   pointer-events: auto;
-  // background-color: rgba(255, 255, 255, 0.8) !important;
   background-color: transparent !important;
   background-clip: initial !important;
   border: none !important;
@@ -453,6 +449,11 @@ jhi-login-modal {
   margin-top: -263px;
   padding-top: 25px;
   box-shadow: 0 20px 30px rgba(16, 18, 51, 0.1), 0 6px 18px rgba(16, 18, 51, 0.12);
+  @include smartphone {
+    width: 360px;
+    min-height: auto;
+    padding-bottom: 15px;
+  }
 
   .btn-close-modal-login {
     position: absolute;
@@ -493,6 +494,9 @@ jhi-login-modal {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      @include smartphone {
+        width: 84%;
+      }
 
       .logo-login-modal {
         position: relative;
@@ -504,6 +508,10 @@ jhi-login-modal {
         background-repeat: no-repeat;
         margin-bottom: 10px;
         margin-top: 10px;
+        @include smartphone {
+          width: 140px;
+          height: 100px;
+        }
       }
 
       .col-form-login {
@@ -514,6 +522,9 @@ jhi-login-modal {
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
+        @include smartphone {
+          width: 100%;
+        }
 
         form {
           position: relative;
@@ -534,6 +545,9 @@ jhi-login-modal {
               width: auto;
               height: auto;
               margin-left: 10px;
+              @include smartphone {
+                font-size: 13px;
+              }
             }
             input {
               position: relative;
@@ -581,6 +595,10 @@ jhi-login-modal {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
+  @include smartphone {
+    width: 16px;
+    height: 16px;
+  }
 }
 .icnf-f-l1 {
   background-image: url('../images/icn_login_user.svg');
@@ -634,6 +652,9 @@ jhi-login-modal {
         font-size: 14px;
         margin-left: 4px;
         transition: 0.3s;
+        @include smartphone {
+          font-size: 12px;
+        }
       }
     }
   }
@@ -655,6 +676,9 @@ jhi-login-modal {
       color: $secondary-btn-color;
       font-weight: 600;
       transition: 0.3s;
+      @include smartphone {
+        font-size: 12px;
+      }
       &:hover {
         color: $a-hover;
       }
@@ -669,11 +693,10 @@ jhi-login-modal {
   display: flex;
   align-items: center;
   justify-content: center;
-  // margin-top: 20px;
   margin-top: 0;
 
-  span {
-    margin-right: 5px;
+  p {
+    margin-right: 10px;
   }
   a {
     position: relative;
@@ -686,6 +709,9 @@ jhi-login-modal {
     transition: 0.3s;
     &:hover {
       color: $a-hover;
+    }
+    @include smartphone {
+      font-size: 12px;
     }
   }
 }
@@ -738,8 +764,6 @@ jhi-login-modal {
   }
   &:active {
     outline: none;
-    // background-image: linear-gradient(to right, #0083c5, #0083c5) !important;
-    transform: scale(0.99);
   }
 }
 .main-btn.btn-color-1 {
@@ -789,7 +813,6 @@ jhi-login-modal {
   }
   &:active {
     outline: none;
-    transform: scale(0.99);
   }
 }
 // Status Button
@@ -815,7 +838,6 @@ jhi-login-modal {
   }
   &:active {
     outline: none;
-    transform: scale(0.99);
   }
 }
 .bs-succes {
@@ -913,6 +935,10 @@ jhi-login-modal {
   display: flex;
   justify-content: center;
   align-items: center;
+  @include smartphone {
+    height: 40px;
+    top: 133px;
+  }
 
   .row-alert-login {
     position: relative;
@@ -935,6 +961,10 @@ jhi-login-modal {
       font-size: 13px;
       color: white;
       margin-left: 10px;
+      @include smartphone {
+        font-size: 12px;
+        line-height: 15px;
+      }
     }
   }
 }
@@ -1121,6 +1151,9 @@ input::-webkit-input-placeholder {
     position: relative;
     width: auto;
     height: auto;
+    @include smartphone {
+      font-size: 13px;
+    }
   }
 
   input {
@@ -1134,6 +1167,9 @@ input::-webkit-input-placeholder {
     outline: none;
     padding-left: 12px;
     transition: 0.3s;
+    @include smartphone {
+      height: 33px;
+    }
     &:hover {
       border-color: $input-border-hover;
     }
@@ -1154,7 +1190,8 @@ input::-webkit-input-placeholder {
   select {
     position: relative;
     width: 100%;
-    height: 38px !important;
+    // height: 38px !important;
+    height: 38px;
     background-color: white;
     border: 0;
     border-radius: 16px !important;
@@ -1166,6 +1203,9 @@ input::-webkit-input-placeholder {
     appearance: none;
     padding-left: 12px;
     padding-right: 30px;
+    @include smartphone {
+      height: 33px;
+    }
 
     &:hover {
       border-color: $input-border-hover;
@@ -1259,6 +1299,10 @@ input::-webkit-input-placeholder {
   top: 32px;
   left: 0;
   z-index: 2;
+  @include smartphone {
+    height: 33px;
+    top: 27px;
+  }
   select {
     border-radius: 16px 0px 0px 16px !important;
   }
@@ -1701,7 +1745,6 @@ dl {
   }
   &:active {
     outline: none !important;
-    transform: scale(0.99);
   }
 }
 .ngb-dp-weekday {
@@ -1754,7 +1797,11 @@ dl {
     background-color: white;
     border-radius: 12px;
     z-index: 2;
-    // box-shadow: 0 -4px 30px rgba(33, 36, 66, 0.02), 0 17px 30px rgba(33, 36, 66, 0.05);
+    box-shadow: 0 -4px 30px rgba(33, 36, 66, 0.02), 0 17px 30px rgba(33, 36, 66, 0.05);
+    @include smartphone {
+      margin-top: 20px;
+      width: 92%;
+    }
 
     .heder-register {
       position: relative;
@@ -1763,6 +1810,9 @@ dl {
       display: flex;
       justify-content: center;
       align-items: center;
+      @include smartphone {
+        height: 90px;
+      }
 
       .logo-register {
         position: relative;
@@ -1773,6 +1823,11 @@ dl {
         background-position: center;
         background-size: 100%;
         background-repeat: no-repeat;
+        @include smartphone {
+          width: 50px;
+          height: 43px;
+          margin-right: 10px;
+        }
       }
 
       h2 {
@@ -1781,6 +1836,9 @@ dl {
         height: auto;
         font-size: 24px;
         color: $nimbus-bluedark;
+        @include smartphone {
+          font-size: 20px;
+        }
       }
     }
 
@@ -1797,6 +1855,9 @@ dl {
         width: 92%;
         height: auto;
         margin-top: 10px;
+        @include smartphone {
+          width: 76%;
+        }
       }
 
       .row-conditions-register {
@@ -1804,6 +1865,9 @@ dl {
         width: 100%;
         height: auto;
         margin-top: 50px;
+        @include smartphone {
+          margin-top: 0px;
+        }
 
         p {
           font-size: 13px;
@@ -1848,13 +1912,39 @@ dl {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  @include smartphone {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
   .col-form-register {
     position: relative;
     width: 30%;
     height: auto;
     height: 76px;
+    @include smartphone {
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }
+}
+.margin-s {
+  @include smartphone {
+    margin-top: 40px;
+  }
+}
+.nomargin-s {
+  @include smartphone {
+    margin-top: 0 !important;
+  }
+}
+.hide-s {
+  @include smartphone {
+    display: none;
+  }
+}
+.m-right {
+  margin-right: 40px;
 }
 
 // Alert Register form
@@ -1899,6 +1989,7 @@ jhi-password-strength-bar {
     width: auto;
     height: auto;
     font-size: 12px;
+    color: darkgrey;
   }
   ul {
     position: relative;
@@ -2193,7 +2284,6 @@ jhi-password-strength-bar {
     background-color: white;
     margin-top: 15px;
     border-radius: 8px;
-    // border: 2px solid $window-divider-color;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -2809,5 +2899,12 @@ input[type='file'] {
     padding-bottom: 5px;
     background-color: $background-color-light;
     z-index: 2;
+  }
+}
+.alert-s {
+  @include smartphone {
+    position: fixed;
+    top: 68px;
+    z-index: 3;
   }
 }
