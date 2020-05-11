@@ -348,3 +348,11 @@
     transform: rotate(0);
   }
 }
+
+@media (min-height: 800px) {
+  .window-br {
+    height: 700px;
+    top: 50%;
+    margin-top: -350px;
+  }
+}

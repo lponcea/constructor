@@ -973,8 +973,12 @@ jhi-login-modal {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
-  // perspective: 1000px;
   border: 2px solid $alert-color !important;
+}
+.alert-warning {
+  color: $blue-nimbus;
+  background-color: whitesmoke !important;
+  border-color: whitesmoke !important ;
 }
 
 @keyframes shake {
@@ -1053,6 +1057,9 @@ input::-webkit-input-placeholder {
   position: relative;
   width: 95%;
   height: auto;
+  @include smartphone {
+    width: 88%;
+  }
   h2 {
     position: relative;
     width: 100%;
@@ -1977,6 +1984,9 @@ jhi-password-strength-bar {
   left: 0;
   padding-left: 10px;
 }
+.form-pass-top jhi-password-strength-bar {
+  top: 115px;
+}
 #strength {
   position: relative;
   width: auto;
@@ -2770,12 +2780,6 @@ input[type='file'] {
   padding-right: 15px;
   color: white;
 }
-.mt-20 {
-  margin-top: 30px;
-}
-.mt-40 {
-  margin-top: 40px;
-}
 .row-alert {
   position: absolute;
   left: 0;
@@ -2907,4 +2911,22 @@ input[type='file'] {
     top: 68px;
     z-index: 3;
   }
+}
+
+.mt-20 {
+  margin-top: 30px;
+}
+.mt-40 {
+  margin-top: 40px;
+}
+.mt-70 {
+  margin-top: 70px;
+}
+.a-alert {
+  position: relative;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 14px;
 }

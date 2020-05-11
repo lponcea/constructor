@@ -191,3 +191,11 @@
     margin-right: 15px;
   }
 }
+
+@media (min-height: 800px) {
+  .window-course-configuration {
+    height: 700px;
+    top: 50%;
+    margin-top: -350px;
+  }
+}
