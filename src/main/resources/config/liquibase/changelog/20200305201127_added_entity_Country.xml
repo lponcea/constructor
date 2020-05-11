@@ -9,7 +9,7 @@
         <property name="autoIncrement" value="true"/>
 
     <!--
-        Added the entity Version.
+        Added the entity country.
     -->
     <changeSet id="20200305201127-1" author="jhipster">
         <createTable tableName="country">
@@ -45,7 +45,7 @@
             <column name="country_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="phone_number" type="varchar(255)">
+            <column name="phone_number" type="bigint">
                 <constraints nullable="true" />
             </column>
         </createTable>

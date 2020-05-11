@@ -40,7 +40,7 @@ public class PhoneNumber implements Serializable {
     private Country country;
 	
 	@Column(name = "phone_number")
-    private String phoneNumber;
+    private Long phoneNumber;
 	
 
 	public Long getId() {
@@ -79,11 +79,11 @@ public class PhoneNumber implements Serializable {
 		this.country = country;
 	}
 
-	public String getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
