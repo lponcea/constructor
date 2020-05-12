@@ -24,7 +24,7 @@ $tool-header: lighten($color-silver, 65%);
       margin-left: 20px;
       top: 5px;
       font-size: 12px;
-      cursor: default;
+      cursor: pointer;
     }
   }
 
@@ -68,8 +68,8 @@ $tool-header: lighten($color-silver, 65%);
     background-position: center;
     background-repeat: no-repeat;
     transition: 0.4s;
-    cursor: default;
-    pointer-events: none;
+    cursor: pointer;
+    // pointer-events: none;
     &:hover {
       border: 2px solid rgb(175, 175, 175);
     }
@@ -79,9 +79,9 @@ $tool-header: lighten($color-silver, 65%);
   }
   .ab-mini-select {
     border: 2px solid #15a9fa !important;
-    pointer-events: none;
-    user-select: none;
-    pointer-events: none;
+    // pointer-events: none;
+    // user-select: none;
+    // pointer-events: none;
   }
   .ab-mini-desc {
     position: relative;
@@ -95,7 +95,7 @@ $tool-header: lighten($color-silver, 65%);
       position: relative;
       width: 100%;
       height: auto;
-      cursor: default;
+      cursor: pointer;
       transition: 0.4s;
       line-height: 16px;
     }
@@ -106,8 +106,8 @@ $tool-header: lighten($color-silver, 65%);
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      cursor: default;
-      pointer-events: none;
+      cursor: pointer;
+      // pointer-events: none;
       margin-bottom: 20px;
 
       span {
@@ -126,26 +126,26 @@ $tool-header: lighten($color-silver, 65%);
         font-size: 10px;
         font-weight: 600;
         margin-left: 4px;
-        cursor: default;
-        pointer-events: none;
+        cursor: pointer;
+        // pointer-events: none;
         color: #212342;
       }
     }
   }
 }
 
-// .ab-mini-1 {
-//   background-image: url('../../../content/images/ab1.png');
-// }
-// .ab-mini-2 {
-//   background-image: url('../../../content/images/ab2.png');
-// }
-// .ab-mini-3 {
-//   background-image: url('../../../content/images/ab3.png');
-// }
-// .ab-mini-4 {
-//   background-image: url('../../../content/images/ab4.png');
-// }
+.ab-mini-1 {
+  background-image: url('../../../content/images/ab1.png');
+}
+.ab-mini-2 {
+  background-image: url('../../../content/images/ab2.png');
+}
+.ab-mini-3 {
+  background-image: url('../../../content/images/ab3.png');
+}
+.ab-mini-4 {
+  background-image: url('../../../content/images/ab4.png');
+}
 .ab-mini-new {
   background-image: url('../../../content/images/icn_add_mini2.svg');
   background-size: 30%;
