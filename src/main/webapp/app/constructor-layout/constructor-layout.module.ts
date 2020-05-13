@@ -12,9 +12,10 @@ import { TopBarComponent } from './../layouts/top-bar/top-bar.component';
 import { LeftSidebarComponent } from './../layouts/left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './../layouts/right-sidebar/right-sidebar.component';
 import { TemplateGalleryComponent } from '../constructor/template-gallery/template-gallery.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
-  imports: [ConstructorSharedModule],
+  imports: [ConstructorSharedModule, AngularEditorModule],
   declarations: [
     ConstructorLayoutComponent,
     ConstructorFilmstripComponent,
