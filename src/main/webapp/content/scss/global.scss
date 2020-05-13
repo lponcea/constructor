@@ -265,7 +265,7 @@ strong {
 .angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button:hover {
   background-color: rgba(255, 255, 255, 0.6) !important;
 }
-/*
+
 .fa-bold {
   position: relative;
   width: 20px;
@@ -338,8 +338,81 @@ strong {
 .fa-font:before {
   content: '' !important;
 }
+// New icons text component
+.fa-align-left {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_left.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-left:before {
+  content: '' !important;
+}
+.fa-align-center {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_center.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-center:before {
+  content: '' !important;
+}
+.fa-align-right {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_right.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-right:before {
+  content: '' !important;
+}
+.fa-align-justify {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_justify.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-justify:before {
+  content: '' !important;
+}
+.fa-list-ul {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_list_ul.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-list-ul:before {
+  content: '' !important;
+}
+.fa-list-ol {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_list_ol.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-list-ol:before {
+  content: '' !important;
+}
+
 // Select button
-*/
 .ae-font .ae-picker-label {
   height: 25px !important;
   padding-left: 10px !important;
