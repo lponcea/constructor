@@ -21,8 +21,8 @@ export class ConstructorTextComponent {
     translate: 'yes',
     enableToolbar: true,
     showToolbar: true,
-    placeholder: 'Enter text here...',
-    defaultParagraphSeparator: '',
+    placeholder: 'Escribe aquí el texto',
+    defaultParagraphSeparator: '<p>',
     defaultFontName: '',
     defaultFontSize: '',
     fonts: [
@@ -50,7 +50,20 @@ export class ConstructorTextComponent {
     uploadWithCredentials: false,
     sanitize: true,
     toolbarPosition: 'top',
-    toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']]
+    toolbarHiddenButtons: [
+      ['strikeThrough', 'subscript', 'superscript', 'indent', 'outdent'],
+      [
+        'backgroundColor',
+        'customClasses',
+        'link',
+        'unlink',
+        'insertImage',
+        'insertVideo',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
+    ]
   };
 
   constructor(private messageService: MessageServiceService) {}
