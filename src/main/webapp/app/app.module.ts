@@ -17,7 +17,6 @@ import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CourseConfigurationComponent } from './course-configuration/course-configuration.component';
-import { ContentBlock2Component } from './constructor/content-blocks/content-block2/content-block2.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CursoUpdateComponent } from './entities/curso/curso-update.component';
 import { CursoComponent } from './entities/curso/curso.component';
@@ -45,7 +44,6 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     ActiveMenuDirective,
     FooterComponent,
     CourseConfigurationComponent,
-    ContentBlock2Component,
     HomePageComponent,
     CursoComponent,
     CursoUpdateComponent,
