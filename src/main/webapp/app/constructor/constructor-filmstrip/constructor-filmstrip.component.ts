@@ -17,20 +17,28 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
 
   imagePaths = [
     {
-      contentBlockType: 'text_imagen_columnas',
-      path: '../../../content/images/ab1.png'
+      name: 'title',
+      contentBlockType: 'titulo',
+      path: '../../../content/images/ab1.png',
+      tags: 'text'
     },
     {
-      contentBlockType: 'imagen_texto_columnas',
-      path: '../../../content/images/ab2.png'
+      name: 'text',
+      contentBlockType: 'texto',
+      path: '../../../content/images/ab2.png',
+      tags: 'text'
     },
     {
+      name: 'image',
       contentBlockType: 'imagen',
-      path: '../../../content/images/ab3.png'
+      path: '../../../content/images/ab3.png',
+      tags: 'image'
     },
     {
-      contentBlockType: 'tres_columnas_imagen_texto_filas',
-      path: '../../../content/images/ab4.png'
+      name: 'image_text',
+      contentBlockType: 'imagen_texto',
+      path: '../../../content/images/ab4.png',
+      tags: 'image text'
     }
   ];
 
