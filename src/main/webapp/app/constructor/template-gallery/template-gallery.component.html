@@ -1,8 +1,12 @@
 <p>template-gallery works!</p>
 <div class="container">
-    <div class="row" *ngFor="let template of templates; let index = index;" (click)="selectTemplate(template.type);">
-        <div style="width: 100px; height: 50px; border: 1px black solid; margin: 5px;">
-            Template {{index + 1}}
+    <div class="row" *ngFor="let template of templates; let index = index;"">
+        <div class="artboard-mini ab-mini-1"
+            [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
+            [style.backgroundImage]="'url(' + getContentBlockImage(template.contentBlockType) + ')'"
+            (click)="selectContentBlock(index)"
+            style="width: 100px; height: 100px;">
         </div>
+        {{template.name}}
     </div>
 </div>
