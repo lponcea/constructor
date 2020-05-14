@@ -8,6 +8,8 @@
   height: 100%;
   background-color: $background-workspace;
   overflow-y: scroll;
+  padding-top: 35px;
+  padding-bottom: 30px;
 }
 .visor-component-artboard {
   position: relative;
@@ -23,7 +25,6 @@
   padding-right: 20px;
   margin: 0 auto;
   border-radius: 6px 0 6px 6px;
-  margin-top: 40px;
 
   .artboard-delete {
     position: absolute;
@@ -117,42 +118,14 @@
   justify-content: flex-start;
   align-items: center;
   border: 1px solid $window-divider-color;
-}
 
-// Content blocks
-jhi-content-block1 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-jhi-content-block2 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-jhi-content-block3 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-jhi-content-block4 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  .col-jhi-block {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
