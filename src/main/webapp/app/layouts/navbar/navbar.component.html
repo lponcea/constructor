@@ -47,17 +47,6 @@
             </a>
             <!-- SubMenu Account -->
             <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
-              <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
-              <!-- <li *ngSwitchCase="true"> -->
-                <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()">
-                  <p jhiTranslate="global.menu.account.settings">Settings</p>
-                </a>
-              </li>
-              <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                <a class="dropdown-item" routerLink="account/password" routerLinkActive="active" (click)="collapseNavbar()">
-                  <p jhiTranslate="global.menu.account.password">Password</p>
-                </a>
-              </li>
               <li *ngSwitchCase="true">
                 <a class="dropdown-item" routerLink="/" routerLinkActive="active" (click)="collapseNavbar()">
                   <p>Home</p>
@@ -159,4 +148,16 @@
             <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{language | findLanguageFromKey}}</a>
         </li>
     </ul>
+</li> -->
+
+<!-- Account submenu -->
+<!-- <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+  <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()">
+    <p jhiTranslate="global.menu.account.settings">Settings</p>
+  </a>
+</li> -->
+<!-- <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+  <a class="dropdown-item" routerLink="account/password" routerLinkActive="active" (click)="collapseNavbar()">
+    <p jhiTranslate="global.menu.account.password">Password</p>
+  </a>
 </li> -->
