@@ -8,19 +8,22 @@
   height: 100%;
   background-color: $background-workspace;
   overflow-y: scroll;
-  display: block;
 }
 .visor-component-artboard {
   position: relative;
-  width: 92%;
+  width: 94%;
+  max-width: 1400px;
   height: auto;
+  min-height: 40px;
   background-color: $color-workspace;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.12);
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
-  min-height: 200px;
-  border-radius: 6px;
+  border-radius: 6px 0 6px 6px;
+  margin-top: 40px;
 
   .artboard-delete {
     position: absolute;
@@ -28,37 +31,47 @@
     top: -24px;
     width: 35px;
     height: 24px;
-    background-color: #15a9fa;
+    background-color: $secondary-btn-hover;
     border-radius: 10px 10px 0 0;
     z-index: 2;
-    background-image: url('../../../content/images/delete_art_icn.svg');
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    transition: 0.4s;
-    cursor: pointer;
-    &:hover {
-      background-color: #05c3f3;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .abd-icon {
+      position: relative;
+      width: 15px;
+      height: 15px;
+      background-image: url('../../../content/images/delete_art_icn.svg');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      opacity: 0.5;
     }
   }
   .artboard-name {
     position: absolute;
     right: 26px;
     top: -24px;
-    width: 80px;
+    width: auto;
+    min-width: 70px;
     height: 24px;
+    font-size: 14px;
     background-color: #1a3d82;
     border-radius: 10px 0px 0 0;
     z-index: 1;
     display: flex;
     align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
 
     span {
       position: relative;
+      width: auto;
+      height: auto;
       font-size: 13px;
       color: white;
       text-align: left;
-      margin-left: 10px;
     }
   }
 }
@@ -80,7 +93,6 @@
 }
 ::-webkit-scrollbar-thumb {
   height: 6px;
-
   background-clip: padding-box;
   -webkit-border-radius: 7px;
   background-color: rgba(0, 0, 0, 0.15);
@@ -96,33 +108,51 @@
   background-color: transparent;
 }
 
-.m1-space {
+.row-visor-container {
   position: relative;
-  width: 200px;
-  height: 100px;
-  margin: 0 auto;
-  margin-top: 120px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  border: 1px solid $window-divider-color;
+}
 
-  .icn-m1-s {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    background-image: url('../../../content/images/icn_empty.svg');
-    background-position: center;
-    background-size: 90%;
-    background-repeat: no-repeat;
-  }
-  p {
-    position: relative;
-    width: auto;
-    height: auto;
-    color: #a9a8a8;
-    text-align: center;
-    font-size: 12px;
-    line-height: 16px;
-  }
+// Content blocks
+jhi-content-block1 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+jhi-content-block2 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+jhi-content-block3 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+jhi-content-block4 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }

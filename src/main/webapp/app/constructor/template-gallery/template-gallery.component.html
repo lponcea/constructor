@@ -9,7 +9,7 @@
   <div class="c-component-content">
     <div class="row-mini-gallery">
       <div *ngFor="let template of templates; let index = index;"">
-        <div class="template-mini"
+        <div class="artboard-mini ab-mini-1 template-mini"
         [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
         [style.backgroundImage]="'url(' + getContentBlockImage(template.contentBlockType) + ')'"
         (click)="selectContentBlock(index)">
