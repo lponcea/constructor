@@ -1,20 +1,23 @@
 <div class="template-c-component">
   <div class="c-component-title"><p>Template gallery</p></div>
   <div class="menu-template">
-    <div class="item-mt"><span>Label 1</span></div>
-    <div class="item-mt"><span>Label 2</span></div>
-    <div class="item-mt"><span>Label 3</span></div>
+    <div
+      [ngClass]="{'': filter.selected}"
+      class="item-mt"
+      *ngFor="let filter of filters; let index = index;"
+      (click)="filterTemplates(filter)">
+      <span>{{filter.text}}</span>
+    </div>
   </div>
 
   <div class="c-component-content">
     <div class="row-mini-gallery">
-      <div *ngFor="let template of templates; let index = index;"">
-        <div class="artboard-mini ab-mini-1 template-mini"
+      <div *ngFor="let template of filteredTemplates; let index = index;">
+        <div class="template-mini"
         [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
         [style.backgroundImage]="'url(' + getContentBlockImage(template.contentBlockType) + ')'"
         (click)="selectContentBlock(index)">
         </div>
-        <!-- {{template.name}} -->
       </div>
     </div>
 

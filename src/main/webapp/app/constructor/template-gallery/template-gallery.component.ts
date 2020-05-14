@@ -8,6 +8,18 @@ import { NavigationControlsService } from '../../services/navigation-controls.se
 })
 export class TemplateGalleryComponent {
   selectedContentBlockIndex = -1;
+  filters = [
+    {
+      text: 'Texto',
+      filter: 'text',
+      selected: false
+    },
+    {
+      text: 'Imagen',
+      filter: 'image',
+      selected: false
+    }
+  ];
   templates = [
     {
       name: 'title',
@@ -34,6 +46,7 @@ export class TemplateGalleryComponent {
       tags: 'image text'
     }
   ];
+  filteredTemplates = this.templates;
 
   constructor(private navigationControlsService: NavigationControlsService) {}
 
@@ -57,5 +70,22 @@ export class TemplateGalleryComponent {
 
   selectContentBlock(selectedContentBlockIndex: number): void {
     this.selectedContentBlockIndex = selectedContentBlockIndex;
+  }
+
+  filterTemplates(filter: any): void {
+    this.restoreSelectedFilters();
+    filter.selected = true;
+    this.filteredTemplates = [];
+    for (let i = 0; i < this.templates.length; i++) {
+      if (this.templates[i].tags.includes(filter.filter)) {
+        this.filteredTemplates.push(this.templates[i]);
+      }
+    }
+  }
+
+  restoreSelectedFilters(): void {
+    for (let i = 0; i < this.filters.length; i++) {
+      this.filters[i].selected = false;
+    }
   }
 }
