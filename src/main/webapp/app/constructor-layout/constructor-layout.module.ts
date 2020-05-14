@@ -12,6 +12,9 @@ import { TopBarComponent } from './../layouts/top-bar/top-bar.component';
 import { LeftSidebarComponent } from './../layouts/left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './../layouts/right-sidebar/right-sidebar.component';
 import { TemplateGalleryComponent } from '../constructor/template-gallery/template-gallery.component';
+import { ConstructorHierarchicalStructureComponent } from '../constructor/constructor-hierarchical-structure/constructor-hierarchical-structure.component';
+import { ConstructorBookInformationComponent } from '../constructor/constructor-book-information/constructor-book-information.component';
+import { ConstructorComponentPropertiesComponent } from '../constructor/constructor-component-properties/constructor-component-properties.component';
 
 @NgModule({
   imports: [ConstructorSharedModule],
@@ -26,7 +29,10 @@ import { TemplateGalleryComponent } from '../constructor/template-gallery/templa
     TopBarComponent,
     LeftSidebarComponent,
     RightSidebarComponent,
-    TemplateGalleryComponent
+    TemplateGalleryComponent,
+    ConstructorHierarchicalStructureComponent,
+    ConstructorBookInformationComponent,
+    ConstructorComponentPropertiesComponent
   ]
 })
 export class ConstructorLayoutModule {}
