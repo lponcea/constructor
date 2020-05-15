@@ -129,3 +129,39 @@
     padding-right: 5px;
   }
 }
+
+// Scroll
+#visor-container-grid:-webkit-scrollbar {
+  width: 7px; /* Tamaño del scroll en vertical */
+  height: 7px; /* Tamaño del scroll en horizontal */
+  display: none; /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+#visor-container-grid::-webkit-scrollbar-thumb {
+  background: $secondary-btn-color;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+#visor-container-grid::-webkit-scrollbar-thumb:hover {
+  // background: #b3b3b3;
+  // box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+#visor-container-grid::-webkit-scrollbar-thumb:active {
+  background-color: $secondary-btn-hover;
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+#visor-container-grid::-webkit-scrollbar-track {
+  background: rgba(26, 61, 130, 0.1);
+  border-radius: 0px;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+#visor-container-grid::-webkit-scrollbar-track:hover,
+#visor-container-grid::-webkit-scrollbar-track:active {
+  // background: #d4d4d4;
+}
