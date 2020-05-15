@@ -6,36 +6,14 @@ import { Injectable } from '@angular/core';
 export class ContentBlocksService {
   // Objeto que contiene los bloques de contenido con toda su información.
   // En un futuro se obtendrá de la base de datos.
-  contentBlocks = [
-    /*
-    {
-      title: "Portada",
-      contentBlockType: "imagen"
-    },
-    {
-      title: "Dos",
-      contentBlockType: "text_imagen_columnas"
-    },
-    {
-      title: "Tres",
-      contentBlockType: "imagen_texto_columnas"
-    },
-    {
-      title: "Cuatro",
-      contentBlockType: "imagen"
-    },
-    */
-    {
-      id: 1,
-      title: 'Bloque de ejemplo',
-      contentBlockType: 'tres_columnas_imagen_texto_filas'
-    }
-  ];
+  contentBlocks: Array<any>;
 
-  constructor() {}
+  constructor() {
+    this.contentBlocks = [];
+  }
 
   // Devuelve el arreglo de objetos con todos lso bloques de contenido.
-  getContentBlocks(): Array<Object> {
+  getContentBlocks(): Array<any> {
     return this.contentBlocks;
   }
 
@@ -57,12 +35,8 @@ export class ContentBlocksService {
   /*
    * Genera un nuevo bloque de contenido con los parámetros por defecto.
    */
-  createContentBlock(contentBlockType: string): void {
-    this.contentBlocks.push({
-      id: this.contentBlocks.length + 1,
-      title: 'Nuevo bloque',
-      contentBlockType
-    });
+  createContentBlock(contentBlock: any): void {
+    this.contentBlocks.push(contentBlock.selectedTemplate);
   }
 
   /*

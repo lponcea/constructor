@@ -4,17 +4,19 @@
     <div class="artboard-name"><span>Name</span></div>
 
     <div class="row-visor-container">
-      <div class="col-jhi-block">
-        <jhi-content-block1></jhi-content-block1>
-      </div>
-      <div class="col-jhi-block">
-        <jhi-content-block2></jhi-content-block2>
-      </div>
-      <div class="col-jhi-block">
-        <jhi-content-block3></jhi-content-block3>
-      </div>
-      <div class="col-jhi-block">
-        <jhi-content-block4></jhi-content-block4>
+      <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
+        <div *ngIf="block.contentBlockType == 'titulo'">
+          <jhi-content-block1></jhi-content-block1>
+        </div>
+        <div *ngIf="block.contentBlockType == 'texto'">
+          <jhi-content-block2></jhi-content-block2>
+        </div>
+        <div *ngIf="block.contentBlockType == 'imagen'">
+          <jhi-content-block3></jhi-content-block3>
+        </div>
+        <div *ngIf="block.contentBlockType == 'imagen_texto'">
+          <jhi-content-block4></jhi-content-block4>
+        </div>
       </div>
     </div>
 

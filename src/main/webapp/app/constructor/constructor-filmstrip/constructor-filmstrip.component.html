@@ -5,14 +5,14 @@
 
       <div class="row-artboard-filmstrip" *ngFor="let contentBlock of contentBlocks; let index = index">
         <div
-          class="artboard-mini ab-mini-1"
+          class="artboard-mini"
           [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
-          [style.backgroundImage]="'url(' + getContentBlockImage(contentBlock.contentBlockType) + ')'"
+          [style.backgroundImage]="'url(' + getContentBlockImage(contentBlock.path) + ')'"
           (click)="selectContentBlock(index)">
         </div>
         <!-- <div class="artboard-mini ab-mini-1 ab-mini-select"></div> -->
         <div class="ab-mini-desc">
-          <p>{{contentBlock.title}}</p>
+          <p>{{contentBlock.name}}</p>
           <div class="delete-ab" (click)="deleteContentBlock(contentBlock.id)"><span></span><p>Eliminar</p></div>
         </div>
       </div>
