@@ -50,7 +50,7 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
     this.subscription = this.navigationControlsService.getSelectedTemplateType().subscribe(selectedTemplate => {
       if (selectedTemplate) {
         this.selectedTemplateType = selectedTemplate.selectedTemplateType;
-        this.contentBlocksService.createContentBlock(selectedTemplate.selectedTemplateType);
+        this.contentBlocksService.createContentBlock(selectedTemplate);
       }
     });
   }
@@ -69,13 +69,7 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   /*
    * Obtiene la imagen para el fimrstrip de acuerdo con el tipo de bloque de contenido.
    */
-  getContentBlockImage(contentBlockType: string): string {
-    let path = '';
-    for (const imagePath of this.imagePaths) {
-      if (imagePath.contentBlockType === contentBlockType) {
-        path = imagePath['path'];
-      }
-    }
+  getContentBlockImage(path: string): string {
     return path;
   }
 

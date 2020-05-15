@@ -20,9 +20,9 @@ export class NavigationControlsService {
     return this.openTemplateGallery.asObservable();
   }
 
-  selectTemplate(selectedTemplateType: string): void {
+  selectTemplate(selectedTemplate: any): void {
     this.selectedTemplate.next({
-      selectedTemplateType
+      selectedTemplate
     });
   }
 

@@ -7,11 +7,29 @@ import { ContentBlocksService } from 'app/services/content-blocks.service';
   styleUrls: ['./constructor-visor-container.component.scss']
 })
 export class ConstructorVisorContainerComponent implements OnInit {
-  contentBlocks: Array<Object> = [];
+  contentBlocks = [
+    {
+      contentBlockType: 'titulo'
+    },
+    {
+      contentBlockType: 'texto'
+    },
+    {
+      contentBlockType: 'texto'
+    },
+    {
+      contentBlockType: 'imagen'
+    },
+    {
+      contentBlockType: 'imagen_texto'
+    }
+  ];
 
   constructor(private contentBlocksService: ContentBlocksService) {}
 
   ngOnInit(): void {
+    /*
     this.contentBlocks = this.contentBlocksService.getContentBlocks();
+    */
   }
 }

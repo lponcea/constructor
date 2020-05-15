@@ -50,8 +50,8 @@ export class TemplateGalleryComponent {
 
   constructor(private navigationControlsService: NavigationControlsService) {}
 
-  selectTemplate(selectedTemplateType: string): void {
-    this.navigationControlsService.selectTemplate(selectedTemplateType);
+  selectTemplate(selectedTemplate: any): void {
+    this.navigationControlsService.selectTemplate(selectedTemplate);
     this.navigationControlsService.setOpenTemplateGallery(false);
   }
 
@@ -70,6 +70,7 @@ export class TemplateGalleryComponent {
 
   selectContentBlock(selectedContentBlockIndex: number): void {
     this.selectedContentBlockIndex = selectedContentBlockIndex;
+    this.selectTemplate(this.templates[selectedContentBlockIndex]);
   }
 
   filterTemplates(filter: any): void {
