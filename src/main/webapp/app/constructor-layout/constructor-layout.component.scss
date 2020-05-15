@@ -7,16 +7,20 @@
   // height: calc(100vh - 100px);
   display: flex;
   flex-direction: row;
+  background-color: pink;
 }
-.item-grid-1 {
-  position: relative;
+#item-grid-1 {
+  position: absolute;
+  left: 0;
   width: 260px;
   height: 100%;
   border-right: 1px solid $window-divider-color;
   transition: 0.3s;
+  background-color: $color-sidebar;
 }
-.item-grid-2 {
-  position: relative;
+#item-grid-2 {
+  position: absolute;
+  left: 260px;
   width: calc(100% - 520px);
   height: 100%;
   display: flex;
@@ -41,11 +45,12 @@
 }
 
 // Expand sidebar
-.item-grid-3 {
-  position: relative;
+#item-grid-3 {
+  position: absolute;
+  right: 0;
   width: 260px;
   height: 100%;
-  background-color: #f9f9f9;
+  background-color: $color-sidebar;
   border-left: 1px solid #e7e8ed;
   transition: 0.3s;
 }
@@ -112,15 +117,6 @@
   }
 }
 
-.contracted {
-  position: relative;
-  width: 40px;
-  height: 100%;
-  transition: 0.2s;
-  border-left: 1px solid $window-divider-color;
-  border-right: 1px solid $window-divider-color;
-  background-color: $color-sidebar;
-}
 .left-sidebar {
   position: relative;
   width: 100%;
@@ -129,11 +125,7 @@
   opacity: 1;
   transition: opacity 0.5s, visibility 0.5s;
 }
-.contracted .left-sidebar {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.1s, visibility 0.1s;
-}
+
 .right-sidebar {
   position: relative;
   width: 100%;
@@ -141,11 +133,6 @@
   visibility: visible;
   opacity: 1;
   transition: opacity 0.5s, visibility 0.5s;
-}
-.contracted .right-sidebar {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.1s, visibility 0.1s;
 }
 
 .expand-button .icon {
@@ -156,21 +143,29 @@
 #item-grid-1 .expand-button {
   // transform: translateX(-10px);
 }
-
-.one-contract {
-  position: relative;
-  width: calc(100% - 300px);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: 0.3s;
+// Contract
+.contracted {
+  width: 40px !important;
 }
-
+.contracted .left-sidebar {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.1s, visibility 0.1s;
+}
+.contracted .right-sidebar {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.1s, visibility 0.1s;
+}
+.one-contract {
+  left: 40px !important;
+  width: calc(100% - 300px) !important;
+}
 .two-contract {
-  position: relative;
-  width: calc(100% - 80px);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: 0.3s;
+  left: 40px !important;
+  width: calc(100% - 80px) !important;
+}
+.three-contract {
+  left: 260px !important;
+  width: calc(100% - 300px) !important;
 }
