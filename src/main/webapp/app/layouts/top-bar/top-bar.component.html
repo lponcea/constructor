@@ -1,20 +1,15 @@
-<nav class="navbar-menu">
-    <div class="navbar-menu-item1">
-      <div class="row-nbm-i1">
-        <div class="nb-logo"></div>
-        <div class="name-project-navbar">Nombre del proyecto - N3 Lección 2</div>
-        <div class="user-btn-navbar" (click)="openMenu = !openMenu"><div class="arrow-user"></div></div>
-      </div>
+<nav class="topbar-layout">
+    <div class="layout-tool-menu">
+      <div class="row-ltm">
 
-    </div>
-    <div class="navbar-menu-item2">
-      <div class="row-nbm-i2">
         <div class="nbm-i2-set-1">
           <div class="nb-icon-tool">
             <div class="nb-icon icon-bloques"></div>
             <div class="nb-text">Plantillas</div>
           </div>
-
+        </div>
+        <div class="layout-breadcrumbs">
+          <p>Título del proyecto / N1 / <strong>Lección 1</strong></p>
         </div>
         <div class="nbm-i2-set-2">
           <div class="nb-icon-tool">
@@ -29,16 +24,8 @@
             <div class="nb-icon icon-upload"></div>
             <div class="nb-text">Publicar</div>
           </div>
-
         </div>
+
       </div>
-
     </div>
-  </nav>
-
-  <!-- Main menu -->
-  <div class="no-agular"
-      [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}">
-      <button class="dropdown-item" (click)="login()" id="login">Iniciar sesión</button>
-      <button class="dropdown-item" (click)="logout()" id="logout">Cerrar sesión</button>
-  </div>
+</nav>

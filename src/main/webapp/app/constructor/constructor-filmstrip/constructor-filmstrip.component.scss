@@ -67,9 +67,9 @@
     border: 2px solid rgb(213, 213, 213);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 50%;
     transition: 0.4s;
     cursor: pointer;
-    // pointer-events: none;
     &:hover {
       border: 2px solid rgb(175, 175, 175);
     }
@@ -79,9 +79,6 @@
   }
   .ab-mini-select {
     border: 2px solid #15a9fa !important;
-    // pointer-events: none;
-    // user-select: none;
-    // pointer-events: none;
   }
   .ab-mini-desc {
     position: relative;
@@ -126,7 +123,6 @@
         font-weight: 600;
         margin-left: 4px;
         cursor: pointer;
-        // pointer-events: none;
         color: #212342;
       }
     }

@@ -31,7 +31,53 @@
   }
   .c-component-content {
     position: relative;
-    width: 100%;
+    width: 88%;
     height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    top: 30px;
+    padding-top: 20px;
+
+    .ic-row-cover {
+      position: relative;
+      width: 40%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .info-cover {
+        position: relative;
+        width: 76px;
+        height: 50px;
+        background-color: orange;
+        border-radius: 6px;
+        background-image: url('../../../content/images/cover_upload.png');
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+    }
+    .ic-row-text {
+      position: relative;
+      width: 60%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      p {
+        position: relative;
+        width: auto;
+        height: auto;
+        font-size: 11px;
+
+        line-height: 18px;
+        &:nth-child(2) {
+          font-size: 10px;
+        }
+      }
+    }
   }
 }
