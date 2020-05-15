@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
+import { ContentBlocksService } from 'app/services/content-blocks.service';
+import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 
 @Component({
   selector: 'jhi-template-gallery',
@@ -20,52 +22,38 @@ export class TemplateGalleryComponent {
       selected: false
     }
   ];
-  templates = [
-    {
-      name: 'title',
-      contentBlockType: 'titulo',
-      path: '../../../content/images/ab1.png',
-      tags: 'text'
-    },
-    {
-      name: 'text',
-      contentBlockType: 'texto',
-      path: '../../../content/images/ab2.png',
-      tags: 'text'
-    },
-    {
-      name: 'image',
-      contentBlockType: 'imagen',
-      path: '../../../content/images/ab3.png',
-      tags: 'image'
-    },
-    {
-      name: 'image_text',
-      contentBlockType: 'imagen_texto',
-      path: '../../../content/images/ab4.png',
-      tags: 'image text'
-    }
-  ];
-  filteredTemplates = this.templates;
+  templates: ITipoBloqueComponentes[];
+  filteredTemplates: ITipoBloqueComponentes[];
 
-  constructor(private navigationControlsService: NavigationControlsService) {}
-
-  selectTemplate(selectedTemplate: any): void {
-    this.navigationControlsService.selectTemplate(selectedTemplate);
-    this.navigationControlsService.setOpenTemplateGallery(false);
+  constructor(private contentBlocksService: ContentBlocksService, private navigationControlsService: NavigationControlsService) {
+    this.templates = [
+      {
+        nombre: 'titulo',
+        iconPath: '../../../content/images/ab1.png',
+        tags: 'text'
+      },
+      {
+        nombre: 'texto',
+        iconPath: '../../../content/images/ab2.png',
+        tags: 'text'
+      },
+      {
+        nombre: 'imagen',
+        iconPath: '../../../content/images/ab3.png',
+        tags: 'image'
+      },
+      {
+        nombre: 'imagen_texto',
+        iconPath: '../../../content/images/ab4.png',
+        tags: 'image text'
+      }
+    ];
+    this.filteredTemplates = this.templates;
   }
 
-  /*
-   * Obtiene la imagen para el fimrstrip de acuerdo con el tipo de bloque de contenido.
-   */
-  getContentBlockImage(contentBlockType: string): string {
-    let path = '';
-    for (const imagePath of this.templates) {
-      if (imagePath.contentBlockType === contentBlockType) {
-        path = imagePath['path'];
-      }
-    }
-    return path;
+  selectTemplate(selectedTemplate: any): void {
+    this.contentBlocksService.setSelectedBlock(selectedTemplate);
+    this.navigationControlsService.setOpenTemplateGallery(false);
   }
 
   selectContentBlock(selectedContentBlockIndex: number): void {

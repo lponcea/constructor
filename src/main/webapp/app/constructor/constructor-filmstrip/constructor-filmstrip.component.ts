@@ -3,6 +3,7 @@ import { BlockSelectionService } from 'app/services/block-selection.service';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
 import { Subscription } from 'rxjs';
+import { IBloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 
 @Component({
   selector: 'jhi-constructor-filmstrip',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   selectedContentBlockIndex = -1;
-  contentBlocks: Array<Object> = [];
+  contentBlocks: IBloqueComponentes[];
   selectedTemplateType = '';
   subscription: Subscription;
 
@@ -47,16 +48,16 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
     private blockSelectionService: BlockSelectionService,
     private navigationControlsService: NavigationControlsService
   ) {
-    this.subscription = this.navigationControlsService.getSelectedTemplateType().subscribe(selectedTemplate => {
-      if (selectedTemplate) {
-        this.selectedTemplateType = selectedTemplate.selectedTemplateType;
-        this.contentBlocksService.createContentBlock(selectedTemplate);
+    this.contentBlocks = [];
+    this.subscription = this.contentBlocksService.getContentBlocks().subscribe(contentBlocks => {
+      if (contentBlocks) {
+        this.contentBlocks = contentBlocks;
       }
     });
   }
 
   ngOnInit(): void {
-    this.contentBlocks = this.contentBlocksService.getContentBlocks();
+    // this.contentBlocks = this.contentBlocksService.getContentBlocks();
   }
 
   /*
@@ -91,7 +92,7 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   /*
    * Elimina el bloque de contenido seleccionado en ContentBlocksService.
    */
-  deleteContentBlock(idBloquecontenido: number): void {
-    this.contentBlocksService.deleteContentBlock(idBloquecontenido);
+  deleteContentBlock(index: number): void {
+    this.contentBlocksService.setIndexBlockToDelete(index);
   }
 }

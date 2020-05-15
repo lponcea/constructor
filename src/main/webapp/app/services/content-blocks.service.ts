@@ -1,52 +1,40 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { IBloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContentBlocksService {
-  // Objeto que contiene los bloques de contenido con toda su información.
-  // En un futuro se obtendrá de la base de datos.
-  contentBlocks: Array<any>;
+  selectedBlock = new Subject<any>();
+  contentBlocks = new Subject<IBloqueComponentes[]>();
+  indexBlockToDelete = new Subject<number>();
 
-  constructor() {
-    this.contentBlocks = [];
+  constructor() {}
+
+  getSelectedBlock(): Observable<any> {
+    return this.selectedBlock.asObservable();
   }
 
-  // Devuelve el arreglo de objetos con todos lso bloques de contenido.
-  getContentBlocks(): Array<any> {
-    return this.contentBlocks;
+  setSelectedBlock(selectedBlock: any): void {
+    this.selectedBlock.next({
+      selectedBlock
+    });
   }
 
-  /*
-   * Busca y devuelve el bloque de contenido con el id recibido.
-   * @param idContentBlock - Id del bloque de contenido a buscar.
-   */
-  getContentBlockById(idContentBlock: number): Object {
-    let contentBlockFound = {};
-    for (const contentBlock of this.contentBlocks) {
-      if (contentBlock.id === idContentBlock) {
-        contentBlockFound = contentBlock;
-        break;
-      }
-    }
-    return contentBlockFound;
+  getContentBlocks(): Observable<IBloqueComponentes[]> {
+    return this.contentBlocks.asObservable();
   }
 
-  /*
-   * Genera un nuevo bloque de contenido con los parámetros por defecto.
-   */
-  createContentBlock(contentBlock: any): void {
-    this.contentBlocks.push(contentBlock.selectedTemplate);
+  setContentBlocks(contentBlocks: IBloqueComponentes[]): void {
+    this.contentBlocks.next(contentBlocks);
   }
 
-  /*
-   * Elimina el bloque de contenido correspondiente al id recibido.
-   */
-  deleteContentBlock(idBloquecontenido: number): void {
-    for (let i = 0; i < this.contentBlocks.length; i++) {
-      if (this.contentBlocks[i].id === idBloquecontenido) {
-        this.contentBlocks.splice(i, 1);
-      }
-    }
+  getIndexBlockToDelete(): Observable<number> {
+    return this.indexBlockToDelete.asObservable();
+  }
+
+  setIndexBlockToDelete(index: number): void {
+    this.indexBlockToDelete.next(index);
   }
 }

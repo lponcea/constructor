@@ -15,7 +15,7 @@
       <div *ngFor="let template of filteredTemplates; let index = index;">
         <div class="template-mini"
         [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
-        [style.backgroundImage]="'url(' + getContentBlockImage(template.contentBlockType) + ')'"
+        [style.backgroundImage]="'url(' + template.iconPath + ')'"
         (click)="selectContentBlock(index)">
         </div>
       </div>
