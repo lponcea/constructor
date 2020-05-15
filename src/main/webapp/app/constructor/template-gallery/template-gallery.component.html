@@ -2,7 +2,7 @@
   <div class="c-component-title"><p>Template gallery</p></div>
   <div class="menu-template">
     <div
-      [ngClass]="{'': filter.selected}"
+      [ngClass]="{'active-mt': filter.selected}"
       class="item-mt"
       *ngFor="let filter of filters; let index = index;"
       (click)="filterTemplates(filter)">
