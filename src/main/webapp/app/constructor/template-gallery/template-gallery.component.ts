@@ -66,7 +66,7 @@ export class TemplateGalleryComponent {
     filter.selected = true;
     this.filteredTemplates = [];
     for (let i = 0; i < this.templates.length; i++) {
-      if (this.templates[i].tags.includes(filter.filter)) {
+      if (this.templates[i].tags!.includes(filter.filter)) {
         this.filteredTemplates.push(this.templates[i]);
       }
     }
