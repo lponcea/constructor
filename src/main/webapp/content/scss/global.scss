@@ -28,14 +28,25 @@
   src: url('../fonts/Open_Sans/OpenSans-Bold.ttf');
   font-weight: 700;
 }
+// Import Font Icons
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/Icons/fontello.eot?55274503');
+  src: url('../fonts/Icons/fontello.eot?55274503#iefix') format('embedded-opentype'),
+    url('../fonts/Icons/fontello.woff?55274503') format('woff'), url('../fonts/Icons/fontello.ttf?55274503') format('truetype'),
+    url('../fonts/Icons/fontello.svg?55274503#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 }
 body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Open Sans', sans-serif;
   background-color: $background-color-light !important;
   margin: 0 !important;
 }
@@ -114,6 +125,44 @@ strong {
     width: 100%;
     height: calc(100vh - 100px);
   }
+}
+
+// Font Icons
+.icon {
+  position: relative;
+  font-size: 16px;
+  width: auto;
+  height: auto;
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  text-decoration: inherit;
+  color: silver;
+  cursor: default;
+  transition: 0.3s;
+  user-select: none;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+.icon-small {
+  font-size: 20px;
+}
+.color-blue-1 {
+  color: $blue-nimbus-dark;
+}
+.color-blue-2 {
+  color: $blue-nimbus;
+}
+.icon-negative {
+  color: white;
+}
+// Icons
+.ni-user:before {
+  content: '\e801';
 }
 
 // Text editor component
