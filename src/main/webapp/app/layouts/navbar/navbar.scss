@@ -5,7 +5,7 @@
   top: 0px;
   right: 0px;
   width: 100%;
-  height: 44px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,15 +24,31 @@
 
     .nb-logo {
       position: absolute;
-      width: 95px;
-      height: 30px;
+      // width: 112px;
+      width: auto;
+      height: 36px;
       left: 10px;
-      top: 6px;
-      background-image: url('../../../content/images/logo_nb.svg');
-      background-position: center;
-      background-size: 100%;
-      background-repeat: no-repeat;
+      top: 4px;
       cursor: pointer;
+      display: flex;
+      .nb-imagotipo {
+        position: relative;
+        width: 36px;
+        height: 36px;
+      }
+      .nb-logotipo {
+        position: relative;
+        width: 72px;
+        height: 36px;
+        background-image: url('../../../content/images/logotype-1.svg');
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-left: 4px;
+        @include smartphone {
+          display: none;
+        }
+      }
     }
     .user-btn-navbar {
       position: relative;
@@ -84,6 +100,43 @@
         transform: rotate(0deg);
       }
     }
+  }
+}
+// SVG Logo
+.nbl-1 {
+  fill: $blue-nimbus-dark;
+  animation: nbl-c1 1s ease 3;
+  animation-delay: 0.5s;
+}
+.nbl-2 {
+  fill: $blue-nimbus-light;
+  animation: nbl-c2 1s ease 3;
+  animation-delay: 1s;
+}
+.nbl-3 {
+  fill: #1890d4;
+}
+@keyframes nbl-c1 {
+  // 0%,100%{transform:translate(0)}
+  0% {
+    fill: #1a3d82;
+  }
+  50% {
+    fill: #699ae2;
+  }
+  100% {
+    fill: #1a3d82;
+  }
+}
+@keyframes nbl-c2 {
+  0% {
+    fill: #18bafb;
+  }
+  50% {
+    fill: #63d4f7;
+  }
+  100% {
+    fill: #18bafb;
   }
 }
 
@@ -264,45 +317,41 @@
         transition: 0.4s;
         background-color: white;
         z-index: 3;
-        &:hover .icon-menu {
+        &:hover .circle-menu {
           background-color: rgba(231, 232, 237, 0.5) !important;
         }
-        &:hover .icon-menu-account {
+        &:hover .circle-menu-account {
           background-color: $secondary-btn-hover !important;
         }
         &:hover p {
           color: $secondary-btn-hover;
         }
 
-        .icon-menu {
+        .circle-menu {
           position: relative;
           width: 30px;
           height: 30px;
           border-radius: 100%;
-          background-position: center;
-          background-size: 75%;
-          background-repeat: no-repeat;
           transition: 0.4s;
           margin-right: 6px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           background-color: rgba(231, 232, 237, 0);
         }
-        .icon-menu-account {
+        .circle-menu-account {
           position: relative;
           width: 30px;
           height: 30px;
           border-radius: 100%;
-          background-position: center;
-          background-size: 70%;
-          background-repeat: no-repeat;
           transition: 0.4s;
           margin-right: 6px;
-          background-color: rgba(231, 232, 237, 0);
-          background-image: url('../../../content/images/menu_icon_account.svg');
+          display: flex;
+          justify-content: center;
+          align-items: center;
           background-color: $secondary-btn-color;
         }
-        .icon-menu-admin {
-          background-image: url('../../../content/images/menu_icon_admin.svg');
-        }
+
         p {
           color: $a-color-menu;
           font-size: 15px;

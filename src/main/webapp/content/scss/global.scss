@@ -103,7 +103,7 @@ p {
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
-  color: #7a7a7a;
+  color: $paragraph-color;
   line-height: 24px;
   @include smartphone {
     font-size: 13px;
@@ -130,7 +130,7 @@ strong {
 // Font Icons
 .icon {
   position: relative;
-  font-size: 16px;
+  font-size: 20px;
   width: auto;
   height: auto;
   font-family: 'fontello';
@@ -138,31 +138,114 @@ strong {
   font-weight: normal;
   speak: none;
   text-decoration: inherit;
-  color: silver;
+  color: $icon-main-color;
   cursor: default;
   transition: 0.3s;
   user-select: none;
   font-variant: normal;
   text-transform: none;
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  // text-shadow: 2px 1px 6px rgba(26, 61, 130, 0.3);
 }
 .icon-small {
   font-size: 20px;
 }
-.color-blue-1 {
-  color: $blue-nimbus-dark;
+.icon-medium {
+  font-size: 24px;
 }
-.color-blue-2 {
-  color: $blue-nimbus;
+.icon-large {
+  font-size: 30px;
+}
+.icon-secondary-color {
+  color: $icon-secondary-color;
 }
 .icon-negative {
   color: white;
 }
 // Icons
 .ni-user:before {
+  content: '\e800';
+}
+.ni-lock:before {
   content: '\e801';
+}
+.ni-facebook:before {
+  content: '\e802';
+}
+.ni-twitter:before {
+  content: '\e803';
+}
+.ni-instagram:before {
+  content: '\e804';
+}
+.ni-alert:before {
+  content: '\e805';
+}
+.ni-succes:before {
+  content: '\e806';
+}
+.ni-settings:before {
+  content: '\e807';
+}
+.ni-close:before {
+  content: '\e808';
+}
+.ni-arrow:before {
+  content: '\e809';
+}
+.ni-info:before {
+  content: '\e80a';
+}
+.ni-add:before {
+  content: '\e80b';
+}
+.ni-help:before {
+  content: '\e80c';
+}
+.ni-support:before {
+  content: '\e80d';
+}
+.ni-book:before {
+  content: '\e80e';
+}
+.ni-calendar:before {
+  content: '\e80f';
+}
+.ni-template:before {
+  content: '\e810';
+}
+.ni-delete:before {
+  content: '\e811';
+}
+.ni-view:before {
+  content: '\e812';
+}
+.ni-edit:before {
+  content: '\e813';
+}
+
+.ni-nimbus:before {
+  content: '\e814';
+}
+.ni-drag:before {
+  content: '\e815';
+}
+.ni-arrow-right:before {
+  content: '\e816';
+}
+.ni-arrow-left:before {
+  content: '\e817';
+}
+.ni-desktop:before {
+  content: '\e818';
+}
+.ni-smartphone:before {
+  content: '\e819';
+}
+.ni-upload:before {
+  content: '\e81a';
 }
 
 // Text editor component
@@ -492,7 +575,7 @@ jhi-login-modal {
   height: auto;
   min-height: 526px;
   margin: 0 auto;
-  background-color: #fefefe;
+  background-color: $bg-white;
   border-radius: 8px;
   top: 50%;
   margin-top: -263px;
@@ -515,12 +598,15 @@ jhi-login-modal {
     cursor: pointer;
     border: 0;
     outline: none;
-    background-image: url('../images/icon_close_modal.svg');
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
     transition: 0.4s;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
     &:hover {
       background-color: rgba(60, 60, 60, 0.1);
     }
@@ -589,7 +675,7 @@ jhi-login-modal {
             margin-top: 10px;
 
             label {
-              color: #1c2447;
+              color: $label-color;
               position: relative;
               width: auto;
               height: auto;
@@ -602,7 +688,7 @@ jhi-login-modal {
               position: relative;
               width: 100%;
               height: 40px;
-              background-color: white;
+              background-color: $input-color;
               border: 0;
               border-radius: 16px;
               border: 2px solid $input-border-light;
@@ -612,13 +698,6 @@ jhi-login-modal {
                 outline: none !important;
                 border-color: $input-border-color;
                 box-shadow: 0 0 10px transparent;
-              }
-              &::placeholder {
-                color: #b0b0b0;
-                font-size: 13px;
-                position: relative;
-                left: 4px;
-                top: 4px;
               }
             }
           }
@@ -634,28 +713,11 @@ jhi-login-modal {
     margin-bottom: 30px;
   }
 }
-
 .icon-form-login {
   position: absolute;
-  width: 20px;
-  height: 20px;
   left: 15px;
   bottom: 10px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  @include smartphone {
-    width: 16px;
-    height: 16px;
-  }
 }
-.icnf-f-l1 {
-  background-image: url('../images/icn_login_user.svg');
-}
-.icnf-f-l2 {
-  background-image: url('../images/icn_login_pass.svg');
-}
-
 .row-modal-l-check {
   position: relative;
   width: 100%;
@@ -663,7 +725,7 @@ jhi-login-modal {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
   .rmlc-1 {
     position: relative;
     width: 50%;
@@ -680,7 +742,7 @@ jhi-login-modal {
       justify-content: flex-start;
       cursor: pointer;
       &:hover > span {
-        color: $a-hover !important;
+        color: $a-color-nd-hover !important;
       }
 
       input.form-check-input {
@@ -696,7 +758,7 @@ jhi-login-modal {
         position: relative;
         width: auto;
         height: auto;
-        color: $secondary-btn-color;
+        color: $a-color-nd;
         font-weight: 600;
         font-size: 14px;
         margin-left: 4px;
@@ -722,14 +784,14 @@ jhi-login-modal {
       height: auto;
       font-size: 14px;
       cursor: pointer;
-      color: $secondary-btn-color;
+      color: $a-color-nd;
       font-weight: 600;
       transition: 0.3s;
       @include smartphone {
         font-size: 12px;
       }
       &:hover {
-        color: $a-hover;
+        color: $a-color-nd-hover;
       }
     }
   }
@@ -742,8 +804,7 @@ jhi-login-modal {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0;
-
+  margin-top: 25px;
   p {
     margin-right: 10px;
   }
@@ -753,11 +814,11 @@ jhi-login-modal {
     height: auto;
     font-size: 14px;
     cursor: pointer;
-    color: $secondary-btn-color;
+    color: $a-color-nd;
     font-weight: 600;
     transition: 0.3s;
     &:hover {
-      color: $a-hover;
+      color: $a-color-nd-hover;
     }
     @include smartphone {
       font-size: 12px;
@@ -999,12 +1060,6 @@ jhi-login-modal {
 
     .icn-al {
       position: relative;
-      width: 20px;
-      height: 20px;
-      background-image: url('../images/icn_alert.svg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
     }
     span {
       font-size: 13px;
@@ -1025,7 +1080,7 @@ jhi-login-modal {
   border: 2px solid $alert-color !important;
 }
 .alert-warning {
-  color: $blue-nimbus;
+  color: $blue-nimbus-dark;
   background-color: whitesmoke !important;
   border-color: whitesmoke !important ;
 }
@@ -1559,16 +1614,9 @@ input::-webkit-input-placeholder {
     border-color: $input-border-hover;
   }
 
-  span {
-    position: relative;
-    width: 18px;
-    height: 18px;
+  .icon {
     margin-right: 6px;
     margin-left: 10px;
-    background-image: url('../images/icn_add_mini.svg');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
   }
   input {
     position: relative;
@@ -1679,10 +1727,9 @@ dl {
   border-radius: 0 14px 14px 0;
   transition: 0.4s;
   box-shadow: 0;
-  background-image: url('../images/icn_calendar.svg');
-  background-position: center;
-  background-size: 55%;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     background-color: $secondary-btn-hover;
   }

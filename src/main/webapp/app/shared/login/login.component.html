@@ -1,20 +1,11 @@
 
 <div class="modal-login-container">
-
-
-
-
-
-    <button aria-label="Close" data-dismiss="modal" class="btn-close-modal-login" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true"></span></button>
-
-
-
-
+  <button aria-label="Close" data-dismiss="modal" class="btn-close-modal-login" type="button" (click)="activeModal.dismiss('closed')"><i class="icon ni-close"></i></button>
     <!-- Anuncio contraseña equivocada -->
     <!-- <div class="alert-login" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication"> -->
     <div class="alert-login" *ngIf="authenticationError">
       <div class="row-alert-login">
-        <div class="icn-al"></div>
+        <i class="icon ni-alert icon-negative"></i>
         <!-- <span><strong>Failed to sign in!</strong> Please check your creden.</span> -->
         <span>¡Error de autentificación! Por favor revisa tus credenciales.</span>
       </div>
@@ -32,15 +23,15 @@
                   <div class="form-group">
                       <label class="username-label" for="username" jhiTranslate="global.form.username.label">Login</label>
                       <input type="text" class="" name="username" id="username"
-                             formControlName="username" #username>
-                      <div class="icon-form-login icnf-f-l1"></div>
+                      formControlName="username" #username>
+                      <i class="icon ni-user icon-form-login"></i>
                   </div>
                   <div class="form-group">
                       <label for="password" jhiTranslate="login.form.password">Password</label>
                       <!-- Agregar clase "alert-input" a input cuando el formulario tenga un error -->
                       <input type="password" class="" name="password" id="password"
                              formControlName="password">
-                      <div class="icon-form-login icnf-f-l2"></div>
+                      <i class="icon ni-lock icon-form-login"></i>
                   </div>
 
                   <!-- <div class="form-check"> -->
@@ -62,20 +53,12 @@
                     <button type="submit" class="main-btn btn-color-1" jhiTranslate="login.form.button">Sign in</button>
                   </div>
 
-                  <div class="row-btn-login-modal">
-                    <!-- <button type="submit" class="btn-login-modal-test">Sign in</button> -->
-                    <!-- <a href="#" class="btn-login-modal-test"><span>Click Me</span></a> -->
-                  </div>
-
-
-
               </form>
 
             <div class="row-cfl-register">
               <p>¿Aún no tienes cuenta?</p>
               <a class="" (click)="register()" >Crear cuenta</a>
             </div>
-
 
           </div>
       </div>

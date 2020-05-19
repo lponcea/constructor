@@ -100,22 +100,9 @@
             opacity: 1;
           }
 
-          .c-icon {
+          .icon {
             position: relative;
-            width: 25px;
-            height: 25px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 100%;
-          }
-          .c-icon-1 {
-            background-image: url('../../content/images/conf_menu_icon1.svg');
-          }
-          .c-icon-2 {
-            background-image: url('../../content/images/conf_menu_icon2.svg');
-          }
-          .c-icon-3 {
-            background-image: url('../../content/images/conf_menu_icon3.svg');
+            font-size: 22px;
           }
           .c-title {
             position: relative;

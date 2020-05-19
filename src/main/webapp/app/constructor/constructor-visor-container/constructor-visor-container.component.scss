@@ -132,8 +132,8 @@
 
 // Scroll
 #visor-container-grid:-webkit-scrollbar {
-  width: 7px; /* Tamaño del scroll en vertical */
-  height: 7px; /* Tamaño del scroll en horizontal */
+  width: 10px; /* Tamaño del scroll en vertical */
+  height: 10px; /* Tamaño del scroll en horizontal */
   display: none; /* Ocultar scroll */
 }
 /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
@@ -156,8 +156,9 @@
 }
 /* Ponemos un color de fondo y redondeamos las esquinas del track */
 #visor-container-grid::-webkit-scrollbar-track {
-  background: rgba(26, 61, 130, 0.1);
+  // background: rgba(26, 61, 130, 0.2);
   border-radius: 0px;
+  border-left: 1px solid rgba(26, 61, 130, 0.2);
 }
 
 /* Cambiamos el fondo cuando esté en active o hover */

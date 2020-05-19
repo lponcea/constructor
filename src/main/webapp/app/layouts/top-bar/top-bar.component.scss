@@ -7,15 +7,15 @@
   background-color: $color-sidebar;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid silver;
 
   .layout-tool-menu {
     position: relative;
     width: 100%;
-    height: 60px;
+    height: 55px;
     display: flex;
     justify-content: center;
-    top: 40px;
+    top: 45px;
+    border-bottom: 1px solid silver;
 
     .row-ltm {
       position: relative;
@@ -24,6 +24,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
 
       .nbm-i2-set-1 {
         position: relative;
@@ -49,7 +50,7 @@
 .nb-icon-tool {
   position: relative;
   width: 50px;
-  height: 50px;
+  height: 45px;
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
@@ -58,19 +59,13 @@
   align-items: center;
   cursor: pointer;
   background-color: rgba(60, 60, 60, 0);
-  transition: 0.4s;
+  transition: 0.3s;
+  border-radius: 6px;
 
   &:hover {
     background-color: rgba(60, 60, 60, 0.06);
   }
-
-  .nb-icon {
-    position: relative;
-    width: 30px;
-    height: 25px;
-    background-position: center;
-    background-size: 90%;
-    background-repeat: no-repeat;
+  .icon {
   }
   .nb-text {
     position: relative;
@@ -79,27 +74,6 @@
     font-size: 10px;
     text-align: center;
     color: #1a3d82;
-  }
-  .icon-bloques {
-    background-image: url('../../../content/images/bloques_icn.svg');
-  }
-  .icon-text {
-    background-image: url('../../../content/images/text_icn.svg');
-  }
-  .icon-picture {
-    background-image: url('../../../content/images/picture_icn.svg');
-  }
-  .icon-media {
-    background-image: url('../../../content/images/media_icn.svg');
-  }
-  .icon-desktop {
-    background-image: url('../../../content/images/desktop_icn.svg');
-  }
-  .icon-preview {
-    background-image: url('../../../content/images/preview_icn.svg');
-  }
-  .icon-upload {
-    background-image: url('../../../content/images/upload_icn.svg');
   }
 }
 
