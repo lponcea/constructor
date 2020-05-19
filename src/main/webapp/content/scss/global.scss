@@ -103,7 +103,7 @@ p {
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
-  color: $paragraph-color;
+  color: $text-color;
   line-height: 24px;
   @include smartphone {
     font-size: 13px;
@@ -158,6 +158,9 @@ strong {
 }
 .icon-large {
   font-size: 30px;
+}
+.icon-xlarge {
+  font-size: 38px;
 }
 .icon-secondary-color {
   color: $icon-secondary-color;
@@ -964,39 +967,27 @@ jhi-login-modal {
   pointer-events: none;
   box-shadow: none;
 }
-// Button Icon
-// Secondary button
-.icon-btn {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin-right: 6px;
-  border-radius: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.icn-um-1 {
-  background-image: url('../images/icn_add.svg');
-  background-size: 100%;
-}
+
 // Circle button
 .btn-circle {
   position: relative;
   width: 38px;
   height: 38px;
-  background-color: $a-color-nd;
+  background-color: $main-btn-color;
   border: 0;
   outline: none;
   border-radius: 50%;
   transition: 0.3s;
   cursor: pointer;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 20px 30px rgba(26, 61, 130, 0.1), 0 6px 18px rgba(26, 61, 130, 0.12);
+  .icon {
+    color: white;
+  }
   &:hover {
-    background-color: $secondary-btn-hover;
+    background-color: $main-btn-color-hover;
   }
   &:focus {
     outline: none;
@@ -1005,16 +996,9 @@ jhi-login-modal {
     outline: none;
   }
 }
-.btn-circle-um1 {
-  background-image: url('../images/icn_view_white.svg');
-}
-.btn-circle-um2 {
-  background-image: url('../images/icn_edit_white.svg');
-}
+
 .btn-circle-um3 {
-  background-image: url('../images/icn_delete_white.svg');
   background-color: $alert-color;
-  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
   &:hover {
     background-color: $alert-hover-color;
   }
@@ -2113,7 +2097,7 @@ jhi-password-strength-bar {
     position: relative;
     width: 100%;
     height: 80px;
-    background-color: $blue-nimbus-dark;
+    background-color: $blue-darkness;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2185,17 +2169,6 @@ jhi-password-strength-bar {
             align-items: center;
             justify-content: flex-start;
 
-            .icon {
-              position: relative;
-              width: 40px;
-              height: 40px;
-              background-image: url('../images/icn_users_white.svg');
-              background-position: center;
-              background-repeat: no-repeat;
-              background-size: 90%;
-              margin-right: 12px;
-            }
-
             .number {
               position: relative;
               width: auto;
@@ -2240,7 +2213,7 @@ jhi-password-strength-bar {
     height: auto;
     text-align: center;
     font-size: 14px;
-    color: $blue-nimbus;
+    color: $blue-nimbus-dark;
   }
   .row-fum-pagination {
     position: relative;
@@ -2262,7 +2235,7 @@ jhi-password-strength-bar {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: $blue-nimbus;
+  background-color: $blue-nimbus-dark;
   border-color: #3e8acc;
 }
 .page-link {
@@ -2277,13 +2250,13 @@ jhi-password-strength-bar {
   margin-right: 8px;
   border: 0;
   border-radius: 8px;
-  color: $blue-nimbus;
+  color: $blue-nimbus-dark;
   background-color: white;
   font-size: 18px;
 }
 
 .page-item.disabled .page-link {
-  color: $blue-nimbus;
+  color: $blue-nimbus-dark;
   pointer-events: none;
   cursor: auto;
   opacity: 0.6;
@@ -2582,20 +2555,7 @@ jhi-password-strength-bar {
     }
   }
 }
-.logo-nimbus-view {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 100px;
-  right: 20px;
-  background-image: url('../images/view_user_img.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  @include smartphone {
-    display: none;
-  }
-}
+
 .row-vu-name {
   position: relative;
   width: 100%;
@@ -2609,11 +2569,10 @@ jhi-password-strength-bar {
     width: 70px;
     height: 70px;
     border-radius: 100%;
-    background-color: $blue-nimbus;
-    background-image: url('../images/user_navbar.svg');
-    background-position: center;
-    background-size: 60%;
-    background-repeat: no-repeat;
+    background-color: $blue-nimbus-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .desc-vu {
     position: relative;
@@ -2660,7 +2619,7 @@ jhi-password-strength-bar {
       margin-right: 10px;
       font-weight: 600;
       font-size: 15px;
-      color: $blue-nimbus;
+      color: $blue-nimbus-dark;
     }
   }
 }
@@ -2686,7 +2645,7 @@ jhi-password-strength-bar {
     position: relative;
     width: auto;
     height: auto;
-    color: $blue-nimbus;
+    color: $blue-nimbus-dark;
     font-weight: 600;
     font-size: 15px;
   }
@@ -2712,7 +2671,7 @@ jhi-password-strength-bar {
     height: auto;
     color: $text-color;
     &:nth-child(1) {
-      color: $blue-nimbus;
+      color: $blue-nimbus-dark;
       font-weight: 600;
       font-size: 15px;
     }
@@ -2750,7 +2709,7 @@ jhi-user-mgmt-delete-dialog {
     justify-content: flex-start;
     align-items: center;
     h4 {
-      color: $blue-nimbus;
+      color: $blue-nimbus-dark;
       margin-left: 15px;
       font-size: 16px;
     }

@@ -1,4 +1,3 @@
-$color-silver: #3a404c;
 @import '../../../content/scss/variables.scss';
 
 #right-sidebar-grid {
@@ -8,40 +7,4 @@ $color-silver: #3a404c;
   display: flex;
   flex-direction: column;
   background-color: $color-sidebar;
-}
-
-.component-tool-header {
-  position: relative;
-  width: 100%;
-  height: 35px;
-  background-color: $tool-header;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  h4 {
-    position: relative;
-    margin-left: 20px;
-    font-size: 12px;
-    cursor: default;
-  }
-}
-
-.right-empty-icn {
-  position: relative;
-  width: 50px;
-  height: 50px;
-}
-
-.test-i {
-  position: absolute;
-  top: 50%;
-  margin-top: -55px;
-  left: 50%;
-  margin-left: -60px;
-  width: 120px;
-  height: 120px;
-  background-image: url('../../../content/images/right_empty.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
 }

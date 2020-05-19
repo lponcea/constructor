@@ -11,7 +11,6 @@
         <div class="cch-menu-row">
           <div *ngFor="let tab of tabs; let index = index;" (click)="changeSelectedIndex(index);">
             <div class="ccc-element" [ngClass]="{'active-ccc-element': index === selectedTabIndex}">
-              <!-- <div class="c-icon" [ngClass]="tab.iconClass"></div> -->
               <i class="icon" [ngClass]="tab.iconClass"></i>
               <div class="c-title">{{tab.title}}</div>
               <div class="alert-menu-conf" *ngIf="tab.error"></div>

@@ -1,22 +1,3 @@
-// Color
-$color-silver: #3a404c;
-$tool-header: lighten($color-silver, 65%);
-$bg-white: #f6f6f6;
-$bg-blue: #101233;
-$a-color: #1a3d82;
-$a-hover: #15a9fa;
-$badge-color: #607d8b;
-$gradient-color: linear-gradient(90deg, rgba(24, 199, 251, 1) 0%, rgba(21, 169, 250, 1) 100%);
-$nimbus-bluedark: #1a3d82;
-$nimbus-bluelight: #0059ff;
-$linktext-color: #1a3d82;
-$color-workspace: #f9f9f9;
-$color-sidebar-grey: #f9f9fa;
-$color-sidebar: #ffffff;
-$tool-header: #e2e4e9;
-$blue-nimbus: #1a3d82;
-$paragraph-color: #7a7a7a;
-
 // Colors
 $blue-nimbus-dark: #1a3d82;
 $blue-nimbus-light: #18bafb;
@@ -28,24 +9,26 @@ $bg-white: #ffffff;
 $navbar-light: #ffffff;
 $background-color-blue: #101233;
 $background-workspace: #bac4d9;
+$color-workspace: #f9f9f9;
 // Text
 $text-color: #7a7a7a;
 // A href
 $a-color-nd: #1a3d82;
 $a-color-nd-hover: #3e66b5;
 $a-color-nl: #18bafb;
-$a-color-nl-hover: #69d0fa;
+$a-color-nl-hover: #10a3de;
 // Buttons
 $main-btn-color: #1a3d82;
 $main-btn-color-hover: #3e66b5;
 $secondary-btn-color: #18bafb;
-$secondary-btn-hover: #69d0fa;
+$secondary-btn-hover: #10a3de;
 $btn-text-white: white;
 $btn-white-hover: #f4f5f7;
 // Alerts
 $alert-color: #e61a34;
 $alert-hover-color: #bf0f26;
 $succes-color: #4caf50;
+$badge-color: #607d8b;
 // Icons
 $icon-main-color: #1a3d82;
 $icon-secondary-color: #15a9fa;
@@ -63,8 +46,10 @@ $window-divider-color: #e7e8ed;
 $footer-bg-color: #f4f5f7;
 // Layout
 $bordercolor-block: #ccd7dc;
+$color-sidebar: #ffffff;
+$tool-header: #e2e4e9;
 
-// Variables
+// Size
 $tablet-width: 768px;
 $desktop-width: 1024px;
 $max-width: 1200px;
