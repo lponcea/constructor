@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 
 @Component({
   selector: 'jhi-content-block1',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ContentBlock1Component {
   imgSrc = './../../../../content/images/img3.png';
+  @Input() contentBlock?: BloqueComponentes;
 
   constructor() {}
 

@@ -1,11 +1,9 @@
-<div class="row-book">
+<div class="row-book" (click)="editText()">
+  Editando este componente: {{editing}}
     <div class="col-book cb-1">
       <div class="text-area">
-        <div [innerHtml]="htmlContent"></div>
-      </div>
-      <div class="img-area">
-        <div class="img-edit"></div>
-        <img src="{{imgSrc}}" alt="">
+        <div [innerHtml]="htmlContent" *ngIf="htmlContent !== ''"></div>
+        <div [innerHtml]="exampleContent" *ngIf="htmlContent === ''"></div>
       </div>
     </div>
 </div>

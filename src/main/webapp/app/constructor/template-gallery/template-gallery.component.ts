@@ -30,22 +30,46 @@ export class TemplateGalleryComponent {
       {
         nombre: 'titulo',
         iconPath: '../../../content/images/ab1.png',
-        tags: 'text'
+        tags: 'text',
+        tiposComponentes: [
+          {
+            id: 1,
+            nombre: 'text'
+          }
+        ]
       },
       {
         nombre: 'texto',
         iconPath: '../../../content/images/ab2.png',
-        tags: 'text'
+        tags: 'text',
+        tiposComponentes: [
+          {
+            id: 1,
+            nombre: 'text'
+          }
+        ]
       },
       {
         nombre: 'imagen',
         iconPath: '../../../content/images/ab3.png',
-        tags: 'image'
+        tags: 'image',
+        tiposComponentes: [
+          {
+            id: 2,
+            nombre: 'image'
+          }
+        ]
       },
       {
         nombre: 'imagen_texto',
         iconPath: '../../../content/images/ab4.png',
-        tags: 'image text'
+        tags: 'image text',
+        tiposComponentes: [
+          {
+            id: 1,
+            nombre: 'text'
+          }
+        ]
       }
     ];
     this.filteredTemplates = this.templates;

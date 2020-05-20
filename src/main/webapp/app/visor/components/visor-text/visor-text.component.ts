@@ -1,19 +1,32 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input, AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-
-import { MessageServiceService } from './../../../services/message-service.service';
+import { Componente } from 'app/shared/model/componente.model';
+import { TextService } from 'app/services/text.service';
 
 @Component({
   selector: 'jhi-visor-text',
   templateUrl: './visor-text.component.html',
   styleUrls: ['./visor-text.component.scss']
 })
-export class VisorTextComponent implements OnDestroy {
+export class VisorTextComponent implements OnDestroy, AfterViewInit {
   htmlContent = '';
+  exampleContent = '<h1>Título de ejemplo</h1><br><p>Este es un texto de ejemplo</p>';
   subscription: Subscription;
   imgSrc = './../../../../content/images/img3.png';
+  editing = false;
+  @Input() component?: Componente;
+  @Input() templateType?: any;
 
-  constructor(private messageService: MessageServiceService) {
+  constructor(private textService: TextService) {
+    this.subscription = this.textService.getEditing().subscribe(editing => {
+      this.editing = editing;
+    });
+    this.subscription = this.textService.getText().subscribe(text => {
+      if (text && this.editing) {
+        this.htmlContent = text;
+      }
+    });
+    /*
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.htmlContent = message.text;
@@ -21,9 +34,18 @@ export class VisorTextComponent implements OnDestroy {
         this.htmlContent = '';
       }
     });
+    */
   }
 
+  ngAfterViewInit(): void {}
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
+  }
+
+  editText(): void {
+    this.textService.setEditing(false);
+    this.editing = true;
+    this.textService.setText(this.htmlContent);
   }
 }

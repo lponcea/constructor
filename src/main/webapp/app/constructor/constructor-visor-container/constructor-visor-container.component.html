@@ -7,7 +7,7 @@
     <div class="row-visor-container">
       <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
         <div *ngIf="block.tipoBloqueComponentes.nombre == 'titulo'">
-          <jhi-content-block1></jhi-content-block1>
+          <jhi-content-block1 [contentBlock]="block"></jhi-content-block1>
         </div>
         <div *ngIf="block.tipoBloqueComponentes.nombre == 'texto'">
           <jhi-content-block2></jhi-content-block2>
