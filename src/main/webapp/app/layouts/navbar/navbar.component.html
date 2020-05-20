@@ -1,19 +1,27 @@
 <div class="navbar-nimbus">
   <div class="row-nb-nimbus" [ngSwitch]="isAuthenticated()">
-    <div class="nb-logo" routerLink="/home-page"></div>
+    <div class="nb-logo" routerLink="/home-page">
+      <div class="nb-imagotipo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <path class="nbl-1" d="M12.47,18a13.74,13.74,0,0,1,4.42.72,8.22,8.22,0,0,1,16.17-.21,12.34,12.34,0,0,1,1.75-.37A14.59,14.59,0,0,1,37.08,18a12.62,12.62,0,0,1,1.51.09,13.76,13.76,0,0,0-27.2,0C11.75,18,12.11,18,12.47,18Z"/>
+          <path class="nbl-2" d="M44.93,22.21a12.18,12.18,0,0,0-8-3,12.39,12.39,0,0,0-2,.17,11.73,11.73,0,0,0-4.33,1.59,9.49,9.49,0,0,0-1.9,1.37,18.94,18.94,0,0,0-4.05,4.94A12.21,12.21,0,1,0,13.12,43.63c.31,0,.61,0,.9,0l14.12,0,8.6,0h.1c.5,0,1.38-.1,1.72-.15a12.2,12.2,0,0,0,6.37-21.26ZM6.44,31.42a6.68,6.68,0,0,1,12.32-3.58,6.61,6.61,0,0,1,1,3.58A6.69,6.69,0,0,1,14.27,38a7.11,7.11,0,0,1-1.14.1h0A6.59,6.59,0,0,1,10,37.32,6.69,6.69,0,0,1,6.44,31.42Zm33.5,5.88a6.2,6.2,0,0,1-2.13.69l-1.27.11-11.88,0a21.24,21.24,0,0,0,3-4.51c.2-.39.39-.8.57-1.22,2.86-6.63,6.69-7.44,7.43-7.53l.12,0a6.24,6.24,0,0,1,1.13-.1,6.53,6.53,0,0,1,3.31.89,6.64,6.64,0,0,1,1.36,10.54A10.84,10.84,0,0,1,39.94,37.3Z"/>
+          <path class="nbl-3" d="M18.76,27.84a6.61,6.61,0,0,1,1,3.58A6.69,6.69,0,0,1,14.27,38l.43,0c1.78-.35,5.84-1.81,8.42-7.81a26.52,26.52,0,0,1,1.47-2.92,12.27,12.27,0,0,0-3.12-4.72,25.29,25.29,0,0,0-1.59,3.12A18.76,18.76,0,0,1,18.76,27.84Z"/>
+        </svg>
+      </div>
+      <div class="nb-logotipo"></div>
+    </div>
 
     <div class="create-account-navbar li-navbar-home" routerLink="/account/register" *ngSwitchCase="false" jhiTranslate="global.menu.register">Crea tu cuenta</div>
-    <button class="main-btn btn-color-1 btn-navbar" (click)="login()" *ngSwitchCase="false" jhiTranslate="global.menu.login">Ingresa</button>
+    <button class="main-btn" (click)="login()" *ngSwitchCase="false" jhiTranslate="global.menu.login">Ingresa</button>
 
     <!-- Start Admin Navbar -->
-    <!-- <nav class="navbar navbar-expand-md navbar-dev" *jhiHasAnyAuthority="'ROLE_ADMIN'"> -->
     <nav class="navbar-lg">
         <!-- Start list menu -->
         <ul class="navbar-nav">
           <!-- Menu Administration -->
           <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
-              <span class="icon-menu icon-menu-admin"></span>
+              <span class="circle-menu"><i class="icon ni-settings"></i></span>
               <p jhiTranslate="global.menu.admin.main">Administration</p>
               <span class="arrow-menu"></span>
             </a>
@@ -41,7 +49,7 @@
           <!-- Menu Account -->
           <li ngbDropdown class="nav-item" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngSwitchCase="true">
             <a class="nav-link" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
-              <span class="icon-menu-account"></span>
+              <div class="circle-menu-account"><i class="icon ni-user icon-negative"></i></div>
               <p *ngSwitchCase="true">{{getUserName() ? getUserName().firstName : ''}}</p>
               <span class="arrow-menu"></span>
             </a>
@@ -65,22 +73,6 @@
 
     </nav>
     <!-- End Admmin Navbar -->
-
-    <!-- <div class="user-btn-navbar" (click)="openMenu = !openMenu" *ngSwitchCase="true">
-      <div class="circle-btn-user"></div>
-      <div class="name-user-navbar" *ngSwitchCase="true">
-          {{getUserName() ? getUserName().firstName : ''}}
-      </div>
-      <div class="arrow-user" [ngClass]="{'open-arrow': openMenu, 'closed-arrow': !openMenu}"></div>
-    </div> -->
-
-    <!-- <div class="menu-float" [ngClass]="{'open-menu': openMenu, 'closed-menu': !openMenu}" (click)="openMenu = !openMenu">
-        <button class="dropdown-item" (click)="login()" id="login" *ngSwitchCase="false" jhiTranslate="global.menu.login">Iniciar sesión</button>
-        <button class="dropdown-item" routerLink="/" >Home</button>
-        <button class="dropdown-item" routerLink="/account/register" *ngSwitchCase="false" jhiTranslate="global.menu.register">Crear tu cuenta</button>
-        <button class="dropdown-item" (click)="logout()" id="logout" *ngSwitchCase="true" jhiTranslate="global.menu.logout">Cerrar sesión</button>
-    </div> -->
-
 
   </div>
 </div>

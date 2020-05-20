@@ -12,12 +12,12 @@ export class CourseConfigurationComponent {
   tabs = [
     {
       title: 'General',
-      iconClass: 'c-icon-1',
+      iconClass: 'ni-settings',
       error: false
     },
     {
       title: 'Avanzado',
-      iconClass: 'c-icon-2',
+      iconClass: 'ni-book',
       error: false
     }
   ];

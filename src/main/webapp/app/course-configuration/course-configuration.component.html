@@ -11,7 +11,7 @@
         <div class="cch-menu-row">
           <div *ngFor="let tab of tabs; let index = index;" (click)="changeSelectedIndex(index);">
             <div class="ccc-element" [ngClass]="{'active-ccc-element': index === selectedTabIndex}">
-              <div class="c-icon" [ngClass]="tab.iconClass"></div>
+              <i class="icon" [ngClass]="tab.iconClass"></i>
               <div class="c-title">{{tab.title}}</div>
               <div class="alert-menu-conf" *ngIf="tab.error"></div>
             </div>
@@ -27,10 +27,8 @@
     </div>
 
     <div class="window-cc-footer">
-
       <button routerLink="/" class="secondary-btn">Cancelar</button>
-      <button (click)="saveCourse()" class="main-btn btn-color-1">Guardar</button>
-      <!-- <button routerLink="../constructor-layout" class="main-btn btn-color-1">Siguiente</button>  -->
+      <button (click)="saveCourse()" class="main-btn">Guardar</button>
     </div>
   </div>
 

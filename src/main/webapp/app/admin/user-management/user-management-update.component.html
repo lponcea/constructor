@@ -8,7 +8,6 @@
     </div>
   </div>
 
-
     <div class="row-um-create">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
 
@@ -160,7 +159,7 @@
 
             <div *ngIf="user" class="footer-um-create">
                 <button type="button" class="secondary-btn" (click)="previousState()" jhiTranslate="entity.action.cancel">Cancel</button>
-                <button type="submit" [disabled]="editForm.invalid || isSaving" class="main-btn btn-color-1" jhiTranslate="entity.action.save">Save</button>
+                <button type="submit" [disabled]="editForm.invalid || isSaving" class="main-btn" jhiTranslate="entity.action.save">Save</button>
             </div>
 
         </form>

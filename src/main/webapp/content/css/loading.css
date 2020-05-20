@@ -42,14 +42,14 @@
   animation: loader-spin 2s linear infinite reverse;
   -webkit-filter: url(#goo);
   filter: url(#goo);
-  box-shadow: 0 0 0 1px #0059ff inset;
+  /* box-shadow: 0 0 0 1px red inset; */
 }
 .loader:before {
   content: '';
   position: absolute;
   -webkit-animation: loader-spin 2s cubic-bezier(0.59, 0.25, 0.4, 0.69) infinite;
   animation: loader-spin 2s cubic-bezier(0.59, 0.25, 0.4, 0.69) infinite;
-  background: #0059ff;
+  background: #18bafb;
   -webkit-transform-origin: top center;
   transform-origin: top center;
   border-radius: 50%;

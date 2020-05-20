@@ -1,27 +1,90 @@
 <nav class="topbar-layout">
     <div class="layout-tool-menu">
       <div class="row-ltm">
-
         <div class="nbm-i2-set-1">
+          <!-- Tools left -->
+          <!-- Dropown tool -->
+          <div class="nav-tool-dd nav-tool" ngbDropdown display="dynamic" routerLinkActive="active">
+              <a class="dd-a" ngbDropdownToggle id="nav-tool-file">
+                <i class="icon ni-book"></i>
+                <div class="nb-text">Archivo</div>
+              </a>
+              <!-- Dropdown Menu -->
+              <div class="dropdown-menu dd-tool" ngbDropdownMenu aria-labelledby="nav-tool-file">
+                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-desktop"></i>
+                    <p>Guardar</p>
+                  </a>
+                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-close"></i>
+                    <p>Cerrar</p>
+                  </a>
+              </div>
+          </div>
+          <!-- End Dropown tool -->
           <div class="nb-icon-tool">
-            <div class="nb-icon icon-bloques"></div>
+            <i class="icon ni-settings"></i>
+            <div class="nb-text">Configurar</div>
+          </div>
+          <div class="nb-icon-tool">
+            <i class="icon ni-template"></i>
             <div class="nb-text">Plantillas</div>
           </div>
         </div>
         <div class="layout-breadcrumbs">
           <p>Título del proyecto / N1 / <strong>Lección 1</strong></p>
         </div>
+
         <div class="nbm-i2-set-2">
-          <div class="nb-icon-tool">
-            <div class="nb-icon icon-desktop"></div>
-            <div class="nb-text">Desktop</div>
+          <!-- Tools right -->
+          <!-- Dropown tool -->
+          <div class="nav-tool-dd nav-tool" ngbDropdown display="dynamic" routerLinkActive="active">
+              <a class="dd-a" ngbDropdownToggle id="nav-tool-mode">
+                <i class="icon ni-book"></i>
+                <div class="nb-text">Lightmode</div>
+              </a>
+              <!-- Dropdown Menu -->
+              <div class="dropdown-menu dd-tool" ngbDropdownMenu aria-labelledby="nav-tool-mode">
+                  <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-desktop"></i>
+                    <p>Lightmode</p>
+                  </a>
+                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-close"></i>
+                    <p>Dark mode</p>
+                  </a>
+              </div>
           </div>
+          <!-- End Dropown tool -->
+          <!-- Dropown tool -->
+          <div class="nav-tool-dd nav-tool" ngbDropdown display="dynamic" routerLinkActive="active">
+            <!-- <a class="dd-a" ngbDropdownToggle href="javascript:void(0);" id="nav-tool"> -->
+              <a class="dd-a" ngbDropdownToggle id="nav-tool-screen">
+                <i class="icon ni-desktop"></i>
+                <div class="nb-text">Desktop</div>
+              </a>
+              <div class="dropdown-menu dd-tool" ngbDropdownMenu aria-labelledby="nav-tool-screen">
+                  <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-desktop"></i>
+                    <p>Desktop</p>
+                  </a>
+                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-smartphone"></i>
+                    <p>Tablet</p>
+                  </a>
+                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                    <i class="icon ni-smartphone"></i>
+                    <p>Smartphone</p>
+                  </a>
+              </div>
+          </div>
+          <!-- End Dropown tool -->
           <div class="nb-icon-tool">
-            <div class="nb-icon icon-preview"></div>
+            <i class="icon ni-view"></i>
             <div class="nb-text">Preview</div>
           </div>
           <div class="nb-icon-tool">
-            <div class="nb-icon icon-upload"></div>
+            <i class="icon ni-upload"></i>
             <div class="nb-text">Publicar</div>
           </div>
         </div>

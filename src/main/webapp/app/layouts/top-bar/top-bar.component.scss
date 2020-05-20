@@ -7,23 +7,24 @@
   background-color: $color-sidebar;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid silver;
 
   .layout-tool-menu {
     position: relative;
     width: 100%;
-    height: 60px;
+    height: 55px;
     display: flex;
     justify-content: center;
-    top: 40px;
+    top: 45px;
+    border-bottom: 1px solid silver;
 
     .row-ltm {
       position: relative;
-      width: 96%;
+      width: 98%;
       height: 100%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
 
       .nbm-i2-set-1 {
         position: relative;
@@ -48,8 +49,8 @@
 }
 .nb-icon-tool {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 45px;
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
@@ -57,49 +58,22 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: rgba(60, 60, 60, 0);
-  transition: 0.4s;
+  background-color: transparent;
+  transition: 0.3s;
+  border-radius: 6px;
 
   &:hover {
-    background-color: rgba(60, 60, 60, 0.06);
+    background-color: $btn-white-hover;
   }
-
-  .nb-icon {
-    position: relative;
-    width: 30px;
-    height: 25px;
-    background-position: center;
-    background-size: 90%;
-    background-repeat: no-repeat;
+  .icon {
   }
   .nb-text {
     position: relative;
-    width: 100%;
+    width: auto;
     height: auto;
     font-size: 10px;
     text-align: center;
     color: #1a3d82;
-  }
-  .icon-bloques {
-    background-image: url('../../../content/images/bloques_icn.svg');
-  }
-  .icon-text {
-    background-image: url('../../../content/images/text_icn.svg');
-  }
-  .icon-picture {
-    background-image: url('../../../content/images/picture_icn.svg');
-  }
-  .icon-media {
-    background-image: url('../../../content/images/media_icn.svg');
-  }
-  .icon-desktop {
-    background-image: url('../../../content/images/desktop_icn.svg');
-  }
-  .icon-preview {
-    background-image: url('../../../content/images/preview_icn.svg');
-  }
-  .icon-upload {
-    background-image: url('../../../content/images/upload_icn.svg');
   }
 }
 
@@ -114,6 +88,122 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $blue-nimbus;
+    color: $blue-nimbus-dark;
   }
+}
+
+// Tool Expand
+.nav-tool-dd {
+  position: relative;
+  width: 55px;
+  height: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  .dd-a {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 6px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: $btn-white-hover;
+    }
+    .icon {
+      margin-right: 4px;
+      margin-top: 2px;
+    }
+    .nb-text {
+      position: relative;
+      width: 100%;
+      height: auto;
+      font-size: 10px;
+      text-align: center;
+      color: #1a3d82;
+    }
+  }
+  ul {
+    position: absolute;
+  }
+}
+.dropdown-toggle::after {
+  position: absolute;
+  display: inline-block;
+  margin-left: 0;
+  vertical-align: 0;
+  content: '';
+  border-top: 0.2em solid;
+  border-right: 0.2em solid transparent;
+  border-bottom: 0;
+  border-left: 0.2em solid transparent;
+  right: 5px;
+  top: 14px;
+}
+.dropdown-menu {
+  top: 100%;
+  left: 0;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: white;
+  background-clip: padding-box;
+  border: 0px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(40, 40, 40, 0.1), 0 4px 16px rgba(50, 50, 50, 0.1);
+}
+.dd-tool {
+  min-width: 130px;
+  position: relative;
+  width: 100%;
+  height: auto;
+  .a-dd-tool {
+    position: relative;
+    width: 100%;
+    height: auto;
+    height: 25px;
+    background-color: transparent;
+    border-radius: 6px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    &:nth-last-child(1) {
+      margin-bottom: 0px;
+    }
+    .icon {
+      margin-right: 6px;
+    }
+    p {
+      font-size: 12px;
+      color: $blue-nimbus-dark;
+    }
+    &:hover {
+      background-color: $btn-white-hover;
+    }
+  }
+}
+.show {
+  .dd-a {
+    background-color: $btn-white-hover !important;
+  }
+}
+.active-a-tool {
+  cursor: default !important;
+  pointer-events: none !important;
+  opacity: 0.5;
 }

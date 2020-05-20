@@ -160,20 +160,13 @@
                 </div>
                 <div class="row-uic">
                   <button (click)="deteleCover()" class="secondary-btn text-transform-none" *ngIf="this.coverPath">Eliminar portada</button>
-                    <button type="button" class="main-btn btn-color-1 text-transform-none" (click)="fileInput.click()">
+                    <button type="button" class="main-btn" (click)="fileInput.click()">
                         <span>Subir</span>
                         <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" />
                     </button>
                 </div>
               </div>
 
-              <!--
-              <div class="row-cover-upload-btn">
-                <button [hidden]="!selectedFiles.length" [disabled]="admincheck || status" (click)="upload($event)" class="secondary-btn text-transform-none">Subir imagen</button>
-              </div>
-              -->
-
-              <!-- <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload($event)">Subir video</button> -->
           </div>
         </div>
         <!-- End col right -->
@@ -213,7 +206,7 @@
               <div class="input-group">
                   <input [ngClass]="{'alert-input': !isValid('fechaCreacion')}" id="field_fechaCreacion" type="text" onkeydown="return false" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" formControlName="fechaCreacion"/>
                   <span class="input-group-append">
-                      <button type="button" class="btn-calendar-select" (click)="fechaCreacionDp.toggle()"></button>
+                      <button type="button" class="btn-calendar-select" (click)="fechaCreacionDp.toggle()"><i class="icon ni-calendar icon-negative"></i></button>
                   </span>
               </div>
               <div class="form-alert"><p></p></div>
@@ -227,7 +220,7 @@
               <div class="input-group">
                   <input [ngClass]="{'alert-input': !isValid('fechaPublicacion')}" id="field_fechaPublicacion" type="text" onkeydown="return false" class="form-control" name="fechaPublicacion" ngbDatepicker  #fechaPublicacionDp="ngbDatepicker" formControlName="fechaPublicacion"/>
                   <span class="input-group-append">
-                      <button type="button" class="btn-calendar-select" (click)="fechaPublicacionDp.toggle()"></button>
+                      <button type="button" class="btn-calendar-select" (click)="fechaPublicacionDp.toggle()"><i class="icon ni-calendar icon-negative"></i></button>
                   </span>
               </div>
               <div class="form-alert"><p></p></div>
