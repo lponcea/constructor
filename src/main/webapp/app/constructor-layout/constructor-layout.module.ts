@@ -18,9 +18,10 @@ import { TemplateGalleryComponent } from '../constructor/template-gallery/templa
 import { ConstructorHierarchicalStructureComponent } from '../constructor/constructor-hierarchical-structure/constructor-hierarchical-structure.component';
 import { ConstructorBookInformationComponent } from '../constructor/constructor-book-information/constructor-book-information.component';
 import { ConstructorComponentPropertiesComponent } from '../constructor/constructor-component-properties/constructor-component-properties.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
-  imports: [ConstructorSharedModule],
+  imports: [ConstructorSharedModule, AngularEditorModule],
   declarations: [
     ConstructorLayoutComponent,
     ConstructorFilmstripComponent,
