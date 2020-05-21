@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class TextService {
   private text = new Subject<string>();
   private editing = new Subject<boolean>();
+  private templateType = new Subject<string>();
 
   constructor() {}
 
@@ -24,5 +25,14 @@ export class TextService {
 
   setEditing(editing: boolean): void {
     this.editing.next(editing);
+  }
+
+  getTemplateType(): Observable<string> {
+    return this.templateType.asObservable();
+  }
+
+  setTemplateType(templateType: string): void {
+    console.error(templateType);
+    this.templateType.next(templateType);
   }
 }
