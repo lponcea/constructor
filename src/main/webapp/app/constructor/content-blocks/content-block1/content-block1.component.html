@@ -2,7 +2,10 @@
 <div class="row-content-block">
   <div class="col-cb-title">
     <div *ngFor="let component of contentBlock.componentes; let index = index;">
-        <jhi-visor-text [component]="component" [templateType]="contentBlock.tipoBloqueComponentes.nombre"></jhi-visor-text>
+        <jhi-visor-text 
+          [component]="component" 
+          [templateType]="contentBlock.tipoBloqueComponentes.nombre"
+          (updateComponent)="onUpdateComponent($event, index)"></jhi-visor-text>
     </div>
     <!--
     <h2>Content block Main Title </h2>

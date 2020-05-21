@@ -2,7 +2,12 @@
 <div class="row-content-block">
   <div class="col-cb-text-img">
     <div class="cc-text">
-      <jhi-visor-text></jhi-visor-text>
+        <div *ngFor="let component of contentBlock.componentes; let index = index;">
+          <jhi-visor-text 
+            [component]="component" 
+            [templateType]="contentBlock.tipoBloqueComponentes.nombre"
+            (updateComponent)="onUpdateComponent($event, index)"></jhi-visor-text>
+        </div>
       <!--
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore veniam, alias minus doloribus velit, quis eligendi consequuntur sapiente vel sequi, earum impedit ab aliquam laboriosam ut qui aliquid ipsum possimus accusantium? Quidem est omnis dolorum error porro blanditiis amet ipsam reiciendis aliquid suscipit quo, sint perspiciatis commodi natus a autem, esse repellat id! Totam obcaecati mollitia ut quia at, vel voluptate minima dolorem porro cupiditate blanditiis nobis autem debitis sit.</p>
       -->

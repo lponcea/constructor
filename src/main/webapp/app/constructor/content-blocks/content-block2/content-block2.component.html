@@ -1,7 +1,12 @@
 <!-- Bloque de contenido: Texto-->
 <div class="row-content-block">
   <div class="col-cb-text">
-    <jhi-visor-text></jhi-visor-text>
+      <div *ngFor="let component of contentBlock.componentes; let index = index;">
+          <jhi-visor-text 
+            [component]="component" 
+            [templateType]="contentBlock.tipoBloqueComponentes.nombre"
+            (updateComponent)="onUpdateComponent($event, index)"></jhi-visor-text>
+      </div>
     <!--
     <p>Content block Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus perspiciatis, rem quasi voluptates sapiente, accusantium reprehenderit! Repellat nulla voluptatum tenetur ut impedit, voluptas facilis a quos reprehenderit est ea quo totam, iure nostrum aspernatur, rem nobis odio obcaecati. Repellendus accusamus mollitia dolor ratione accusantium? Pariatur, aliquid quod alias. Voluptate molestias dignissimos repellat rem laboriosam esse totam eveniet ratione aperiam ullam, vitae eum. Rem fugiat deleniti harum quas amet quidem numquam vel facere ea possimus, minima ipsum delectus, a officiis similique quos molestiae aperiam assumenda, nam accusantium reprehenderit molestias! Sequi deserunt doloremque fugiat dolor sunt suscipit laudantium numquam repellendus distinctio iusto. </p>
     -->

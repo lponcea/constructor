@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
+import { TipoComponenteService } from 'app/entities/tipo-bloque-componente/tipo-componente.service';
 import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 
 @Component({
@@ -8,7 +9,7 @@ import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes
   templateUrl: './template-gallery.component.html',
   styleUrls: ['./template-gallery.component.scss']
 })
-export class TemplateGalleryComponent {
+export class TemplateGalleryComponent implements OnInit {
   selectedContentBlockIndex = -1;
   filters = [
     {
@@ -25,7 +26,11 @@ export class TemplateGalleryComponent {
   templates: ITipoBloqueComponentes[];
   filteredTemplates: ITipoBloqueComponentes[];
 
-  constructor(private contentBlocksService: ContentBlocksService, private navigationControlsService: NavigationControlsService) {
+  constructor(
+    private contentBlocksService: ContentBlocksService,
+    private navigationControlsService: NavigationControlsService,
+    private tipoComponenteService: TipoComponenteService
+  ) {
     this.templates = [
       {
         nombre: 'titulo',
@@ -73,6 +78,19 @@ export class TemplateGalleryComponent {
       }
     ];
     this.filteredTemplates = this.templates;
+  }
+
+  ngOnInit(): void {
+    /*
+    this.tipoComponenteService
+    .query()
+    .pipe(
+      map((res: HttpResponse<ITipoBloqueComponentes[]>) => {
+        return res.body ? res.body : [];
+      })
+    )
+    .subscribe((resBody: ITipoBloqueComponentes[]) => (this.templates = resBody));
+    */
   }
 
   selectTemplate(selectedTemplate: any): void {

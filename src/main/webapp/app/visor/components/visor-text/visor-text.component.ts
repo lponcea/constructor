@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Input, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Componente } from 'app/shared/model/componente.model';
 import { TextService } from 'app/services/text.service';
@@ -16,6 +16,7 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit {
   editing = false;
   @Input() component?: Componente;
   @Input() templateType?: any;
+  @Output() updateComponent = new EventEmitter();
 
   constructor(private textService: TextService) {
     this.subscription = this.textService.getEditing().subscribe(editing => {
@@ -24,6 +25,8 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit {
     this.subscription = this.textService.getText().subscribe(text => {
       if (text && this.editing) {
         this.htmlContent = text;
+        this.component!.contenido = this.htmlContent;
+        this.updateComponent.emit({ newValue: text, type: 'text' });
       }
     });
     /*

@@ -78,9 +78,7 @@ export class ConstructorTextComponent implements OnInit, AfterViewInit {
 
   constructor(private textService: TextService) {
     this.textService.getText().subscribe(text => {
-      if (text) {
-        this._htmlContent = text;
-      }
+      this._htmlContent = text;
     });
   }
 

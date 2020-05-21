@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { IBloqueComponentes, BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 import { ITipoBloqueComponentes, TipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 import { IComponente, Componente } from 'app/shared/model/componente.model';
+import { NivelJerarquico, INivelJerarquico } from 'app/shared/model/nivel-jerarquico.model';
+import { NivelJerarquicoService } from 'app/entities/nivel-jerarquico/nivel-jerarquico.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'jhi-constructor-visor-container',
@@ -25,7 +28,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     }
   ];
 
-  constructor(private contentBlocksService: ContentBlocksService) {
+  constructor(private contentBlocksService: ContentBlocksService, private nivelJerarquicoService: NivelJerarquicoService) {
     this.contentBlocks = [];
     this.subscription = this.contentBlocksService.getSelectedBlock().subscribe(selectedBlock => {
       if (selectedBlock !== undefined) {
@@ -39,6 +42,40 @@ export class ConstructorVisorContainerComponent implements OnInit {
       }
     });
   }
+
+  onUpdateBlock($event: Event, index: number): void {
+    if (this.contentBlocks[index]) {
+      if (this.contentBlocks[index]!.componentes![$event['componentIndex']]) {
+        switch ($event['type']) {
+          case 'text': {
+            this.contentBlocks[index]!.componentes![$event['componentIndex']].contenido = $event['newValue'];
+          }
+        }
+      }
+    }
+  }
+
+  save(): void {
+    const curso = {
+      id: 1
+    };
+    const nivel: NivelJerarquico = {
+      bloquesComponentes: this.contentBlocks,
+      curso
+    };
+    this.subscribeToSaveResponse(this.nivelJerarquicoService.create(nivel));
+  }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<INivelJerarquico>>): void {
+    result.subscribe(
+      () => this.onSaveSuccess(),
+      () => this.onSaveError()
+    );
+  }
+
+  protected onSaveSuccess(): void {}
+
+  protected onSaveError(): void {}
 
   createContentBlock(selectedBlock: ITipoBloqueComponentes): IBloqueComponentes {
     const componentes = new Array<IComponente>();
