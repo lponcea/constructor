@@ -1,10 +1,7 @@
 package org.constructor.service.impl;
 
-import org.constructor.service.RolColaboradorService;
 import org.constructor.service.RolesColaboradoresService;
-import org.constructor.domain.RolColaborador;
 import org.constructor.domain.RolesColaboradores;
-import org.constructor.repository.RolColaboradorRepository;
 import org.constructor.repository.RolesColaboradoresRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,27 +30,22 @@ public class RolesColaboradoresServiceImpl implements RolesColaboradoresService 
 
 	@Override
 	public RolesColaboradores save(RolesColaboradores rolColaborador) {
-		// TODO Auto-generated method stub
-		return null;
+		return rolesColaboradoresRepository.save(rolColaborador);
 	}
 
 	@Override
 	public Page<RolesColaboradores> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
 		return rolesColaboradoresRepository.findAll(pageable);
 	}
 
 	@Override
 	public Optional<RolesColaboradores> findOne(Long id) {
-		// TODO Auto-generated method stub
 		return rolesColaboradoresRepository.findById(id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		rolesColaboradoresRepository.deleteById(id);
 	}
-
-    
+	
 }
