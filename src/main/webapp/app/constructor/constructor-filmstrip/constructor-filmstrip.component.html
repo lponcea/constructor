@@ -1,9 +1,19 @@
+
 <div class="filmstrip-c-component">
-  <div class="c-component-title"><p>Filmstrip</p></div>
-  <div class="component-tool-content">
-    <div class="row-ctc">
+  <!-- Header -->
+  <div class="c-component-title">
+    <div class="cct-link">
+      <i class="icon ni-arrow"></i>
+      <p>Filmstrip</p>
+    </div>
+    <i class="icon ni-menudots"></i>
+  </div>
+  <!-- End Header -->
+  <div class="c-component-content">
+    <div class="row-c-component-c">
 
       <div class="row-artboard-filmstrip" *ngFor="let contentBlock of contentBlocks; let index = index">
+        <div class="row-drag-ud"><div class="icon ni-drag"></div></div>
         <div
           class="artboard-mini"
           [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
@@ -21,11 +31,13 @@
       </div>
 
       <div class="row-artboard-filmstrip">
+        <div class="row-drag-ud"></div>
         <div class="artboard-mini ab-mini-new" (click)="createContentBlock()"></div>
         <div class="ab-mini-desc">
           <p>Crear</p>
         </div>
       </div>
+
     </div>
   </div>
 </div>

@@ -1,5 +1,14 @@
+
 <div class="template-c-component">
-  <div class="c-component-title"><p>Template gallery</p></div>
+  <!-- Header -->
+  <div class="c-component-title">
+    <div class="cct-link">
+      <i class="icon ni-arrow"></i>
+      <p>Template gallery</p>
+    </div>
+    <i class="icon ni-menudots"></i>
+  </div>
+  <!-- End Header -->
   <div class="menu-template">
     <div
       [ngClass]="{'active-mt': filter.selected}"
@@ -9,17 +18,23 @@
       <span>{{filter.text}}</span>
     </div>
   </div>
-
+  <!-- End menu -->
   <div class="c-component-content">
-    <div class="row-mini-gallery">
-      <div *ngFor="let template of filteredTemplates; let index = index;">
-        <div class="template-mini"
-        [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
-        [style.backgroundImage]="'url(' + template.iconPath + ')'"
-        (click)="selectContentBlock(index)">
+    <div class="row-c-component-c">
+
+      <div class="row-mini-gallery">
+        <div class="template-preview" *ngFor="let template of filteredTemplates; let index = index;">
+          <div class="template-mini"
+          [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
+          [style.backgroundImage]="'url(' + template.iconPath + ')'"
+          (click)="selectContentBlock(index)">
+          </div>
+          <div class="name-template">
+            <p>Name Lorem ipsum dolor.</p>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>

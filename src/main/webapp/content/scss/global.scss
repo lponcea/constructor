@@ -140,7 +140,6 @@ strong {
   speak: none;
   text-decoration: inherit;
   color: $icon-main-color;
-  // cursor: default;
   cursor: pointer;
   transition: 0.3s;
   user-select: none;
@@ -230,7 +229,6 @@ strong {
 .ni-edit:before {
   content: '\e813';
 }
-
 .ni-nimbus:before {
   content: '\e814';
 }
@@ -251,6 +249,49 @@ strong {
 }
 .ni-upload:before {
   content: '\e81a';
+}
+
+.ni-dark:before {
+  content: '\e81b';
+}
+.ni-light:before {
+  content: '\e81c';
+}
+.ni-admin:before {
+  content: '\e81d';
+}
+.ni-tablet:before {
+  content: '\e81e';
+}
+.ni-folder:before {
+  content: '\e81f';
+}
+.ni-folderopen:before {
+  content: '\e820';
+}
+.ni-picture:before {
+  content: '\e821';
+}
+.ni-doc:before {
+  content: '\e822';
+}
+.ni-file:before {
+  content: '\e823';
+}
+.ni-menudots:before {
+  content: '\e824';
+}
+.ni-save:before {
+  content: '\e825';
+}
+.ni-arrowright:before {
+  content: '\e826';
+}
+.ni-arrowleft:before {
+  content: '\e827';
+}
+.ni-arrowup:before {
+  content: '\e828';
 }
 
 // Text editor component
@@ -325,7 +366,6 @@ strong {
 }
 .angular-editor-toolbar .angular-editor-toolbar-set {
   position: relative !important;
-  // margin-right: 10px !important;
   width: auto;
   height: auto;
 }
