@@ -1,8 +1,4 @@
-<div class="row-book" (click)="editText()">
-    <div class="col-book cb-1">
-      <div class="text-area">
-        <div [innerHtml]="htmlContent" *ngIf="htmlContent !== ''"></div>
-        <div [innerHtml]="exampleContent" *ngIf="htmlContent === ''"></div>
-      </div>
-    </div>
+<div class="test-class" (click)="editText()">
+  <div [innerHtml]="htmlContent" *ngIf="htmlContent !== ''"></div>
+  <div [innerHtml]="exampleContent" *ngIf="htmlContent === ''"></div>
 </div>

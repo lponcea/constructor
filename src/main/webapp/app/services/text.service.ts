@@ -32,7 +32,6 @@ export class TextService {
   }
 
   setTemplateType(templateType: string): void {
-    console.error(templateType);
     this.templateType.next(templateType);
   }
 }

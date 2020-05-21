@@ -107,3 +107,9 @@
 .img-edit:hover + img {
   filter: saturate(30%);
 }
+
+.test-class {
+  position: relative;
+  width: 100%;
+  border: 1px red solid;
+}

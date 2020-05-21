@@ -9,6 +9,7 @@ import { TextService } from 'app/services/text.service';
 })
 export class ConstructorTextComponent implements OnInit, AfterViewInit {
   // htmlContent: any;
+  placeholder = 'ejemplo';
   private _htmlContent = '';
   get htmlContent(): string {
     return this._htmlContent;
