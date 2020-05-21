@@ -931,3 +931,22 @@ h5 {
     background-image: url('../../content/images/fi6.png');
   }
 }
+
+.row-home-icons {
+  position: relative;
+  width: 90%;
+  max-width: $max-width;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  .icon {
+    margin-right: 16px;
+    margin-bottom: 16px;
+  }
+}
