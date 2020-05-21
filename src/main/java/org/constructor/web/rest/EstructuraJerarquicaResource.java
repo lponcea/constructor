@@ -89,7 +89,7 @@ public class EstructuraJerarquicaResource {
         }
         EstructuraJerarquica result = estructuraJerarquicaService.save(estructuraJerarquica);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, estructuraJerarquica.getNivelJerarquico().getNombreNivel()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, estructuraJerarquica.getNivelJerarquico().getNombre()))
             .body(result);
     }
     

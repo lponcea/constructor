@@ -41,6 +41,9 @@ public class NivelJerarquico implements Serializable  {
 	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
 	@OrderBy ("orden_nivel")
 	private Set<EstructuraJerarquica> estructuraJerarquica = new HashSet<>();
+	
+	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
+	private Set<BloqueComponentes> bloqueComponentes = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -48,14 +51,6 @@ public class NivelJerarquico implements Serializable  {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNombreNivel() {
-		return nombre;
-	}
-
-	public void setNombreNivel(String nombre) {
-		this.nombre = nombre;
 	}
 	
 	public int getInformacionAdicional() {
@@ -72,6 +67,22 @@ public class NivelJerarquico implements Serializable  {
 
 	public void setEstructuraJerarquica(Set<EstructuraJerarquica> estructuraJerarquica) {
 		this.estructuraJerarquica = estructuraJerarquica;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Set<BloqueComponentes> getBloqueComponentes() {
+		return bloqueComponentes;
+	}
+
+	public void setBloqueComponentes(Set<BloqueComponentes> bloqueComponentes) {
+		this.bloqueComponentes = bloqueComponentes;
 	}
 
 	@Override

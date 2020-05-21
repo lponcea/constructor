@@ -1,6 +1,7 @@
 package org.constructor.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A TipoBloqueComponentes.
@@ -42,6 +46,11 @@ public class TipoBloqueComponentes implements Serializable {
             joinColumns = @JoinColumn(name = "tipo_bloque_id", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name="tipo_componente_id", referencedColumnName = "id", nullable = false))
 	private Set<TipoComponente> tipoComponente;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="tipoBloqueComponentes", fetch = FetchType.EAGER)
+	private Set<BloqueComponentes> bloqueComponentes = new HashSet<>();
+
 
 	public Long getId() {
 		return id;
@@ -51,7 +60,7 @@ public class TipoBloqueComponentes implements Serializable {
 		this.id = id;
 	}
 
-	public String getNombreBloqueComponente() {
+	public String getNombreBloqueComponentes() {
 		return nombreBloqueComponentes;
 	}
 
@@ -62,7 +71,7 @@ public class TipoBloqueComponentes implements Serializable {
 	public String getIconPath() {
 		return iconPath;
 	}
-
+	
 	public void setIconPath(String iconPath) {
 		this.iconPath = iconPath;
 	}
@@ -75,12 +84,20 @@ public class TipoBloqueComponentes implements Serializable {
 		this.tags = tags;
 	}
 	
-	public Set<TipoComponente> getTiposBloquesComponentes() {
+	public Set<TipoComponente> getTipoComponente() {
 		return tipoComponente;
 	}
 
-	public void setTiposBloquesComponentes(Set<TipoComponente> tipoComponente) {
+	public void setTipoComponente(Set<TipoComponente> tipoComponente) {
 		this.tipoComponente = tipoComponente;
+	}
+
+	public Set<BloqueComponentes> getBloqueComponentes() {
+		return bloqueComponentes;
+	}
+
+	public void setBloqueComponentes(Set<BloqueComponentes> bloqueComponentes) {
+		this.bloqueComponentes = bloqueComponentes;
 	}
 
 	@Override
