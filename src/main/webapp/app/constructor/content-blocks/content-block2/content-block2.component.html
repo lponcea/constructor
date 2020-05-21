@@ -1,8 +1,8 @@
 <!-- Bloque de contenido: Texto-->
 <div class="row-content-block">
   <div class="col-cb-text">
-      <div *ngFor="let component of contentBlock.componentes; let index = index;">
-          <jhi-visor-text 
+      <div class="tt" *ngFor="let component of contentBlock.componentes; let index = index;">
+          <jhi-visor-text
             [component]="component" 
             [templateType]="contentBlock.tipoBloqueComponentes.nombre"
             (updateComponent)="onUpdateComponent($event, index)"></jhi-visor-text>
