@@ -2,9 +2,9 @@
 <div class="row-content-block">
   <div class="col-cb-text-img">
     <div class="cc-text">
-        <div *ngFor="let component of contentBlock.componentes; let index = index;">
-          <jhi-visor-text 
-            [component]="component" 
+        <div class="tt" *ngFor="let component of contentBlock.componentes; let index = index;">
+          <jhi-visor-text
+            [component]="component"
             [templateType]="contentBlock.tipoBloqueComponentes.nombre"
             (updateComponent)="onUpdateComponent($event, index)"></jhi-visor-text>
         </div>

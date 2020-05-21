@@ -295,6 +295,14 @@ strong {
 }
 
 // Text editor component
+.angular-editor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 #component-text-row {
   position: relative;
   width: 100%;
@@ -320,8 +328,9 @@ strong {
 }
 .angular-editor-wrapper {
   position: relative;
-  height: 160px !important;
+  height: auto;
   width: 100% !important;
+  height: calc(100% - 30px) !important;
   overflow-y: scroll;
 }
 .angular-editor .angular-editor-wrapper .angular-editor-textarea {
@@ -355,7 +364,7 @@ strong {
 .angular-editor-toolbar {
   background-color: $tool-header !important;
   width: 100% !important;
-  height: 40px !important;
+  height: 30px !important;
   position: relative !important;
   padding: 0 !important;
   border: 0 !important;
@@ -376,6 +385,7 @@ strong {
   height: auto;
   position: absolute !important;
   right: 15px;
+  display: none !important;
 }
 .angular-editor-toolbar-set:nth-child(1) .angular-editor-button {
   margin-left: 10px !important;
@@ -419,6 +429,11 @@ strong {
   order: 5;
   margin-left: 10px;
 }
+// Alineación de texto
+// Listas
+.angular-editor-toolbar-set:nth-child(odd) {
+  margin-left: 12px;
+}
 // Code
 .angular-editor-toolbar-set:nth-child(13) {
   display: none !important;
@@ -436,14 +451,24 @@ strong {
   padding: 0rem !important;
   min-width: 0rem !important;
   float: none !important;
-  width: 25px !important;
-  height: 25px !important;
-  transition: 0.4s;
+  width: 20px !important;
+  height: 20px !important;
+  transition: 0.3s;
 }
 .angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button:hover {
   background-color: rgba(255, 255, 255, 0.6) !important;
 }
-
+.angular-editor-button {
+  margin-left: 8px;
+}
+.ae-font.ae-expanded .ae-picker-options {
+  height: 140px !important;
+  overflow-y: auto !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background-color: white !important;
+  box-shadow: 0 6px 18px rgba(40, 40, 40, 0.1), 0 4px 16px rgba(50, 50, 50, 0.1) !important;
+}
 .fa-bold {
   position: relative;
   width: 20px;
