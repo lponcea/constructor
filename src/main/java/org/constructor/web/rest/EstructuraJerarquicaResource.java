@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.constructor.domain.EstructuraJerarquica;
-import org.constructor.domain.NivelJerarquico;
 import org.constructor.service.EstructuraJerarquicaService;
-import org.constructor.service.NivelJerarquicoService;
 import org.constructor.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
