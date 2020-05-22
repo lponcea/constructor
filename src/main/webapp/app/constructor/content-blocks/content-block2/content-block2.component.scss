@@ -1,28 +1,13 @@
 @import '../../../../content/scss/variables.scss';
 
-.row-content-block {
-  position: relative;
-  width: 100%;
-  height: auto;
-  border: 1px solid $bordercolor-block;
-}
 .col-cb-text {
   position: relative;
   width: 100%;
   height: auto;
   display: flex;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
   p {
     position: relative;
     width: auto;
     height: auto;
   }
-}
-.tt {
-  position: relative;
-  width: 100%;
-  height: auto;
 }

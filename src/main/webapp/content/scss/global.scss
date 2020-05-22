@@ -3111,3 +3111,106 @@ input[type='file'] {
   margin-left: 10px;
   font-size: 14px;
 }
+
+// Blocks
+.row-content-block {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: 1px dashed $bordercolor-block;
+  padding: 15px;
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid teal;
+  }
+}
+// Block 1 -Title
+.b-title-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border: 1px solid $blue-nimbus-light;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid $blue-nimbus-dark;
+  }
+  .final-block-row {
+    position: relative;
+    width: 100%;
+    div {
+      text-align: center;
+      position: relative;
+      width: auto;
+      max-width: 800px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 34px;
+      font-weight: 600;
+      font-style: normal;
+      color: $blue-nimbus-dark;
+      h1 {
+        text-align: center;
+        position: relative;
+        width: auto;
+        max-width: 800px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 34px;
+        font-weight: 600;
+        font-style: normal;
+        color: $blue-nimbus-dark;
+      }
+    }
+  }
+}
+
+// Block 2 -Paragraph text
+.col-cb-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border: 1px solid $blue-nimbus-light;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid $blue-nimbus-dark;
+  }
+  .b-paragraph-text {
+    position: relative;
+    width: 100%;
+    div {
+      p {
+      }
+    }
+  }
+}
+// Block 4 -Paragraph text with image
+.col-cb-text-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .cb4-row-text {
+    position: relative;
+    width: 50%;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid $blue-nimbus-light;
+    transition: 0.3s;
+    &:hover {
+      border: 1px solid $blue-nimbus-dark;
+    }
+    .b-paragraph-text {
+      position: relative;
+      width: 100%;
+      div {
+        p {
+        }
+      }
+    }
+  }
+}
