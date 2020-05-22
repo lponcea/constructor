@@ -9,16 +9,16 @@
     <div class="row-visor-container">
       <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
         <div (click)="selectedBlock = index" ngClass="">
-          <div *ngIf="block.tipoBloqueComponentes.nombre == 'titulo'">
+          <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'titulo'">
               <jhi-content-block1 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block1>
             </div>
-            <div *ngIf="block.tipoBloqueComponentes.nombre == 'texto'">
+            <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'texto'">
               <jhi-content-block2 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block2>
             </div>
-            <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen'">
+            <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'imagen'">
               <jhi-content-block3 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block3>
             </div>
-            <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen_texto'">
+            <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'imagen_texto'">
               <jhi-content-block4 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block4>
             </div>
         </div>

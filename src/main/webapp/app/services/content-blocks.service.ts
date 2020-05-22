@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IBloqueComponentes } from 'app/shared/model/bloque-componentes.model';
+import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class ContentBlocksService {
   selectedBlock = new Subject<any>();
   contentBlocks = new Subject<IBloqueComponentes[]>();
   indexBlockToDelete = new Subject<number>();
+  templates = new Subject<ITipoBloqueComponentes[]>();
 
   constructor() {}
 
@@ -36,5 +38,13 @@ export class ContentBlocksService {
 
   setIndexBlockToDelete(index: number): void {
     this.indexBlockToDelete.next(index);
+  }
+
+  getTempaltes(): Observable<ITipoBloqueComponentes[]> {
+    return this.templates.asObservable();
+  }
+
+  setTemplates(templates: IBloqueComponentes[]): void {
+    this.templates.next(templates);
   }
 }

@@ -33,6 +33,7 @@ export class TemplateGalleryComponent implements OnInit {
   ) {
     this.templates = [
       {
+        id: 1,
         nombre: 'titulo',
         iconPath: '../../../content/images/ab1.png',
         tags: 'text',
@@ -44,6 +45,7 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       },
       {
+        id: 2,
         nombre: 'texto',
         iconPath: '../../../content/images/ab2.png',
         tags: 'text',
@@ -55,6 +57,7 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       },
       {
+        id: 3,
         nombre: 'imagen',
         iconPath: '../../../content/images/ab3.png',
         tags: 'image',
@@ -66,6 +69,7 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       },
       {
+        id: 4,
         nombre: 'imagen_texto',
         iconPath: '../../../content/images/ab4.png',
         tags: 'image text',
@@ -82,6 +86,7 @@ export class TemplateGalleryComponent implements OnInit {
 
   ngOnInit(): void {
     /*
+    // Obtener las plantillas del llamdo de los tipos de bloques de contenido
     this.tipoComponenteService
     .query()
     .pipe(
@@ -91,6 +96,8 @@ export class TemplateGalleryComponent implements OnInit {
     )
     .subscribe((resBody: ITipoBloqueComponentes[]) => (this.templates = resBody));
     */
+    // Enviar plantillas a servicio para utilizar en filmStrip
+    this.contentBlocksService.setTemplates(this.templates);
   }
 
   selectTemplate(selectedTemplate: any): void {
