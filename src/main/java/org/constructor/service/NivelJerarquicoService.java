@@ -3,6 +3,7 @@ package org.constructor.service;
 import java.util.Optional;
 
 import org.constructor.domain.NivelJerarquico;
+import org.constructor.service.dto.NivelJerarquicoDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,7 +18,7 @@ public interface NivelJerarquicoService {
      * @param nivelJerarquico the entity to save.
      * @return the persisted entity.
      */
-    NivelJerarquico save(NivelJerarquico nivelJerarquico);
+    NivelJerarquico save(NivelJerarquicoDTO nivelJerarquico) throws Exception;
 
     /**
      * Get all the nivelJerarquico.

@@ -88,7 +88,7 @@ public class NivelesCursoResource {
         }
         NivelesCurso result = nivelesCursoService.save(nivelesCurso);
         return ResponseEntity.created(new URI("/api/niveles-curso/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getIdLibro().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getCurso().toString()))
             .body(result);
     }
     
@@ -110,7 +110,7 @@ public class NivelesCursoResource {
         }
         NivelesCurso result = nivelesCursoService.save(nivelesCurso);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, nivelesCurso.getIdLibro().getDescripcion().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, nivelesCurso.getCurso().getDescripcion().toString()))
             .body(result);
     }
     

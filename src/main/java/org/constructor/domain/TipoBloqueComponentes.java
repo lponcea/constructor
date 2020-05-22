@@ -32,7 +32,7 @@ public class TipoBloqueComponentes implements Serializable {
     private Long id;
 	
 	@Column(name = "nombre_bloque_componentes")
-    private String nombreBloqueComponentes;
+    private String nombre;
 	
 	@Column(name = "icon_path")
     private String iconPath;
@@ -45,7 +45,7 @@ public class TipoBloqueComponentes implements Serializable {
             name = "tipos_bloques_componentes", 
             joinColumns = @JoinColumn(name = "tipo_bloque_id", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name="tipo_componente_id", referencedColumnName = "id", nullable = false))
-	private Set<TipoComponente> tipoComponente;
+	private Set<TipoComponente> tiposComponentes;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="tipoBloqueComponentes", fetch = FetchType.EAGER)
@@ -61,11 +61,11 @@ public class TipoBloqueComponentes implements Serializable {
 	}
 
 	public String getNombreBloqueComponentes() {
-		return nombreBloqueComponentes;
+		return nombre;
 	}
 
-	public void setNombreBloqueComponentes(String nombreBloqueComponentes) {
-		this.nombreBloqueComponentes = nombreBloqueComponentes;
+	public void setNombreBloqueComponentes(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getIconPath() {
@@ -84,12 +84,13 @@ public class TipoBloqueComponentes implements Serializable {
 		this.tags = tags;
 	}
 	
-	public Set<TipoComponente> getTipoComponente() {
-		return tipoComponente;
+
+	public Set<TipoComponente> getTiposComponentes() {
+		return tiposComponentes;
 	}
 
-	public void setTipoComponente(Set<TipoComponente> tipoComponente) {
-		this.tipoComponente = tipoComponente;
+	public void setTiposComponentes(Set<TipoComponente> tiposComponentes) {
+		this.tiposComponentes = tiposComponentes;
 	}
 
 	public Set<BloqueComponentes> getBloqueComponentes() {
@@ -102,8 +103,8 @@ public class TipoBloqueComponentes implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TipoBloqueComponente [id=" + id + ", nombreBloqueComponente=" + nombreBloqueComponentes + ", iconPath="
-				+ iconPath + ", tag=" + tags + ", tipoComponente=" + tipoComponente + "]";
+		return "TipoBloqueComponente [id=" + id + ", nombreBloqueComponente=" + nombre + ", iconPath="
+				+ iconPath + ", tag=" + tags + ", tipoComponente=" + tiposComponentes + "]";
 	}
 	
 }

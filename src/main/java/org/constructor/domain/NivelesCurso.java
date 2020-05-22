@@ -37,19 +37,19 @@ public class NivelesCurso  implements Serializable{
     private Long id;
 	
 	/**
-	 * id libro
+	 * Curso_id
 	 */
 	@JsonIgnore
 	@ManyToOne
-    @JoinColumn(name = "id_libro", nullable=false)
-    private Curso idLibro;
+    @JoinColumn(name = "curso_id", nullable=false)
+    private Curso curso;
 	
 	/**
-	 * id_nivel_jerarquico
+	 * nivel_jerarquico_id
 	 */
 	@JsonIgnore
 	@ManyToOne
-	@Column(name = "id_nivel_jerarquico", nullable=false)
+	@JoinColumn(name = "nivel_jerarquico_id", nullable=false)
     private NivelJerarquico nivelJerarquico;
 	
 	/**
@@ -75,19 +75,17 @@ public class NivelesCurso  implements Serializable{
 	}
 
 	/**
-	 * Get
-	 * @return the idLibro
+	 * @return the curso
 	 */
-	public Curso getIdLibro() {
-		return idLibro;
+	public Curso getCurso() {
+		return curso;
 	}
 
 	/**
-	 * Set
-	 * @param idLibro the idLibro to set
+	 * @param curso the curso to set
 	 */
-	public void setIdLibro(Curso idLibro) {
-		this.idLibro = idLibro;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	/**

@@ -101,7 +101,9 @@ public class Curso implements Serializable {
     @JsonIgnoreProperties("cursos")
     private NumeroGrado numeroGrado;
     
-    // ManyToMany to user relationship (JAM)
+    @OneToMany(mappedBy = "curso")
+    private Set<NivelesCurso> nivelesCurso = new HashSet<>();;
+    
     @JsonIgnore
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -413,6 +415,23 @@ public class Curso implements Serializable {
 
 	public void setUser(Set<User> user) {
 		this.user = user;
+	}
+	
+	
+	
+
+	/**
+	 * @return the nivelesCurso
+	 */
+	public Set<NivelesCurso> getNivelesCurso() {
+		return nivelesCurso;
+	}
+
+	/**
+	 * @param nivelesCurso the nivelesCurso to set
+	 */
+	public void setNivelesCurso(Set<NivelesCurso> nivelesCurso) {
+		this.nivelesCurso = nivelesCurso;
 	}
 
 	@Override

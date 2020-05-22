@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.constructor.domain.NivelJerarquico;
 import org.constructor.service.NivelJerarquicoService;
+import org.constructor.service.dto.NivelJerarquicoDTO;
 import org.constructor.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,16 +57,16 @@ public class NivelJerarquicoResource {
 	     *
 	     * @param nivelJerarquico to create.
 	     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new nivelJerarquico, or with status {@code 400 (Bad Request)} if the nivelJerarquico has already an ID.
-	     * @throws URISyntaxException if the Location URI syntax is incorrect.
+	     * @throws Exception 
 	     */
 	    @PostMapping("/nivel-jerarquico")
-	    public ResponseEntity<NivelJerarquico> createNivelJerarquico(@RequestBody NivelJerarquico nivelJerarquico) throws URISyntaxException {
-	        log.debug("REST request to save NivelJerarquico : {}", nivelJerarquico);
-	        if (nivelJerarquico.getId() != null) {
+	    public ResponseEntity<NivelJerarquico> createNivelJerarquico(@RequestBody NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception {
+	        log.debug("REST request to save NivelJerarquico : {}", nivelJerarquicoDTO);
+	        if (nivelJerarquicoDTO == null) {
 	            throw new BadRequestAlertException("A new Nivel Jerarquico cannot already have an ID", ENTITY_NAME, "idexists");
 	        }
-	        NivelJerarquico result = nivelJerarquicoService.save(nivelJerarquico);
-	        return ResponseEntity.created(new URI("/api/roles-colaboradores/" + result.getId()))
+	        NivelJerarquico result = nivelJerarquicoService.save(nivelJerarquicoDTO);
+	        return ResponseEntity.created(new URI("/api/nivel-jerarquico/" + result.getId()))
 	            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
 	            .body(result);
 	    }
@@ -77,17 +78,17 @@ public class NivelJerarquicoResource {
 	     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated nivelJerarquico,
 	     * or with status {@code 400 (Bad Request)} if the nivelJerarquico is not valid,
 	     * or with status {@code 500 (Internal Server Error)} if the nivelJerarquico couldn't be updated.
-	     * @throws URISyntaxException if the Location URI syntax is incorrect.
+	     * @throws Exception 
 	     */
 	    @PutMapping("/nivel-jerarquico")
-	    public ResponseEntity<NivelJerarquico> updateNivelJerarquico(@RequestBody NivelJerarquico nivelJerarquico) throws URISyntaxException {
-	        log.debug("REST request to update nivelJerarquico : {}", nivelJerarquico);
-	        if (nivelJerarquico.getId() == null) {
+	    public ResponseEntity<NivelJerarquico> updateNivelJerarquico(@RequestBody NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception {
+	        log.debug("REST request to update nivelJerarquico : {}", nivelJerarquicoDTO);
+	        if (nivelJerarquicoDTO == null) {
 	            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
 	        }
-	        NivelJerarquico result = nivelJerarquicoService.save(nivelJerarquico);
+	        NivelJerarquico result = nivelJerarquicoService.save(nivelJerarquicoDTO);
 	        return ResponseEntity.ok()
-	            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, nivelJerarquico.getId().toString()))
+	            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
 	            .body(result);
 	    }
 	    

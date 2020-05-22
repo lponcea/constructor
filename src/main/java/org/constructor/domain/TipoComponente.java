@@ -30,11 +30,11 @@ public class TipoComponente implements Serializable {
     private Long id;
 	
 	@Column(name = "nombre_componente")
-    private String nombreComponente;
+    private String nombre;
 	
-	@ManyToMany(mappedBy = "tipoComponente")
+	@ManyToMany(mappedBy = "tiposComponentes")
 	@JsonIgnore
-    private Set<TipoBloqueComponentes> tipoBloqueComponentes = new HashSet<>();
+    private Set<TipoBloqueComponentes> tiposBloquesComponentes = new HashSet<>();
 	
 	@OneToMany(mappedBy="tipoComponente", fetch = FetchType.EAGER)
 	@JsonIgnore
@@ -49,22 +49,24 @@ public class TipoComponente implements Serializable {
 	}
 
 	public String getNombreComponente() {
-		return nombreComponente;
+		return nombre;
 	}
 
-	public void setNombreComponente(String nombreComponente) {
-		this.nombreComponente = nombreComponente;
+	public void setNombreComponente(String nombre) {
+		this.nombre = nombre;
 	}
 
-
-	public Set<TipoBloqueComponentes> getTipoBloqueComponentes() {
-		return tipoBloqueComponentes;
-	}
-
-	public void setTipoBloqueComponentes(Set<TipoBloqueComponentes> tipoBloqueComponentes) {
-		this.tipoBloqueComponentes = tipoBloqueComponentes;
-	}
 	
+	
+	
+	public Set<TipoBloqueComponentes> getTiposBloquesComponentes() {
+		return tiposBloquesComponentes;
+	}
+
+	public void setTiposBloquesComponentes(Set<TipoBloqueComponentes> tiposBloquesComponentes) {
+		this.tiposBloquesComponentes = tiposBloquesComponentes;
+	}
+
 	public Set<Componente> getComponente() {
 		return componente;
 	}
@@ -75,6 +77,6 @@ public class TipoComponente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TipoComponente [id=" + id + ", nombreComponente=" + nombreComponente + "]";
+		return "TipoComponente [id=" + id + ", nombreComponente=" + nombre + "]";
 	}
 }

@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * A NivelJeraquico.
  */
@@ -37,13 +39,21 @@ public class NivelJerarquico implements Serializable  {
 	@Column(name = "informacion_adicional")
     private int  informacionAdicional;
 	
+	@Column(name = "tipo")
+    private String  tipo;
+	
 	
 	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
 	@OrderBy ("orden_nivel")
 	private Set<EstructuraJerarquica> estructuraJerarquica = new HashSet<>();
 	
 	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
-	private Set<BloqueComponentes> bloqueComponentes = new HashSet<>();
+	private Set<BloqueComponentes> bloquesComponentes = new HashSet<>();
+	
+	@OneToMany(mappedBy = "nivelJerarquico")
+	@JsonIgnore
+	private Set<NivelesCurso> nivelesCurso = new HashSet<>(); 
+	
 
 	public Long getId() {
 		return id;
@@ -77,18 +87,43 @@ public class NivelJerarquico implements Serializable  {
 		this.nombre = nombre;
 	}
 
-	public Set<BloqueComponentes> getBloqueComponentes() {
-		return bloqueComponentes;
+	public Set<BloqueComponentes> getBloquesComponentes() {
+		return bloquesComponentes;
 	}
 
-	public void setBloqueComponentes(Set<BloqueComponentes> bloqueComponentes) {
-		this.bloqueComponentes = bloqueComponentes;
+	public void setBloquesComponentes(Set<BloqueComponentes> bloquesComponentes) {
+		this.bloquesComponentes = bloquesComponentes;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+
+	/**
+	 * @return the nivelesCurso
+	 */
+	public Set<NivelesCurso> getNivelesCurso() {
+		return nivelesCurso;
+	}
+
+	/**
+	 * @param nivelesCurso the nivelesCurso to set
+	 */
+	public void setNivelesCurso(Set<NivelesCurso> nivelesCurso) {
+		this.nivelesCurso = nivelesCurso;
 	}
 
 	@Override
 	public String toString() {
-		return "NivelJerarquico [id=" + id + ", nombreNivel=" + nombre + ", informacionAdicional="
-				+ informacionAdicional + ", estructuraJerarquica=" + estructuraJerarquica + "]";
+		return "NivelJerarquico [id=" + id + ", nombre=" + nombre + ", informacionAdicional=" + informacionAdicional
+				+ ", tipo=" + tipo + ", estructuraJerarquica=" + estructuraJerarquica + ", bloquesComponentes="
+				+ bloquesComponentes + "]";
 	}
 
 }
