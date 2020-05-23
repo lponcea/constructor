@@ -3,6 +3,8 @@ import { NavigationControlsService } from '../../services/navigation-controls.se
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { TipoComponenteService } from 'app/entities/tipo-bloque-componente/tipo-componente.service';
 import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
+import { map } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'jhi-template-gallery',
@@ -23,7 +25,7 @@ export class TemplateGalleryComponent implements OnInit {
       selected: false
     }
   ];
-  templates: ITipoBloqueComponentes[];
+  templates: ITipoBloqueComponentes[] = [];
   filteredTemplates: ITipoBloqueComponentes[];
 
   constructor(
@@ -31,6 +33,7 @@ export class TemplateGalleryComponent implements OnInit {
     private navigationControlsService: NavigationControlsService,
     private tipoComponenteService: TipoComponenteService
   ) {
+    /*
     this.templates = [
       {
         id: 1,
@@ -81,24 +84,25 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       }
     ];
+    */
+    // Obtener las plantillas del llamdo de los tipos de bloques de contenido
+    this.tipoComponenteService
+      .query()
+      .pipe(
+        map((res: HttpResponse<ITipoBloqueComponentes[]>) => {
+          return res.body ? res.body : [];
+        })
+      )
+      .subscribe((resBody: ITipoBloqueComponentes[]) => {
+        this.templates = resBody;
+        console.error(this.templates);
+        // Enviar plantillas a servicio para utilizar en filmStrip
+        this.contentBlocksService.setTemplates(this.templates);
+      });
     this.filteredTemplates = this.templates;
   }
 
-  ngOnInit(): void {
-    /*
-    // Obtener las plantillas del llamdo de los tipos de bloques de contenido
-    this.tipoComponenteService
-    .query()
-    .pipe(
-      map((res: HttpResponse<ITipoBloqueComponentes[]>) => {
-        return res.body ? res.body : [];
-      })
-    )
-    .subscribe((resBody: ITipoBloqueComponentes[]) => (this.templates = resBody));
-    */
-    // Enviar plantillas a servicio para utilizar en filmStrip
-    this.contentBlocksService.setTemplates(this.templates);
-  }
+  ngOnInit(): void {}
 
   selectTemplate(selectedTemplate: any): void {
     this.contentBlocksService.setSelectedBlock(selectedTemplate);

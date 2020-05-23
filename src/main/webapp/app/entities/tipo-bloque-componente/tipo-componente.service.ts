@@ -11,7 +11,7 @@ type EntityArrayResponseType = HttpResponse<ITipoBloqueComponentes[]>;
   providedIn: 'root'
 })
 export class TipoComponenteService {
-  public resourceUrl = SERVER_API_URL + 'api/tipo-bloque-componente';
+  public resourceUrl = SERVER_API_URL + 'api/tipo-bloque-componentes';
 
   constructor(protected http: HttpClient) {}
 
