@@ -5,7 +5,7 @@
     <div class="tt" *ngFor="let component of contentBlock.componentes; let index = index;">
         <jhi-visor-text
           [component]="component"
-          [templateType]="contentBlock.tipoBloqueComponentes.nombre"
+          [templateType]="contentBlock.tipoBloqueComponentes"
           (updateComponent)="onUpdateComponent($event, index)">
         </jhi-visor-text>
     </div>

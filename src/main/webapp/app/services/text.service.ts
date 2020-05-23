@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class TextService {
   private text = new Subject<string>();
   private editing = new Subject<boolean>();
-  private templateType = new Subject<string>();
+  private templateTypeId = new Subject<number>();
 
   constructor() {}
 
@@ -27,11 +27,11 @@ export class TextService {
     this.editing.next(editing);
   }
 
-  getTemplateType(): Observable<string> {
-    return this.templateType.asObservable();
+  getTemplateTypeId(): Observable<number> {
+    return this.templateTypeId.asObservable();
   }
 
-  setTemplateType(templateType: string): void {
-    this.templateType.next(templateType);
+  setTemplateTypeId(templateType: number): void {
+    this.templateTypeId.next(templateType);
   }
 }

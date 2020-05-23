@@ -50,6 +50,6 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit {
     this.textService.setEditing(false);
     this.editing = true;
     this.textService.setText(this.htmlContent);
-    this.textService.setTemplateType(this.templateType);
+    this.textService.setTemplateTypeId(this.templateType);
   }
 }
