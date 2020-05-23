@@ -28,20 +28,32 @@
   src: url('../fonts/Open_Sans/OpenSans-Bold.ttf');
   font-weight: 700;
 }
+// Import Font Icons
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/Icons/fontello.eot?55274503');
+  src: url('../fonts/Icons/fontello.eot?55274503#iefix') format('embedded-opentype'),
+    url('../fonts/Icons/fontello.woff?55274503') format('woff'), url('../fonts/Icons/fontello.ttf?55274503') format('truetype'),
+    url('../fonts/Icons/fontello.svg?55274503#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 }
 body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Open Sans', sans-serif;
   background-color: $background-color-light !important;
   margin: 0 !important;
 }
 a:-webkit-any-link {
   cursor: pointer;
   text-decoration: none;
+  color: $blue-nimbus-dark;
 }
 /* Font styles */
 h1,
@@ -92,7 +104,7 @@ p {
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
-  color: #7a7a7a;
+  color: $text-color;
   line-height: 24px;
   @include smartphone {
     font-size: 13px;
@@ -116,7 +128,181 @@ strong {
   }
 }
 
+// Font Icons
+.icon {
+  position: relative;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  text-decoration: inherit;
+  color: $icon-main-color;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // text-shadow: 2px 1px 6px rgba(26, 61, 130, 0.3);
+}
+.icon-small {
+  font-size: 20px;
+}
+.icon-medium {
+  font-size: 24px;
+}
+.icon-large {
+  font-size: 30px;
+}
+.icon-xlarge {
+  font-size: 38px;
+}
+.icon-secondary-color {
+  color: $icon-secondary-color;
+}
+.icon-negative {
+  color: white;
+}
+// Icons
+.ni-user:before {
+  content: '\e800';
+}
+.ni-lock:before {
+  content: '\e801';
+}
+.ni-facebook:before {
+  content: '\e802';
+}
+.ni-twitter:before {
+  content: '\e803';
+}
+.ni-instagram:before {
+  content: '\e804';
+}
+.ni-alert:before {
+  content: '\e805';
+}
+.ni-succes:before {
+  content: '\e806';
+}
+.ni-settings:before {
+  content: '\e807';
+}
+.ni-close:before {
+  content: '\e808';
+}
+.ni-arrow:before {
+  content: '\e809';
+}
+.ni-info:before {
+  content: '\e80a';
+}
+.ni-add:before {
+  content: '\e80b';
+}
+.ni-help:before {
+  content: '\e80c';
+}
+.ni-support:before {
+  content: '\e80d';
+}
+.ni-book:before {
+  content: '\e80e';
+}
+.ni-calendar:before {
+  content: '\e80f';
+}
+.ni-template:before {
+  content: '\e810';
+}
+.ni-delete:before {
+  content: '\e811';
+}
+.ni-view:before {
+  content: '\e812';
+}
+.ni-edit:before {
+  content: '\e813';
+}
+.ni-nimbus:before {
+  content: '\e814';
+}
+.ni-drag:before {
+  content: '\e815';
+}
+.ni-arrow-right:before {
+  content: '\e816';
+}
+.ni-arrow-left:before {
+  content: '\e817';
+}
+.ni-desktop:before {
+  content: '\e818';
+}
+.ni-smartphone:before {
+  content: '\e819';
+}
+.ni-upload:before {
+  content: '\e81a';
+}
+
+.ni-dark:before {
+  content: '\e81b';
+}
+.ni-light:before {
+  content: '\e81c';
+}
+.ni-admin:before {
+  content: '\e81d';
+}
+.ni-tablet:before {
+  content: '\e81e';
+}
+.ni-folder:before {
+  content: '\e81f';
+}
+.ni-folderopen:before {
+  content: '\e820';
+}
+.ni-picture:before {
+  content: '\e821';
+}
+.ni-doc:before {
+  content: '\e822';
+}
+.ni-file:before {
+  content: '\e823';
+}
+.ni-menudots:before {
+  content: '\e824';
+}
+.ni-save:before {
+  content: '\e825';
+}
+.ni-arrowright:before {
+  content: '\e826';
+}
+.ni-arrowleft:before {
+  content: '\e827';
+}
+.ni-arrowup:before {
+  content: '\e828';
+}
+
 // Text editor component
+.angular-editor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 #component-text-row {
   position: relative;
   width: 100%;
@@ -142,8 +328,9 @@ strong {
 }
 .angular-editor-wrapper {
   position: relative;
-  height: 160px !important;
+  height: auto;
   width: 100% !important;
+  height: calc(100% - 30px) !important;
   overflow-y: scroll;
 }
 .angular-editor .angular-editor-wrapper .angular-editor-textarea {
@@ -177,7 +364,7 @@ strong {
 .angular-editor-toolbar {
   background-color: $tool-header !important;
   width: 100% !important;
-  height: 40px !important;
+  height: 30px !important;
   position: relative !important;
   padding: 0 !important;
   border: 0 !important;
@@ -188,7 +375,6 @@ strong {
 }
 .angular-editor-toolbar .angular-editor-toolbar-set {
   position: relative !important;
-  // margin-right: 10px !important;
   width: auto;
   height: auto;
 }
@@ -199,6 +385,7 @@ strong {
   height: auto;
   position: absolute !important;
   right: 15px;
+  display: none !important;
 }
 .angular-editor-toolbar-set:nth-child(1) .angular-editor-button {
   margin-left: 10px !important;
@@ -242,6 +429,11 @@ strong {
   order: 5;
   margin-left: 10px;
 }
+// Alineación de texto
+// Listas
+.angular-editor-toolbar-set:nth-child(odd) {
+  margin-left: 12px;
+}
 // Code
 .angular-editor-toolbar-set:nth-child(13) {
   display: none !important;
@@ -259,14 +451,24 @@ strong {
   padding: 0rem !important;
   min-width: 0rem !important;
   float: none !important;
-  width: 25px !important;
-  height: 25px !important;
-  transition: 0.4s;
+  width: 20px !important;
+  height: 20px !important;
+  transition: 0.3s;
 }
 .angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button:hover {
   background-color: rgba(255, 255, 255, 0.6) !important;
 }
-
+.angular-editor-button {
+  margin-left: 8px;
+}
+.ae-font.ae-expanded .ae-picker-options {
+  height: 140px !important;
+  overflow-y: auto !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background-color: white !important;
+  box-shadow: 0 6px 18px rgba(40, 40, 40, 0.1), 0 4px 16px rgba(50, 50, 50, 0.1) !important;
+}
 .fa-bold {
   position: relative;
   width: 20px;
@@ -339,6 +541,80 @@ strong {
 .fa-font:before {
   content: '' !important;
 }
+// New icons text component
+.fa-align-left {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_left.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-left:before {
+  content: '' !important;
+}
+.fa-align-center {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_center.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-center:before {
+  content: '' !important;
+}
+.fa-align-right {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_right.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-right:before {
+  content: '' !important;
+}
+.fa-align-justify {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_align_justify.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-align-justify:before {
+  content: '' !important;
+}
+.fa-list-ul {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_list_ul.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-list-ul:before {
+  content: '' !important;
+}
+.fa-list-ol {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/tc_list_ol.svg');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.fa-list-ol:before {
+  content: '' !important;
+}
+
 // Select button
 .ae-font .ae-picker-label {
   height: 25px !important;
@@ -443,7 +719,7 @@ jhi-login-modal {
   height: auto;
   min-height: 526px;
   margin: 0 auto;
-  background-color: #fefefe;
+  background-color: $bg-white;
   border-radius: 8px;
   top: 50%;
   margin-top: -263px;
@@ -462,18 +738,21 @@ jhi-login-modal {
     width: 35px;
     height: 35px;
     border-radius: 100%;
-    background-color: rgba(60, 60, 60, 0);
+    background-color: transparent;
     cursor: pointer;
     border: 0;
     outline: none;
-    background-image: url('../images/icon_close_modal.svg');
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
     transition: 0.4s;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
     &:hover {
-      background-color: rgba(60, 60, 60, 0.1);
+      background-color: $btn-white-hover;
     }
   }
 
@@ -540,7 +819,7 @@ jhi-login-modal {
             margin-top: 10px;
 
             label {
-              color: #1c2447;
+              color: $label-color;
               position: relative;
               width: auto;
               height: auto;
@@ -553,7 +832,7 @@ jhi-login-modal {
               position: relative;
               width: 100%;
               height: 40px;
-              background-color: white;
+              background-color: $input-color;
               border: 0;
               border-radius: 16px;
               border: 2px solid $input-border-light;
@@ -563,13 +842,6 @@ jhi-login-modal {
                 outline: none !important;
                 border-color: $input-border-color;
                 box-shadow: 0 0 10px transparent;
-              }
-              &::placeholder {
-                color: #b0b0b0;
-                font-size: 13px;
-                position: relative;
-                left: 4px;
-                top: 4px;
               }
             }
           }
@@ -585,28 +857,11 @@ jhi-login-modal {
     margin-bottom: 30px;
   }
 }
-
 .icon-form-login {
   position: absolute;
-  width: 20px;
-  height: 20px;
   left: 15px;
   bottom: 10px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  @include smartphone {
-    width: 16px;
-    height: 16px;
-  }
 }
-.icnf-f-l1 {
-  background-image: url('../images/icn_login_user.svg');
-}
-.icnf-f-l2 {
-  background-image: url('../images/icn_login_pass.svg');
-}
-
 .row-modal-l-check {
   position: relative;
   width: 100%;
@@ -614,7 +869,7 @@ jhi-login-modal {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
   .rmlc-1 {
     position: relative;
     width: 50%;
@@ -631,7 +886,7 @@ jhi-login-modal {
       justify-content: flex-start;
       cursor: pointer;
       &:hover > span {
-        color: $a-hover !important;
+        color: $a-color-nd-hover !important;
       }
 
       input.form-check-input {
@@ -647,7 +902,7 @@ jhi-login-modal {
         position: relative;
         width: auto;
         height: auto;
-        color: $secondary-btn-color;
+        color: $a-color-nd;
         font-weight: 600;
         font-size: 14px;
         margin-left: 4px;
@@ -673,14 +928,14 @@ jhi-login-modal {
       height: auto;
       font-size: 14px;
       cursor: pointer;
-      color: $secondary-btn-color;
+      color: $a-color-nd;
       font-weight: 600;
       transition: 0.3s;
       @include smartphone {
         font-size: 12px;
       }
       &:hover {
-        color: $a-hover;
+        color: $a-color-nd-hover;
       }
     }
   }
@@ -693,8 +948,7 @@ jhi-login-modal {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0;
-
+  margin-top: 25px;
   p {
     margin-right: 10px;
   }
@@ -704,11 +958,11 @@ jhi-login-modal {
     height: auto;
     font-size: 14px;
     cursor: pointer;
-    color: $secondary-btn-color;
+    color: $a-color-nd;
     font-weight: 600;
     transition: 0.3s;
     &:hover {
-      color: $a-hover;
+      color: $a-color-nd-hover;
     }
     @include smartphone {
       font-size: 12px;
@@ -726,38 +980,31 @@ jhi-login-modal {
   align-items: center;
   margin-top: 20px;
 }
+// Buttons
 // Main button style
 .main-btn {
   position: relative;
   width: auto;
-  height: 34px;
+  height: 32px;
   font-size: 13px;
   font-weight: 400;
-  color: #fff;
+  color: $btn-text-white;
   cursor: pointer;
   text-align: center;
   border: none;
-  background-size: 300% 100%;
   padding-left: 16px;
   padding-right: 16px;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   letter-spacing: 1px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  box-shadow: 0 20px 30px rgba(16, 18, 51, 0.1), 0 6px 18px rgba(16, 18, 51, 0.12);
   border-radius: 18px;
-  moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-
+  background-color: $main-btn-color;
+  transition: all 0.3s ease;
   &:hover {
-    background-position: 100% 0;
-    moz-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
+    background-color: $main-btn-color-hover;
   }
   &:focus {
     outline: none;
@@ -776,17 +1023,11 @@ jhi-login-modal {
   pointer-events: none;
   box-shadow: none !important;
 }
-.btn-navbar {
-  height: 30px;
-  padding-left: 15px;
-  padding-right: 15px;
-  text-transform: none;
-}
 // Secondary button
 .secondary-btn {
   position: relative;
   width: auto;
-  height: 34px;
+  height: 32px;
   font-size: 13px;
   font-weight: 400;
   color: #fff;
@@ -795,11 +1036,10 @@ jhi-login-modal {
   border: none;
   padding-left: 16px;
   padding-right: 16px;
-  text-transform: uppercase;
   letter-spacing: 1px;
   background-color: $secondary-btn-color;
   border-radius: 18px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -867,39 +1107,27 @@ jhi-login-modal {
   pointer-events: none;
   box-shadow: none;
 }
-// Button Icon
-// Secondary button
-.icon-btn {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin-right: 6px;
-  border-radius: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.icn-um-1 {
-  background-image: url('../images/icn_add.svg');
-  background-size: 100%;
-}
+
 // Circle button
 .btn-circle {
   position: relative;
   width: 38px;
   height: 38px;
-  background-color: $a-color;
+  background-color: $main-btn-color;
   border: 0;
   outline: none;
   border-radius: 50%;
   transition: 0.3s;
   cursor: pointer;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 20px 30px rgba(26, 61, 130, 0.1), 0 6px 18px rgba(26, 61, 130, 0.12);
+  .icon {
+    color: white;
+  }
   &:hover {
-    background-color: $secondary-btn-hover;
+    background-color: $main-btn-color-hover;
   }
   &:focus {
     outline: none;
@@ -908,16 +1136,9 @@ jhi-login-modal {
     outline: none;
   }
 }
-.btn-circle-um1 {
-  background-image: url('../images/icn_view_white.svg');
-}
-.btn-circle-um2 {
-  background-image: url('../images/icn_edit_white.svg');
-}
+
 .btn-circle-um3 {
-  background-image: url('../images/icn_delete_white.svg');
   background-color: $alert-color;
-  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
   &:hover {
     background-color: $alert-hover-color;
   }
@@ -950,12 +1171,6 @@ jhi-login-modal {
 
     .icn-al {
       position: relative;
-      width: 20px;
-      height: 20px;
-      background-image: url('../images/icn_alert.svg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
     }
     span {
       font-size: 13px;
@@ -976,7 +1191,7 @@ jhi-login-modal {
   border: 2px solid $alert-color !important;
 }
 .alert-warning {
-  color: $blue-nimbus;
+  color: $blue-nimbus-dark;
   background-color: whitesmoke !important;
   border-color: whitesmoke !important ;
 }
@@ -1069,7 +1284,7 @@ input::-webkit-input-placeholder {
     padding-bottom: 5px;
     font-size: 18px;
     font-weight: 600px;
-    color: $nimbus-bluedark;
+    color: $blue-nimbus-dark;
   }
 }
 .row-window-general {
@@ -1154,7 +1369,7 @@ input::-webkit-input-placeholder {
   }
 
   label {
-    color: #1c2447;
+    color: $label-color;
     position: relative;
     width: auto;
     height: auto;
@@ -1167,7 +1382,7 @@ input::-webkit-input-placeholder {
     position: relative;
     width: 100%;
     height: 38px;
-    background-color: white;
+    background-color: $input-color;
     border: 0;
     border-radius: 14px;
     border: 2px solid $input-border-light;
@@ -1510,16 +1725,9 @@ input::-webkit-input-placeholder {
     border-color: $input-border-hover;
   }
 
-  span {
-    position: relative;
-    width: 18px;
-    height: 18px;
+  .icon {
     margin-right: 6px;
     margin-left: 10px;
-    background-image: url('../images/icn_add_mini.svg');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
   }
   input {
     position: relative;
@@ -1527,7 +1735,7 @@ input::-webkit-input-placeholder {
     height: 28px;
     background-color: rgba(255, 255, 255, 0.2);
     font-size: 13px;
-    color: $nimbus-bluedark;
+    color: $blue-nimbus-dark;
     margin-right: 10px;
     border: 0;
     outline: none;
@@ -1599,11 +1807,10 @@ input::-webkit-input-placeholder {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 13px;
-  color: $nimbus-bluedark;
+  color: $blue-nimbus-dark;
   position: relative;
   width: 100%;
   height: auto;
-  // border-bottom: 1px solid $window-divider-color;
   padding: 5px;
   padding-left: 10px;
   transition: 0.3s;
@@ -1624,18 +1831,17 @@ dl {
   position: relative;
   width: 38px;
   height: 38px;
-  background-color: $secondary-btn-color;
+  background-color: $main-btn-color;
   border: 0;
   outline: none;
   border-radius: 0 14px 14px 0;
   transition: 0.4s;
   box-shadow: 0;
-  background-image: url('../images/icn_calendar.svg');
-  background-position: center;
-  background-size: 55%;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
-    background-color: $secondary-btn-hover;
+    background-color: $main-btn-color-hover;
   }
   &:focus {
     outline: none;
@@ -1721,7 +1927,7 @@ dl {
   border-radius: 10px 10px 0 0 !important;
   padding-top: 12px !important;
   padding-bottom: 5px !important;
-  background-color: $nimbus-bluedark !important;
+  background-color: $blue-nimbus-dark !important;
 
   select {
     margin-left: 5px;
@@ -1731,7 +1937,7 @@ dl {
 .ngb-dp-weekdays {
   // border-bottom: 1px solid rgba(0,0,0,.125);
   border-bottom: 0;
-  background-color: $nimbus-bluedark !important;
+  background-color: $blue-nimbus-dark !important;
 }
 .btn-link {
   color: white !important;
@@ -1778,7 +1984,7 @@ dl {
     left: 0;
     width: 100%;
     height: 200px;
-    background-color: $blue-nimbus-dark;
+    background-color: $blue-darkness;
     z-index: 1;
     background-image: url('../images/header_register.png');
     background-position: right;
@@ -1842,7 +2048,7 @@ dl {
         width: auto;
         height: auto;
         font-size: 24px;
-        color: $nimbus-bluedark;
+        color: $blue-nimbus-dark;
         @include smartphone {
           font-size: 20px;
         }
@@ -1883,11 +2089,11 @@ dl {
           padding-bottom: 10px;
 
           span {
-            color: $a-color;
+            color: $a-color-nd;
             cursor: pointer;
             transition: 0.3s;
             &:hover {
-              color: $a-hover;
+              color: $a-color-nd-hover;
             }
           }
         }
@@ -2031,7 +2237,7 @@ jhi-password-strength-bar {
     position: relative;
     width: 100%;
     height: 80px;
-    background-color: $blue-nimbus-dark;
+    background-color: $blue-darkness;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2103,17 +2309,6 @@ jhi-password-strength-bar {
             align-items: center;
             justify-content: flex-start;
 
-            .icon {
-              position: relative;
-              width: 40px;
-              height: 40px;
-              background-image: url('../images/icn_users_white.svg');
-              background-position: center;
-              background-repeat: no-repeat;
-              background-size: 90%;
-              margin-right: 12px;
-            }
-
             .number {
               position: relative;
               width: auto;
@@ -2158,7 +2353,7 @@ jhi-password-strength-bar {
     height: auto;
     text-align: center;
     font-size: 14px;
-    color: $blue-nimbus;
+    color: $blue-nimbus-dark;
   }
   .row-fum-pagination {
     position: relative;
@@ -2180,7 +2375,7 @@ jhi-password-strength-bar {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: $blue-nimbus;
+  background-color: $blue-nimbus-dark;
   border-color: #3e8acc;
 }
 .page-link {
@@ -2195,13 +2390,13 @@ jhi-password-strength-bar {
   margin-right: 8px;
   border: 0;
   border-radius: 8px;
-  color: $blue-nimbus;
+  color: $blue-nimbus-dark;
   background-color: white;
   font-size: 18px;
 }
 
 .page-item.disabled .page-link {
-  color: $blue-nimbus;
+  color: $blue-nimbus-dark;
   pointer-events: none;
   cursor: auto;
   opacity: 0.6;
@@ -2317,7 +2512,7 @@ jhi-password-strength-bar {
       &:nth-child(1) {
         width: 6%;
         a {
-          color: $a-color;
+          color: $a-color-nd;
         }
       }
       &:nth-child(2) {
@@ -2500,20 +2695,7 @@ jhi-password-strength-bar {
     }
   }
 }
-.logo-nimbus-view {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 100px;
-  right: 20px;
-  background-image: url('../images/view_user_img.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  @include smartphone {
-    display: none;
-  }
-}
+
 .row-vu-name {
   position: relative;
   width: 100%;
@@ -2527,11 +2709,10 @@ jhi-password-strength-bar {
     width: 70px;
     height: 70px;
     border-radius: 100%;
-    background-color: $blue-nimbus;
-    background-image: url('../images/user_navbar.svg');
-    background-position: center;
-    background-size: 60%;
-    background-repeat: no-repeat;
+    background-color: $blue-nimbus-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .desc-vu {
     position: relative;
@@ -2578,7 +2759,7 @@ jhi-password-strength-bar {
       margin-right: 10px;
       font-weight: 600;
       font-size: 15px;
-      color: $blue-nimbus;
+      color: $blue-nimbus-dark;
     }
   }
 }
@@ -2604,7 +2785,7 @@ jhi-password-strength-bar {
     position: relative;
     width: auto;
     height: auto;
-    color: $blue-nimbus;
+    color: $blue-nimbus-dark;
     font-weight: 600;
     font-size: 15px;
   }
@@ -2630,7 +2811,7 @@ jhi-password-strength-bar {
     height: auto;
     color: $text-color;
     &:nth-child(1) {
-      color: $blue-nimbus;
+      color: $blue-nimbus-dark;
       font-weight: 600;
       font-size: 15px;
     }
@@ -2668,7 +2849,7 @@ jhi-user-mgmt-delete-dialog {
     justify-content: flex-start;
     align-items: center;
     h4 {
-      color: $blue-nimbus;
+      color: $blue-nimbus-dark;
       margin-left: 15px;
       font-size: 16px;
     }
@@ -2929,4 +3110,107 @@ input[type='file'] {
   cursor: pointer;
   margin-left: 10px;
   font-size: 14px;
+}
+
+// Blocks
+.row-content-block {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: 1px dashed $bordercolor-block;
+  padding: 15px;
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid teal;
+  }
+}
+// Block 1 -Title
+.b-title-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border: 1px solid $blue-nimbus-light;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid $blue-nimbus-dark;
+  }
+  .final-block-row {
+    position: relative;
+    width: 100%;
+    div {
+      text-align: center;
+      position: relative;
+      width: auto;
+      max-width: 800px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 34px;
+      font-weight: 600;
+      font-style: normal;
+      color: $blue-nimbus-dark;
+      h1 {
+        text-align: center;
+        position: relative;
+        width: auto;
+        max-width: 800px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 34px;
+        font-weight: 600;
+        font-style: normal;
+        color: $blue-nimbus-dark;
+      }
+    }
+  }
+}
+
+// Block 2 -Paragraph text
+.col-cb-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border: 1px solid $blue-nimbus-light;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid $blue-nimbus-dark;
+  }
+  .b-paragraph-text {
+    position: relative;
+    width: 100%;
+    div {
+      p {
+      }
+    }
+  }
+}
+// Block 4 -Paragraph text with image
+.col-cb-text-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .cb4-row-text {
+    position: relative;
+    width: 50%;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid $blue-nimbus-light;
+    transition: 0.3s;
+    &:hover {
+      border: 1px solid $blue-nimbus-dark;
+    }
+    .b-paragraph-text {
+      position: relative;
+      width: 100%;
+      div {
+        p {
+        }
+      }
+    }
+  }
 }

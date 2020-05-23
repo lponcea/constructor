@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 
 @Component({
   selector: 'jhi-content-block2',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-block2.component.scss']
 })
 export class ContentBlock2Component {
+  @Input() contentBlock?: BloqueComponentes;
+  @Output() updateBlock = new EventEmitter();
+
   constructor() {}
+
+  onUpdateComponent($event: Event, index: number): void {
+    this.updateBlock.emit({
+      newValue: $event['newValue'],
+      type: $event['type'],
+      componentIndex: index
+    });
+  }
 }

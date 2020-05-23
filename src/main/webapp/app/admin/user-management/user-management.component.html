@@ -6,15 +6,8 @@
         <h2 jhiTranslate="userManagement.home.title">Users</h2>
       </div>
       <div class="buttons-um">
-        <!-- <div class="total-users-um">
-          <div class="i1"><span jhiTranslate="userManagement.home.totalUsers">Total de usuarios:</span></div>
-          <div class="i2">
-            <div class="icon"></div>
-            <span class="number">3</span>
-          </div>
-        </div> -->
-        <button class="main-btn btn-color-1 jh-create-entity" [routerLink]="['./new']">
-          <!-- <div class="icon-btn icn-um-1"></div> -->
+
+        <button class="secondary-btn jh-create-entity" [routerLink]="['./new']">
             <span jhiTranslate="userManagement.home.createLabel">Create a new User</span>
         </button>
       </div>
@@ -77,13 +70,16 @@
                 <!-- <td>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}} 20/10/20</td> -->
                 <!-- td 8 -->
                 <td class="um-row-buttons">
-                  <button type="submit" [routerLink]="['./', user.login, 'view']" class="btn-circle btn-circle-um1">
+                  <button type="submit" [routerLink]="['./', user.login, 'view']" class="btn-circle">
+                    <i class="icon ni-view"></i>
                     <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span> -->
                   </button>
-                  <button type="submit" [routerLink]="['./', user.login, 'edit']" queryParamsHandling="merge" class="btn-circle btn-circle-um2">
+                  <button type="submit" [routerLink]="['./', user.login, 'edit']" queryParamsHandling="merge" class="btn-circle">
+                    <i class="icon ni-edit"></i>
                     <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span> -->
                   </button>
                   <button type="button" (click)="deleteUser(user)" class="btn-circle btn-circle-um3" [disabled]="!currentAccount || currentAccount.login === user.login">
+                    <i class="icon ni-delete"></i>
                     <!-- <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span> -->
                   </button>
                 </td>

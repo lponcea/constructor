@@ -1,8 +1,40 @@
-<p>template-gallery works!</p>
-<div class="container">
-    <div class="row" *ngFor="let template of templates; let index = index;" (click)="selectTemplate(template.type);">
-        <div style="width: 100px; height: 50px; border: 1px black solid; margin: 5px;">
-            Template {{index + 1}}
-        </div>
+
+<div class="template-c-component">
+  <!-- Header -->
+  <div class="c-component-title">
+    <div class="cct-link">
+      <i class="icon ni-arrow"></i>
+      <p>Template gallery</p>
     </div>
+    <i class="icon ni-menudots"></i>
+  </div>
+  <!-- End Header -->
+  <div class="menu-template">
+    <div
+      [ngClass]="{'active-mt': filter.selected}"
+      class="item-mt"
+      *ngFor="let filter of filters; let index = index;"
+      (click)="filterTemplates(filter)">
+      <span>{{filter.text}}</span>
+    </div>
+  </div>
+  <!-- End menu -->
+  <div class="c-component-content">
+    <div class="row-c-component-c">
+
+      <div class="row-mini-gallery">
+        <div class="template-preview" *ngFor="let template of filteredTemplates; let index = index;">
+          <div class="template-mini"
+          [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
+          [style.backgroundImage]="'url(' + template.iconPath + ')'"
+          (click)="selectContentBlock(index)">
+          </div>
+          <div class="name-template">
+            <p>Name Lorem ipsum dolor.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

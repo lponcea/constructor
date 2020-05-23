@@ -1,0 +1,13 @@
+@import '../../../../content/scss/variables.scss';
+
+.col-cb-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  p {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+}

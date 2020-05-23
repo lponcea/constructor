@@ -1,0 +1,26 @@
+@import '../../../../content/scss/variables.scss';
+
+.col-cb-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.tt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: auto;
+  img {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    height: auto;
+    border: 1px solid $blue-nimbus-light;
+    transition: 0.3s;
+    &:hover {
+      border: 1px solid $blue-nimbus-dark;
+    }
+  }
+}

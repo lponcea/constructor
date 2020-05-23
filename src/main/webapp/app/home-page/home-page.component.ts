@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'jhi-home-page',
@@ -15,6 +15,7 @@ export class HomePageComponent {
 
   constructor() {}
 
+  /*
   @HostListener('window:scroll', ['$event']) onScroll($event: Event): void {
     const porcentaje = (document.documentElement.scrollTop * 100) / document.documentElement.scrollHeight;
     this.changeBoxLeft = porcentaje;
@@ -23,4 +24,5 @@ export class HomePageComponent {
     this.color3 = (255 * porcentaje) / 100;
     this.background = 'rgba(' + this.color1 + ', ' + this.color2 + ', ' + this.color3 + ', ' + this.opacity + ')';
   }
+  */
 }

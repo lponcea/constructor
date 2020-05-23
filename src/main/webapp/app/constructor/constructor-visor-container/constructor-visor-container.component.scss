@@ -1,23 +1,30 @@
+@import '../../../content/scss/variables.scss';
+
 #visor-container-grid {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #171a40;
+  background-color: $background-workspace;
   overflow-y: scroll;
-  display: block;
+  padding-top: 35px;
+  padding-bottom: 30px;
 }
 .visor-component-artboard {
   position: relative;
-  width: 92%;
+  width: 94%;
+  max-width: 1400px;
   height: auto;
-  background-color: #f9f9f9;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  padding-top: 40px;
-  padding-bottom: 40px;
+  min-height: 40px;
+  background-color: $color-workspace;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.12);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
-  min-height: 430px;
+  border-radius: 6px 0 6px 6px;
 
   .artboard-delete {
     position: absolute;
@@ -25,63 +32,56 @@
     top: -24px;
     width: 35px;
     height: 24px;
-    background-color: #15a9fa;
+    background-color: $main-btn-color;
     border-radius: 10px 10px 0 0;
     z-index: 2;
-    background-image: url('../../../content/images/delete_art_icn.svg');
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    transition: 0.4s;
-    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      cursor: default;
+    }
     &:hover {
-      background-color: #05c3f3;
+      background-color: $main-btn-color-hover;
     }
   }
   .artboard-name {
     position: absolute;
     right: 26px;
     top: -24px;
-    width: 80px;
+    width: auto;
+    min-width: 70px;
     height: 24px;
-    background-color: #1a3d82;
+    font-size: 14px;
+    background-color: $main-btn-color-hover;
     border-radius: 10px 0px 0 0;
     z-index: 1;
     display: flex;
     align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
 
     span {
       position: relative;
+      width: auto;
+      height: auto;
       font-size: 13px;
       color: white;
       text-align: left;
-      margin-left: 10px;
     }
   }
 }
 
-.visor-space-up {
-  position: relative;
-  width: 100%;
-  height: 50px;
-}
-.visor-space-down {
-  position: relative;
-  width: 100%;
-  height: 200px;
-}
-
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
   height: 18px;
 }
 ::-webkit-scrollbar-thumb {
   height: 6px;
-
   background-clip: padding-box;
   -webkit-border-radius: 7px;
   background-color: rgba(0, 0, 0, 0.15);
-  background-color: #e6e8ec;
   -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
 ::-webkit-scrollbar-button {
@@ -93,33 +93,62 @@
   background-color: transparent;
 }
 
-.m1-space {
+.row-visor-container {
   position: relative;
-  width: 200px;
-  height: 100px;
-  margin: 0 auto;
-  margin-top: 120px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  border: 1px solid $window-divider-color;
+  padding: 10px;
 
-  .icn-m1-s {
+  .col-jhi-block {
     position: relative;
-    width: 40px;
-    height: 40px;
-    background-image: url('../../../content/images/icn_empty.svg');
-    background-position: center;
-    background-size: 90%;
-    background-repeat: no-repeat;
-  }
-  p {
-    position: relative;
-    width: auto;
+    width: 100%;
     height: auto;
-    color: #a9a8a8;
-    text-align: center;
-    font-size: 12px;
-    line-height: 16px;
   }
+}
+
+// Scroll
+#visor-container-grid:-webkit-scrollbar {
+  width: 14px; /* Tamaño del scroll en vertical */
+  height: 10px; /* Tamaño del scroll en horizontal */
+  display: none; /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+#visor-container-grid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+#visor-container-grid::-webkit-scrollbar-thumb:hover {
+  // background: #b3b3b3;
+  // box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+#visor-container-grid::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 1);
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+#visor-container-grid::-webkit-scrollbar-track {
+  // background: rgba(26, 61, 130, 0.2);
+  border-radius: 0px;
+  border-left: 1px solid rgba(26, 61, 130, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+#visor-container-grid::-webkit-scrollbar-track:hover,
+#visor-container-grid::-webkit-scrollbar-track:active {
+  // background: #d4d4d4;
+}
+.btn-test-save {
+  position: fixed;
+  top: 56px;
+  z-index: 2;
 }

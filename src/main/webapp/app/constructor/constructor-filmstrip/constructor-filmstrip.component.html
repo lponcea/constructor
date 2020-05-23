@@ -1,36 +1,43 @@
-<div class="constructor-f">
 
-  <div class="ctc-name-artboard"><p>Nombre de lección</p></div>
-
-  <div class="component-tool-content">
-    <div class="row-ctc">
+<div class="filmstrip-c-component">
+  <!-- Header -->
+  <div class="c-component-title">
+    <div class="cct-link">
+      <i class="icon ni-arrow"></i>
+      <p>Filmstrip</p>
+    </div>
+    <i class="icon ni-menudots"></i>
+  </div>
+  <!-- End Header -->
+  <div class="c-component-content">
+    <div class="row-c-component-c">
 
       <div class="row-artboard-filmstrip" *ngFor="let contentBlock of contentBlocks; let index = index">
+        <div class="row-drag-ud"><div class="icon ni-drag"></div></div>
         <div
-          class="artboard-mini ab-mini-1"
+          class="artboard-mini"
           [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
-          [style.backgroundImage]="'url(' + getContentBlockImage(contentBlock.contentBlockType) + ')'"
+          [style.backgroundImage]="'url(' + getBlockIcon(contentBlock.tipoBloqueComponentes) + ')'"
           (click)="selectContentBlock(index)">
         </div>
         <!-- <div class="artboard-mini ab-mini-1 ab-mini-select"></div> -->
         <div class="ab-mini-desc">
-          <p>{{contentBlock.title}}</p>
-          <!-- <p>Mesa 1</p> -->
-          <div class="delete-ab" (click)="deleteContentBlock(contentBlock.id)"><span></span><p>Eliminar</p></div>
+          <p>{{contentBlock.name}}</p>
+          <div class="delete-ab" (click)="deleteContentBlock(index)">
+            <i class="icon ni-delete"></i>
+            <p>Eliminar</p>
+          </div>
         </div>
       </div>
 
       <div class="row-artboard-filmstrip">
+        <div class="row-drag-ud"></div>
         <div class="artboard-mini ab-mini-new" (click)="createContentBlock()"></div>
         <div class="ab-mini-desc">
           <p>Crear</p>
-          <!-- <div class="delete-ab"><span></span><p>Eliminar</p></div> -->
         </div>
       </div>
 
-
     </div>
   </div>
-
-
 </div>

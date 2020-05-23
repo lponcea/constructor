@@ -1,32 +1,29 @@
-
 <div id="visor-container-grid">
-  <div class="visor-space-up"></div>
+  <button class="main-btn btn-test-save" (click)="save()">Guardar</button>
   <div class="visor-component-artboard">
-    <div class="artboard-delete"></div>
-    <div class="artboard-name"><span>Mesa 1</span></div>
+    <div class="artboard-delete">
+      <i class="icon ni-delete icon-negative"></i>
+    </div>
+    <div class="artboard-name"><span>Name</span></div>
 
-    <!-- <div class="m1-space">
-      <div class="icn-m1-s"></div>
-      <p>Selecciona una plantilla <br> para comenzar.</p>
-    </div> -->
-
-    <div *ngFor="let contentBlock of contentBlocks; let index = index;">
-      <jhi-content-block1></jhi-content-block1>
+    <div class="row-visor-container">
+      <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
+        <div (click)="selectedBlock = index" ngClass="">
+          <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'titulo'">
+              <jhi-content-block1 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block1>
+            </div>
+            <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'texto'">
+              <jhi-content-block2 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block2>
+            </div>
+            <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'imagen'">
+              <jhi-content-block3 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block3>
+            </div>
+            <div *ngIf="getBlockTypeName(block.tipoBloqueComponentes) == 'imagen_texto'">
+              <jhi-content-block4 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block4>
+            </div>
+        </div>
+      </div>
     </div>
 
-    <!-- <div>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-      <jhi-content-block1></jhi-content-block1>
-    </div> -->
-
   </div>
-  <div class="visor-space-down"></div>
 </div>

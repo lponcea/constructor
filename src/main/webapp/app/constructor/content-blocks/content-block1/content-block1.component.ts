@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 
 @Component({
   selector: 'jhi-content-block1',
@@ -7,14 +8,16 @@ import { Component } from '@angular/core';
 })
 export class ContentBlock1Component {
   imgSrc = './../../../../content/images/img3.png';
+  @Input() contentBlock?: BloqueComponentes;
+  @Output() updateBlock = new EventEmitter();
 
   constructor() {}
 
-  editText(): void {
-    alert('Editar texto');
-  }
-
-  editImage(): void {
-    alert('Editar imagen');
+  onUpdateComponent($event: Event, index: number): void {
+    this.updateBlock.emit({
+      newValue: $event['newValue'],
+      type: $event['type'],
+      componentIndex: index
+    });
   }
 }

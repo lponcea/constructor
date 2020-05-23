@@ -1,11 +1,4 @@
-<div class="row-book">
-    <div class="col-book cb-1">
-      <div class="text-area">
-        <div [innerHtml]="htmlContent"></div>
-      </div>
-      <div class="img-area">
-        <div class="img-edit"></div>
-        <img src="{{imgSrc}}" alt="">
-      </div>
-    </div>
+<div class="final-block-row" (click)="editText()">
+  <div [innerHtml]="htmlContent" *ngIf="htmlContent !== ''"></div>
+  <div [innerHtml]="exampleContent" *ngIf="htmlContent === ''"></div>
 </div>

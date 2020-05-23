@@ -1,6 +1,5 @@
 import { Moment } from 'moment';
 import { ICurso } from 'app/shared/model/curso.model';
-import { IColaborador } from 'app/shared/model/colaborador.model';
 import { IEditorial } from 'app/shared/model/editorial.model';
 import { IRolesColaboradores } from './roles-colaboraderes.model';
 

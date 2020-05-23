@@ -3,6 +3,8 @@ import { BlockSelectionService } from 'app/services/block-selection.service';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
 import { Subscription } from 'rxjs';
+import { IBloqueComponentes } from 'app/shared/model/bloque-componentes.model';
+import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 
 @Component({
   selector: 'jhi-constructor-filmstrip',
@@ -11,26 +13,39 @@ import { Subscription } from 'rxjs';
 })
 export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   selectedContentBlockIndex = -1;
-  contentBlocks: Array<Object> = [];
+  contentBlocks: IBloqueComponentes[];
   selectedTemplateType = '';
   subscription: Subscription;
+  templates: ITipoBloqueComponentes[] = [];
 
   imagePaths = [
     {
-      contentBlockType: 'text_imagen_columnas',
-      path: '../../../content/images/ab1.png'
+      id: 1,
+      name: 'title',
+      contentBlockType: 'titulo',
+      path: '../../../content/images/ab1.png',
+      tags: 'text'
     },
     {
-      contentBlockType: 'imagen_texto_columnas',
-      path: '../../../content/images/ab2.png'
+      id: 2,
+      name: 'text',
+      contentBlockType: 'texto',
+      path: '../../../content/images/ab2.png',
+      tags: 'text'
     },
     {
+      id: 3,
+      name: 'image',
       contentBlockType: 'imagen',
-      path: '../../../content/images/ab3.png'
+      path: '../../../content/images/ab3.png',
+      tags: 'image'
     },
     {
-      contentBlockType: 'tres_columnas_imagen_texto_filas',
-      path: '../../../content/images/ab4.png'
+      id: 4,
+      name: 'image_text',
+      contentBlockType: 'imagen_texto',
+      path: '../../../content/images/ab4.png',
+      tags: 'image text'
     }
   ];
 
@@ -39,16 +54,19 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
     private blockSelectionService: BlockSelectionService,
     private navigationControlsService: NavigationControlsService
   ) {
-    this.subscription = this.navigationControlsService.getSelectedTemplateType().subscribe(selectedTemplate => {
-      if (selectedTemplate) {
-        this.selectedTemplateType = selectedTemplate.selectedTemplateType;
-        this.contentBlocksService.createContentBlock(selectedTemplate.selectedTemplateType);
+    this.contentBlocks = [];
+    this.subscription = this.contentBlocksService.getContentBlocks().subscribe(contentBlocks => {
+      if (contentBlocks) {
+        this.contentBlocks = contentBlocks;
       }
+    });
+    this.contentBlocksService.getTempaltes().subscribe(templates => {
+      this.templates = templates;
     });
   }
 
   ngOnInit(): void {
-    this.contentBlocks = this.contentBlocksService.getContentBlocks();
+    // this.contentBlocks = this.contentBlocksService.getContentBlocks();
   }
 
   /*
@@ -61,13 +79,7 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   /*
    * Obtiene la imagen para el fimrstrip de acuerdo con el tipo de bloque de contenido.
    */
-  getContentBlockImage(contentBlockType: string): string {
-    let path = '';
-    for (const imagePath of this.imagePaths) {
-      if (imagePath.contentBlockType === contentBlockType) {
-        path = imagePath['path'];
-      }
-    }
+  getContentBlockImage(path: string): string {
     return path;
   }
 
@@ -89,7 +101,18 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   /*
    * Elimina el bloque de contenido seleccionado en ContentBlocksService.
    */
-  deleteContentBlock(idBloquecontenido: number): void {
-    this.contentBlocksService.deleteContentBlock(idBloquecontenido);
+  deleteContentBlock(index: number): void {
+    this.contentBlocksService.setIndexBlockToDelete(index);
+  }
+
+  getBlockIcon(blockId: number): string {
+    let path = '';
+    for (let i = 0; i < this.templates.length; i++) {
+      if (this.templates[i].id === blockId) {
+        path = this.templates[i].iconPath!;
+        break;
+      }
+    }
+    return path;
   }
 }
