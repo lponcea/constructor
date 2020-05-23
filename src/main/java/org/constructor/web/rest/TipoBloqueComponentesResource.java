@@ -103,7 +103,6 @@ public class TipoBloqueComponentesResource {
 	    public ResponseEntity<List<TipoBloqueComponentes>> getAllTipoBloqueComponentes(Pageable pageable) {
 	        log.debug("REST request to get a page of TipoBloqueComponente");
 	        Page<TipoBloqueComponentes> page = tipoBloqueComponentesService.findAll(pageable);
-	        log.debug("ayyyyyyyyyyyy: {}", page.getContent());
 	        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
 	        return ResponseEntity.ok().headers(headers).body(page.getContent());
 	    }

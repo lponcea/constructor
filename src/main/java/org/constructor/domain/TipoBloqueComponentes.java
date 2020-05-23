@@ -82,7 +82,7 @@ public class TipoBloqueComponentes implements Serializable {
 	 *
 	 * @return the nombre bloque componentes
 	 */
-	public String getNombreBloqueComponentes() {
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -91,7 +91,7 @@ public class TipoBloqueComponentes implements Serializable {
 	 *
 	 * @param nombre the new nombre bloque componentes
 	 */
-	public void setNombreBloqueComponentes(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
@@ -168,15 +168,10 @@ public class TipoBloqueComponentes implements Serializable {
 		this.bloqueComponentes = bloqueComponentes;
 	}
 
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
 	@Override
 	public String toString() {
-		return "TipoBloqueComponente [id=" + id + ", nombre=" + nombre + ", iconPath="
-				+ iconPath + ", tag=" + tags + ", tipoComponente=" + tiposComponentes + "]";
+		return "TipoBloqueComponentes [id=" + id + ", nombre=" + nombre + ", iconPath=" + iconPath + ", tags=" + tags
+				+ ", tiposComponentes=" + tiposComponentes + "]";
 	}
 	
 }
