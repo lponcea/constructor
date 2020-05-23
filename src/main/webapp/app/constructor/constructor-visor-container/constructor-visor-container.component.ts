@@ -43,9 +43,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
       }
     });
     this.subscription = this.contentBlocksService.getIndexBlockToDelete().subscribe(indexBlockToDelete => {
-      if (indexBlockToDelete) {
-        this.deleteContentBlock(indexBlockToDelete);
-      }
+      this.deleteContentBlock(indexBlockToDelete);
     });
   }
 
