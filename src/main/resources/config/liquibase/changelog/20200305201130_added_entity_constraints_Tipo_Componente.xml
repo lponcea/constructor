@@ -7,9 +7,9 @@
         Added the constraints for entity nivel__jerarquico.
     -->
     <changeSet id="20200305201130-2" author="jhipster">
-    <addForeignKeyConstraint baseColumnNames="tipo_bloque_id"
+    <addForeignKeyConstraint baseColumnNames="tipo_bloque_componentes_id"
                                  baseTableName="tipos_bloques_componentes"
-                                 constraintName="fk_tipos_bloques_componentes_tipo_bloque_id"
+                                 constraintName="fk_tipos_bloques_componentes_tipo_bloque_componentes_id"
                                  referencedColumnNames="id"
                                  referencedTableName="tipo_bloque_componentes"/>
                                  
