@@ -1,11 +1,5 @@
 @import '../../../../content/scss/variables.scss';
 
-.row-content-block {
-  position: relative;
-  width: 100%;
-  height: auto;
-  border: 1px solid $bordercolor-block;
-}
 .col-cb-title {
   position: relative;
   width: 100%;
@@ -13,18 +7,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
   h2 {
     position: relative;
     width: auto;
     max-width: 800px;
-    font-size: 22px;
-    color: $secondary-btn-color;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    font-style: normal;
+    color: $blue-nimbus-dark;
+    text-align: center;
   }
-}
-.tt {
-  position: relative;
-  width: 100%;
-  height: auto;
 }

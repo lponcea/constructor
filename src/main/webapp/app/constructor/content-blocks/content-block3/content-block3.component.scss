@@ -1,31 +1,26 @@
 @import '../../../../content/scss/variables.scss';
 
-.row-content-block {
-  position: relative;
-  width: 100%;
-  height: auto;
-  border: 1px solid $bordercolor-block;
-}
 .col-cb-img {
   position: relative;
   width: 100%;
   height: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
+}
+.tt {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  width: 100%;
+  height: auto;
   img {
     position: relative;
     width: 80%;
     max-width: 900px;
     height: auto;
+    border: 1px solid $blue-nimbus-light;
+    transition: 0.3s;
+    &:hover {
+      border: 1px solid $blue-nimbus-dark;
+    }
   }
-}
-.tt {
-  position: relative;
-  width: 100%;
-  height: auto;
 }
