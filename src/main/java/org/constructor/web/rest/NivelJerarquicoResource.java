@@ -1,7 +1,5 @@
 package org.constructor.web.rest;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,9 +64,9 @@ public class NivelJerarquicoResource {
 	            throw new BadRequestAlertException("A new Nivel Jerarquico cannot already have an ID", ENTITY_NAME, "idexists");
 	        }
 	        NivelJerarquico result = nivelJerarquicoService.save(nivelJerarquicoDTO);
-	        return ResponseEntity.created(new URI("/api/nivel-jerarquico/" + result.getId()))
-	            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-	            .body(result);
+	        Optional<NivelJerarquico> nivelJerarquico = nivelJerarquicoService.findOne(result.getId());
+	        log.debug("result : {}", nivelJerarquico);
+	        return ResponseUtil.wrapOrNotFound(nivelJerarquico);
 	    }
 	    
 	    /**

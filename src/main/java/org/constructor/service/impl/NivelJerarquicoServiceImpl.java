@@ -35,34 +35,54 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	
+	/** The log. */
 	private final Logger log = LoggerFactory.getLogger(NivelJerarquicoServiceImpl.class);
 	
-	 private final NivelJerarquicoRepository nivelJerarquicoRepository;
+	 /** The nivel jerarquico repository. */
+ 	private final NivelJerarquicoRepository nivelJerarquicoRepository;
 	 
-	 @Autowired
+	 /** The bloque componentes repository. */
+ 	@Autowired
 	 private BloqueComponentesRepository bloqueComponentesRepository;
 	 
-	 @Autowired
+	 /** The componente repository. */
+ 	@Autowired
 	 private ComponenteRepository componenteRepository;
 	 
-	 @Autowired 
+	 /** The tipo bloque componente repository. */
+ 	@Autowired 
 	 private TipoBloqueComponentesRepository tipoBloqueComponenteRepository;
 	 
-	 @Autowired 
+	 /** The tipo componente repository. */
+ 	@Autowired 
 	 private TipoComponenteRepository tipoComponenteRepository;
 	 
-	 @Autowired
+	 /** The curso repository. */
+ 	@Autowired
 	 private CursoRepository cursoRepository;
 	 
-	 @Autowired
+	 /** The niveles curso repository. */
+ 	@Autowired
 	 private NivelesCursoRepository nivelesCursoRepository;
 	 
 	 
 	 
-	    public NivelJerarquicoServiceImpl(NivelJerarquicoRepository nivelJerarquicoRepository) {
+	    /**
+    	 * Instantiates a new nivel jerarquico service impl.
+    	 *
+    	 * @param nivelJerarquicoRepository the nivel jerarquico repository
+    	 */
+    	public NivelJerarquicoServiceImpl(NivelJerarquicoRepository nivelJerarquicoRepository) {
 	        this.nivelJerarquicoRepository = nivelJerarquicoRepository;
 	    }
 
+	/**
+	 * Save.
+	 *
+	 * @param nivelJerarquicoDTO the nivel jerarquico DTO
+	 * @return the nivel jerarquico
+	 * @throws Exception the exception
+	 */
 	@Override
 	@Transactional
 	public NivelJerarquico save(NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception {
@@ -122,18 +142,35 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		return nivelJerarquico;
 	}
 
+	/**
+	 * Find all.
+	 *
+	 * @param pageable the pageable
+	 * @return the page
+	 */
 	@Override
 	public Page<NivelJerarquico> findAll(Pageable pageable) {
 		
 		return nivelJerarquicoRepository.findAll(pageable);
 	}
 
+	/**
+	 * Find one.
+	 *
+	 * @param id the id
+	 * @return the optional
+	 */
 	@Override
 	public Optional<NivelJerarquico> findOne(Long id) {
 		
 		return nivelJerarquicoRepository.findById(id) ;
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param id the id
+	 */
 	@Override
 	public void delete(Long id) {
 		
