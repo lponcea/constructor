@@ -175,7 +175,7 @@ public class TipoBloqueComponentes implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "TipoBloqueComponente [id=" + id + ", nombreBloqueComponente=" + nombre + ", iconPath="
+		return "TipoBloqueComponente [id=" + id + ", nombre=" + nombre + ", iconPath="
 				+ iconPath + ", tag=" + tags + ", tipoComponente=" + tiposComponentes + "]";
 	}
 	
