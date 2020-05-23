@@ -49,7 +49,7 @@ public class TipoBloqueComponentes implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tipos_bloques_componentes", 
-            joinColumns = @JoinColumn(name = "tipo_bloque_id", referencedColumnName = "id", nullable = false),
+            joinColumns = @JoinColumn(name = "tipo_bloque_componentes_id", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name="tipo_componente_id", referencedColumnName = "id", nullable = false))
 	private Set<TipoComponente> tiposComponentes;
 	
