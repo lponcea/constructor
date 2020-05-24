@@ -10,7 +10,7 @@ public class BloqueComponentesDTO {
 	
 	private int orden;
 	
-	private TipoBloqueComponentes tipoBloqueComponente;
+	private TipoBloqueComponentes tipoBloqueComponentes;
 	
 	private Set<ComponenteDTO> componentes;
 
@@ -22,12 +22,12 @@ public class BloqueComponentesDTO {
 		this.orden = orden;
 	}
 
-	public TipoBloqueComponentes getTipoBloqueComponente() {
-		return tipoBloqueComponente;
+	public TipoBloqueComponentes getTipoBloqueComponentes() {
+		return tipoBloqueComponentes;
 	}
 
-	public void setTipoBloqueComponente(TipoBloqueComponentes tipoBloqueComponente) {
-		this.tipoBloqueComponente = tipoBloqueComponente;
+	public void setTipoBloqueComponentes(TipoBloqueComponentes tipoBloqueComponentes) {
+		this.tipoBloqueComponentes = tipoBloqueComponentes;
 	}
 
 	public Set<ComponenteDTO> getComponentes() {
@@ -40,7 +40,7 @@ public class BloqueComponentesDTO {
 
 	@Override
 	public String toString() {
-		return "BloqueComponentesDTO [orden=" + orden + ", tipoBloqueComponente=" + tipoBloqueComponente
+		return "BloqueComponentesDTO [orden=" + orden + ", tipoBloqueComponente=" + tipoBloqueComponentes
 				+ ", componentes=" + componentes + "]";
 	}
 }
