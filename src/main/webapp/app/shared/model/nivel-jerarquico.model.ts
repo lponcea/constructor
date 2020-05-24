@@ -8,6 +8,7 @@ export interface INivelJerarquico {
   informacionAdicional?: 0;
   bloquesComponentes?: IBloqueComponentes[];
   cursoId?: number;
+  orden?: number;
 }
 
 export class NivelJerarquico implements INivelJerarquico {
@@ -17,4 +18,5 @@ export class NivelJerarquico implements INivelJerarquico {
   public informacionAdicional?: 0;
   public bloquesComponentes?: IBloqueComponentes[];
   public cursoId?: number;
+  public orden?: number;
 }

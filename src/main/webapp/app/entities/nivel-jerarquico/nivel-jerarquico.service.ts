@@ -16,4 +16,8 @@ export class NivelJerarquicoService {
   create(nivelJerarquico: INivelJerarquico): Observable<EntityResponseType> {
     return this.http.post<INivelJerarquico>(this.resourceUrl, nivelJerarquico, { observe: 'response' });
   }
+
+  update(nivelJerarquico: INivelJerarquico): Observable<EntityResponseType> {
+    return this.http.put<INivelJerarquico>(this.resourceUrl, nivelJerarquico, { observe: 'response' });
+  }
 }

@@ -26,7 +26,7 @@ export class TemplateGalleryComponent implements OnInit {
     }
   ];
   templates: ITipoBloqueComponentes[] = [];
-  filteredTemplates: ITipoBloqueComponentes[];
+  filteredTemplates: ITipoBloqueComponentes[] = [];
 
   constructor(
     private contentBlocksService: ContentBlocksService,
@@ -95,11 +95,10 @@ export class TemplateGalleryComponent implements OnInit {
       )
       .subscribe((resBody: ITipoBloqueComponentes[]) => {
         this.templates = resBody;
-        console.error(this.templates);
         // Enviar plantillas a servicio para utilizar en filmStrip
         this.contentBlocksService.setTemplates(this.templates);
+        this.filteredTemplates = this.templates;
       });
-    this.filteredTemplates = this.templates;
   }
 
   ngOnInit(): void {}
