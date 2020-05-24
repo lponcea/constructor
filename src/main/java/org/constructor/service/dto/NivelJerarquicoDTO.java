@@ -17,7 +17,7 @@ public class NivelJerarquicoDTO {
 	private String tipo;
 	
 	/** The orden nivel. */
-	private int ordenNivel;
+	private int orden;
 	
 	/** The informacion adicional. */
 	private int informacionAdicional;
@@ -120,8 +120,8 @@ public class NivelJerarquicoDTO {
 	 *
 	 * @return the ordenNivel
 	 */
-	public int getOrdenNivel() {
-		return ordenNivel;
+	public int getOrden() {
+		return orden;
 	}
 
 	/**
@@ -129,8 +129,8 @@ public class NivelJerarquicoDTO {
 	 *
 	 * @param ordenNivel the ordenNivel to set
 	 */
-	public void setOrdenNivel(int ordenNivel) {
-		this.ordenNivel = ordenNivel;
+	public void setOrden(int orden) {
+		this.orden = orden;
 	}
 
 	/**

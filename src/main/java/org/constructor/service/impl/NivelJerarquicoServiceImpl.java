@@ -48,15 +48,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	 /** The componente repository. */
  	@Autowired
 	 private ComponenteRepository componenteRepository;
-	 
-	 /** The tipo bloque componente repository. */
- 	@Autowired 
-	 private TipoBloqueComponentesRepository tipoBloqueComponenteRepository;
-	 
-	 /** The tipo componente repository. */
- 	@Autowired 
-	 private TipoComponenteRepository tipoComponenteRepository;
-	 
+	 	 
 	 /** The curso repository. */
  	@Autowired
 	 private CursoRepository cursoRepository;
@@ -100,7 +92,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
 			BloqueComponentes bloqueComponentes = new BloqueComponentes();
 			bloqueComponentes.setOrdenComponente(bloqueDTO.getOrden());
-			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponente());
+			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
 				bloqueComponentes.setNivelJerarquico(nivelJerarquico);
 				bloqueComponentesRepository.save(bloqueComponentes);
 				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
@@ -124,7 +116,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 			log.debug("Curso: {}", curso.get());
 			nivelesCurso.setCurso(curso.get());
 			nivelesCurso.setNivelJerarquico(nivelJerarquico);
-			nivelesCurso.setOrdenNivel(nivelJerarquicoDTO.getOrdenNivel());
+			nivelesCurso.setOrdenNivel(nivelJerarquicoDTO.getOrden());
 			nivelesCursoRepository.save(nivelesCurso);
 			log.debug("Se guardó correctamente nivelesCurso: {}", nivelesCurso);
 		}else {
