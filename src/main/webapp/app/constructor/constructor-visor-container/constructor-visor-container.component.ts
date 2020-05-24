@@ -118,7 +118,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     return {
       ...new BloqueComponentes(),
       orden: this.determineNewBlockOrder(),
-      tipoBloqueComponentes: selectedTemplate.id,
+      tipoBloqueComponentes: selectedTemplate,
       componentes
     };
   }
@@ -127,7 +127,8 @@ export class ConstructorVisorContainerComponent implements OnInit {
     return {
       ...new Componente(),
       contenido: 'Contenido de nuevo componente de tipo de bloque ' + componentBlockType.nombre,
-      tipoComponente: componentBlockType.id
+      tipoComponente: componentBlockType,
+      version: 1
     };
   }
 

@@ -1,12 +1,18 @@
 import { Componente } from './componente.model';
+import { ITipoBloqueComponentes } from './tipo-bloque-componentes.model';
 
 export interface IBloqueComponentes {
   id?: number;
-  tipoBloqueComponentes?: number;
+  tipoBloqueComponentes?: ITipoBloqueComponentes;
   orden?: number;
   componentes?: Componente[];
 }
 
 export class BloqueComponentes implements IBloqueComponentes {
-  constructor(public id?: number, public tipoBloqueComponentes?: number, public orden?: number, public componentes?: Componente[]) {}
+  constructor(
+    public id?: number,
+    public tipoBloqueComponentes?: ITipoBloqueComponentes,
+    public orden?: number,
+    public componentes?: Componente[]
+  ) {}
 }

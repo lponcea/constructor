@@ -1,10 +1,11 @@
 import { IBloqueComponentes } from './bloque-componentes.model';
+import { ITipoComponente } from './tipo-componente.model';
 
 export interface IComponente {
   id?: number;
   contenido?: string;
   version?: number;
-  tipoComponente?: number;
+  tipoComponente?: ITipoComponente;
   bloqueComponente?: IBloqueComponentes;
 }
 
@@ -13,7 +14,7 @@ export class Componente implements IComponente {
     public id?: number,
     public contenido?: string,
     public version?: number,
-    public tipoComponente?: number,
+    public tipoComponente?: ITipoComponente,
     public bloqueComponente?: IBloqueComponentes
   ) {}
 }
