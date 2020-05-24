@@ -4,17 +4,17 @@ import org.constructor.domain.TipoComponente;
 
 public class ComponenteDTO {
 	
-	private Long tipoComponente;
+	private TipoComponente tipoComponente;
 	
 	private String contenido;
 	
 	private int version;
 
-	public Long getTipoComponente() {
+	public TipoComponente getTipoComponente() {
 		return tipoComponente;
 	}
 
-	public void setTipoComponente(Long tipoComponente) {
+	public void setTipoComponente(TipoComponente tipoComponente) {
 		this.tipoComponente = tipoComponente;
 	}
 

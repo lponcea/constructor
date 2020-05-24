@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,6 +27,7 @@ public class Componente implements Serializable {
 	 * Long Id 
 	 */
 	@Id
+	@OrderBy(value = "id ASC")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
@@ -44,7 +46,7 @@ public class Componente implements Serializable {
 	/**
 	 * tipoComponente
 	 */
-	@JsonIgnore
+	
 	@ManyToOne
     @JoinColumn(name = "tipo_componente_id", nullable=false)
     private TipoComponente tipoComponente;

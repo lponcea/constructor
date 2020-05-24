@@ -30,12 +30,12 @@ public class BloqueComponentes implements Serializable {
 	
 	/** The id. */
 	@Id
-	@OrderBy(value = "id ASC")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	/** The orden componente. */
 	@Column(name = "orden_componente")
+	@OrderBy(value = "ordenComponente ASC")
     private int ordenComponente;
 	
 	/** The componente. */

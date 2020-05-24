@@ -4,7 +4,7 @@ public class TipoComponenteDTO {
 	
 	private Long id;
 	
-	private String Nombre;
+	private String nombre;
 
 	public Long getId() {
 		return id;
@@ -15,16 +15,16 @@ public class TipoComponenteDTO {
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	@Override
 	public String toString() {
-		return "TipoComponenteDTO [id=" + id + ", Nombre=" + Nombre + "]";
+		return "TipoComponenteDTO [id=" + id + ", Nombre=" + nombre + "]";
 	}
 
 }

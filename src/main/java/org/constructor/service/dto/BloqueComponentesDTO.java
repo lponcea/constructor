@@ -5,11 +5,12 @@ import java.util.Set;
 import org.constructor.domain.TipoBloqueComponentes;
 
 
+
 public class BloqueComponentesDTO {
 	
 	private int orden;
 	
-	private Long tipoBloqueComponentes;
+	private TipoBloqueComponentes tipoBloqueComponente;
 	
 	private Set<ComponenteDTO> componentes;
 
@@ -21,12 +22,12 @@ public class BloqueComponentesDTO {
 		this.orden = orden;
 	}
 
-	public Long getTipoBloqueComponentes() {
-		return tipoBloqueComponentes;
+	public TipoBloqueComponentes getTipoBloqueComponente() {
+		return tipoBloqueComponente;
 	}
 
-	public void setTipoBloqueComponentes(Long tipoBloqueComponentes) {
-		this.tipoBloqueComponentes = tipoBloqueComponentes;
+	public void setTipoBloqueComponente(TipoBloqueComponentes tipoBloqueComponente) {
+		this.tipoBloqueComponente = tipoBloqueComponente;
 	}
 
 	public Set<ComponenteDTO> getComponentes() {
@@ -39,7 +40,7 @@ public class BloqueComponentesDTO {
 
 	@Override
 	public String toString() {
-		return "BloqueComponentesDTO [orden=" + orden + ", tipoBloqueComponente=" + tipoBloqueComponentes
+		return "BloqueComponentesDTO [orden=" + orden + ", tipoBloqueComponente=" + tipoBloqueComponente
 				+ ", componentes=" + componentes + "]";
 	}
 }
