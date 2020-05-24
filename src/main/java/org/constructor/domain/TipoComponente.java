@@ -48,11 +48,11 @@ public class TipoComponente implements Serializable {
 		this.id = id;
 	}
 
-	public String getNombreComponente() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombreComponente(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 

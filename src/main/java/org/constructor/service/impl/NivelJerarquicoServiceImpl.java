@@ -100,29 +100,20 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
 			BloqueComponentes bloqueComponentes = new BloqueComponentes();
 			bloqueComponentes.setOrdenComponente(bloqueDTO.getOrden());
-			Optional<TipoBloqueComponentes> tipoBloqueComponentes = tipoBloqueComponenteRepository.findById(bloqueDTO.getTipoBloqueComponentes());
-			if(tipoBloqueComponentes.isPresent()) {
-				log.debug(" TipoBloqueComponentes: {}", tipoBloqueComponentes);
-				bloqueComponentes.setTipoBloqueComponentes(tipoBloqueComponentes.get());
+			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponente());
 				bloqueComponentes.setNivelJerarquico(nivelJerarquico);
 				bloqueComponentesRepository.save(bloqueComponentes);
 				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
-			}else {
-				throw new Exception("tipoBloqueComponentesId not found");
-			}
+				
 			//Guardando Componente
 			for(ComponenteDTO componenteDTO : bloqueDTO.getComponentes()) {
 				Componente componente = new Componente();
 				componente.setContenido(componenteDTO.getContenido());
-				Optional<TipoComponente> tipoComponente = tipoComponenteRepository.findById(componenteDTO.getTipoComponente());
-				if (tipoComponente.isPresent()) {
-					componente.setTipoComponente(tipoComponente.get());
+					componente.setTipoComponente(componenteDTO.getTipoComponente());
 					componente.setBloqueComponentes(bloqueComponentes);
+					componente.setVersion(componenteDTO.getVersion());
 					componenteRepository.save(componente);
 					log.debug("Se guardó correctamente el componente: {}", componente);
-				}else {
-					throw new Exception("tipoComponenteId not found");
-				}
 			}
 		}
 		
@@ -133,7 +124,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 			log.debug("Curso: {}", curso.get());
 			nivelesCurso.setCurso(curso.get());
 			nivelesCurso.setNivelJerarquico(nivelJerarquico);
-			nivelesCurso.setOrdenNivel(0);
+			nivelesCurso.setOrdenNivel(nivelJerarquicoDTO.getOrdenNivel());
 			nivelesCursoRepository.save(nivelesCurso);
 			log.debug("Se guardó correctamente nivelesCurso: {}", nivelesCurso);
 		}else {
