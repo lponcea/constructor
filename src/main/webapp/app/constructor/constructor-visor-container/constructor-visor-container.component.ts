@@ -4,7 +4,7 @@ import { Subscription, Observable } from 'rxjs';
 import { IBloqueComponentes, BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 import { ITipoBloqueComponentes, TipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 import { IComponente, Componente } from 'app/shared/model/componente.model';
-import { NivelJerarquico } from 'app/shared/model/nivel-jerarquico.model';
+import { NivelJerarquico, INivelJerarquico } from 'app/shared/model/nivel-jerarquico.model';
 import { NivelJerarquicoService } from 'app/entities/nivel-jerarquico/nivel-jerarquico.service';
 import { HttpResponse } from '@angular/common/http';
 import { TipoNivelJerarquico } from 'app/shared/model/enumerations/tipo-nivel-jerarquico.model';
@@ -22,7 +22,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   selectedTemplateType = '';
   contentBlocks = Array<IBloqueComponentes>();
   nivel: NivelJerarquico = {
-    id: undefined,
+    nivelId: undefined,
     cursoId: 6,
     nombre: 'Lección de Español',
     tipo: TipoNivelJerarquico['L'],
@@ -79,7 +79,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     this.success = false;
     this.error = false;
     this.nivel.bloquesComponentes = this.contentBlocks;
-    if (this.nivel.id) {
+    if (this.nivel.nivelId) {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.update(this.nivel));
     } else {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.create(this.nivel));
@@ -87,7 +87,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     // console.error(JSON.stringify(this.nivel));
   }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<IComponente>>): void {
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<INivelJerarquico>>): void {
     result.subscribe(
       res => this.onSaveSuccess(res),
       () => this.onSaveError()
@@ -117,6 +117,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     }
     return {
       ...new BloqueComponentes(),
+      id: undefined,
       orden: this.determineNewBlockOrder(),
       tipoBloqueComponentes: selectedTemplate,
       componentes
@@ -126,6 +127,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   createComponent(componentBlockType: TipoBloqueComponentes): IComponente {
     return {
       ...new Componente(),
+      id: undefined,
       contenido: 'Contenido de nuevo componente de tipo de bloque ' + componentBlockType.nombre,
       tipoComponente: componentBlockType,
       version: 1
