@@ -84,7 +84,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.create(this.nivel));
     }
-    // console.error(JSON.stringify(nivel));
+    // console.error(JSON.stringify(this.nivel));
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IComponente>>): void {
