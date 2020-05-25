@@ -1,8 +1,13 @@
 package org.constructor.web.rest;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.constructor.domain.BloqueComponentes;
 import org.constructor.domain.NivelJerarquico;
 import org.constructor.response.NivelJerarquicoResponse;
 import org.constructor.service.NivelJerarquicoService;
@@ -90,7 +95,6 @@ public class NivelJerarquicoResource {
 	        Optional<NivelJerarquico> result = nivelJerarquicoService.updateNivelJerarquico(nivelJerarquicoDTO);
 	        NivelJerarquicoResponse nivelJerarquico = nivelJerarquicoService.findOne(result.get().getId());
 	        nivelJerarquico.setCursoId(nivelJerarquicoDTO.getCursoId());
-	        nivelJerarquico.setOrden(nivelJerarquicoDTO.getOrden());
 	        log.debug("actualizado nivel  : {}", nivelJerarquico);
 	        return ResponseEntity.ok()
 	            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.get().getId().toString()))

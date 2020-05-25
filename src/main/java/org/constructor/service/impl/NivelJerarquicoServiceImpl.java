@@ -1,6 +1,9 @@
 package org.constructor.service.impl;
 
+import java.util.Comparator;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.constructor.domain.BloqueComponentes;
 import org.constructor.domain.Componente;
@@ -230,9 +233,10 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		NivelJerarquico nv;
 		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
 		Optional<NivelJerarquico> onv = nivelJerarquicoRepository.findById(id);
-		log.debug("Response onv {}", onv);
 		nv = onv.get();
-		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes());
+		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes().stream()
+												.sorted(Comparator.comparing(BloqueComponentes::getOrden))
+												.collect(Collectors.toList()));
 		nivelResponse.setNombre(nv.getNombre());
 		nivelResponse.setInformacionAdicional(nv.getInformacionAdicional());
 		nivelResponse.setNivelId(nv.getId());

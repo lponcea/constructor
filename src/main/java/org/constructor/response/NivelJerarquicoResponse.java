@@ -1,5 +1,6 @@
 package org.constructor.response;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.OrderBy;
@@ -30,8 +31,7 @@ public class NivelJerarquicoResponse {
 	private int orden;
 	
 	/** The bloques componentes. */
-	@OrderBy("orden ASC")
-	private Set<BloqueComponentes> bloquesComponentes;
+	private List<BloqueComponentes> bloquesComponentes;
 	
 	/**
 	 * Gets the curso id.
@@ -146,7 +146,7 @@ public class NivelJerarquicoResponse {
 	 *
 	 * @return the bloquesComponentes
 	 */
-	public Set<BloqueComponentes> getBloquesComponentes() {
+	public List<BloqueComponentes> getBloquesComponentes() {
 		return bloquesComponentes;
 	}
 	
@@ -155,7 +155,7 @@ public class NivelJerarquicoResponse {
 	 *
 	 * @param bloquesComponentes the bloquesComponentes to set
 	 */
-	public void setBloquesComponentes(Set<BloqueComponentes> bloquesComponentes) {
+	public void setBloquesComponentes(List<BloqueComponentes> bloquesComponentes) {
 		this.bloquesComponentes = bloquesComponentes;
 	}
 	

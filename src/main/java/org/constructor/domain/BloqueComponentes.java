@@ -76,7 +76,6 @@ public class BloqueComponentes implements Serializable {
 	 *
 	 * @return the orden componente
 	 */
-	@OrderBy(value = "orden ASC")
 	public int getOrden() {
 		return orden;
 	}
