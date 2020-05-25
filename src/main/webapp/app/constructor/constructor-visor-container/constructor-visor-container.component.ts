@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { Subscription, Observable } from 'rxjs';
 import { IBloqueComponentes, BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
@@ -24,7 +24,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   contentBlocks = Array<IBloqueComponentes>();
   nivel: NivelJerarquico = {
     nivelId: undefined,
-    cursoId: 8,
+    cursoId: 11,
     nombre: 'Lección de Español',
     tipo: TipoNivelJerarquico['L'],
     informacionAdicional: 0,
@@ -43,6 +43,24 @@ export class ConstructorVisorContainerComponent implements OnInit {
   ];
   error = false;
   success = false;
+  _curso: any;
+  @Input()
+  set curso(val: any) {
+    this._curso = val;
+    if (this._curso !== undefined) {
+      this.nivel = this._curso.nivelesCurso[0].nivelJerarquico;
+      if (this._curso.nivelesCurso.length) {
+        this.contentBlocks = [];
+        this.contentBlocks = this.nivel.bloquesComponentes!;
+        this.nivel.cursoId = this._curso.id;
+        this.nivel.nivelId = this._curso.nivelesCurso[0].nivelJerarquico.id;
+        this.contentBlocksService.setContentBlocks(this.contentBlocks);
+      }
+    }
+  }
+  get curso(): any {
+    return this._curso;
+  }
 
   constructor(
     private contentBlocksService: ContentBlocksService,
@@ -108,6 +126,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     */
     this.contentBlocks = [];
     this.contentBlocks = res.body.bloquesComponentes;
+    this.contentBlocksService.setContentBlocks(this.contentBlocks);
     // this.updateContentBlocks(res.body.bloquesComponentes);
   }
 
