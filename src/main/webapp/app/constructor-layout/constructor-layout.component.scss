@@ -43,6 +43,14 @@
   background-color: $color-sidebar;
   z-index: 2;
 }
+// Collapse grid-visor-container
+.gvc-collapse {
+  height: calc(100% - 30px);
+}
+// Collapse grid-component-container
+.gcc-collapse {
+  height: 30px;
+}
 
 // Expand sidebar
 #item-grid-3 {

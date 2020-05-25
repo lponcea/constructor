@@ -25,11 +25,11 @@
         'three-contract': rightIsContracted && !leftIsContracted
         }" id="item-grid-2">
           <!-- Visor container -->
-          <div class="grid-visor-container">
+          <div class="grid-visor-container" [ngClass]="{'gvc-collapse': !showTextEditor}">
             <jhi-constructor-visor-container></jhi-constructor-visor-container>
           </div>
           <!-- Component container -->
-          <div class="grid-component-container">
+          <div class="grid-component-container" [ngClass]="{'gcc-collapse': !showTextEditor}">
             <jhi-constructor-component-container></jhi-constructor-component-container>
           </div>
         </div>

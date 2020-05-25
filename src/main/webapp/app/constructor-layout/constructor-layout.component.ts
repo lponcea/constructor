@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class ConstructorLayoutComponent {
   rightIsContracted = false;
   leftIsContracted = false;
+  showTextEditor = true;
 
   constructor() {}
 }
