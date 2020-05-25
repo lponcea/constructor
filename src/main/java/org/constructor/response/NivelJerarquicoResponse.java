@@ -1,16 +1,18 @@
-package org.constructor.service.dto;
+package org.constructor.response;
 
 import java.util.Set;
 
+import org.constructor.domain.BloqueComponentes;
+
 /**
- * The Class NivelJerarquicoDTO.
+ * The Class NivelJerarquicoResponse.
  */
-public class NivelJerarquicoDTO {
+public class NivelJerarquicoResponse {
 	
 	/** The curso id. */
 	private Long cursoId;
 	
-	/** The nivelId. */
+	/** The nivel id. */
 	private Long nivelId;
 	
 	/** The nombre. */
@@ -19,47 +21,51 @@ public class NivelJerarquicoDTO {
 	/** The tipo. */
 	private String tipo;
 	
-	/** The orden nivel. */
-	private int orden;
-	
 	/** The informacion adicional. */
 	private int informacionAdicional;
 	
+	/** The orden. */
+	private int orden;
+	
 	/** The bloques componentes. */
-	private Set<BloqueComponentesDTO> bloquesComponentes;
-
+	private Set<BloqueComponentes> bloquesComponentes;
+	
 	/**
 	 * Gets the curso id.
 	 *
-	 * @return the curso id
+	 * @return the cursoId
 	 */
 	public Long getCursoId() {
 		return cursoId;
 	}
-
+	
 	/**
 	 * Sets the curso id.
 	 *
-	 * @param cursoId the new curso id
+	 * @param cursoId the cursoId to set
 	 */
 	public void setCursoId(Long cursoId) {
 		this.cursoId = cursoId;
 	}
-
+	
 	/**
+	 * Gets the nivel id.
+	 *
 	 * @return the nivelId
 	 */
 	public Long getNivelId() {
 		return nivelId;
 	}
-
+	
 	/**
+	 * Sets the nivel id.
+	 *
 	 * @param nivelId the nivelId to set
 	 */
 	public void setNivelId(Long nivelId) {
 		this.nivelId = nivelId;
 	}
-
+	
 	/**
 	 * Gets the nombre.
 	 *
@@ -68,16 +74,16 @@ public class NivelJerarquicoDTO {
 	public String getNombre() {
 		return nombre;
 	}
-
+	
 	/**
 	 * Sets the nombre.
 	 *
-	 * @param nombre the new nombre
+	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
 	/**
 	 * Gets the tipo.
 	 *
@@ -86,81 +92,81 @@ public class NivelJerarquicoDTO {
 	public String getTipo() {
 		return tipo;
 	}
-
+	
 	/**
 	 * Sets the tipo.
 	 *
-	 * @param tipo the new tipo
+	 * @param tipo the tipo to set
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+	
 	/**
 	 * Gets the informacion adicional.
 	 *
-	 * @return the informacion adicional
+	 * @return the informacionAdicional
 	 */
 	public int getInformacionAdicional() {
 		return informacionAdicional;
 	}
-
+	
 	/**
 	 * Sets the informacion adicional.
 	 *
-	 * @param informacionAdicional the new informacion adicional
+	 * @param informacionAdicional the informacionAdicional to set
 	 */
 	public void setInformacionAdicional(int informacionAdicional) {
 		this.informacionAdicional = informacionAdicional;
 	}
-
+	
 	/**
-	 * Gets the bloques componentes.
+	 * Gets the orden.
 	 *
-	 * @return the bloques componentes
-	 */
-	public Set<BloqueComponentesDTO> getBloquesComponentes() {
-		return bloquesComponentes;
-	}
-
-	/**
-	 * Sets the bloques componentes.
-	 *
-	 * @param bloquesComponentes the new bloques componentes
-	 */
-	public void setBloquesComponentes(Set<BloqueComponentesDTO> bloquesComponentes) {
-		this.bloquesComponentes = bloquesComponentes;
-	}
-
-	/**
-	 * Gets the orden nivel.
-	 *
-	 * @return the ordenNivel
+	 * @return the orden
 	 */
 	public int getOrden() {
 		return orden;
 	}
-
+	
 	/**
-	 * Sets the orden nivel.
+	 * Sets the orden.
 	 *
-	 * @param ordenNivel the ordenNivel to set
+	 * @param orden the orden to set
 	 */
 	public void setOrden(int orden) {
 		this.orden = orden;
 	}
-
-	@Override
-	public String toString() {
-		return "NivelJerarquicoDTO [cursoId=" + cursoId + ", nivelId=" + nivelId + ", nombre=" + nombre + ", tipo="
-				+ tipo + ", orden=" + orden + ", informacionAdicional=" + informacionAdicional + ", bloquesComponentes="
-				+ bloquesComponentes + "]";
+	
+	/**
+	 * Gets the bloques componentes.
+	 *
+	 * @return the bloquesComponentes
+	 */
+	public Set<BloqueComponentes> getBloquesComponentes() {
+		return bloquesComponentes;
 	}
-
+	
+	/**
+	 * Sets the bloques componentes.
+	 *
+	 * @param bloquesComponentes the bloquesComponentes to set
+	 */
+	public void setBloquesComponentes(Set<BloqueComponentes> bloquesComponentes) {
+		this.bloquesComponentes = bloquesComponentes;
+	}
+	
 	/**
 	 * To string.
 	 *
 	 * @return the string
 	 */
-		
+	@Override
+	public String toString() {
+		return "NivelJerarquicoResponse [cursoId=" + cursoId + ", nivelId=" + nivelId + ", nombre=" + nombre + ", tipo="
+				+ tipo + ", informacionAdicional=" + informacionAdicional + ", orden=" + orden + ", bloquesComponentes="
+				+ bloquesComponentes + "]";
+	}
+	
+
 }

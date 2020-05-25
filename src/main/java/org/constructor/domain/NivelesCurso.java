@@ -47,7 +47,7 @@ public class NivelesCurso  implements Serializable{
 	/**
 	 * nivel_jerarquico_id
 	 */
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "nivel_jerarquico_id", nullable=false)
     private NivelJerarquico nivelJerarquico;

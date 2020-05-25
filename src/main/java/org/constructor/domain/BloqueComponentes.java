@@ -95,7 +95,7 @@ public class BloqueComponentes implements Serializable {
 	 *
 	 * @return the componente
 	 */
-	public Set<Componente> getComponente() {
+	public Set<Componente> getComponentes() {
 		return componente;
 	}
 
@@ -151,7 +151,7 @@ public class BloqueComponentes implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "BloqueComponentes [id=" + id + ", ordenComponente=" + ordenComponente + ", componente=" + componente
+		return "BloqueComponentes [id=" + id + ", ordenComponente=" + ordenComponente + ", componentes=" + componente
 				+ ", tipoBloqueComponentes=" + tipoBloqueComponentes + "]";
 	}
 	
