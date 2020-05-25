@@ -81,14 +81,15 @@
   position: absolute;
   top: 20px;
   left: 50%;
-  margin-left: -130px;
-  width: 260px;
+  margin-left: -125px;
+  width: 250px;
   height: 15px;
   p {
     display: flex;
     justify-content: center;
     align-items: center;
     color: $blue-nimbus-dark;
+    font-size: 13px;
   }
 }
 
