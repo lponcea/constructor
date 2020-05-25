@@ -138,11 +138,34 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	            .map(Optional::get)
 	            .map(nivel -> {
 	            	log.debug("Update nivel: {}", nivel);
+	            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
+	            			bloqueNuevo ->{
+       							if(bloqueNuevo.getId() == null) {
+    								log.debug("Se agrega un nuevo componente: {}", bloqueNuevo);
+    								BloqueComponentes bloqueComponentes = new BloqueComponentes();
+    								bloqueComponentes.setOrdenComponente(bloqueNuevo.getOrden());
+    								bloqueComponentes.setTipoBloqueComponentes(bloqueNuevo.getTipoBloqueComponentes());
+    								bloqueComponentes.setNivelJerarquico(nivel);
+    								bloqueComponentesRepository.save(bloqueComponentes);
+    								bloqueNuevo.getComponentes().stream().forEach(
+    										componenteDTO -> {
+    											Componente componente = new Componente();
+    											componente.setTipoComponente(componenteDTO.getTipoComponente());
+    											componente.setBloqueComponentes(bloqueComponentes);
+    											componente.setVersion(componenteDTO.getVersion());
+    											componente.setContenido(componenteDTO.getContenido());;
+    											componenteRepository.save(componente);
+    										}
+    										);
+    							}
+	            				
+	            			}
+	            			);
 	            	nivel.getBloquesComponentes().stream().forEach(
 	            			bloque -> {
 	            				nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
 	            						bloquedto -> {
-	            							if(bloquedto.getId().equals(bloque.getId())) {
+	            							if(bloque.getId().equals(bloquedto.getId())) {
 	            								bloque.setOrdenComponente(bloquedto.getOrden());
 	            								bloque.setTipoBloqueComponentes(bloquedto.getTipoBloqueComponentes());
 	            								bloque.getComponentes().stream().forEach(
@@ -159,6 +182,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	            										}
 	            										);
 	            							}
+	 
 	            						});
 	            			});
 	            	nivel.setNombre(nivelJerarquicoDTO.getNombre());

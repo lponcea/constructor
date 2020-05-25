@@ -7,7 +7,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.Set;
 
 import org.constructor.domain.NivelesCurso;
 import org.constructor.service.NivelesCursoService;
@@ -136,10 +136,10 @@ public class NivelesCursoResource {
      *  or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/niveles-curso/{id}")
-    public ResponseEntity<NivelesCurso> getNivelNivelesCurso(@PathVariable Long id) {
+    public ResponseEntity<Set<NivelesCurso>> getNivelNivelesCurso(@PathVariable Long id) {
         log.debug("REST request to get NivelesCurso  ppppp: {}", id);
-        Optional<NivelesCurso> nivelesCurso = nivelesCursoService.findOne(id);
-        return ResponseEntity.ok().body(nivelesCurso.get());
+        Set<NivelesCurso> nivelesCurso = nivelesCursoService.findByCurso(id);
+        return ResponseEntity.ok().body(nivelesCurso);
     }
     
     /**
