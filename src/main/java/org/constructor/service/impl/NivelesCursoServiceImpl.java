@@ -55,7 +55,7 @@ public class NivelesCursoServiceImpl implements NivelesCursoService {
 	 */
 	@Override
 	public Optional<NivelesCurso> findOne(Long id) {
-		return nivelesCursoRepository.findById(id);
+		return nivelesCursoRepository.findByIdCurso(id);
 	}
 
 	/**

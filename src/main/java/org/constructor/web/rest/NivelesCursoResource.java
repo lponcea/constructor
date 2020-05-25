@@ -137,9 +137,9 @@ public class NivelesCursoResource {
      */
     @GetMapping("/niveles-curso/{id}")
     public ResponseEntity<NivelesCurso> getNivelNivelesCurso(@PathVariable Long id) {
-        log.debug("REST request to get NivelesCurso : {}", id);
+        log.debug("REST request to get NivelesCurso  ppppp: {}", id);
         Optional<NivelesCurso> nivelesCurso = nivelesCursoService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(nivelesCurso);
+        return ResponseEntity.ok().body(nivelesCurso.get());
     }
     
     /**
