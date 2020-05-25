@@ -1,6 +1,8 @@
 import { Component, Input, AfterViewInit, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { TextService } from 'app/services/text.service';
+import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
+import { ContentBlocksService } from 'app/services/content-blocks.service';
 
 @Component({
   selector: 'jhi-constructor-text',
@@ -9,7 +11,8 @@ import { TextService } from 'app/services/text.service';
 })
 export class ConstructorTextComponent implements OnInit, AfterViewInit {
   // htmlContent: any;
-  placeholder = 'ejemplo';
+  placeholder =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
   private _htmlContent = '';
   get htmlContent(): string {
     return this._htmlContent;
@@ -20,6 +23,7 @@ export class ConstructorTextComponent implements OnInit, AfterViewInit {
     this.textService.setText(this.htmlContent);
   }
   title = false;
+  templates: ITipoBloqueComponentes[] = [];
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -77,9 +81,19 @@ export class ConstructorTextComponent implements OnInit, AfterViewInit {
     ]
   };
 
-  constructor(private textService: TextService) {
+  constructor(private textService: TextService, private contentBlocksService: ContentBlocksService) {
+    this.contentBlocksService.getTempaltes().subscribe(templates => {
+      this.templates = templates;
+    });
     this.textService.getText().subscribe(text => {
       this._htmlContent = text;
+    });
+    this.textService.getTemplateTypeId().subscribe(templateTypeId => {
+      if (this.getTemplateName(templateTypeId) === 'titulo') {
+        this.title = true;
+      } else {
+        this.title = false;
+      }
     });
   }
 
@@ -92,23 +106,21 @@ export class ConstructorTextComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.fixTitleOptions();
+  }
 
   fixTitleOptions(): void {
     /*
     const options = document.getElementsByClassName("ae-picker-item");
     for(let i = 0; i < options.length; i++) {
-      console.error(options[i]);
       try {
         if(i < 6) {
           options[i].firstChild!.nodeValue = "Título " + (i + 1);
         }
-        else {
-          options[i].
-        }
       }
       catch(e) {
-
+        console.error(e);
        }
     }
     */
@@ -123,5 +135,16 @@ export class ConstructorTextComponent implements OnInit, AfterViewInit {
       return '<h1>' + text + '</h1>';
     }
     return text;
+  }
+
+  getTemplateName(templateId: number): string {
+    let name = '';
+    for (let i = 0; i < this.templates.length; i++) {
+      if (this.templates[i].id === templateId) {
+        name = this.templates[i].nombre!;
+        break;
+      }
+    }
+    return name;
   }
 }

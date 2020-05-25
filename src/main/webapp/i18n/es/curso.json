@@ -45,7 +45,12 @@
       "categoria": "Categoría",
       "asignatura": "Asignatura",
       "gradoAcademico": "Grado académico",
-      "numeroGrado": "Grado"
+      "numeroGrado": "Grado",
+      "nivelJerarquico": {
+        "created": "Se ha guardado la información satisfactoriamente.",
+        "updated": "Se ha actualizado la información satisfactoriamente.",
+        "error": "No se pudo guardar la información, por favor vuelve a intentar más tarde."
+      }
     }
   }
 }

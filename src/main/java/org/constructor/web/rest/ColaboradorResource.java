@@ -1,7 +1,6 @@
 package org.constructor.web.rest;
 
 import org.constructor.domain.Colaborador;
-import org.constructor.domain.RolesColaboradores;
 import org.constructor.service.ColaboradorService;
 import org.constructor.web.rest.errors.BadRequestAlertException;
 
@@ -14,18 +13,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * REST controller for managing {@link org.constructor.domain.Colaborador}.

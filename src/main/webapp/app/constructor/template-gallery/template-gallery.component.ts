@@ -3,6 +3,8 @@ import { NavigationControlsService } from '../../services/navigation-controls.se
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { TipoComponenteService } from 'app/entities/tipo-bloque-componente/tipo-componente.service';
 import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
+import { map } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'jhi-template-gallery',
@@ -23,16 +25,18 @@ export class TemplateGalleryComponent implements OnInit {
       selected: false
     }
   ];
-  templates: ITipoBloqueComponentes[];
-  filteredTemplates: ITipoBloqueComponentes[];
+  templates: ITipoBloqueComponentes[] = [];
+  filteredTemplates: ITipoBloqueComponentes[] = [];
 
   constructor(
     private contentBlocksService: ContentBlocksService,
     private navigationControlsService: NavigationControlsService,
     private tipoComponenteService: TipoComponenteService
   ) {
+    /*
     this.templates = [
       {
+        id: 1,
         nombre: 'titulo',
         iconPath: '../../../content/images/ab1.png',
         tags: 'text',
@@ -44,6 +48,7 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       },
       {
+        id: 2,
         nombre: 'texto',
         iconPath: '../../../content/images/ab2.png',
         tags: 'text',
@@ -55,6 +60,7 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       },
       {
+        id: 3,
         nombre: 'imagen',
         iconPath: '../../../content/images/ab3.png',
         tags: 'image',
@@ -66,6 +72,7 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       },
       {
+        id: 4,
         nombre: 'imagen_texto',
         iconPath: '../../../content/images/ab4.png',
         tags: 'image text',
@@ -77,21 +84,24 @@ export class TemplateGalleryComponent implements OnInit {
         ]
       }
     ];
-    this.filteredTemplates = this.templates;
+    */
+    // Obtener las plantillas del llamdo de los tipos de bloques de contenido
+    this.tipoComponenteService
+      .query()
+      .pipe(
+        map((res: HttpResponse<ITipoBloqueComponentes[]>) => {
+          return res.body ? res.body : [];
+        })
+      )
+      .subscribe((resBody: ITipoBloqueComponentes[]) => {
+        this.templates = resBody;
+        // Enviar plantillas a servicio para utilizar en filmStrip
+        this.contentBlocksService.setTemplates(this.templates);
+        this.filteredTemplates = this.templates;
+      });
   }
 
-  ngOnInit(): void {
-    /*
-    this.tipoComponenteService
-    .query()
-    .pipe(
-      map((res: HttpResponse<ITipoBloqueComponentes[]>) => {
-        return res.body ? res.body : [];
-      })
-    )
-    .subscribe((resBody: ITipoBloqueComponentes[]) => (this.templates = resBody));
-    */
-  }
+  ngOnInit(): void {}
 
   selectTemplate(selectedTemplate: any): void {
     this.contentBlocksService.setSelectedBlock(selectedTemplate);

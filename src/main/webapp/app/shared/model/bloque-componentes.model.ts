@@ -1,5 +1,5 @@
-import { ITipoBloqueComponentes } from './tipo-bloque-componentes.model';
 import { Componente } from './componente.model';
+import { ITipoBloqueComponentes } from './tipo-bloque-componentes.model';
 
 export interface IBloqueComponentes {
   id?: number;

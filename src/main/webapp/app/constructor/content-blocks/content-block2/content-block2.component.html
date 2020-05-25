@@ -3,8 +3,8 @@
   <div class="col-cb-text">
       <div class="b-paragraph-text" *ngFor="let component of contentBlock.componentes; let index = index;">
           <jhi-visor-text
-            [component]="component"
-            [templateType]="contentBlock.tipoBloqueComponentes.nombre"
+            [component]="component" 
+            [templateType]="contentBlock.tipoBloqueComponentes"
             (updateComponent)="onUpdateComponent($event, index)"></jhi-visor-text>
       </div>
   </div>
