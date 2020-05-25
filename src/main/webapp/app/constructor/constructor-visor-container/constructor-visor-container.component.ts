@@ -10,6 +10,7 @@ import { HttpResponse } from '@angular/common/http';
 import { TipoNivelJerarquico } from 'app/shared/model/enumerations/tipo-nivel-jerarquico.model';
 import { TipoComponente } from 'app/shared/model/tipo-componente.model';
 import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
+import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 
 @Component({
   selector: 'jhi-constructor-visor-container',
@@ -46,7 +47,8 @@ export class ConstructorVisorContainerComponent implements OnInit {
   constructor(
     private contentBlocksService: ContentBlocksService,
     private nivelJerarquicoService: NivelJerarquicoService,
-    private eventManager: JhiEventManager
+    private eventManager: JhiEventManager,
+    private textEditorBehaviosService: TextEditorBehaviorService
   ) {
     this.contentBlocks = [];
     this.contentBlocksService.getTempaltes().subscribe(templates => {
@@ -85,6 +87,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.create(this.nivel));
     }
     // console.error(JSON.stringify(this.nivel));
+    this.textEditorBehaviosService.setShowTextEditor(false);
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<INivelJerarquico>>): void {

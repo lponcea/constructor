@@ -2,6 +2,7 @@ import { Component, OnDestroy, Input, AfterViewInit, Output, EventEmitter, OnIni
 import { Subscription } from 'rxjs';
 import { Componente } from 'app/shared/model/componente.model';
 import { TextService } from 'app/services/text.service';
+import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 
 @Component({
   selector: 'jhi-visor-text',
@@ -19,7 +20,7 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit, OnInit {
   @Input() templateType?: any;
   @Output() updateComponent = new EventEmitter();
 
-  constructor(private textService: TextService) {
+  constructor(private textService: TextService, private textEditorBehaviosService: TextEditorBehaviorService) {
     this.subscription = this.textService.getEditing().subscribe(editing => {
       this.editing = editing;
     });
@@ -56,5 +57,6 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit, OnInit {
     this.editing = true;
     this.textService.setText(this.htmlContent);
     this.textService.setTemplateTypeId(this.templateType);
+    this.textEditorBehaviosService.setShowTextEditor(true);
   }
 }

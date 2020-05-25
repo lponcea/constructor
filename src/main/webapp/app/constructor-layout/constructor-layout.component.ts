@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 
 @Component({
   selector: 'jhi-constructor-layout',
@@ -8,7 +10,12 @@ import { Component } from '@angular/core';
 export class ConstructorLayoutComponent {
   rightIsContracted = false;
   leftIsContracted = false;
-  showTextEditor = true;
+  showTextEditor = false;
+  subscription: Subscription;
 
-  constructor() {}
+  constructor(private textEditorBehaviosService: TextEditorBehaviorService) {
+    this.subscription = this.textEditorBehaviosService.getShowTextEditor().subscribe(showTextEditor => {
+      this.showTextEditor = showTextEditor;
+    });
+  }
 }
