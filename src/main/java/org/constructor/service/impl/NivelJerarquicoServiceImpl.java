@@ -1,6 +1,9 @@
 package org.constructor.service.impl;
 
+import java.util.Comparator;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.constructor.domain.BloqueComponentes;
 import org.constructor.domain.Componente;
@@ -88,7 +91,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		//Guardando el BloqueComponente
 		for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
 			BloqueComponentes bloqueComponentes = new BloqueComponentes();
-			bloqueComponentes.setOrdenComponente(bloqueDTO.getOrden());
+			bloqueComponentes.setOrden(bloqueDTO.getOrden());
 			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
 				bloqueComponentes.setNivelJerarquico(nivelJerarquico);
 				bloqueComponentesRepository.save(bloqueComponentes);
@@ -143,7 +146,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
        							if(bloqueNuevo.getId() == null) {
     								log.debug("Se agrega un nuevo componente: {}", bloqueNuevo);
     								BloqueComponentes bloqueComponentes = new BloqueComponentes();
-    								bloqueComponentes.setOrdenComponente(bloqueNuevo.getOrden());
+    								bloqueComponentes.setOrden(bloqueNuevo.getOrden());
     								bloqueComponentes.setTipoBloqueComponentes(bloqueNuevo.getTipoBloqueComponentes());
     								bloqueComponentes.setNivelJerarquico(nivel);
     								bloqueComponentesRepository.save(bloqueComponentes);
@@ -166,7 +169,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	            				nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
 	            						bloquedto -> {
 	            							if(bloque.getId().equals(bloquedto.getId())) {
-	            								bloque.setOrdenComponente(bloquedto.getOrden());
+	            								bloque.setOrden(bloquedto.getOrden());
 	            								bloque.setTipoBloqueComponentes(bloquedto.getTipoBloqueComponentes());
 	            								bloque.getComponentes().stream().forEach(
 	            										componente -> {
@@ -188,6 +191,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	            	nivel.setNombre(nivelJerarquicoDTO.getNombre());
 	            	nivel.setTipo(nivelJerarquicoDTO.getTipo());
 	            	nivel.setInformacionAdicional(nivelJerarquicoDTO.getInformacionAdicional());
+	            	
 	            	Optional<Curso> curso = cursoRepository.findById(nivelJerarquicoDTO.getCursoId());
 	            	Optional.of(nivelesCursoRepository.findById(nivelJerarquicoDTO.getNivelId()))
 	            			.filter(Optional::isPresent)
@@ -198,6 +202,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	            					nvls.setOrdenNivel(nivelJerarquicoDTO.getOrden());
 	            					return nvls;
 	            				});
+	            	
 	                log.debug("Changed Information for User: {}", nivel);
 	                return nivel;
 	            });
@@ -225,12 +230,13 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	@Override
 	public NivelJerarquicoResponse findOne(Long id) {
 		
-		NivelJerarquico nv = new NivelJerarquico();
+		NivelJerarquico nv;
 		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
 		Optional<NivelJerarquico> onv = nivelJerarquicoRepository.findById(id);
 		nv = onv.get();
-		
-		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes());
+		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes().stream()
+												.sorted(Comparator.comparing(BloqueComponentes::getOrden))
+												.collect(Collectors.toList()));
 		nivelResponse.setNombre(nv.getNombre());
 		nivelResponse.setInformacionAdicional(nv.getInformacionAdicional());
 		nivelResponse.setNivelId(nv.getId());
