@@ -48,11 +48,12 @@ export class ConstructorVisorContainerComponent implements OnInit {
   set curso(val: any) {
     this._curso = val;
     if (this._curso !== undefined) {
-      this.nivel = this._curso.nivelesCurso[0].nivelJerarquico;
+      this.nivel.cursoId = this._curso.id;
       if (this._curso.nivelesCurso.length) {
+        this.nivel = this._curso.nivelesCurso[0].nivelJerarquico;
+        this.nivel.cursoId = this._curso.id;
         this.contentBlocks = [];
         this.contentBlocks = this.nivel.bloquesComponentes!;
-        this.nivel.cursoId = this._curso.id;
         this.nivel.nivelId = this._curso.nivelesCurso[0].nivelJerarquico.id;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
       }
