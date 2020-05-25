@@ -147,7 +147,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   }
 
   determineNewBlockOrder(): number {
-    return this.contentBlocks.length;
+    return this.contentBlocks.length + 1;
   }
 
   deleteContentBlock(index: number): void {
