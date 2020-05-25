@@ -2,6 +2,8 @@ package org.constructor.response;
 
 import java.util.Set;
 
+import javax.persistence.OrderBy;
+
 import org.constructor.domain.BloqueComponentes;
 
 /**
@@ -28,6 +30,7 @@ public class NivelJerarquicoResponse {
 	private int orden;
 	
 	/** The bloques componentes. */
+	@OrderBy("orden ASC")
 	private Set<BloqueComponentes> bloquesComponentes;
 	
 	/**
