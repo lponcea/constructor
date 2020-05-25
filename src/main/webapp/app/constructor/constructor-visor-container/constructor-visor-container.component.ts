@@ -23,7 +23,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   contentBlocks = Array<IBloqueComponentes>();
   nivel: NivelJerarquico = {
     nivelId: undefined,
-    cursoId: 6,
+    cursoId: 8,
     nombre: 'Lección de Español',
     tipo: TipoNivelJerarquico['L'],
     informacionAdicional: 0,
@@ -100,7 +100,19 @@ export class ConstructorVisorContainerComponent implements OnInit {
       new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.nivelJerarquico.created' })
     );
     this.nivel = res.body;
+    /*
+    this.contentBlocksService.setContentBlocks(this.contentBlocks);
+    */
+    this.contentBlocks = [];
     this.contentBlocks = res.body.bloquesComponentes;
+    // this.updateContentBlocks(res.body.bloquesComponentes);
+  }
+
+  updateContentBlocks(contentBlocks: IBloqueComponentes[]): void {
+    for (let i = 0; i < contentBlocks.length; i++) {
+      this.contentBlocks.push(this.createContentBlock(contentBlocks[i]));
+    }
+    this.contentBlocksService.setContentBlocks(this.contentBlocks);
   }
 
   protected onSaveError(): void {
@@ -128,7 +140,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     return {
       ...new Componente(),
       id: undefined,
-      contenido: 'Contenido de nuevo componente de tipo de bloque ' + componentBlockType.nombre,
+      contenido: '',
       tipoComponente: componentBlockType,
       version: 1
     };
