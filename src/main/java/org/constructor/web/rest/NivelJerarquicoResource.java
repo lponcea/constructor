@@ -1,13 +1,8 @@
 package org.constructor.web.rest;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import org.constructor.domain.BloqueComponentes;
 import org.constructor.domain.NivelJerarquico;
 import org.constructor.response.NivelJerarquicoResponse;
 import org.constructor.service.NivelJerarquicoService;
