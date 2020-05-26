@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -98,7 +98,8 @@ export class CursoUpdateComponent implements OnInit {
     private fileUploadService: FileUploadService,
     private sanitizer: DomSanitizer,
     private alertService: JhiAlertService,
-    private eventManager: JhiEventManager
+    private eventManager: JhiEventManager,
+    private router: Router
   ) {
     this.subscription = this.courseConfigurationService.getSelectedTab().subscribe(selectedTab => {
       if (selectedTab) {
@@ -305,14 +306,14 @@ export class CursoUpdateComponent implements OnInit {
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ICurso>>): void {
     result.subscribe(
-      () => this.onSaveSuccess(),
+      res => this.onSaveSuccess(res),
       () => this.onSaveError()
     );
   }
 
-  protected onSaveSuccess(): void {
+  protected onSaveSuccess(res: any): void {
+    this.router.navigate(['/constructor-layout', res.body.curso.id]);
     this.isSaving = false;
-    this.previousState();
   }
 
   protected onSaveError(): void {
