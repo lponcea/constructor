@@ -35,6 +35,6 @@ export class TopBarComponent {
   }
 
   save(): void {
-    this.eventEmitterService.onFileSaveClick();
+    this.eventEmitterService.setInvokeSave();
   }
 }

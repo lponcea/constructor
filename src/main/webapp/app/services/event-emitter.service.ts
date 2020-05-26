@@ -1,16 +1,19 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventEmitterService {
-  invokeSave = new EventEmitter();
-  subsVar?: Subscription;
+  invokeSave = new Subject<any>();
 
   constructor() {}
 
-  onFileSaveClick(): void {
-    this.invokeSave.emit();
+  getInvokeSave(): Observable<any> {
+    return this.invokeSave.asObservable();
+  }
+
+  setInvokeSave(): void {
+    this.invokeSave.next();
   }
 }
