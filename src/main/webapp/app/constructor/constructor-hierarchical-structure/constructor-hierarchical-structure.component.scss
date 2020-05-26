@@ -4,11 +4,16 @@
   position: relative;
   width: 100%;
   // height: calc(100vh - 400px);
-  height: 160px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   border-bottom: 1px solid $border-component;
+}
+@media (max-height: 600px) {
+  .hierarchical-c-component {
+    height: 120px;
+  }
 }
 .c-component-title {
   position: absolute;

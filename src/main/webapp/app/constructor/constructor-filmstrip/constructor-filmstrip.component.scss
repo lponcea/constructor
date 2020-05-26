@@ -3,11 +3,16 @@
 .filmstrip-c-component {
   position: relative;
   width: 100%;
-  height: calc(100vh - 405px);
+  height: calc(100vh - 460px);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   // border-bottom: 1px solid $border-component;
+}
+@media (max-height: 600px) {
+  .filmstrip-c-component {
+    height: calc(100vh - 360px);
+  }
 }
 .c-component-title {
   position: absolute;

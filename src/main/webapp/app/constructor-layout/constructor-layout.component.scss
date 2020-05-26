@@ -31,7 +31,6 @@
   position: relative;
   width: 100%;
   height: calc(100% - 180px);
-  // height: 100%;
   z-index: 1;
 }
 .grid-component-container {
@@ -68,7 +67,7 @@
   width: 100%;
   bottom: 0;
   right: 0;
-  height: 34px;
+  height: 30px;
   border: 0;
   outline: none;
   cursor: pointer;
@@ -80,24 +79,21 @@
   }
   .icon {
     position: absolute;
-    top: 7px;
-    left: 10px;
-    width: 20px;
-    height: 20px;
-    transition: 0.4s;
-    background-image: url('../../content/images/collapse_icn.svg');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    transform: rotate(0deg);
+    left: 4px;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    transition: 0.3s;
+    transform: rotateY(0deg);
     opacity: 0.6;
+    font-size: 28px;
   }
 }
 
 .btn-contract-left {
   position: absolute;
   width: 100%;
-  height: 34px;
+  height: 30px;
   border: 0;
   outline: none;
   cursor: pointer;
@@ -111,17 +107,14 @@
   }
   .icon {
     position: absolute;
-    right: 10px;
-    top: 7px;
-    width: 20px;
-    height: 20px;
-    transition: 0.4s;
-    background-image: url('../../content/images/collapse_icn_l.svg');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    transform: rotate(0deg);
+    right: 4px;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    transition: 0.3s;
+    transform: rotateY(0deg);
     opacity: 0.6;
+    font-size: 28px;
   }
 }
 
@@ -144,16 +137,18 @@
 }
 
 .expand-button .icon {
-  transform: rotate(180deg);
-  transition: 0.4s;
+  transform: rotateY(180deg);
+  transition: 0.3s;
+}
+#item-grid-1 .expand-button .icon {
+  right: 0px;
+}
+#item-grid-3 .expand-button .icon {
 }
 
-#item-grid-1 .expand-button {
-  // transform: translateX(-10px);
-}
 // Contract
 .contracted {
-  width: 40px !important;
+  width: 30px !important;
 }
 .contracted .left-sidebar {
   visibility: hidden;
@@ -166,14 +161,14 @@
   transition: opacity 0.1s, visibility 0.1s;
 }
 .one-contract {
-  left: 40px !important;
-  width: calc(100% - 300px) !important;
+  left: 30px !important;
+  width: calc(100% - 290px) !important;
 }
 .two-contract {
-  left: 40px !important;
-  width: calc(100% - 80px) !important;
+  left: 30px !important;
+  width: calc(100% - 60px) !important;
 }
 .three-contract {
   left: 260px !important;
-  width: calc(100% - 300px) !important;
+  width: calc(100% - 290px) !important;
 }
