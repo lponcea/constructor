@@ -10,6 +10,9 @@ public class NivelJerarquicoDTO {
 	/** The curso id. */
 	private Long cursoId;
 	
+	/** The nivelId. */
+	private Long nivelId;
+	
 	/** The nombre. */
 	private String nombre;
 	
@@ -41,6 +44,20 @@ public class NivelJerarquicoDTO {
 	 */
 	public void setCursoId(Long cursoId) {
 		this.cursoId = cursoId;
+	}
+
+	/**
+	 * @return the nivelId
+	 */
+	public Long getNivelId() {
+		return nivelId;
+	}
+
+	/**
+	 * @param nivelId the nivelId to set
+	 */
+	public void setNivelId(Long nivelId) {
+		this.nivelId = nivelId;
 	}
 
 	/**
@@ -133,17 +150,17 @@ public class NivelJerarquicoDTO {
 		this.orden = orden;
 	}
 
+	@Override
+	public String toString() {
+		return "NivelJerarquicoDTO [cursoId=" + cursoId + ", nivelId=" + nivelId + ", nombre=" + nombre + ", tipo="
+				+ tipo + ", orden=" + orden + ", informacionAdicional=" + informacionAdicional + ", bloquesComponentes="
+				+ bloquesComponentes + "]";
+	}
+
 	/**
 	 * To string.
 	 *
 	 * @return the string
 	 */
-	@Override
-	public String toString() {
-		return "NivelJerarquicoDTO [cursoId=" + cursoId + ", nombre=" + nombre + ", tipo=" + tipo
-				+ ", informacionAdicional=" + informacionAdicional + ", bloquesComponentes=" + bloquesComponentes + "]";
-	} 
-	
-	
 		
 }

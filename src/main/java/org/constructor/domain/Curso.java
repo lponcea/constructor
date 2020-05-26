@@ -101,8 +101,8 @@ public class Curso implements Serializable {
     @JsonIgnoreProperties("cursos")
     private NumeroGrado numeroGrado;
     
-    @OneToMany(mappedBy = "curso")
-    private Set<NivelesCurso> nivelesCurso = new HashSet<>();;
+    @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER)
+    private Set<NivelesCurso> nivelesCurso = new HashSet<>();
     
     @JsonIgnore
     @ManyToMany
