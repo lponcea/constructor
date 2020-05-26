@@ -10,10 +10,7 @@
     <div class="row-c-component-c">
 
       <div class="ic-row-cover">
-        <!--
-        <div class="info-cover"></div>
-        -->
-        <img [src]="portadaUrl" *ngIf="portadaUrl" style="width: 100px;">
+        <img [src]="portadaUrl" *ngIf="portadaUrl" class="info-cover">
       </div>
       <div class="ic-row-text">
         <p *ngIf="course">{{course.titulo}}</p>
