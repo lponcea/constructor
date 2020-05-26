@@ -22,6 +22,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   subscription: Subscription;
   templates: ITipoBloqueComponentes[] = [];
   selectedTemplateType = '';
+  selectedBlock = -1;
   contentBlocks = Array<IBloqueComponentes>();
   nivel: NivelJerarquico = {
     nivelId: undefined,

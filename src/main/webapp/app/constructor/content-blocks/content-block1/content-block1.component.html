@@ -1,12 +1,14 @@
 <!-- Bloque de contenido: Título-->
 <div class="row-content-block">
-  <div class="col-cb-title">
-    <div class="b-title-text" *ngFor="let component of contentBlock.componentes; let index = index;">
+  <div class="col-cb-title" *ngIf="contentBlock && contentBlock.componentes">
+    <div class="b-title-text" *ngFor="let component of contentBlock.componentes!; let index = index;">
+      <div *ngIf="contentBlock.tipoBloqueComponentes">
         <jhi-visor-text
           [component]="component"
-          [templateType]="contentBlock.tipoBloqueComponentes"
+          [templateType]="contentBlock.tipoBloqueComponentes!"
           (updateComponent)="onUpdateComponent($event, index)">
         </jhi-visor-text>
+      </div>
     </div>
     <!--
     <h2>Content block Main Title </h2>
