@@ -140,7 +140,7 @@
   margin-left: 0;
   vertical-align: 0;
   content: '';
-  border-top: 0.2em solid;
+  border-top: 0.2em solid $blue-nimbus-dark;
   border-right: 0.2em solid transparent;
   border-bottom: 0;
   border-left: 0.2em solid transparent;
@@ -207,4 +207,79 @@
   cursor: default !important;
   pointer-events: none !important;
   opacity: 0.5;
+}
+
+// Darkmode topbar
+.topbar-darkmode {
+  background-color: $background-darkmode;
+
+  .layout-tool-menu {
+    .row-ltm {
+      // Groups
+      .nbm-i2-set-1,
+      .nbm-i2-set-2 {
+        // Arrow dropdown
+        .dropdown-toggle::after {
+          border-top: 0.2em solid white;
+        }
+
+        // Drpdown
+        .nav-tool-dd {
+          .dd-a {
+            &:hover {
+              background-color: $color-darkmode-hover;
+            }
+            .icon {
+              color: $icon-negative-color;
+              text-shadow: 2px 1px 6px rgba(24, 197, 188, 0.4);
+            }
+            .nb-text {
+              color: $text-negative-color;
+            }
+          }
+          // Dropdown float menu
+          .dropdown-menu {
+            background-color: $dropdown-darkmode;
+            .a-dd-tool {
+              &:hover {
+                background-color: $color-darkmode-hover;
+              }
+              .icon {
+                color: white;
+              }
+              p {
+                color: $text-negative-color;
+              }
+            }
+          }
+        }
+        .show {
+          .dd-a {
+            background-color: $color-darkmode-hover !important;
+          }
+        }
+
+        // Link
+        .nb-icon-tool {
+          &:hover {
+            background-color: $color-darkmode-hover;
+          }
+          .icon {
+            color: $icon-negative-color;
+            text-shadow: 2px 1px 6px rgba(24, 197, 188, 0.4);
+          }
+          .nb-text {
+            color: $text-negative-color;
+          }
+        }
+      }
+
+      // Breadcrumbs
+      .layout-breadcrumbs {
+        p {
+          color: $text-negative-color;
+        }
+      }
+    }
+  }
 }
