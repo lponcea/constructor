@@ -11,6 +11,7 @@ import { TipoNivelJerarquico } from 'app/shared/model/enumerations/tipo-nivel-je
 import { TipoComponente } from 'app/shared/model/tipo-componente.model';
 import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
+import { EventEmitterService } from 'app/services/event-emitter.service';
 
 @Component({
   selector: 'jhi-constructor-visor-container',
@@ -67,7 +68,8 @@ export class ConstructorVisorContainerComponent implements OnInit {
     private contentBlocksService: ContentBlocksService,
     private nivelJerarquicoService: NivelJerarquicoService,
     private eventManager: JhiEventManager,
-    private textEditorBehaviosService: TextEditorBehaviorService
+    private textEditorBehaviosService: TextEditorBehaviorService,
+    private eventEmitterService: EventEmitterService
   ) {
     this.contentBlocks = [];
     this.contentBlocksService.getTempaltes().subscribe(templates => {
@@ -190,5 +192,12 @@ export class ConstructorVisorContainerComponent implements OnInit {
     return name;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /* 
+    if (this.eventEmitterService.subsVar==undefined) {    
+      this.eventEmitterService.subsVar = this.eventEmitterService.onFileSaveClick().subscribe((name:string) => {
+      });
+    } 
+    */
+  }
 }
