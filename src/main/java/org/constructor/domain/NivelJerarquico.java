@@ -1,10 +1,11 @@
 package org.constructor.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,8 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -48,7 +47,8 @@ public class NivelJerarquico implements Serializable  {
 	private Set<EstructuraJerarquica> estructuraJerarquica = new HashSet<>();
 	
 	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
-	private Set<BloqueComponentes> bloquesComponentes = new HashSet<>();
+	@OrderBy("orden")
+	private List<BloqueComponentes> bloquesComponentes = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "nivelJerarquico")
 	@JsonIgnore
@@ -87,11 +87,11 @@ public class NivelJerarquico implements Serializable  {
 		this.nombre = nombre;
 	}
 
-	public Set<BloqueComponentes> getBloquesComponentes() {
+	public List<BloqueComponentes> getBloquesComponentes() {
 		return bloquesComponentes;
 	}
 
-	public void setBloquesComponentes(Set<BloqueComponentes> bloquesComponentes) {
+	public void setBloquesComponentes(List<BloqueComponentes> bloquesComponentes) {
 		this.bloquesComponentes = bloquesComponentes;
 	}
 

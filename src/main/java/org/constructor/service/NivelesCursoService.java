@@ -4,6 +4,7 @@
 package org.constructor.service;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.constructor.domain.NivelesCurso;
 import org.springframework.data.domain.Page;
@@ -38,6 +39,14 @@ public interface NivelesCursoService {
      * @return the entity.
      */
     Optional<NivelesCurso> findOne(Long id);
+    
+    /**
+     * Find by curso.
+     *
+     * @param id the id
+     * @return the sets the
+     */
+    Set<NivelesCurso> findByCurso(Long id);
 
     /**
      * Delete the "id" NivelesCurso.

@@ -5,6 +5,7 @@ import { TipoComponenteService } from 'app/entities/tipo-bloque-componente/tipo-
 import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 import { map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
+import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 
 @Component({
   selector: 'jhi-template-gallery',
@@ -31,7 +32,8 @@ export class TemplateGalleryComponent implements OnInit {
   constructor(
     private contentBlocksService: ContentBlocksService,
     private navigationControlsService: NavigationControlsService,
-    private tipoComponenteService: TipoComponenteService
+    private tipoComponenteService: TipoComponenteService,
+    private textEditorBehaviosService: TextEditorBehaviorService
   ) {
     /*
     this.templates = [
@@ -109,6 +111,7 @@ export class TemplateGalleryComponent implements OnInit {
   }
 
   selectContentBlock(selectedContentBlockIndex: number): void {
+    this.textEditorBehaviosService.setShowTextEditor(false);
     this.selectedContentBlockIndex = selectedContentBlockIndex;
     this.selectTemplate(this.templates[selectedContentBlockIndex]);
   }

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { Subscription, Observable } from 'rxjs';
 import { IBloqueComponentes, BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 import { ITipoBloqueComponentes, TipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes.model';
 import { IComponente, Componente } from 'app/shared/model/componente.model';
-import { NivelJerarquico } from 'app/shared/model/nivel-jerarquico.model';
+import { NivelJerarquico, INivelJerarquico } from 'app/shared/model/nivel-jerarquico.model';
 import { NivelJerarquicoService } from 'app/entities/nivel-jerarquico/nivel-jerarquico.service';
 import { HttpResponse } from '@angular/common/http';
 import { TipoNivelJerarquico } from 'app/shared/model/enumerations/tipo-nivel-jerarquico.model';
 import { TipoComponente } from 'app/shared/model/tipo-componente.model';
 import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
+import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
+import { EventEmitterService } from 'app/services/event-emitter.service';
 
 @Component({
   selector: 'jhi-constructor-visor-container',
@@ -22,8 +24,8 @@ export class ConstructorVisorContainerComponent implements OnInit {
   selectedTemplateType = '';
   contentBlocks = Array<IBloqueComponentes>();
   nivel: NivelJerarquico = {
-    id: undefined,
-    cursoId: 6,
+    nivelId: undefined,
+    cursoId: 11,
     nombre: 'Lección de Español',
     tipo: TipoNivelJerarquico['L'],
     informacionAdicional: 0,
@@ -42,11 +44,32 @@ export class ConstructorVisorContainerComponent implements OnInit {
   ];
   error = false;
   success = false;
+  _curso: any;
+  @Input()
+  set curso(val: any) {
+    this._curso = val;
+    if (this._curso !== undefined) {
+      this.nivel.cursoId = this._curso.id;
+      if (this._curso.nivelesCurso.length) {
+        this.nivel = this._curso.nivelesCurso[0].nivelJerarquico;
+        this.nivel.cursoId = this._curso.id;
+        this.contentBlocks = [];
+        this.contentBlocks = this.nivel.bloquesComponentes!;
+        this.nivel.nivelId = this._curso.nivelesCurso[0].nivelJerarquico.id;
+        this.contentBlocksService.setContentBlocks(this.contentBlocks);
+      }
+    }
+  }
+  get curso(): any {
+    return this._curso;
+  }
 
   constructor(
     private contentBlocksService: ContentBlocksService,
     private nivelJerarquicoService: NivelJerarquicoService,
-    private eventManager: JhiEventManager
+    private eventManager: JhiEventManager,
+    private textEditorBehaviosService: TextEditorBehaviorService,
+    private eventEmitterService: EventEmitterService
   ) {
     this.contentBlocks = [];
     this.contentBlocksService.getTempaltes().subscribe(templates => {
@@ -79,15 +102,16 @@ export class ConstructorVisorContainerComponent implements OnInit {
     this.success = false;
     this.error = false;
     this.nivel.bloquesComponentes = this.contentBlocks;
-    if (this.nivel.id) {
+    if (this.nivel.nivelId) {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.update(this.nivel));
     } else {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.create(this.nivel));
     }
     // console.error(JSON.stringify(this.nivel));
+    this.textEditorBehaviosService.setShowTextEditor(false);
   }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<IComponente>>): void {
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<INivelJerarquico>>): void {
     result.subscribe(
       res => this.onSaveSuccess(res),
       () => this.onSaveError()
@@ -100,7 +124,20 @@ export class ConstructorVisorContainerComponent implements OnInit {
       new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.nivelJerarquico.created' })
     );
     this.nivel = res.body;
+    /*
+    this.contentBlocksService.setContentBlocks(this.contentBlocks);
+    */
+    this.contentBlocks = [];
     this.contentBlocks = res.body.bloquesComponentes;
+    this.contentBlocksService.setContentBlocks(this.contentBlocks);
+    // this.updateContentBlocks(res.body.bloquesComponentes);
+  }
+
+  updateContentBlocks(contentBlocks: IBloqueComponentes[]): void {
+    for (let i = 0; i < contentBlocks.length; i++) {
+      this.contentBlocks.push(this.createContentBlock(contentBlocks[i]));
+    }
+    this.contentBlocksService.setContentBlocks(this.contentBlocks);
   }
 
   protected onSaveError(): void {
@@ -117,6 +154,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     }
     return {
       ...new BloqueComponentes(),
+      id: undefined,
       orden: this.determineNewBlockOrder(),
       tipoBloqueComponentes: selectedTemplate,
       componentes
@@ -126,14 +164,15 @@ export class ConstructorVisorContainerComponent implements OnInit {
   createComponent(componentBlockType: TipoBloqueComponentes): IComponente {
     return {
       ...new Componente(),
-      contenido: 'Contenido de nuevo componente de tipo de bloque ' + componentBlockType.nombre,
+      id: undefined,
+      contenido: '',
       tipoComponente: componentBlockType,
       version: 1
     };
   }
 
   determineNewBlockOrder(): number {
-    return this.contentBlocks.length;
+    return this.contentBlocks.length + 1;
   }
 
   deleteContentBlock(index: number): void {
@@ -153,5 +192,12 @@ export class ConstructorVisorContainerComponent implements OnInit {
     return name;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /* 
+    if (this.eventEmitterService.subsVar==undefined) {    
+      this.eventEmitterService.subsVar = this.eventEmitterService.onFileSaveClick().subscribe((name:string) => {
+      });
+    } 
+    */
+  }
 }

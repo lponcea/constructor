@@ -35,8 +35,7 @@ public class BloqueComponentes implements Serializable {
 	
 	/** The orden componente. */
 	@Column(name = "orden_componente")
-	@OrderBy(value = "ordenComponente ASC")
-    private int ordenComponente;
+    private int orden;
 	
 	/** The componente. */
 	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER)
@@ -77,8 +76,8 @@ public class BloqueComponentes implements Serializable {
 	 *
 	 * @return the orden componente
 	 */
-	public int getOrdenComponente() {
-		return ordenComponente;
+	public int getOrden() {
+		return orden;
 	}
 
 	/**
@@ -86,8 +85,8 @@ public class BloqueComponentes implements Serializable {
 	 *
 	 * @param ordenComponente the new orden componente
 	 */
-	public void setOrdenComponente(int ordenComponente) {
-		this.ordenComponente = ordenComponente;
+	public void setOrden(int orden) {
+		this.orden = orden;
 	}
 
 	/**
@@ -95,7 +94,7 @@ public class BloqueComponentes implements Serializable {
 	 *
 	 * @return the componente
 	 */
-	public Set<Componente> getComponente() {
+	public Set<Componente> getComponentes() {
 		return componente;
 	}
 
@@ -151,7 +150,7 @@ public class BloqueComponentes implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "BloqueComponentes [id=" + id + ", ordenComponente=" + ordenComponente + ", componente=" + componente
+		return "BloqueComponentes [id=" + id + ", orden=" + orden + ", componentes=" + componente
 				+ ", tipoBloqueComponentes=" + tipoBloqueComponentes + "]";
 	}
 	

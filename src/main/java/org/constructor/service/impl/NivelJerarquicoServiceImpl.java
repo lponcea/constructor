@@ -7,15 +7,12 @@ import org.constructor.domain.Componente;
 import org.constructor.domain.Curso;
 import org.constructor.domain.NivelJerarquico;
 import org.constructor.domain.NivelesCurso;
-import org.constructor.domain.TipoBloqueComponentes;
-import org.constructor.domain.TipoComponente;
 import org.constructor.repository.BloqueComponentesRepository;
 import org.constructor.repository.ComponenteRepository;
 import org.constructor.repository.CursoRepository;
 import org.constructor.repository.NivelJerarquicoRepository;
 import org.constructor.repository.NivelesCursoRepository;
-import org.constructor.repository.TipoBloqueComponentesRepository;
-import org.constructor.repository.TipoComponenteRepository;
+import org.constructor.response.NivelJerarquicoResponse;
 import org.constructor.service.NivelJerarquicoService;
 import org.constructor.service.dto.BloqueComponentesDTO;
 import org.constructor.service.dto.ComponenteDTO;
@@ -91,7 +88,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		//Guardando el BloqueComponente
 		for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
 			BloqueComponentes bloqueComponentes = new BloqueComponentes();
-			bloqueComponentes.setOrdenComponente(bloqueDTO.getOrden());
+			bloqueComponentes.setOrden(bloqueDTO.getOrden());
 			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
 				bloqueComponentes.setNivelJerarquico(nivelJerarquico);
 				bloqueComponentesRepository.save(bloqueComponentes);
@@ -124,6 +121,90 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		}
 		return nivelJerarquico;
 	}
+	
+	/**
+	 * Update nivel jerarquico.
+	 *
+	 * @param nivelJerarquicoDTO the nivel jerarquico DTO
+	 * @return the optional
+	 * @throws Exception the exception
+	 */
+	public Optional<NivelJerarquico> updateNivelJerarquico(NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception {
+			
+		
+		return Optional.of(nivelJerarquicoRepository
+	            .findById(nivelJerarquicoDTO.getNivelId()))
+	            .filter(Optional::isPresent)
+	            .map(Optional::get)
+	            .map(nivel -> {
+	            	log.debug("Update nivel: {}", nivel);
+	            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
+	            			bloqueNuevo ->{
+       							if(bloqueNuevo.getId() == null) {
+    								log.debug("Se agrega un nuevo componente: {}", bloqueNuevo);
+    								BloqueComponentes bloqueComponentes = new BloqueComponentes();
+    								bloqueComponentes.setOrden(bloqueNuevo.getOrden());
+    								bloqueComponentes.setTipoBloqueComponentes(bloqueNuevo.getTipoBloqueComponentes());
+    								bloqueComponentes.setNivelJerarquico(nivel);
+    								bloqueComponentesRepository.save(bloqueComponentes);
+    								bloqueNuevo.getComponentes().stream().forEach(
+    										componenteDTO -> {
+    											Componente componente = new Componente();
+    											componente.setTipoComponente(componenteDTO.getTipoComponente());
+    											componente.setBloqueComponentes(bloqueComponentes);
+    											componente.setVersion(componenteDTO.getVersion());
+    											componente.setContenido(componenteDTO.getContenido());;
+    											componenteRepository.save(componente);
+    										}
+    										);
+    							}
+	            				
+	            			}
+	            			);
+	            	nivel.getBloquesComponentes().stream().forEach(
+	            			bloque -> {
+	            				nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
+	            						bloquedto -> {
+	            							if(bloque.getId().equals(bloquedto.getId())) {
+	            								bloque.setOrden(bloquedto.getOrden());
+	            								bloque.setTipoBloqueComponentes(bloquedto.getTipoBloqueComponentes());
+	            								bloque.getComponentes().stream().forEach(
+	            										componente -> {
+	            											bloquedto.getComponentes().stream().forEach(
+	            													componenteDTO -> {
+	            														if(componente.getId().equals(componenteDTO.getId())) {
+	            															componente.setContenido(componenteDTO.getContenido());
+	            															componente.setVersion(componenteDTO.getVersion());
+	            															componente.setTipoComponente(componenteDTO.getTipoComponente());
+	            														}
+	            													}
+	            													);
+	            										}
+	            										);
+	            							}
+	 
+	            						});
+	            			});
+	            	nivel.setNombre(nivelJerarquicoDTO.getNombre());
+	            	nivel.setTipo(nivelJerarquicoDTO.getTipo());
+	            	nivel.setInformacionAdicional(nivelJerarquicoDTO.getInformacionAdicional());
+	            	
+	            	Optional<Curso> curso = cursoRepository.findById(nivelJerarquicoDTO.getCursoId());
+	            	Optional.of(nivelesCursoRepository.findById(nivelJerarquicoDTO.getNivelId()))
+	            			.filter(Optional::isPresent)
+	            			.map(Optional::get)
+	            			.map( nvls -> { 
+	            					nvls.setCurso(curso.get());
+	            					nvls.setNivelJerarquico(nivel);
+	            					nvls.setOrdenNivel(nivelJerarquicoDTO.getOrden());
+	            					return nvls;
+	            				});
+	            	
+	                log.debug("Changed Information for User: {}", nivel);
+	                return nivel;
+	            });
+		
+	}
 
 	/**
 	 * Find all.
@@ -144,9 +225,19 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	 * @return the optional
 	 */
 	@Override
-	public Optional<NivelJerarquico> findOne(Long id) {
+	public NivelJerarquicoResponse findOne(Long id) {
 		
-		return nivelJerarquicoRepository.findById(id) ;
+		NivelJerarquico nv;
+		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
+		Optional<NivelJerarquico> onv = nivelJerarquicoRepository.findById(id);
+		nv = onv.get();
+		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes());
+		nivelResponse.setNombre(nv.getNombre());
+		nivelResponse.setInformacionAdicional(nv.getInformacionAdicional());
+		nivelResponse.setNivelId(nv.getId());
+		nivelResponse.setTipo(nv.getTipo());
+		log.debug("Response nivel {}", nivelResponse);
+		return nivelResponse;
 	}
 
 	/**
