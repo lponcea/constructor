@@ -25,6 +25,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+// TODO: Auto-generated Javadoc
 /**
  * Service Implementation for managing {@link NivelJerarquico}.
  */
@@ -122,89 +123,56 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		return nivelJerarquico;
 	}
 	
-	/**
-	 * Update nivel jerarquico.
-	 *
-	 * @param nivelJerarquicoDTO the nivel jerarquico DTO
-	 * @return the optional
-	 * @throws Exception the exception
-	 */
-	public Optional<NivelJerarquico> updateNivelJerarquico(NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception {
-			
-		
+	
+	 /**
+ 	 * Update nivel jerarquico.
+ 	 *
+ 	 * @param nivelJerarquicoDTO the nivel jerarquico DTO
+ 	 * @return the optional
+ 	 * @throws Exception the exception
+ 	 */
+ 	public Optional<NivelJerarquico> updateNivelJerarquico(NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception{
+		 
+		 
+		 
 		return Optional.of(nivelJerarquicoRepository
-	            .findById(nivelJerarquicoDTO.getNivelId()))
-	            .filter(Optional::isPresent)
-	            .map(Optional::get)
-	            .map(nivel -> {
-	            	log.debug("Update nivel: {}", nivel);
-	            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
-	            			bloqueNuevo ->{
-       							if(bloqueNuevo.getId() == null) {
-    								log.debug("Se agrega un nuevo componente: {}", bloqueNuevo);
-    								BloqueComponentes bloqueComponentes = new BloqueComponentes();
-    								bloqueComponentes.setOrden(bloqueNuevo.getOrden());
-    								bloqueComponentes.setTipoBloqueComponentes(bloqueNuevo.getTipoBloqueComponentes());
-    								bloqueComponentes.setNivelJerarquico(nivel);
-    								bloqueComponentesRepository.save(bloqueComponentes);
-    								bloqueNuevo.getComponentes().stream().forEach(
-    										componenteDTO -> {
-    											Componente componente = new Componente();
-    											componente.setTipoComponente(componenteDTO.getTipoComponente());
-    											componente.setBloqueComponentes(bloqueComponentes);
-    											componente.setVersion(componenteDTO.getVersion());
-    											componente.setContenido(componenteDTO.getContenido());;
-    											componenteRepository.save(componente);
-    										}
-    										);
-    							}
-	            				
-	            			}
-	            			);
-	            	nivel.getBloquesComponentes().stream().forEach(
-	            			bloque -> {
-	            				nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
-	            						bloquedto -> {
-	            							if(bloque.getId().equals(bloquedto.getId())) {
-	            								bloque.setOrden(bloquedto.getOrden());
-	            								bloque.setTipoBloqueComponentes(bloquedto.getTipoBloqueComponentes());
-	            								bloque.getComponentes().stream().forEach(
-	            										componente -> {
-	            											bloquedto.getComponentes().stream().forEach(
-	            													componenteDTO -> {
-	            														if(componente.getId().equals(componenteDTO.getId())) {
-	            															componente.setContenido(componenteDTO.getContenido());
-	            															componente.setVersion(componenteDTO.getVersion());
-	            															componente.setTipoComponente(componenteDTO.getTipoComponente());
-	            														}
-	            													}
-	            													);
-	            										}
-	            										);
-	            							}
-	 
-	            						});
-	            			});
-	            	nivel.setNombre(nivelJerarquicoDTO.getNombre());
-	            	nivel.setTipo(nivelJerarquicoDTO.getTipo());
-	            	nivel.setInformacionAdicional(nivelJerarquicoDTO.getInformacionAdicional());
-	            	
-	            	Optional<Curso> curso = cursoRepository.findById(nivelJerarquicoDTO.getCursoId());
-	            	Optional.of(nivelesCursoRepository.findById(nivelJerarquicoDTO.getNivelId()))
-	            			.filter(Optional::isPresent)
-	            			.map(Optional::get)
-	            			.map( nvls -> { 
-	            					nvls.setCurso(curso.get());
-	            					nvls.setNivelJerarquico(nivel);
-	            					nvls.setOrdenNivel(nivelJerarquicoDTO.getOrden());
-	            					return nvls;
-	            				});
-	            	
-	                log.debug("Changed Information for User: {}", nivel);
-	                return nivel;
-	            });
-		
-	}
+		            .findById(nivelJerarquicoDTO.getNivelId()))
+		            .filter(Optional::isPresent)
+		            .map(Optional::get)
+		            .map( nivel ->{
+		            	nivel.getBloquesComponentes().stream().forEach(
+		            			bloque ->{
+		            				bloqueComponentesRepository.deleteById(bloque.getId());
+		            			}
+		            			);
+		            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
+		            			bloqueDTO -> {
+		            				BloqueComponentes bloqueComponentes = new BloqueComponentes();
+		            				bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
+		            				bloqueComponentes.setOrden(bloqueDTO.getOrden());
+		            				bloqueComponentes.setNivelJerarquico(nivel);
+		            				bloqueComponentesRepository.save(bloqueComponentes);
+		            				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
+		            				bloqueDTO.getComponentes().stream().forEach(
+		            						componenteDTO -> {
+		            							Componente componente = new Componente();
+		            							componente.setVersion(componenteDTO.getVersion());
+		            							componente.setTipoComponente(componenteDTO.getTipoComponente());
+		            							componente.setContenido(componenteDTO.getContenido());
+		            							componente.setBloqueComponentes(bloqueComponentes);
+		            							componenteRepository.save(componente);
+		            							log.debug("Se guardó correctamente el componentes: {}", componente);
+		            						}
+		            						);
+		            				
+		            			}
+		            			);
+		            	log.debug("Changed Information for User: {}", nivel);
+		            	return nivel;
+		            		}
+		            		);
+		  
+	 }
 
 	/**
 	 * Find all.

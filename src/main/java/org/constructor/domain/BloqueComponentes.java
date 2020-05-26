@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +39,7 @@ public class BloqueComponentes implements Serializable {
     private int orden;
 	
 	/** The componente. */
-	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private Set<Componente> componente = new HashSet<>();
 	
 	/** The nivel jerarquico. */

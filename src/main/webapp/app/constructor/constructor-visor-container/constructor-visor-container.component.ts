@@ -193,11 +193,8 @@ export class ConstructorVisorContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* 
-    if (this.eventEmitterService.subsVar==undefined) {    
-      this.eventEmitterService.subsVar = this.eventEmitterService.onFileSaveClick().subscribe((name:string) => {
-      });
-    } 
-    */
+    this.eventEmitterService.getInvokeSave().subscribe(() => {
+      this.save();
+    });
   }
 }
