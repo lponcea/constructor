@@ -30,8 +30,7 @@ public interface NivelJerarquicoService {
      * @return the list of entities.
      */
     Page<NivelJerarquico> findAll(Pageable pageable);
-
-
+    
     /**
      * Get the "id" nivelJerarquico.
      *
