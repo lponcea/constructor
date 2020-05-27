@@ -2895,6 +2895,7 @@ jhi-user-mgmt-delete-dialog {
 input[type='file'] {
   display: none;
 }
+// Alerts
 // Alert test
 .alert-course-configuration {
   position: absolute;
@@ -2904,51 +2905,6 @@ input[type='file'] {
   top: -2px;
   right: -10px;
   transition: 0.3s;
-}
-// Alert Bootstrap
-.alert-dismissible {
-  padding: 0;
-  margin-bottom: 0px;
-  border: 0;
-}
-
-.alert {
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  margin-bottom: 0;
-  border: 6px;
-  padding: 0px;
-
-  pre {
-    position: relative;
-    width: auto;
-    height: auto;
-    padding-bottom: 12px;
-    padding-top: 12px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: white;
-    font-size: 14px;
-    line-height: 14px;
-  }
-  .close {
-    position: absolute;
-    top: 4px;
-    right: 12px;
-    padding: 5px;
-    width: auto;
-    height: auto;
-    color: white;
-    outline: none;
-    z-index: 2;
-    font-size: 16px;
-  }
-}
-.alert-danger {
-  background-color: $alert-color;
-  border: 0;
 }
 .alert-success {
   position: relative;
@@ -2975,7 +2931,6 @@ input[type='file'] {
   position: relative;
   width: 100%;
   height: auto;
-  // max-width: 600px;
   margin-top: 60px;
   display: flex;
   justify-content: center;
@@ -3041,6 +2996,84 @@ input[type='file'] {
   padding-left: 10px !important;
   border: 0 !important;
   background-color: whitesmoke !important;
+}
+// Alert Bootstrap
+.alert-dismissible {
+  padding: 0;
+  margin-bottom: 0px;
+  border: 0;
+}
+.alert {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px;
+  padding-left: 15px;
+  padding-right: 20px;
+
+  pre {
+    position: relative;
+    width: auto;
+    height: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: visible;
+  }
+  .close {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    padding: 0px;
+    width: auto;
+    height: auto;
+    outline: none;
+    z-index: 2;
+    font-size: 18px;
+    text-shadow: none;
+  }
+}
+// Alert Styles
+// Alert Danger
+.alert-danger {
+  // background-color: $alert-color;
+  // background-color: #f8d7da;
+  background-color: cornflowerblue;
+  // color: white;
+  color: #721c24;
+  box-shadow: 0 20px 30px rgba(16, 18, 51, 0.1), 0 6px 18px rgba(16, 18, 51, 0.12);
+  border: 0;
+  pre {
+    color: white;
+  }
+  .close {
+    color: white;
+  }
+}
+// Alert Visor Book
+.alert-visor {
+  position: fixed;
+  z-index: 200;
+  top: 57px;
+  width: 400px;
+  height: auto;
+  min-height: 40px;
+  left: 50%;
+  margin-left: -200px;
+
+  div {
+    div {
+      .alert {
+      }
+    }
+  }
 }
 // Reset pass
 .row-footer-button {
