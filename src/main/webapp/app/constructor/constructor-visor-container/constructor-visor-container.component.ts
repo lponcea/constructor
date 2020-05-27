@@ -12,6 +12,7 @@ import { TipoComponente, ITipoComponente } from 'app/shared/model/tipo-component
 import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 import { EventEmitterService } from 'app/services/event-emitter.service';
+import { NavigationControlsService } from 'app/services/navigation-controls.service';
 
 @Component({
   selector: 'jhi-constructor-visor-container',
@@ -70,7 +71,8 @@ export class ConstructorVisorContainerComponent implements OnInit {
     private nivelJerarquicoService: NivelJerarquicoService,
     private eventManager: JhiEventManager,
     private textEditorBehaviosService: TextEditorBehaviorService,
-    private eventEmitterService: EventEmitterService
+    private eventEmitterService: EventEmitterService,
+    private navigationControlsService: NavigationControlsService
   ) {
     this.contentBlocks = [];
     this.contentBlocksService.getTempaltes().subscribe(templates => {
@@ -78,13 +80,21 @@ export class ConstructorVisorContainerComponent implements OnInit {
     });
     this.subscription = this.contentBlocksService.getSelectedBlock().subscribe(selectedBlock => {
       if (selectedBlock !== undefined) {
-        this.contentBlocks.push(this.createContentBlock(selectedBlock.selectedBlock));
+        this.contentBlocks.splice(this.selectedBlock + 1, 0, this.createContentBlock(selectedBlock.selectedBlock));
+        this.updateBlocksOrder();
+        this.selectedBlock++;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
       }
     });
     this.subscription = this.contentBlocksService.getIndexBlockToDelete().subscribe(indexBlockToDelete => {
       this.deleteContentBlock(indexBlockToDelete);
     });
+  }
+
+  updateBlocksOrder(): void {
+    for (let i = 0; i < this.contentBlocks.length; i++) {
+      this.contentBlocks[i].orden = i + 1;
+    }
   }
 
   onUpdateBlock($event: Event, index: number): void {
@@ -134,12 +144,14 @@ export class ConstructorVisorContainerComponent implements OnInit {
     // this.updateContentBlocks(res.body.bloquesComponentes);
   }
 
+  /*
   updateContentBlocks(contentBlocks: IBloqueComponentes[]): void {
     for (let i = 0; i < contentBlocks.length; i++) {
       this.contentBlocks.push(this.createContentBlock(contentBlocks[i]));
     }
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
   }
+  */
 
   protected onSaveError(): void {
     this.error = true;
@@ -225,5 +237,13 @@ export class ConstructorVisorContainerComponent implements OnInit {
     this.eventEmitterService.getInvokeSave().subscribe(() => {
       this.save();
     });
+  }
+
+  selectBlock(index: number): void {
+    this.selectedBlock = index;
+  }
+
+  addNewBlock(): void {
+    this.navigationControlsService.setOpenTemplateGallery(true);
   }
 }

@@ -26,19 +26,22 @@
 
     <div class="row-visor-container">
       <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
-        <div (click)="selectedBlock = index" ngClass="">
+        <div (click)="selectBlock(index)" [ngClass]="{'selected-block': selectedBlock === index}">
           <div *ngIf="block.tipoBloqueComponentes.nombre == 'titulo'">
-              <jhi-content-block1 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block1>
-            </div>
-            <div *ngIf="block.tipoBloqueComponentes.nombre == 'texto'">
-              <jhi-content-block2 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block2>
-            </div>
-            <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen'">
-              <jhi-content-block3 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block3>
-            </div>
-            <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen_texto'">
-              <jhi-content-block4 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block4>
-            </div>
+            <jhi-content-block1 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block1>
+          </div>
+          <div *ngIf="block.tipoBloqueComponentes.nombre == 'texto'">
+            <jhi-content-block2 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block2>
+          </div>
+          <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen'">
+            <jhi-content-block3 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block3>
+          </div>
+          <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen_texto'">
+            <jhi-content-block4 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block4>
+          </div>
+          <div *ngIf="selectedBlock === index">
+            <button (click)="addNewBlock()">Agregar bloque de contenido</button>
+          </div>
         </div>
       </div>
     </div>
