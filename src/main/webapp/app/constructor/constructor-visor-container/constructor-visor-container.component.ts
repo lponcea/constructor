@@ -8,7 +8,7 @@ import { NivelJerarquico, INivelJerarquico } from 'app/shared/model/nivel-jerarq
 import { NivelJerarquicoService } from 'app/entities/nivel-jerarquico/nivel-jerarquico.service';
 import { HttpResponse } from '@angular/common/http';
 import { TipoNivelJerarquico } from 'app/shared/model/enumerations/tipo-nivel-jerarquico.model';
-import { TipoComponente } from 'app/shared/model/tipo-componente.model';
+import { TipoComponente, ITipoComponente } from 'app/shared/model/tipo-componente.model';
 import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 import { EventEmitterService } from 'app/services/event-emitter.service';
@@ -55,7 +55,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
         this.nivel = this._curso.nivelesCurso[0].nivelJerarquico;
         this.nivel.cursoId = this._curso.id;
         this.contentBlocks = [];
-        this.contentBlocks = this.nivel.bloquesComponentes!;
+        this.contentBlocks = this.orderTextImageLevel(this.nivel.bloquesComponentes!);
         this.nivel.nivelId = this._curso.nivelesCurso[0].nivelJerarquico.id;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
       }
@@ -129,7 +129,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
     */
     this.contentBlocks = [];
-    this.contentBlocks = res.body.bloquesComponentes;
+    this.contentBlocks = this.orderTextImageLevel(res.body.bloquesComponentes);
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
     // this.updateContentBlocks(res.body.bloquesComponentes);
   }
@@ -150,8 +150,9 @@ export class ConstructorVisorContainerComponent implements OnInit {
 
   createContentBlock(selectedTemplate: ITipoBloqueComponentes): IBloqueComponentes {
     const componentes = new Array<IComponente>();
-    for (let i = 0; i < selectedTemplate.tiposComponentes!.length; i++) {
-      componentes.push(this.createComponent(selectedTemplate.tiposComponentes![i]));
+    selectedTemplate.tiposComponentes = this.orderTextImage(selectedTemplate.tiposComponentes!);
+    for (let i = 0; i < selectedTemplate.tiposComponentes.length; i++) {
+      componentes.push(this.createComponent(selectedTemplate.tiposComponentes[i]));
     }
     return {
       ...new BloqueComponentes(),
@@ -160,6 +161,33 @@ export class ConstructorVisorContainerComponent implements OnInit {
       tipoBloqueComponentes: selectedTemplate,
       componentes
     };
+  }
+
+  // Función temporal para poner texto antes que imagen al recibir información de guardado, actualización o consulta.
+  orderTextImageLevel(contentBlocks: IBloqueComponentes[]): IBloqueComponentes[] {
+    for (let i = 0; i < contentBlocks.length; i++) {
+      if (contentBlocks[i]!.tipoBloqueComponentes && contentBlocks[i]!.tipoBloqueComponentes!.nombre === 'imagen_texto') {
+        if (contentBlocks[i]!.componentes![0].tipoComponente!.nombre === 'image') {
+          const tempArray = [];
+          tempArray.push(contentBlocks[i]!.componentes![1]);
+          tempArray.push(contentBlocks[i]!.componentes![0]);
+          contentBlocks[i]!.componentes = tempArray;
+        }
+      }
+    }
+    return contentBlocks;
+  }
+
+  // Función temporal para poner texto antes que imagen. Pendiente relación y orden en base de datos.
+  orderTextImage(componentTypes: ITipoComponente[]): ITipoBloqueComponentes[] {
+    let tempArray = [];
+    if (componentTypes[0].nombre === 'image') {
+      tempArray.push(componentTypes[1]);
+      tempArray.push(componentTypes[0]);
+    } else {
+      tempArray = componentTypes;
+    }
+    return tempArray;
   }
 
   createComponent(componentBlockType: TipoBloqueComponentes): IComponente {

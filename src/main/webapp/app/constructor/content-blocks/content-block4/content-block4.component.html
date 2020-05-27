@@ -1,6 +1,22 @@
 <!-- Bloque de contenido: Texto con imagen-->
 <div class="row-content-block">
-  <div class="col-cb-text-img">
+  <div class="col-cb-text-img" *ngIf="contentBlock && contentBlock.componentes">  
+    <div *ngFor="let component of contentBlock.componentes; let index = index;">
+      <div *ngIf="component.tipoComponente.nombre === 'text'" class="b-paragraph-text">
+          <div *ngIf="contentBlock && contentBlock.tipoBloqueComponentes">
+              <jhi-visor-text
+                [component]="component"
+                [templateType]="contentBlock.tipoBloqueComponentes"
+                (updateComponent)="onUpdateComponent($event, index)">
+              </jhi-visor-text>
+          </div>
+      </div>
+      <div *ngIf="component.tipoComponente.nombre === 'image'"  class="cc-image">
+        <img [src]="imgSrc" alt="">
+      </div>
+    </div>
+
+    <!--
     <div class="cb4-row-text" *ngIf="contentBlock && contentBlock.componentes">
         <div class="b-paragraph-text" *ngFor="let component of contentBlock.componentes; let index = index;">
           <div *ngIf="contentBlock && contentBlock.tipoBloqueComponentes">
@@ -15,5 +31,6 @@
     <div class="cc-image">
       <img [src]="imgSrc" alt="">
     </div>
+    -->
   </div>
 </div>
