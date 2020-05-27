@@ -1,9 +1,7 @@
 package org.constructor.response;
 
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.OrderBy;
 
 import org.constructor.domain.BloqueComponentes;
 

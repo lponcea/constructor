@@ -90,7 +90,7 @@ public class NivelJerarquicoResource {
 	        Optional<NivelJerarquico> result = nivelJerarquicoService.updateNivelJerarquico(nivelJerarquicoDTO);
 	        NivelJerarquicoResponse nivelJerarquico = nivelJerarquicoService.findOne(result.get().getId());
 	        nivelJerarquico.setCursoId(nivelJerarquicoDTO.getCursoId());
-	        log.debug("actualizado nivel  : {}", nivelJerarquico);
+	        log.debug("Update Level  : {}", nivelJerarquico);
 	        return ResponseEntity.ok()
 	            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.get().getId().toString()))
 	            .body(nivelJerarquico);

@@ -1,6 +1,7 @@
 package org.constructor.service.impl;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.constructor.domain.BloqueComponentes;
 import org.constructor.domain.Componente;
@@ -140,7 +141,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            .filter(Optional::isPresent)
 		            .map(Optional::get)
 		            .map( nivel ->{
-		            	nivel.getBloquesComponentes().stream().forEach(
+		            	nivel.getBloquesComponentes().stream().collect(Collectors.toSet()).forEach(
 		            			bloque ->{
 		            				bloqueComponentesRepository.deleteById(bloque.getId());
 		            			}
@@ -161,13 +162,12 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            							componente.setContenido(componenteDTO.getContenido());
 		            							componente.setBloqueComponentes(bloqueComponentes);
 		            							componenteRepository.save(componente);
-		            							log.debug("Se guardó correctamente el componentes: {}", componente);
+		            							log.debug("Se guardó correctamente el componente: {}", componente);
 		            						}
 		            						);
 		            				
 		            			}
 		            			);
-		            	log.debug("Changed Information for User: {}", nivel);
 		            	return nivel;
 		            		}
 		            		);
@@ -199,7 +199,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
 		Optional<NivelJerarquico> onv = nivelJerarquicoRepository.findById(id);
 		nv = onv.get();
-		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes());
+		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes().stream().distinct().collect(Collectors.toList()));
 		nivelResponse.setNombre(nv.getNombre());
 		nivelResponse.setInformacionAdicional(nv.getInformacionAdicional());
 		nivelResponse.setNivelId(nv.getId());
