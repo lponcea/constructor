@@ -22,7 +22,7 @@ export class ConstructorBookInformationComponent implements OnInit {
   ) {
     this.subscription = this.currentCourseService.getCurrentCourse().subscribe(currentCourse => {
       this.course = currentCourse;
-      if (this.course.portadaUrl) {
+      if (this.course.portadaUrl && this.course.portadaUrl !== '') {
         this.getCover(this.course.portadaUrl);
       }
     });
