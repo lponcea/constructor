@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +47,7 @@ public class NivelJerarquico implements Serializable  {
 	@OrderBy ("orden_nivel")
 	private Set<EstructuraJerarquica> estructuraJerarquica = new HashSet<>();
 	
-	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@OrderBy("orden")
 	private List<BloqueComponentes> bloquesComponentes = new ArrayList<>();
 	
