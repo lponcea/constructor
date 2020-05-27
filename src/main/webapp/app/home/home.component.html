@@ -43,7 +43,7 @@
             <img class="course-cover-br-image" [src]="curso.sanitizedPortadaUrl" alt="" *ngIf="curso.sanitizedPortadaUrl">
           </div>
 
-          <div (click)="deleteCourse(curso.id)" class="delete-course-br">
+          <div (click)="deleteCourse(curso.id, $event)" class="delete-course-br">
             <i class="icon ni-delete icon-negative"></i>
           </div>
 

@@ -73,7 +73,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
     }
   }
 
-  deleteCourse(id: number): void {
+  deleteCourse(id: number, $event: any): void {
+    $event.stopPropagation();
     this.cursoService.delete(id).subscribe(() => {
       this.cursos.splice(this.findElementById(this.cursos, id), 1);
     });
