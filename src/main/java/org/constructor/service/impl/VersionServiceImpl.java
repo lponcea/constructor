@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class VersionServiceImpl implements VersionService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(VersionServiceImpl.class);
 
+    /**
+     * Repository
+     */
     private final VersionRepository versionRepository;
 
+    /**
+     * VersionServiceImpl
+     * 
+     * @param versionRepository
+     */
     public VersionServiceImpl(VersionRepository versionRepository) {
         this.versionRepository = versionRepository;
     }

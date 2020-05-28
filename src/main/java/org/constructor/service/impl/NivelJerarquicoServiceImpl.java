@@ -109,10 +109,10 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		}
 		
 		//Guardando NivelesCurso
-		NivelesCurso nivelesCurso = new NivelesCurso();
 		Optional<Curso> curso = cursoRepository.findById(nivelJerarquicoDTO.getCursoId());
 		if (curso.isPresent()) {
 			log.debug("Curso: {}", curso.get());
+			NivelesCurso nivelesCurso = new NivelesCurso();
 			nivelesCurso.setCurso(curso.get());
 			nivelesCurso.setNivelJerarquico(nivelJerarquico);
 			nivelesCurso.setOrdenNivel(nivelJerarquicoDTO.getOrden());
@@ -142,9 +142,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            .map(Optional::get)
 		            .map( nivel ->{
 		            	nivel.getBloquesComponentes().stream().collect(Collectors.toSet()).forEach(
-		            			bloque ->{
-		            				bloqueComponentesRepository.deleteById(bloque.getId());
-		            			}
+		            			bloque -> bloqueComponentesRepository.deleteById(bloque.getId())
 		            			);
 		            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
 		            			bloqueDTO -> {
@@ -195,15 +193,15 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	@Override
 	public NivelJerarquicoResponse findOne(Long id) {
 		
-		NivelJerarquico nv;
+		NivelJerarquico nivelJerarquico = null;
 		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
-		Optional<NivelJerarquico> onv = nivelJerarquicoRepository.findById(id);
-		nv = onv.get();
-		nivelResponse.setBloquesComponentes(nv.getBloquesComponentes().stream().distinct().collect(Collectors.toList()));
-		nivelResponse.setNombre(nv.getNombre());
-		nivelResponse.setInformacionAdicional(nv.getInformacionAdicional());
-		nivelResponse.setNivelId(nv.getId());
-		nivelResponse.setTipo(nv.getTipo());
+		Optional<NivelJerarquico> optionalNivelJerarquico = nivelJerarquicoRepository.findById(id);
+		nivelJerarquico = optionalNivelJerarquico.get();
+		nivelResponse.setBloquesComponentes(nivelJerarquico.getBloquesComponentes().stream().distinct().collect(Collectors.toList()));
+		nivelResponse.setNombre(nivelJerarquico.getNombre());
+		nivelResponse.setInformacionAdicional(nivelJerarquico.getInformacionAdicional());
+		nivelResponse.setNivelId(nivelJerarquico.getId());
+		nivelResponse.setTipo(nivelJerarquico.getTipo());
 		log.debug("Response nivel {}", nivelResponse);
 		return nivelResponse;
 	}

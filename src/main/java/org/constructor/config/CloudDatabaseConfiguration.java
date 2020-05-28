@@ -15,10 +15,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Profile(JHipsterConstants.SPRING_PROFILE_CLOUD)
 public class CloudDatabaseConfiguration extends AbstractCloudConfig {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(CloudDatabaseConfiguration.class);
     
     private static final String CLOUD_CONFIGURATION_HIKARI_PREFIX = "spring.datasource.hikari";
 
+    /**
+     * DataSource
+     * 
+     * @return connectionFactory
+     */
     @Bean
     @ConfigurationProperties(CLOUD_CONFIGURATION_HIKARI_PREFIX)
     public DataSource dataSource() {

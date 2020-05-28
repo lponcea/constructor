@@ -19,22 +19,39 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Authority implements Serializable {
 
+	/**
+	 * Serializable
+	 */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * String name
+     */
     @NotNull
     @Size(max = 50)
     @Id
     @Column(length = 50)
     private String name;
 
+    /**
+     * Get
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * equals
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -46,11 +63,17 @@ public class Authority implements Serializable {
         return Objects.equals(name, ((Authority) o).name);
     }
 
+    /**
+     * hashCode
+     */
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
     }
 
+    /**
+     * toString
+     */
     @Override
     public String toString() {
         return "Authority{" +

@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class EditorialServiceImpl implements EditorialService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(EditorialServiceImpl.class);
 
+    /**
+     * Repository 
+     */
     private final EditorialRepository editorialRepository;
 
+    /**
+     * EditorialServiceImpl
+     * 
+     * @param editorialRepository
+     */
     public EditorialServiceImpl(EditorialRepository editorialRepository) {
         this.editorialRepository = editorialRepository;
     }

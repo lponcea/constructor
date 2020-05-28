@@ -24,10 +24,21 @@ import java.util.Collection;
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 public class ConstructorApp implements InitializingBean {
 
+	/**
+	 * Logger
+	 */
     private static final Logger log = LoggerFactory.getLogger(ConstructorApp.class);
 
+    /**
+     * Environment
+     */
     private final Environment env;
 
+    /**
+     * ConstructorApp
+     * 
+     * @param env
+     */
     public ConstructorApp(Environment env) {
         this.env = env;
     }
@@ -64,6 +75,11 @@ public class ConstructorApp implements InitializingBean {
         logApplicationStartup(env);
     }
 
+    /**
+     * logApplicationStartup
+     * 
+     * @param env
+     */
     private static void logApplicationStartup(Environment env) {
         String protocol = "http";
         if (env.getProperty("server.ssl.key-store") != null) {

@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class AsignaturaServiceImpl implements AsignaturaService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(AsignaturaServiceImpl.class);
 
+    /**
+     * Repository 
+     */
     private final AsignaturaRepository asignaturaRepository;
 
+    /**
+     * AsignaturaServiceImpl
+     * 
+     * @param asignaturaRepository
+     */
     public AsignaturaServiceImpl(AsignaturaRepository asignaturaRepository) {
         this.asignaturaRepository = asignaturaRepository;
     }

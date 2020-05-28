@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class ColaboradorServiceImpl implements ColaboradorService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(ColaboradorServiceImpl.class);
 
+    /**
+     * Repository
+     */
     private final ColaboradorRepository colaboradorRepository;
 
+    /**
+     * ColaboradorServiceImpl
+     * 
+     * @param colaboradorRepository
+     */
     public ColaboradorServiceImpl(ColaboradorRepository colaboradorRepository) {
         this.colaboradorRepository = colaboradorRepository;
     }

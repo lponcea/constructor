@@ -37,16 +37,33 @@ import io.github.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api")
 public class NivelJerarquicoResource {
 	
+	/**
+	 * Logger
+	 */
 	 private final Logger log = LoggerFactory.getLogger(NivelJerarquicoResource.class);
 
+	 /**
+	  * NivelJerarquico
+	  */
 	 private static final String ENTITY_NAME = "NivelJerarquico";
 	 
+	 /**
+	  * String applicationName
+	  */
 	 @Value("${jhipster.clientApp.name}")
 	    private String applicationName;
 	 
+	 /**
+	  * Service
+	  */
 	 @Autowired
 	 private NivelJerarquicoService nivelJerarquicoService;
 	 
+	 /**
+	  * NivelJerarquicoResource
+	  * 
+	  * @param nivelJerarquicoService
+	  */
 	 public NivelJerarquicoResource(NivelJerarquicoService nivelJerarquicoService) {
 	        this.nivelJerarquicoService = nivelJerarquicoService;
 	    }

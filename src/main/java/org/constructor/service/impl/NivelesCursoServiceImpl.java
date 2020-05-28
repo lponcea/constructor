@@ -80,7 +80,7 @@ public class NivelesCursoServiceImpl implements NivelesCursoService {
 	}
 
 	/**
-	 * delete id.
+	 * Delete by id 
 	 *
 	 * @param id the id
 	 */

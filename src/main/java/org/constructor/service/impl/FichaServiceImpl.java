@@ -21,10 +21,21 @@ import java.util.Optional;
 @Transactional
 public class FichaServiceImpl implements FichaService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(FichaServiceImpl.class);
 
+    /**
+     * Repository 
+     */
     private final FichaRepository fichaRepository;
 
+    /**
+     * FichaServiceImpl
+     * 
+     * @param fichaRepository
+     */
     public FichaServiceImpl(FichaRepository fichaRepository) {
         this.fichaRepository = fichaRepository;
     }

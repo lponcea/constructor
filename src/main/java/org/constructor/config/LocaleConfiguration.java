@@ -11,6 +11,11 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 @Configuration
 public class LocaleConfiguration implements WebMvcConfigurer {
 
+	/**
+	 * LocaleResolver
+	 * 
+	 * @return cookieLocaleResolver
+	 */
     @Bean(name = "localeResolver")
     public LocaleResolver localeResolver() {
         AngularCookieLocaleResolver cookieLocaleResolver = new AngularCookieLocaleResolver();
@@ -18,6 +23,9 @@ public class LocaleConfiguration implements WebMvcConfigurer {
         return cookieLocaleResolver;
     }
 
+    /**
+     * addInterceptors
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();

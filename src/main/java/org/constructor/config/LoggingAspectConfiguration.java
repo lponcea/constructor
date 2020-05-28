@@ -11,6 +11,12 @@ import org.springframework.core.env.Environment;
 @EnableAspectJAutoProxy
 public class LoggingAspectConfiguration {
 
+	/**
+	 * LoggingAspect
+	 * 
+	 * @param env
+	 * @return LoggingAspect
+	 */
     @Bean
     @Profile(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
     public LoggingAspect loggingAspect(Environment env) {

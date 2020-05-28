@@ -5,8 +5,10 @@ package org.constructor.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,7 +50,7 @@ public class NivelesCurso  implements Serializable{
 	 * nivel_jerarquico_id
 	 */
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "nivel_jerarquico_id", nullable=false)
     private NivelJerarquico nivelJerarquico;
 	
@@ -120,6 +122,9 @@ public class NivelesCurso  implements Serializable{
 		this.ordenNivel = ordenNivel;
 	}
 	
+	/**
+	 * toString
+	 */
 	@Override
 	public String toString() {
 		return "NivelesCurso [id=" + id + ", id_nivel_jerarquico="

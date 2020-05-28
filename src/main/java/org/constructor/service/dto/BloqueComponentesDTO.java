@@ -38,7 +38,7 @@ public class BloqueComponentesDTO {
 	 *
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -56,7 +56,7 @@ public class BloqueComponentesDTO {
 	 *
 	 * @param orden the new orden
 	 */
-	public void setOrden(int orden) {
+	public void setOrden(final int orden) {
 		this.orden = orden;
 	}
 
@@ -74,7 +74,7 @@ public class BloqueComponentesDTO {
 	 *
 	 * @param tipoBloqueComponentes the new tipo bloque componentes
 	 */
-	public void setTipoBloqueComponentes(TipoBloqueComponentes tipoBloqueComponentes) {
+	public void setTipoBloqueComponentes(final TipoBloqueComponentes tipoBloqueComponentes) {
 		this.tipoBloqueComponentes = tipoBloqueComponentes;
 	}
 
@@ -96,16 +96,17 @@ public class BloqueComponentesDTO {
 		this.componentes = componentes;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "BloqueComponentesDTO [id=" + id + ", orden=" + orden + ", tipoBloqueComponentes="
 				+ tipoBloqueComponentes + ", componentes=" + componentes + "]";
 	}
 
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
+	
 
 }

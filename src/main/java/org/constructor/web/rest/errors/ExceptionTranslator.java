@@ -31,9 +31,24 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait {
 
+	/**
+	 * FIELD_ERRORS_KEY
+	 */
     private static final String FIELD_ERRORS_KEY = "fieldErrors";
+    
+    /**
+     * MESSAGE_KEY
+     */
     private static final String MESSAGE_KEY = "message";
+    
+    /**
+     * PATH_KEY
+     */
     private static final String PATH_KEY = "path";
+    
+    /**
+     * VIOLATIONS_KEY
+     */
     private static final String VIOLATIONS_KEY = "violations";
 
     @Value("${jhipster.clientApp.name}")
@@ -74,6 +89,9 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
         return new ResponseEntity<>(builder.build(), entity.getHeaders(), entity.getStatusCode());
     }
 
+    /**
+     * handleMethodArgumentNotValid
+     */
     @Override
     public ResponseEntity<Problem> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, @Nonnull NativeWebRequest request) {
         BindingResult result = ex.getBindingResult();
@@ -91,28 +109,63 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
         return create(ex, problem, request);
     }
 
+    /**
+     * handleEmailAlreadyUsedException
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<Problem> handleEmailAlreadyUsedException(org.constructor.service.EmailAlreadyUsedException ex, NativeWebRequest request) {
         EmailAlreadyUsedException problem = new EmailAlreadyUsedException();
         return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
     }
 
+    /**
+     * handleUsernameAlreadyUsedException
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<Problem> handleUsernameAlreadyUsedException(org.constructor.service.UsernameAlreadyUsedException ex, NativeWebRequest request) {
         LoginAlreadyUsedException problem = new LoginAlreadyUsedException();
         return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
     }
 
+    /**
+     * handleInvalidPasswordException
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<Problem> handleInvalidPasswordException(org.constructor.service.InvalidPasswordException ex, NativeWebRequest request) {
         return create(new InvalidPasswordException(), request);
     }
 
+    /**
+     * handleBadRequestAlertException
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<Problem> handleBadRequestAlertException(BadRequestAlertException ex, NativeWebRequest request) {
         return create(ex, request, HeaderUtil.createFailureAlert(applicationName, true, ex.getEntityName(), ex.getErrorKey(), ex.getMessage()));
     }
 
+    /**
+     * handleConcurrencyFailure
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler
     public ResponseEntity<Problem> handleConcurrencyFailure(ConcurrencyFailureException ex, NativeWebRequest request) {
         Problem problem = Problem.builder()

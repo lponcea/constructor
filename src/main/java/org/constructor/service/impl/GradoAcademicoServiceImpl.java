@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class GradoAcademicoServiceImpl implements GradoAcademicoService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(GradoAcademicoServiceImpl.class);
 
+    /**
+     * Repository
+     */
     private final GradoAcademicoRepository gradoAcademicoRepository;
 
+    /**
+     * GradoAcademicoServiceImpl
+     * 
+     * @param gradoAcademicoRepository
+     */
     public GradoAcademicoServiceImpl(GradoAcademicoRepository gradoAcademicoRepository) {
         this.gradoAcademicoRepository = gradoAcademicoRepository;
     }

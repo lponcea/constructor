@@ -21,6 +21,10 @@ import liquibase.util.file.FilenameUtils;
 
 @Service
 public class MultimediaServiceImpl implements MultimediaService {
+	
+	/**
+	 * CursoService Service
+	 */
 	@Autowired
 	private  CursoService cursoService;
 	
@@ -31,6 +35,9 @@ public class MultimediaServiceImpl implements MultimediaService {
 	enum extImage { JPG, PNG};
 	enum extDocs { PDF, CSV};
 
+	/**
+	 * saveFile
+	 */
 	@Override
 	public VideoResponse saveFile(MultipartFile file) {
 	    VideoResponse videoResponse = new VideoResponse();
@@ -91,6 +98,11 @@ public class MultimediaServiceImpl implements MultimediaService {
 		 } 
 	}
 
+	/**
+	 * deleteCourseCover 
+	 * 
+	 * 
+	 */
 	@Override
 	public MultimediaResponse deleteCourseCover(Long id) {
 		MultimediaResponse multimediaResponse = new MultimediaResponse();
@@ -132,6 +144,9 @@ public class MultimediaServiceImpl implements MultimediaService {
 		return multimediaResponse;
 	}
 
+	/**
+	 * deleteFile
+	 */
 	@Override
 	public String deleteFile(String pathfile) {
 		log.debug("deleteFile: {} ", pathfile);
@@ -157,6 +172,9 @@ public class MultimediaServiceImpl implements MultimediaService {
 		return status;
 	}
 	
+	/**
+	 * otherCourseCoverExists
+	 */
 	public boolean otherCourseCoverExists(String content) {
 		boolean isExists = false;
 	    long find = 0;

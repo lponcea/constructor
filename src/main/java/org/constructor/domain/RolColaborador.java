@@ -16,12 +16,21 @@ import java.io.Serializable;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class RolColaborador implements Serializable {
 
+	/**
+	 * Serializable
+	 */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Long id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * String descripcion
+     */
     @Column(name = "descripcion")
     private String descripcion;
     
@@ -31,19 +40,36 @@ public class RolColaborador implements Serializable {
         return id;
     }
 
+    /**
+     * Set
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Get
+     * @return the descripcion
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * descripcion
+     * @param descripcion
+     * @return the this
+     */
     public RolColaborador descripcion(String descripcion) {
         this.descripcion = descripcion;
         return this;
     }
 
+    /**
+     * Set
+     * @param descripcion
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -61,11 +87,17 @@ public class RolColaborador implements Serializable {
         return id != null && id.equals(((RolColaborador) o).id);
     }
 
+    /**
+     * hashCode
+     */
     @Override
     public int hashCode() {
         return 31;
     }
 
+    /**
+     * toString
+     */
     @Override
     public String toString() {
         return "RolColaborador{" +

@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,9 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class Image {
 	
+	/**
+	 * PATH
+	 */
 	private static final String PATH =  System.getProperty("user.home") + "/resources" + File.separator;
+	
+	/**
+	 * Logger
+	 */
 	private final Logger log = LoggerFactory.getLogger(Image.class);
 	
+	
+	/**
+	 * method Get  loadImage
+	 * @param nameImage
+	 * @return
+	 */
 	@RequestMapping(value = "/loadImage", method = RequestMethod.GET)
 	@Secured({ AuthoritiesConstants.ADMIN, AuthoritiesConstants.USER })
 	public ResponseEntity<byte[]> loadImage(@RequestParam("file") String nameImage) {

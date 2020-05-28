@@ -23,8 +23,14 @@ import java.util.Arrays;
 @Aspect
 public class LoggingAspect {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * Environment
+     */
     private final Environment env;
 
     public LoggingAspect(Environment env) {

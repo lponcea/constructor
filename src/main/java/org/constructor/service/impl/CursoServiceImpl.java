@@ -29,13 +29,25 @@ import java.util.Set;
 @Transactional
 public class CursoServiceImpl implements CursoService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(CursoServiceImpl.class);
 
+    /**
+     * Repository CursoRepository
+     */
     private final CursoRepository cursoRepository;
     
+    /**
+     * Service FichaService 
+     */
     @Autowired
     private FichaService fichaService;
     
+    /**
+     * Service UserService 
+     */
     @Autowired
     private UserService userService; 
 
@@ -68,6 +80,9 @@ public class CursoServiceImpl implements CursoService {
         return cursoRepository.findAll(pageable);
     }
     
+    /**
+     * findAllCursoUserId
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Curso> findAllCursoUserId(Authentication authentication) {
@@ -111,6 +126,9 @@ public class CursoServiceImpl implements CursoService {
         cursoRepository.deleteById(id);
     }
 
+    /**
+     * save
+     */
     @Override
 	@Transactional
 	public CursoFicha save(Authentication authentication, CursoFicha cursoFicha) {
@@ -146,13 +164,17 @@ public class CursoServiceImpl implements CursoService {
 		return cf;
 	}
 
+    /**
+     * FindCourseCover
+     */
 	@Override
 	public String FindCourseCover(Long id) {
-		
-		
 		return cursoRepository.findByCourseCoverId(id);
 	}
 
+	/**
+	 * FindByContentCourseCover
+	 */
 	@Override
 	public Long FindByContentCourseCover(String content) {
 		return cursoRepository.findByContentCourseCover(content);
