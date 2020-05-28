@@ -4,20 +4,7 @@
   <div class="alert-visor">
     <jhi-alert-error></jhi-alert-error>
   </div>
-  <!--
-  <div class="row-alert alert-s">
-    <div class="alert alert-success alert-success-register" *ngIf="success">
-      <div class="icn-success"></div>
-      <p jhiTranslate="register.messages.success"><strong>Registration saved!</strong> Please check your email for confirmation.</p>
-    </div>
 
-    <div class="alert alert-danger alert-danger-register" *ngIf="error">
-      <div class="icn-danger"></div>
-      <p jhiTranslate="register.messages.error.fail"><strong>Registration failed!</strong> Please try again later.</p>
-    </div>
-  </div>
-  -->
-  <!-- <button class="main-btn btn-test-save" (click)="save()">Guardar</button> -->
   <div class="visor-component-artboard">
     <div class="artboard-delete">
       <i class="icon ni-delete icon-negative"></i>
@@ -25,8 +12,10 @@
     <div class="artboard-name"><span>Name</span></div>
 
     <div class="row-visor-container">
+
       <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
         <div (click)="selectBlock(index)" [ngClass]="{'selected-block': selectedBlock === index}">
+
           <div *ngIf="block.tipoBloqueComponentes.nombre == 'titulo'">
             <jhi-content-block1 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block1>
           </div>
@@ -39,11 +28,17 @@
           <div *ngIf="block.tipoBloqueComponentes.nombre == 'imagen_texto'">
             <jhi-content-block4 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block4>
           </div>
-          <div *ngIf="selectedBlock === index">
-            <button (click)="addNewBlock()">Agregar bloque de contenido</button>
-          </div>
+
+        </div>
+        <!-- Add content -->
+        <div *ngIf="selectedBlock === index" class="row-add-content">
+          <button class="main-btn" (click)="addNewBlock()">
+            <i class="icon ni-add"></i>
+            Agregar bloque de contenido
+          </button>
         </div>
       </div>
+
     </div>
 
   </div>
