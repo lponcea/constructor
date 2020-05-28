@@ -18,6 +18,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserMapper {
 
+	/**
+	 * usersToUserDTOs
+	 * 
+	 * @param users
+	 * @return
+	 */
     public List<UserDTO> usersToUserDTOs(List<User> users) {
         return users.stream()
             .filter(Objects::nonNull)
@@ -25,17 +31,35 @@ public class UserMapper {
             .collect(Collectors.toList());
     }
 
+    /**
+     * userToUserDTO
+     * 
+     * @param user
+     * @return
+     */
     public UserDTO userToUserDTO(User user) {
         return new UserDTO(user);
     }
 
+    /**
+     * userDTOsToUsers
+     * 
+     * @param userDTOs
+     * @return
+     */
     public List<User> userDTOsToUsers(List<UserDTO> userDTOs) {
         return userDTOs.stream()
             .filter(Objects::nonNull)
             .map(this::userDTOToUser)
             .collect(Collectors.toList());
     }
-
+    
+    /**
+     * userDTOToUser
+     * 
+     * @param userDTO
+     * @return the user
+     */
     public User userDTOToUser(UserDTO userDTO) {
         if (userDTO == null) {
             return null;
@@ -56,7 +80,12 @@ public class UserMapper {
         }
     }
 
-
+    /**
+     * authoritiesFromStrings
+     * 
+     * @param authoritiesAsString
+     * @return
+     */
     private Set<Authority> authoritiesFromStrings(Set<String> authoritiesAsString) {
         Set<Authority> authorities = new HashSet<>();
 
@@ -71,6 +100,12 @@ public class UserMapper {
         return authorities;
     }
 
+    /**
+     * userFromId
+     * 
+     * @param id
+     * @return the user
+     */
     public User userFromId(Long id) {
         if (id == null) {
             return null;

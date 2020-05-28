@@ -6,9 +6,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public  class PathValidation {
+	
+	/**
+	 * Logger
+	 */
 	private static final  Logger log = LoggerFactory.getLogger(PathValidation.class);
 
-	
+	/**
+	 * createPath
+	 * 
+	 * @param route
+	 */
 	public static  void createPath(String route) {
 		log.debug("Save File: {}", route);
 		File path = new File(route);
