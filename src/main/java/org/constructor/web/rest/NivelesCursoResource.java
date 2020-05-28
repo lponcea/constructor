@@ -6,7 +6,6 @@ package org.constructor.web.rest;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.constructor.domain.NivelesCurso;
@@ -32,7 +31,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
-import io.github.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing NivelesCurso

@@ -122,6 +122,9 @@ public class NivelesCurso  implements Serializable{
 		this.ordenNivel = ordenNivel;
 	}
 	
+	/**
+	 * toString
+	 */
 	@Override
 	public String toString() {
 		return "NivelesCurso [id=" + id + ", id_nivel_jerarquico="

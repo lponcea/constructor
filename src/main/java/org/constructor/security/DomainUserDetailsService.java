@@ -22,14 +22,27 @@ import java.util.stream.Collectors;
 @Component("userDetailsService")
 public class DomainUserDetailsService implements UserDetailsService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(DomainUserDetailsService.class);
 
+    /**
+     * UserRepository
+     */
     private final UserRepository userRepository;
 
+    /**
+     * DomainUserDetailsService
+     * @param userRepository
+     */
     public DomainUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    /**
+     * loadUserByUsername
+     */
     @Override
     @Transactional
     public UserDetails loadUserByUsername(final String login) {
@@ -48,6 +61,12 @@ public class DomainUserDetailsService implements UserDetailsService {
 
     }
 
+    /**
+     * createSpringSecurityUser
+     * @param lowercaseLogin
+     * @param user
+     * @return
+     */
     private org.springframework.security.core.userdetails.User createSpringSecurityUser(String lowercaseLogin, User user) {
         if (!user.getActivated()) {
             throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");

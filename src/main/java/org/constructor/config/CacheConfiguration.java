@@ -17,8 +17,16 @@ import org.springframework.context.annotation.*;
 @EnableCaching
 public class CacheConfiguration {
 
+	/**
+	 * Configuration
+	 */
     private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
 
+    /**
+     * CacheConfiguration
+     * 
+     * @param jHipsterProperties
+     */
     public CacheConfiguration(JHipsterProperties jHipsterProperties) {
         JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
 
@@ -29,11 +37,22 @@ public class CacheConfiguration {
                 .build());
     }
 
+    /**
+     * HibernatePropertiesCustomizer
+     * 
+     * @param cacheManager
+     * @return hibernateProperties
+     */
     @Bean
     public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cacheManager) {
         return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cacheManager);
     }
 
+    /**
+     * JCacheManagerCustomizer
+     * 
+     * @return
+     */
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
@@ -67,6 +86,12 @@ public class CacheConfiguration {
         };
     }
 
+    /**
+     * createCache
+     * 
+     * @param cm
+     * @param cacheName
+     */
     private void createCache(javax.cache.CacheManager cm, String cacheName) {
         javax.cache.Cache<Object, Object> cache = cm.getCache(cacheName);
         if (cache != null) {

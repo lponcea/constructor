@@ -21,6 +21,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "componente")
 public class Componente implements Serializable {
 	
+	/**
+	 * Serializable
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	/**

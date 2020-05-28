@@ -21,10 +21,21 @@ import java.sql.SQLException;
 @EnableTransactionManagement
 public class DatabaseConfiguration {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
+    /**
+     * Environment
+     */
     private final Environment env;
 
+    /**
+     * DatabaseConfiguration
+     * 
+     * @param env
+     */
     public DatabaseConfiguration(Environment env) {
         this.env = env;
     }

@@ -3,8 +3,7 @@ package org.constructor.config;
 import org.constructor.security.*;
 import org.constructor.security.jwt.*;
 
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
@@ -26,22 +25,47 @@ import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
 @Import(SecurityProblemSupport.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	/**
+	 * TokenProvider
+	 */
     private final TokenProvider tokenProvider;
 
+    /**
+     * CorsFilter
+     */
     private final CorsFilter corsFilter;
+    
+    /**
+     * SecurityProblemSupport
+     */
     private final SecurityProblemSupport problemSupport;
 
+    /**
+     *  Constructor 
+     *  
+     * @param tokenProvider
+     * @param corsFilter
+     * @param problemSupport
+     */
     public SecurityConfiguration(TokenProvider tokenProvider, CorsFilter corsFilter, SecurityProblemSupport problemSupport) {
         this.tokenProvider = tokenProvider;
         this.corsFilter = corsFilter;
         this.problemSupport = problemSupport;
     }
 
+    /**
+     * PasswordEncoder
+     * 
+     * @return BCryptPasswordEncoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * configure
+     */
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
@@ -54,6 +78,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/test/**");
     }
 
+    /**
+     * configure
+     */
     @Override
     public void configure(HttpSecurity http) throws Exception {
         // @formatter:off
@@ -97,6 +124,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // @formatter:on
     }
 
+    /**
+     * JWTConfigurer
+     * 
+     * @return tokenProvider
+     */
     private JWTConfigurer securityConfigurerAdapter() {
         return new JWTConfigurer(tokenProvider);
     }

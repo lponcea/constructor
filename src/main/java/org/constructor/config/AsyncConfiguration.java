@@ -20,14 +20,28 @@ import java.util.concurrent.Executor;
 @EnableScheduling
 public class AsyncConfiguration implements AsyncConfigurer {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(AsyncConfiguration.class);
 
+    /**
+     * TaskExecutionProperties
+     */
     private final TaskExecutionProperties taskExecutionProperties;
 
+    /**
+     * AsyncConfiguration
+     * 
+     * @param taskExecutionProperties
+     */
     public AsyncConfiguration(TaskExecutionProperties taskExecutionProperties) {
         this.taskExecutionProperties = taskExecutionProperties;
     }
 
+    /**
+     * getAsyncExecutor
+     */
     @Override
     @Bean(name = "taskExecutor")
     public Executor getAsyncExecutor() {
@@ -40,6 +54,9 @@ public class AsyncConfiguration implements AsyncConfigurer {
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }
 
+    /**
+     * AsyncUncaughtExceptionHandler
+     */
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new SimpleAsyncUncaughtExceptionHandler();

@@ -11,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class DateTimeFormatConfiguration implements WebMvcConfigurer {
 
+	/**
+	 * addFormatters
+	 */
     @Override
     public void addFormatters(FormatterRegistry registry) {
         DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();

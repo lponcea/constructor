@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class ModalidadServiceImpl implements ModalidadService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(ModalidadServiceImpl.class);
 
+    /**
+     * Repository
+     */
     private final ModalidadRepository modalidadRepository;
 
+    /**
+     * ModalidadServiceImpl
+     * 
+     * @param modalidadRepository
+     */
     public ModalidadServiceImpl(ModalidadRepository modalidadRepository) {
         this.modalidadRepository = modalidadRepository;
     }

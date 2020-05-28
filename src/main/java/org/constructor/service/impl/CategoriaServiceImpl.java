@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class CategoriaServiceImpl implements CategoriaService {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(CategoriaServiceImpl.class);
 
+    /**
+     * Repository 
+     */
     private final CategoriaRepository categoriaRepository;
 
+    /**
+     * CategoriaServiceImpl
+     * 
+     * @param categoriaRepository
+     */
     public CategoriaServiceImpl(CategoriaRepository categoriaRepository) {
         this.categoriaRepository = categoriaRepository;
     }

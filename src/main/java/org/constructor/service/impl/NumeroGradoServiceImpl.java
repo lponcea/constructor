@@ -20,10 +20,21 @@ import java.util.Optional;
 @Transactional
 public class NumeroGradoServiceImpl implements NumeroGradoService {
 
+	/**
+	 * Longger
+	 */
     private final Logger log = LoggerFactory.getLogger(NumeroGradoServiceImpl.class);
 
+    /**
+     * Repository 
+     */
     private final NumeroGradoRepository numeroGradoRepository;
 
+    /**
+     * NumeroGradoServiceImpl
+     * 
+     * @param numeroGradoRepository
+     */
     public NumeroGradoServiceImpl(NumeroGradoRepository numeroGradoRepository) {
         this.numeroGradoRepository = numeroGradoRepository;
     }

@@ -19,35 +19,54 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class EstructuraJerarquicaServiceImpl implements EstructuraJerarquicaService{
 	
+	/**
+	 * Logger
+	 */
 	private final Logger log = LoggerFactory.getLogger(EstructuraJerarquicaServiceImpl.class);
 	
+	/**
+	 * Repository
+	 */
 	private final EstructuraJerarquicaRepository estructuraJerarquicaRepository;
 	
+	/**
+	 * EstructuraJerarquicaServiceImpl
+	 * 
+	 * @param estructuraJerarquicaRepository
+	 */
 	public EstructuraJerarquicaServiceImpl(EstructuraJerarquicaRepository estructuraJerarquicaRepository) {
         this.estructuraJerarquicaRepository = estructuraJerarquicaRepository;
     }
 
+	/**
+	 * Save
+	 */
 	@Override
 	public EstructuraJerarquica save(EstructuraJerarquica estructuraJerarquica) {
-		
 		return estructuraJerarquicaRepository.save(estructuraJerarquica);
 	}
 
+	/**
+	 * findAll
+	 */
 	@Override
 	public Page<EstructuraJerarquica> findAll(Pageable pageable) {
-		
 		return estructuraJerarquicaRepository.findAll(pageable) ;
 	}
 
+	/**
+	 * findOne
+	 */
 	@Override
 	public Optional<EstructuraJerarquica> findOne(Long id) {
-		
 		return estructuraJerarquicaRepository.findById(id);
 	}
 
+	/**
+	 * Delete by id 
+	 */
 	@Override
 	public void delete(Long id) {
-		
 		estructuraJerarquicaRepository.deleteById(id);
 	}
 

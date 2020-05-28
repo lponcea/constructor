@@ -33,6 +33,9 @@ import static java.net.URLDecoder.decode;
 @Configuration
 public class WebConfigurer implements ServletContextInitializer, WebServerFactoryCustomizer<WebServerFactory> {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
 
     private final Environment env;
@@ -44,6 +47,9 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
         this.jHipsterProperties = jHipsterProperties;
     }
 
+    /**
+     * onStartup
+     */
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         if (env.getActiveProfiles().length != 0) {

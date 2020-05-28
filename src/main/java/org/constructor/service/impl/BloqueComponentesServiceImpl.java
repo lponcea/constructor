@@ -19,35 +19,54 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class BloqueComponentesServiceImpl implements BloqueComponentesService {
 
+	/**
+	 * Logger
+	 */
 	private final Logger log = LoggerFactory.getLogger(BloqueComponentesServiceImpl.class);
 	
+	/**
+	 * BloqueComponentesRepository
+	 */
 	private final BloqueComponentesRepository bloqueComponentesRepository;
 	
+	/**
+	 * BloqueComponentesServiceImpl
+	 * @param bloqueComponentesRepository
+	 */
 	public BloqueComponentesServiceImpl(BloqueComponentesRepository bloqueComponentesRepository) {
         this.bloqueComponentesRepository = bloqueComponentesRepository;
     }
 	
+	/**
+	 * BloqueComponentes save
+	 */
 	@Override
 	public BloqueComponentes save(BloqueComponentes bloqueComponentes) {
-		
 		return bloqueComponentesRepository.save(bloqueComponentes);
 	}
 
+	/**
+	 * findAll
+	 */
 	@Override
 	public Page<BloqueComponentes> findAll(Pageable pageable) {
-		
 		return bloqueComponentesRepository.findAll(pageable);
 	}
 
+	/**
+	 * findOne
+	 */
 	@Override
 	public Optional<BloqueComponentes> findOne(Long id) {
 		
 		return bloqueComponentesRepository.findById(id);
 	}
 
+	/**
+	 * Delete by id 
+	 */
 	@Override
 	public void delete(Long id) {
-		
 		bloqueComponentesRepository.deleteById(id);
 		
 	}

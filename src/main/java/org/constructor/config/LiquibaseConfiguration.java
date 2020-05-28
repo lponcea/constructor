@@ -21,14 +21,35 @@ import java.util.concurrent.Executor;
 @Configuration
 public class LiquibaseConfiguration {
 
+	/**
+	 * Logger
+	 */
     private final Logger log = LoggerFactory.getLogger(LiquibaseConfiguration.class);
 
+    /**
+     * Environment
+     */
     private final Environment env;
 
+    /**
+     * LiquibaseConfiguration
+     * 
+     * @param env
+     */
     public LiquibaseConfiguration(Environment env) {
         this.env = env;
     }
 
+    /**
+     * liquibase
+     * 
+     * @param executor
+     * @param liquibaseDataSource
+     * @param liquibaseProperties
+     * @param dataSource
+     * @param dataSourceProperties
+     * @return liquibase
+     */
     @Bean
     public SpringLiquibase liquibase(@Qualifier("taskExecutor") Executor executor,
             @LiquibaseDataSource ObjectProvider<DataSource> liquibaseDataSource, LiquibaseProperties liquibaseProperties,
