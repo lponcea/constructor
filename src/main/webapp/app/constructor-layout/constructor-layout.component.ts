@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { CurrentCourseService } from 'app/services/current-course.service';
   templateUrl: './constructor-layout.component.html',
   styleUrls: ['./constructor-layout.component.scss']
 })
-export class ConstructorLayoutComponent implements OnInit {
+export class ConstructorLayoutComponent implements OnInit, OnDestroy {
   rightIsContracted = false;
   leftIsContracted = false;
   showTextEditor = false;
@@ -34,4 +34,8 @@ export class ConstructorLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

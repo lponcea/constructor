@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { Subscription, Observable } from 'rxjs';
 import { IBloqueComponentes, BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
@@ -19,7 +19,7 @@ import { NavigationControlsService } from 'app/services/navigation-controls.serv
   templateUrl: './constructor-visor-container.component.html',
   styleUrls: ['./constructor-visor-container.component.scss']
 })
-export class ConstructorVisorContainerComponent implements OnInit {
+export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   templates: ITipoBloqueComponentes[] = [];
   selectedTemplateType = '';
@@ -75,7 +75,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
     private navigationControlsService: NavigationControlsService
   ) {
     this.contentBlocks = [];
-    this.contentBlocksService.getTempaltes().subscribe(templates => {
+    this.subscription = this.contentBlocksService.getTempaltes().subscribe(templates => {
       this.templates = templates;
     });
     this.subscription = this.contentBlocksService.getSelectedBlock().subscribe(selectedBlock => {
@@ -234,7 +234,7 @@ export class ConstructorVisorContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventEmitterService.getInvokeSave().subscribe(() => {
+    this.subscription = this.eventEmitterService.getInvokeSave().subscribe(() => {
       this.save();
     });
   }
@@ -245,5 +245,9 @@ export class ConstructorVisorContainerComponent implements OnInit {
 
   addNewBlock(): void {
     this.navigationControlsService.setOpenTemplateGallery(true);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

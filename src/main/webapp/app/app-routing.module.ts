@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, RouteReuseStrategy } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { errorRoute } from './layouts/error/error.route';
 import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
@@ -8,7 +8,6 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access-service'
 import { ConstructorLayoutComponent } from './constructor-layout/constructor-layout.component';
 import { CourseConfigurationComponent } from './course-configuration/course-configuration.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { RouteReuseService } from './services/route-reuse.service';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -49,25 +48,6 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
       { enableTracing: DEBUG_INFO_ENABLED }
     )
   ],
-  exports: [RouterModule],
-  providers: [
-    {
-      provide: RouteReuseStrategy,
-      useClass: RouteReuseService
-    }
-  ]
+  exports: [RouterModule]
 })
 export class ConstructorAppRoutingModule {}
-
-/*
-path: ':id/edit',
-component: CursoUpdateComponent,
-resolve: {
-  curso: CursoResolve
-},
-data: {
-  authorities: ['ROLE_USER'],
-  pageTitle: 'constructorApp.curso.home.title'
-},
-canActivate: [UserRouteAccessService]
-*/
