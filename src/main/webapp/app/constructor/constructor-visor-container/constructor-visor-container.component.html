@@ -25,6 +25,9 @@
     <div class="artboard-name"><span>Name</span></div>
 
     <div class="row-visor-container">
+      <div *ngIf="!contentBlocks.length">
+        <button (click)="addNewBlock()">Agregar bloque de contenido</button>
+      </div>
       <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
         <div (click)="selectBlock(index)" [ngClass]="{'selected-block': selectedBlock === index}">
           <div *ngIf="block.tipoBloqueComponentes.nombre == 'titulo'">
