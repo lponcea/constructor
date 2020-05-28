@@ -3145,20 +3145,21 @@ input[type='file'] {
 }
 
 // Blocks
-.row-content-block {
-  position: relative;
-  width: 100%;
-  height: auto;
-  border: 1px dashed $bordercolor-block;
-  padding: 15px;
-  transition: 0.3s;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  &:hover {
-    border: 1px solid teal;
-  }
-}
+// .row-content-block {
+//   position: relative;
+//   width: 100%;
+//   height: auto;
+//   border: 1px dashed $bordercolor-block;
+//   padding: 15px;
+//   transition: 0.3s;
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+//   cursor: pointer;
+//   &:hover {
+//     border: 1px solid teal;
+//   }
+// }
+
 // Block 1 -Title
 .b-title-text {
   position: relative;
@@ -3209,10 +3210,8 @@ input[type='file'] {
   width: 100%;
   height: auto;
   cursor: pointer;
-  border: 1px solid $blue-nimbus-light;
   transition: 0.3s;
   &:hover {
-    border: 1px solid $blue-nimbus-dark;
   }
   .b-paragraph-text {
     position: relative;
@@ -3221,6 +3220,17 @@ input[type='file'] {
       p {
       }
     }
+  }
+}
+.b-paragraph-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border: 1px dashed $blue-nimbus-light;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid $blue-nimbus-light;
   }
 }
 // Block 4 -Paragraph text with image
@@ -3245,10 +3255,10 @@ input[type='file'] {
 }
 .col-cb-text-img > div:nth-child(1) > .b-paragraph-text {
   cursor: pointer;
-  border: 1px solid $blue-nimbus-light;
+  border: 1px dashed $blue-nimbus-light;
   transition: 0.3s;
   &:hover {
-    border: 1px solid $blue-nimbus-dark;
+    border: 1px solid $blue-nimbus-light;
   }
 }
 .col-cb-text-img > div:nth-child(2) > .cc-image {
@@ -3256,18 +3266,18 @@ input[type='file'] {
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   img {
     position: relative;
     width: 100%;
     max-width: 500px;
     height: auto;
-    border: 1px solid $blue-nimbus-light;
+    border: 1px dashed $blue-nimbus-light;
     transition: 0.3s;
     cursor: pointer;
     &:hover {
-      border: 1px solid $blue-nimbus-dark;
+      border: 1px solid $blue-nimbus-light;
     }
   }
 }

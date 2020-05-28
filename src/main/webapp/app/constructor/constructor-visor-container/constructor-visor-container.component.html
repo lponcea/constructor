@@ -14,7 +14,7 @@
     <div class="row-visor-container">
 
       <div class="col-jhi-block" *ngFor="let block of contentBlocks; let index = index;">
-        <div (click)="selectBlock(index)" [ngClass]="{'selected-block': selectedBlock === index}">
+        <div (click)="selectBlock(index)" [ngClass]="{'selected-block': selectedBlock === index}" class="row-content-block">
 
           <div *ngIf="block.tipoBloqueComponentes.nombre == 'titulo'">
             <jhi-content-block1 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block1>
