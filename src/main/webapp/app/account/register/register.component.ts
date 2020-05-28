@@ -33,8 +33,8 @@ export class RegisterComponent implements AfterViewInit {
     firstName: ['', [Validators.maxLength(50)]],
     lastName1: ['', [Validators.maxLength(50)]],
     lastName2: ['', [Validators.maxLength(50)]],
-    country: [''],
-    phoneNumber: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+    country: [undefined],
+    phoneNumber: [undefined, [Validators.minLength(10), Validators.maxLength(10)]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
   });
@@ -94,12 +94,15 @@ export class RegisterComponent implements AfterViewInit {
           password,
           langKey: this.languageService.getCurrentLanguage()
         },
-        phoneNumbers: [
-          {
-            phoneNumber: this.registerForm.get(['phoneNumber'])!.value,
-            country: this.registerForm.get(['country'])!.value
-          }
-        ]
+        phoneNumbers:
+          this.registerForm.get(['phoneNumber'])!.value && this.registerForm.get(['country'])!.value
+            ? [
+                {
+                  phoneNumber: this.registerForm.get(['phoneNumber'])!.value,
+                  country: this.registerForm.get(['country'])!.value
+                }
+              ]
+            : []
       };
       this.registerService.save(userPhoneNumber).subscribe(
         () => {
