@@ -19,10 +19,7 @@
   min-height: 40px;
   background-color: $color-workspace;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.12);
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 12px;
   margin: 0 auto;
   border-radius: 6px 0 6px 6px;
 
@@ -147,18 +144,53 @@
 #visor-container-grid::-webkit-scrollbar-track:active {
   // background: #d4d4d4;
 }
-.btn-test-save {
-  position: absolute;
-  top: 3px;
-  left: 32px;
-  z-index: 2;
-  height: 28px;
-  font-size: 13px;
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 18px;
+// Visor
+.row-content-block {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: 1px dashed $border-component;
+  padding: 20px;
+  transition: 0.3s;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $border-component-hover;
+  }
 }
-
 .selected-block {
-  border: 1px black solid;
+  border: 1px solid $border-component-selected;
+  &:hover {
+    border: 1px solid $border-component-selected;
+  }
+}
+.selected-block::after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 15px;
+  height: 40px;
+  background-color: $blue-nimbus-dark;
+  right: 0px;
+  top: 50%;
+  margin-top: -20px;
+  border-radius: 10px 0 0 10px;
+}
+.row-add-content {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed silver;
+
+  button {
+    .icon {
+      margin-right: 6px;
+      color: white;
+      font-size: 22px;
+    }
+  }
 }
