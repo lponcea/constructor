@@ -82,7 +82,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
       if (selectedBlock !== undefined) {
         this.contentBlocks.splice(this.selectedBlock + 1, 0, this.createContentBlock(selectedBlock.selectedBlock));
         this.updateBlocksOrder();
-        this.selectedBlock++;
+        this.selectedBlock = this.selectedBlock + 1;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
       }
     });
