@@ -69,8 +69,7 @@ export class TemplateGalleryComponent implements OnInit {
   selectContentBlock(selectedContentBlockIndex: number): void {
     this.textEditorBehaviosService.setShowTextEditor(false);
     this.selectedContentBlockIndex = selectedContentBlockIndex;
-    // this.selectTemplate(this.templates[selectedContentBlockIndex]);
-    this.contentBlocksService.setSelectedBlock(this.templates[selectedContentBlockIndex]);
+    this.contentBlocksService.setSelectedBlock(this.filteredTemplates[selectedContentBlockIndex]);
     this.navigationControlsService.setOpenTemplateGallery(false);
   }
 
