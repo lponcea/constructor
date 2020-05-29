@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { BlockSelectionService } from 'app/services/block-selection.service';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
@@ -11,7 +11,7 @@ import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes
   templateUrl: './constructor-filmstrip.component.html',
   styleUrls: ['./constructor-filmstrip.component.scss']
 })
-export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
+export class ConstructorFilmstripComponent implements OnInit, AfterContentInit, OnDestroy {
   selectedContentBlockIndex = -1;
   contentBlocks: IBloqueComponentes[];
   selectedTemplateType = '';
@@ -63,6 +63,9 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
     this.contentBlocksService.getTempaltes().subscribe(templates => {
       this.templates = templates;
     });
+    this.subscription = this.contentBlocksService.getSelectedBlockIndex().subscribe(selectedBlockIndex => {
+      this.selectedContentBlockIndex = selectedBlockIndex;
+    });
   }
 
   ngOnInit(): void {
@@ -88,6 +91,7 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
   */
   selectContentBlock(selectedContentBlockIndex: number): void {
     this.selectedContentBlockIndex = selectedContentBlockIndex;
+    this.contentBlocksService.setSelectedBlockIndex(this.selectedContentBlockIndex);
     // this.messageService.sendMessage(text);
   }
 
@@ -114,5 +118,9 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit {
       }
     }
     return path;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
