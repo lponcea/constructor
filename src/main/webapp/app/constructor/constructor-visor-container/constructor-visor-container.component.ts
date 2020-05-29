@@ -66,6 +66,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   get curso(): any {
     return this._curso;
   }
+  visorSize = 'desktop';
 
   constructor(
     private contentBlocksService: ContentBlocksService,
@@ -89,6 +90,9 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     });
     this.subscription = this.contentBlocksService.getIndexBlockToDelete().subscribe(indexBlockToDelete => {
       this.deleteContentBlock(indexBlockToDelete);
+    });
+    this.subscription = this.navigationControlsService.getVisorSize().subscribe(visorSize => {
+      this.visorSize = visorSize;
     });
   }
 

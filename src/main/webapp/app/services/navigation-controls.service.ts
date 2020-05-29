@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class NavigationControlsService {
   private openTemplateGallery = new Subject<any>();
   private selectedTemplate = new Subject<any>();
+  private visorSize = new Subject<string>();
 
   constructor() {}
 
@@ -28,5 +29,13 @@ export class NavigationControlsService {
 
   getSelectedTemplateType(): Observable<any> {
     return this.selectedTemplate.asObservable();
+  }
+
+  setVisorSize(size: string): void {
+    this.visorSize.next(size);
+  }
+
+  getVisorSize(): Observable<any> {
+    return this.visorSize.asObservable();
   }
 }

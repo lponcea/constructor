@@ -3,6 +3,7 @@ import { LoginModalService } from 'app/core/login/login-modal.service';
 import { LoginService } from 'app/core/login/login.service';
 import { Router } from '@angular/router';
 import { EventEmitterService } from 'app/services/event-emitter.service';
+import { NavigationControlsService } from 'app/services/navigation-controls.service';
 
 @Component({
   selector: 'jhi-top-bar',
@@ -17,7 +18,8 @@ export class TopBarComponent {
     private loginService: LoginService,
     private loginModalService: LoginModalService,
     private router: Router,
-    private eventEmitterService: EventEmitterService
+    private eventEmitterService: EventEmitterService,
+    private navigationControlsService: NavigationControlsService
   ) {}
 
   collapseNavbar(): void {
@@ -36,5 +38,9 @@ export class TopBarComponent {
 
   save(): void {
     this.eventEmitterService.setInvokeSave();
+  }
+
+  changeVisorSize(size: string): void {
+    this.navigationControlsService.setVisorSize(size);
   }
 }
