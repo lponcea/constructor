@@ -1,0 +1,53 @@
+@import '../../../../content/scss/variables.scss';
+// Block 4 -Paragraph text with image
+.col-cb-text-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include smartphone {
+    background-color: red;
+  }
+}
+
+.col-cb-text-img > div {
+  position: relative;
+  width: 48%;
+  height: auto;
+}
+.col-cb-text-img > div:nth-child(1) {
+  // border: 1px solid red;
+}
+.col-cb-text-img > div:nth-child(2) {
+  // border: 1px solid blue;
+}
+.col-cb-text-img > div:nth-child(1) > .b-paragraph-text {
+  cursor: pointer;
+  border: 1px dashed $blue-nimbus-light;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid $blue-nimbus-light;
+  }
+}
+.col-cb-text-img > div:nth-child(2) > .cc-image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  img {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border: 1px dashed $blue-nimbus-light;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $blue-nimbus-light;
+    }
+  }
+}
