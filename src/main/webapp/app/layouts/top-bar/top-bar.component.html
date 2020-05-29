@@ -1,5 +1,5 @@
 <!-- Agregar clase "topbar-darkmode" a "topbar-layout" para darkmode -->
-<nav class="topbar-layout">
+<nav class="topbar-layout" [ngClass]="{'topbar-darkmode': selectedColorMode.class === 'ni-dark'}">
     <div class="layout-tool-menu">
       <div class="row-ltm">
         <div class="nbm-i2-set-1">
@@ -41,19 +41,25 @@
           <!-- Dropown tool -->
           <div class="nav-tool-dd nav-tool" ngbDropdown display="dynamic" routerLinkActive="active">
               <a class="dd-a" ngbDropdownToggle id="nav-tool-mode">
-                <i class="icon ni-light"></i>
-                <div class="nb-text">Lightmode</div>
+                <i class="icon" [ngClass]="selectedColorMode.class"></i>
+                <div class="nb-text">{{selectedColorMode.text}}</div>
               </a>
               <!-- Dropdown Menu -->
               <div class="dropdown-menu dd-tool" ngbDropdownMenu aria-labelledby="nav-tool-mode">
-                  <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
-                    <i class="icon ni-light"></i>
-                    <p>Lightmode</p>
-                  </a>
-                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
-                    <i class="icon ni-dark"></i>
-                    <p>Dark mode</p>
-                  </a>
+                <!--
+                <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                  <i class="icon ni-light"></i>
+                  <p>Lightmode</p>
+                </a>
+                <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar()">
+                  <i class="icon ni-dark"></i>
+                  <p>Dark mode</p>
+                </a>
+                -->
+                <a *ngFor="let colorMode of colorModes" class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); selectedColorMode=colorMode">
+                  <i class="icon" [ngClass]="colorMode.class"></i>
+                  <p>{{colorMode.text}}</p>
+                </a>
               </div>
           </div>
           <!-- End Dropown tool -->

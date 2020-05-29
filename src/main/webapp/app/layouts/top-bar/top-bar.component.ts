@@ -13,6 +13,20 @@ import { NavigationControlsService } from 'app/services/navigation-controls.serv
 export class TopBarComponent {
   openMenu = false;
   isNavbarCollapsed = true;
+  colorModes = [
+    {
+      class: 'ni-light',
+      text: 'Light mode'
+    },
+    {
+      class: 'ni-dark',
+      text: 'Dark mode'
+    }
+  ];
+  selectedColorMode = {
+    class: 'ni-light',
+    text: 'Light mode'
+  };
   sizeMenus = [
     {
       class: 'ni-desktop',
