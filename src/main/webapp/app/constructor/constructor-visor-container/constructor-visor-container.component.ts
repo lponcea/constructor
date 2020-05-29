@@ -56,7 +56,8 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
         this.nivel = this._curso.nivelesCurso[0].nivelJerarquico;
         this.nivel.cursoId = this._curso.id;
         this.contentBlocks = [];
-        this.contentBlocks = this.orderTextImageLevel(this.nivel.bloquesComponentes!);
+        // this.contentBlocks = this.orderTextImageLevel(this.nivel.bloquesComponentes!);
+        this.contentBlocks = this.nivel.bloquesComponentes!;
         this.nivel.nivelId = this._curso.nivelesCurso[0].nivelJerarquico.id;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
       }
@@ -139,7 +140,8 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
     */
     this.contentBlocks = [];
-    this.contentBlocks = this.orderTextImageLevel(res.body.bloquesComponentes);
+    // this.contentBlocks = this.orderTextImageLevel(res.body.bloquesComponentes);
+    this.contentBlocks = res.body.bloquesComponentes;
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
     // this.updateContentBlocks(res.body.bloquesComponentes);
   }
@@ -178,7 +180,11 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   // Función temporal para poner texto antes que imagen al recibir información de guardado, actualización o consulta.
   orderTextImageLevel(contentBlocks: IBloqueComponentes[]): IBloqueComponentes[] {
     for (let i = 0; i < contentBlocks.length; i++) {
-      if (contentBlocks[i]!.tipoBloqueComponentes && contentBlocks[i]!.tipoBloqueComponentes!.nombre === 'imagen_texto') {
+      if (
+        contentBlocks[i]!.tipoBloqueComponentes &&
+        contentBlocks[i]!.tipoBloqueComponentes!.nombre === 'imagen_texto' &&
+        contentBlocks[i]!.componentes!.length
+      ) {
         if (contentBlocks[i]!.componentes![0].tipoComponente!.nombre === 'image') {
           const tempArray = [];
           tempArray.push(contentBlocks[i]!.componentes![1]);
@@ -192,6 +198,9 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
 
   // Función temporal para poner texto antes que imagen. Pendiente relación y orden en base de datos.
   orderTextImage(componentTypes: ITipoComponente[]): ITipoBloqueComponentes[] {
+    if (componentTypes.length < 2) {
+      return componentTypes;
+    }
     let tempArray = [];
     if (componentTypes[0].nombre === 'image') {
       tempArray.push(componentTypes[1]);

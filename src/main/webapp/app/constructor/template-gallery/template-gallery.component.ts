@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { TipoComponenteService } from 'app/entities/tipo-bloque-componente/tipo-componente.service';
@@ -26,7 +26,15 @@ export class TemplateGalleryComponent implements OnInit {
       selected: false
     }
   ];
-  templates: ITipoBloqueComponentes[] = [];
+  private _templates: ITipoBloqueComponentes[] = [];
+  get templates(): ITipoBloqueComponentes[] {
+    return this._templates;
+  }
+  @Input()
+  set templates(val: ITipoBloqueComponentes[]) {
+    this._templates = val;
+  }
+
   filteredTemplates: ITipoBloqueComponentes[] = [];
 
   constructor(
@@ -35,58 +43,6 @@ export class TemplateGalleryComponent implements OnInit {
     private tipoComponenteService: TipoComponenteService,
     private textEditorBehaviosService: TextEditorBehaviorService
   ) {
-    /*
-    this.templates = [
-      {
-        id: 1,
-        nombre: 'titulo',
-        iconPath: '../../../content/images/ab1.png',
-        tags: 'text',
-        tiposComponentes: [
-          {
-            id: 1,
-            nombre: 'text'
-          }
-        ]
-      },
-      {
-        id: 2,
-        nombre: 'texto',
-        iconPath: '../../../content/images/ab2.png',
-        tags: 'text',
-        tiposComponentes: [
-          {
-            id: 1,
-            nombre: 'text'
-          }
-        ]
-      },
-      {
-        id: 3,
-        nombre: 'imagen',
-        iconPath: '../../../content/images/ab3.png',
-        tags: 'image',
-        tiposComponentes: [
-          {
-            id: 2,
-            nombre: 'image'
-          }
-        ]
-      },
-      {
-        id: 4,
-        nombre: 'imagen_texto',
-        iconPath: '../../../content/images/ab4.png',
-        tags: 'image text',
-        tiposComponentes: [
-          {
-            id: 1,
-            nombre: 'text'
-          }
-        ]
-      }
-    ];
-    */
     // Obtener las plantillas del llamdo de los tipos de bloques de contenido
     this.tipoComponenteService
       .query()
@@ -113,7 +69,9 @@ export class TemplateGalleryComponent implements OnInit {
   selectContentBlock(selectedContentBlockIndex: number): void {
     this.textEditorBehaviosService.setShowTextEditor(false);
     this.selectedContentBlockIndex = selectedContentBlockIndex;
-    this.selectTemplate(this.templates[selectedContentBlockIndex]);
+    // this.selectTemplate(this.templates[selectedContentBlockIndex]);
+    this.contentBlocksService.setSelectedBlock(this.templates[selectedContentBlockIndex]);
+    this.navigationControlsService.setOpenTemplateGallery(false);
   }
 
   filterTemplates(filter: any): void {
