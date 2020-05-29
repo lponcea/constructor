@@ -23,7 +23,7 @@
               </div>
           </div>
           <!-- End Dropown tool -->
-          <div class="nb-icon-tool">
+          <div class="nb-icon-tool nb-disabled">
             <i class="icon ni-settings"></i>
             <div class="nb-text">Configurar</div>
           </div>
@@ -65,7 +65,8 @@
                 <div class="nb-text">Desktop</div>
               </a>
               <div class="dropdown-menu dd-tool" ngbDropdownMenu aria-labelledby="nav-tool-screen">
-                  <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize('desktop')">
+                <!-- <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize('desktop')"> -->
+                  <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize('desktop')">
                     <i class="icon ni-desktop"></i>
                     <p>Desktop</p>
                   </a>
@@ -80,11 +81,11 @@
               </div>
           </div>
           <!-- End Dropown tool -->
-          <div class="nb-icon-tool">
+          <div class="nb-icon-tool nb-disabled">
             <i class="icon ni-view"></i>
             <div class="nb-text">Preview</div>
           </div>
-          <div class="nb-icon-tool">
+          <div class="nb-icon-tool nb-disabled">
             <i class="icon ni-upload"></i>
             <div class="nb-text">Publicar</div>
           </div>

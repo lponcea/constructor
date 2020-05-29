@@ -92,7 +92,11 @@
     font-size: 13px;
   }
 }
-
+.nb-disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.6;
+}
 // Tool Expand
 .nav-tool-dd {
   position: relative;

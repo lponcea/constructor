@@ -14,7 +14,6 @@
 .visor-component-artboard {
   position: relative;
   width: 94%;
-  max-width: 1400px;
   height: auto;
   min-height: 40px;
   background-color: $color-workspace;
@@ -38,9 +37,7 @@
     justify-content: center;
     .icon {
       cursor: default;
-    }
-    &:hover {
-      background-color: $main-btn-color-hover;
+      opacity: 0.6;
     }
   }
   .artboard-name {
@@ -195,14 +192,14 @@
   }
 }
 
-.smartphone {
-  width: 400px;
+.v-smartphone {
+  width: 480px;
 }
 
-.tablet {
+.v-tablet {
   width: 800px;
 }
 
-.desktop {
-  width: 1280px;
+.v-desktop {
+  max-width: 1400px;
 }
