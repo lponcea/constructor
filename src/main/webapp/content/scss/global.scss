@@ -3145,20 +3145,6 @@ input[type='file'] {
 }
 
 // Blocks
-// .row-content-block {
-//   position: relative;
-//   width: 100%;
-//   height: auto;
-//   border: 1px dashed $bordercolor-block;
-//   padding: 15px;
-//   transition: 0.3s;
-//   margin-top: 10px;
-//   margin-bottom: 10px;
-//   cursor: pointer;
-//   &:hover {
-//     border: 1px solid teal;
-//   }
-// }
 
 // Block 1 -Title
 .b-title-text {
@@ -3166,10 +3152,10 @@ input[type='file'] {
   width: 100%;
   height: auto;
   cursor: pointer;
-  border: 1px solid $blue-nimbus-light;
+  border: 1px dashed $blue-nimbus-light;
   transition: 0.3s;
   &:hover {
-    border: 1px solid $blue-nimbus-dark;
+    border: 1px solid $blue-nimbus-light;
   }
   .final-block-row {
     position: relative;
@@ -3255,13 +3241,3 @@ input[type='file'] {
     }
   }
 }
-
-// .col-cb-text-img {
-//   position: relative;
-//   width: 100%;
-//   height: auto;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//
-// }

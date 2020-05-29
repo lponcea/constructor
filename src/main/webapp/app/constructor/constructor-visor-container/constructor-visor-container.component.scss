@@ -146,33 +146,44 @@
   position: relative;
   width: 100%;
   height: auto;
-  border: 1px dashed $border-component;
+  // border: 1px dashed $border-component;
+  border: 2px solid rgb(213, 213, 213);
   padding: 20px;
   transition: 0.3s;
   margin-top: 15px;
   margin-bottom: 15px;
   cursor: pointer;
+  border-radius: 4px;
   &:hover {
-    border: 1px solid $border-component-hover;
+    // border: 1px solid $border-component-hover;
+    border: 2px solid rgb(175, 175, 175);
   }
 }
 .selected-block {
-  border: 1px solid $border-component-selected;
+  border: 2px solid $border-component-selected;
   &:hover {
-    border: 1px solid $border-component-selected;
+    border: 2px solid $border-component-selected;
   }
 }
 .selected-block::after {
   position: absolute;
   display: inline-block;
-  content: '';
-  width: 40px;
+  content: 'Bloque';
+  // width: 40px;
+  width: auto;
+  padding-left: 8px;
+  padding-right: 8px;
   height: 15px;
   background-color: $blue-nimbus-dark;
-  left: 50%;
-  margin-left: -20px;
+  right: 0;
   top: 0px;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 0px 10px;
+  color: white;
+  font-size: 11px;
+  // background-image: "../../../content/images/bloque.svg";
+  // background-size: 90%;
+  // background-position: center;
+  // background-repeat: no-repeat;
 }
 .row-add-content {
   position: relative;
