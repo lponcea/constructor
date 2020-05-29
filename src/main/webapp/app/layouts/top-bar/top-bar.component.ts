@@ -13,6 +13,28 @@ import { NavigationControlsService } from 'app/services/navigation-controls.serv
 export class TopBarComponent {
   openMenu = false;
   isNavbarCollapsed = true;
+  sizeMenus = [
+    {
+      class: 'ni-desktop',
+      value: 'desktop',
+      text: 'Desktop'
+    },
+    {
+      class: 'ni-tablet',
+      value: 'tablet',
+      text: 'Tablet'
+    },
+    {
+      class: 'ni-smartphone',
+      value: 'smartphone',
+      text: 'Smartphone'
+    }
+  ];
+  selectedSizeMenu = {
+    class: 'ni-desktop',
+    value: 'desktop',
+    text: 'Desktop'
+  };
 
   constructor(
     private loginService: LoginService,

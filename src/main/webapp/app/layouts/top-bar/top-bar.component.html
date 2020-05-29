@@ -61,11 +61,12 @@
           <div class="nav-tool-dd nav-tool" ngbDropdown display="dynamic" routerLinkActive="active">
             <!-- <a class="dd-a" ngbDropdownToggle href="javascript:void(0);" id="nav-tool"> -->
               <a class="dd-a" ngbDropdownToggle id="nav-tool-screen">
-                <i class="icon ni-desktop"></i>
-                <div class="nb-text">Desktop</div>
+                <i class="icon" [ngClass]="selectedSizeMenu.class"></i>
+                <div class="nb-text">{{selectedSizeMenu.text}}</div>
               </a>
               <div class="dropdown-menu dd-tool" ngbDropdownMenu aria-labelledby="nav-tool-screen">
                 <!-- <a class="dropdown-item a-dd-tool active-a-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize('desktop')"> -->
+                  <!--
                   <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize('desktop')">
                     <i class="icon ni-desktop"></i>
                     <p>Desktop</p>
@@ -77,6 +78,11 @@
                   <a class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize('smartphone')">
                     <i class="icon ni-smartphone"></i>
                     <p>Smartphone</p>
+                  </a>
+                  -->
+                  <a *ngFor="let sizeMenu of sizeMenus" class="dropdown-item a-dd-tool" routerLink="#" routerLinkActive="active" (click)="collapseNavbar(); changeVisorSize(sizeMenu.value); selectedSizeMenu=sizeMenu;">
+                    <i class="icon" [ngClass]="sizeMenu.class"></i>
+                    <p>{{sizeMenu.text}}</p>
                   </a>
               </div>
           </div>
