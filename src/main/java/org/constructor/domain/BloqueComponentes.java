@@ -38,7 +38,7 @@ public class BloqueComponentes implements Serializable {
     private int orden;
 	
 	/** The componente. */
-	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Componente> componente = new HashSet<>();
 	
 	/** The nivel jerarquico. */

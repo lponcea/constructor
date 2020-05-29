@@ -67,7 +67,7 @@ public class NivelJerarquico implements Serializable  {
 	/**
 	 * orden
 	 */
-	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@OrderBy("orden")
 	private List<BloqueComponentes> bloquesComponentes = new ArrayList<>();
 	

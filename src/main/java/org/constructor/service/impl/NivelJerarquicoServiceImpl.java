@@ -135,20 +135,24 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
  	public Optional<NivelJerarquico> updateNivelJerarquico(NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception{
 		 
 		 
-		 
 		return Optional.of(nivelJerarquicoRepository
 		            .findById(nivelJerarquicoDTO.getNivelId()))
 		            .filter(Optional::isPresent)
 		            .map(Optional::get)
 		            .map( nivel ->{
 		            	nivel.getBloquesComponentes().stream().collect(Collectors.toSet()).forEach(
-		            			bloque -> bloqueComponentesRepository.deleteById(bloque.getId())
+		            			bloque -> {
+		            				log.debug("Eliminando bloques: {}", bloque.getId());
+		            				bloqueComponentesRepository.deleteById(bloque.getId());
+		            			}
 		            			);
 		            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
 		            			bloqueDTO -> {
+		            				if(!bloqueDTO.getComponentes().isEmpty()) {
 		            				BloqueComponentes bloqueComponentes = new BloqueComponentes();
 		            				bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
 		            				bloqueComponentes.setOrden(bloqueDTO.getOrden());
+		            				log.debug("Bloque vaciooooo: {}", bloqueDTO.getComponentes());
 		            				bloqueComponentes.setNivelJerarquico(nivel);
 		            				bloqueComponentesRepository.save(bloqueComponentes);
 		            				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
@@ -163,9 +167,11 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            							log.debug("Se guardó correctamente el componente: {}", componente);
 		            						}
 		            						);
+		            				}
 		            				
 		            			}
 		            			);
+		            	log.debug("Se guardó correctamente el componente: {}", nivel.getBloquesComponentes());
 		            	return nivel;
 		            		}
 		            		);
