@@ -11,6 +11,7 @@ export class ContentBlocksService {
   contentBlocks = new Subject<IBloqueComponentes[]>();
   indexBlockToDelete = new Subject<number>();
   templates = new Subject<ITipoBloqueComponentes[]>();
+  selectedBlockIndex = new Subject<number>();
 
   constructor() {}
 
@@ -46,5 +47,13 @@ export class ContentBlocksService {
 
   setTemplates(templates: IBloqueComponentes[]): void {
     this.templates.next(templates);
+  }
+
+  getSelectedBlockIndex(): Observable<number> {
+    return this.selectedBlockIndex;
+  }
+
+  setSelectedBlockIndex(index: number): void {
+    this.selectedBlockIndex.next(index);
   }
 }

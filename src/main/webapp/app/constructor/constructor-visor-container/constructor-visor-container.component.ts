@@ -86,6 +86,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
         this.updateBlocksOrder();
         this.selectedBlock = this.selectedBlock + 1;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
+        this.contentBlocksService.setSelectedBlockIndex(this.selectedBlock);
       }
     });
     this.subscription = this.contentBlocksService.getIndexBlockToDelete().subscribe(indexBlockToDelete => {
@@ -93,6 +94,9 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     });
     this.subscription = this.navigationControlsService.getVisorSize().subscribe(visorSize => {
       this.visorSize = visorSize;
+    });
+    this.subscription = this.contentBlocksService.getSelectedBlockIndex().subscribe(selectedBlockIndex => {
+      this.selectedBlock = selectedBlockIndex;
     });
   }
 
@@ -254,6 +258,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
 
   selectBlock(index: number): void {
     this.selectedBlock = index;
+    this.contentBlocksService.setSelectedBlockIndex(this.selectedBlock);
   }
 
   addNewBlock(): void {
