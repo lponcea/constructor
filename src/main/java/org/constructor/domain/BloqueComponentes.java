@@ -34,7 +34,7 @@ public class BloqueComponentes implements Serializable {
     private Long id;
 	
 	/** The orden componente. */
-	@Column(name = "orden_componente")
+	@Column(name = "orden")
     private int orden;
 	
 	/** The componente. */

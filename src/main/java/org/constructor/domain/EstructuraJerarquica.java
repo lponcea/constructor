@@ -50,7 +50,7 @@ public class EstructuraJerarquica implements Serializable{
 	/**
 	 * int ordenNivel
 	 */
-	@Column(name = "orden_nivel")
+	@Column(name = "orden")
     private int ordenNivel;
 
 	

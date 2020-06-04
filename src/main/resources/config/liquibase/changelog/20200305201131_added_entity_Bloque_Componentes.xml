@@ -22,7 +22,7 @@
             <column name="tipo_bloque_componentes_id" type="bigint">
                 <constraints  nullable="false"/>
             </column>	
-            <column name="orden_componente" type="bigint">
+            <column name="orden" type="bigint">
                 <constraints  nullable="false"/>
             </column>	
             

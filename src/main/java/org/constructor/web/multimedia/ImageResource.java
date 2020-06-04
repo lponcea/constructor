@@ -19,17 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class Image {
+public class ImageResource {
 	
 	/**
 	 * PATH
 	 */
-	private static final String PATH =  System.getProperty("user.home") + "/resources" + File.separator;
+	private static final StringBuilder PATH =  new StringBuilder(System.getProperty("user.home") + "/resources" + File.separator);
 	
 	/**
 	 * Logger
 	 */
-	private final Logger log = LoggerFactory.getLogger(Image.class);
+	private final Logger log = LoggerFactory.getLogger(ImageResource.class);
 	
 	
 	/**
@@ -39,13 +39,13 @@ public class Image {
 	 */
 	@RequestMapping(value = "/loadImage", method = RequestMethod.GET)
 	@Secured({ AuthoritiesConstants.ADMIN, AuthoritiesConstants.USER })
-	public ResponseEntity<byte[]> loadImage(@RequestParam("file") String nameImage) {
+	public ResponseEntity<byte[]> loadImage(@RequestParam("file") String nameImage) throws IOException {
 		
 		HttpHeaders headers = new HttpHeaders();
 		log.debug("*************Nimbus Image Request*************");
-		log.debug("******** Path:  {}****** ", PATH + nameImage);
+		log.debug("******** Path:  {}****** ", PATH);
 		byte[] fileArray = new byte[1];
-		File file = new File(PATH + nameImage);
+		File file = new File(PATH.append(nameImage).toString());
 		
 		if(!file.exists()) {
 			fileArray[0] = 0;
@@ -59,10 +59,10 @@ public class Image {
 		
 		try { 
 			FileInputStream read = new FileInputStream(file);
-			log.debug("******** Reading File *****", nameImage);
+			log.debug("******** Reading File: {} *****", nameImage);
 			read.read(fileArray);
 			read.close();
-			log.debug("******** Sending File *****", nameImage);
+			log.debug("******** Sending File: {} *****", nameImage);
 			headers.setContentType(MediaType.IMAGE_PNG);
 			return new ResponseEntity<>(fileArray,headers,HttpStatus.OK);
 		

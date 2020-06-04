@@ -57,7 +57,7 @@ public class NivelesCurso  implements Serializable{
 	/**
 	 * orden_nivel
 	 */
-	@Column(name = "orden_nivel")
+	@Column(name = "orden")
     private int ordenNivel;
 
 	/**
