@@ -6,9 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.constructor.security.AuthoritiesConstants;
+import org.constructor.utils.RestConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping(RestConstants.PATH_API)
 
 public class Video {
 	
@@ -42,7 +43,7 @@ public class Video {
 	 * @param nameVideo
 	 * @return
 	 */
-	@RequestMapping(value = "/loadVideo", method = RequestMethod.GET, produces = "video/mp4")
+	@RequestMapping(path = RestConstants.PATH_LOAD_VIDEO, method = RequestMethod.GET, produces = "video/mp4")
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public ResponseEntity<byte[]> loadVideo(@RequestParam("file") String nameVideo) {
 		
