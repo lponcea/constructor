@@ -37,4 +37,18 @@ public class RestConstants {
 	 * Path para peticiones loadAudio
 	 */
 	public static final String PATH_LOAD_AUDIO = "loadAudio";
+	
+	// ---------------Imagen--------------------
+	
+	/**
+	* Path para peticiones loadAudio
+	*/
+	public static final String PATH_LOAD_IMAGE = "loadImage";
+	
+	// ---------------Docs--------------------
+	
+	/**
+	* Path para peticiones loadDocs
+	*/
+	public static final String PATH_LOAD_DOCS = "loadDocs";
 }

@@ -26,7 +26,7 @@ public class VideoResource {
 	/**
 	 * path
 	 */
-	private static final StringBuilder PATH = new StringBuilder(System.getProperty("user.home") + "/resources" + File.separator);
+	private static final String PATH = System.getProperty("user.home") + "/resources" + File.separator;
 	
 	/**
 	 * Logger
@@ -46,12 +46,13 @@ public class VideoResource {
 	@RequestMapping(path = RestConstants.PATH_LOAD_VIDEO, method = RequestMethod.GET, produces = "video/mp4")
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public ResponseEntity<byte[]> loadVideo(@RequestParam("file") String nameVideo) throws IOException {
-		
+		StringBuilder builder = new StringBuilder();
+		builder.append(PATH);
 		log.debug("******** Nimbus Video Request ******");
 		log.debug("******** Path:  {} ****** ", PATH);
 		
 		byte[] fileArray = new byte[1];
-		File file = new File(PATH.append(nameVideo).toString());
+		File file = new File(builder.append(nameVideo).toString());
 		if(!file.exists()) {
 			log.debug("******** Path not found****** ");
 			fileArray[0] = 0;

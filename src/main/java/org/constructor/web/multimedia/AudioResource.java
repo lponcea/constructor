@@ -30,7 +30,7 @@ public class AudioResource {
 	/**
 	 * path
 	 */
-	private static final StringBuilder PATH = new StringBuilder(System.getProperty("user.home") + "/resources" + File.separator);
+	private static final String PATH = System.getProperty("user.home") + "/resources" + File.separator;
 	
 	/**
 	 * Logger
@@ -50,12 +50,13 @@ public class AudioResource {
 	@RequestMapping(path = RestConstants.PATH_LOAD_AUDIO, method = RequestMethod.GET, produces = "audio/mpeg")
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
 	public ResponseEntity<byte[]> loadAudio(@RequestParam("file") String nameAudio) throws IOException {
-		
+		StringBuilder builder = new StringBuilder();
+		builder.append(PATH);
 		log.debug("******** Nimbus Audio Request ******");
 		log.debug("******** Path:  {} ****** ", PATH);
 		
 		byte[] fileArray = new byte[1];
-		File file = new File(PATH.append(nameAudio).toString());
+		File file = new File(builder.append(nameAudio).toString());
 		if(!file.exists()) {
 			log.debug("******** Path not found****** ");
 			fileArray[0] = 0;

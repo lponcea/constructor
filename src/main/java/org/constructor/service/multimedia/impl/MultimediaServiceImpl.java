@@ -45,8 +45,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 	public VideoResponse saveFile(MultimediaDTO file) {
 	    VideoResponse videoResponse = new VideoResponse();
 		try {
-			log.debug("*********************** FileUploadServiceImplement **********************");
-				Long idCurso = file.getId();
+			log.debug("*** FileUploadServiceImplement ****");
 				MultipartFile multimedia =  file.getFile();
 				String extension = FilenameUtils.getExtension(multimedia.getOriginalFilename());
 				String replace = null; 
@@ -57,60 +56,42 @@ public class MultimediaServiceImpl implements MultimediaService {
 				
 				if (extension.toUpperCase().equals(extAudio.MP3.toString())
 						|| extension.toUpperCase().equals(extAudio.WAV.toString())) {
-					builder.append(UPLOAD_FOLDER.toString());
-					builder.append(File.separator);
-					builder.append(nimbus);
-					builder.append(File.separator);
-					builder.append(idCurso);
-					builder.append(File.separator);
+					buildFile(builder, file);
 					builder.append("audio");
-					log.debug("builder audio : {}", builder);
 					PathValidation.createPath(builder.toString());
+				     log.debug("builder audio : {}", builder);
+				}
+
+				if (extension.toUpperCase().equals(extVideo.MP4.toString())
+						|| extension.toUpperCase().equals(extVideo.VGA.toString())) {
+					buildFile(builder, file);
+					builder.append("video");
+					PathValidation.createPath(builder.toString());
+					log.debug("builder Video : {}", builder);
 				}
 				
-					if (extension.toUpperCase().equals(extVideo.MP4.toString())
-							|| extension.toUpperCase().equals(extVideo.VGA.toString())) {
-						builder.append(UPLOAD_FOLDER.toString());
-						builder.append(File.separator);
-						builder.append(nimbus);
-						builder.append(File.separator);
-						builder.append(idCurso);
-						builder.append(File.separator);
-						builder.append("video");
-						log.debug("builder Video : {}", builder);
-						PathValidation.createPath(builder.toString());
-					}
-				
-					if (extension.toUpperCase().equals(extImage.PNG.toString())
-							|| extension.toUpperCase().equals(extImage.JPG.toString())) {
-						builder.append(UPLOAD_FOLDER.toString());
-						builder.append(File.separator);
-						builder.append(nimbus);
-						builder.append(File.separator);
-						builder.append(idCurso);
-						builder.append(File.separator);
-						builder.append("image");
-						log.debug("builder image : {}", builder);
-						PathValidation.createPath(builder.toString());
-					}
-				
-					if (extension.toUpperCase().equals(extDocs.PDF.toString())
-							|| extension.toUpperCase().equals(extDocs.CSV.toString())) {
-						builder.append(UPLOAD_FOLDER.toString());
-						builder.append(File.separator);
-						builder.append(nimbus);
-						builder.append(File.separator);
-						builder.append(idCurso);
-						builder.append(File.separator);
-						builder.append("docs");
-						log.debug("builder docs : {}", builder);
-						PathValidation.createPath(builder.toString());
-					}else {
-						videoResponse.setPath(null);
-					}
+				if (extension.toUpperCase().equals(extImage.PNG.toString())
+						|| extension.toUpperCase().equals(extImage.JPG.toString())) {
+					buildFile(builder, file);
+					builder.append("image");
+					PathValidation.createPath(builder.toString());
+					log.debug("builder image : {}", builder);
 					
+				}
+				
+				if (extension.toUpperCase().equals(extDocs.PDF.toString())
+						|| extension.toUpperCase().equals(extDocs.CSV.toString())) {
+					buildFile(builder, file);
+					builder.append("docs");
+					PathValidation.createPath(builder.toString());
+					log.debug("builder docs : {}", builder);
+				}else {
+					videoResponse.setPath(null);
+				}
+				
 				builder.append(File.separator);
 				builder.append(multimedia.getOriginalFilename());
+	
 				
 				//Creating and Writing  File
 				byte[] fileBytes = multimedia.getBytes();
@@ -127,6 +108,23 @@ public class MultimediaServiceImpl implements MultimediaService {
 			return videoResponse;
 		 } 
 	}
+
+	/**
+	 * StringBuilder carpeteo 
+	 * 
+	 * @param builder
+	 * @param file
+	 * @return
+	 */
+    private StringBuilder buildFile(StringBuilder builder,MultimediaDTO file ) {
+    	Long idCurso = file.getId();
+    	builder.append(UPLOAD_FOLDER.toString());
+		builder.append(nimbus);
+		builder.append(File.separator);
+		builder.append(idCurso);
+		builder.append(File.separator);
+		return builder;
+}
 
 	/**
 	 * deleteCourseCover 
