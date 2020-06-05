@@ -1,9 +1,19 @@
 <!-- <div class="alerts alert-test" role="alert"> -->
 <div role="alert">
     <div *ngFor="let alert of alerts" [ngClass]="setClasses(alert)">
+        
+        <div *ngIf="alert && alert.type && alert.msg" [ngClass]="alert.type" (close)="alert.close(alerts)">
+            <div>{{alert.msg}}</div>
+            <div></div>
+            <button (click)="alert.close(alerts)">X</button>
+        </div>
+
+        <!--
         <ngb-alert *ngIf="alert && alert.type && alert.msg" [type]="alert.type" (close)="alert.close(alerts)">
             <pre [innerHTML]="alert.msg"></pre>
         </ngb-alert>
+        -->
+
     </div>
 </div>
 

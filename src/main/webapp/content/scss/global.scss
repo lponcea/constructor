@@ -3241,3 +3241,17 @@ input[type='file'] {
     }
   }
 }
+
+.danger {
+  background-color: #003170;
+  div {
+    color: white;
+  }
+}
+
+.info {
+  background-color: yellow;
+  div {
+    color: green;
+  }
+}

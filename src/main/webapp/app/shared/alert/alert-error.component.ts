@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager, JhiAlert, JhiAlertService, JhiEventWithContent } from 'ng-jhipster';
+import { JhiEventManager, JhiAlert, JhiAlertService, JhiEventWithContent, JhiAlertType } from 'ng-jhipster';
 import { Subscription } from 'rxjs';
 
 import { AlertError } from './alert-error.model';
@@ -24,7 +24,11 @@ export class AlertErrorComponent implements OnDestroy {
 
     this.validationErrorListener = eventManager.subscribe('constructorApp.validationError', (response: JhiEventWithContent<AlertError>) => {
       const errorResponse = response.content;
-      this.addErrorAlert(errorResponse.message, errorResponse.key, errorResponse.params);
+      if (errorResponse.type) {
+        this.addErrorAlert(errorResponse.message, errorResponse.key, errorResponse.params, errorResponse.type);
+      } else {
+        this.addErrorAlert(errorResponse.message, errorResponse.key, errorResponse.params);
+      }
     });
 
     this.httpErrorListener = eventManager.subscribe('constructorApp.httpError', (response: JhiEventWithContent<HttpErrorResponse>) => {
@@ -99,16 +103,14 @@ export class AlertErrorComponent implements OnDestroy {
     }
   }
 
-  addErrorAlert(message: string, key?: string, data?: any): void {
+  addErrorAlert(message: string, key?: string, data?: any, type?: JhiAlertType): void {
     message = key && key !== null ? key : message;
 
     const newAlert: JhiAlert = {
-      type: 'danger',
+      type: type ? type : 'danger',
       msg: message,
       params: data,
-      // Change timeout alert
-      // 60000 mls = one minut
-      timeout: 20000,
+      timeout: 10000,
       toast: this.alertService.isToast(),
       scoped: true
     };

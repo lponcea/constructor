@@ -9,7 +9,7 @@ import { NivelJerarquicoService } from 'app/entities/nivel-jerarquico/nivel-jera
 import { HttpResponse } from '@angular/common/http';
 import { TipoNivelJerarquico } from 'app/shared/model/enumerations/tipo-nivel-jerarquico.model';
 import { TipoComponente, ITipoComponente } from 'app/shared/model/tipo-componente.model';
-import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
+import { JhiEventManager, JhiEventWithContent, JhiAlertService } from 'ng-jhipster';
 import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 import { EventEmitterService } from 'app/services/event-emitter.service';
 import { NavigationControlsService } from 'app/services/navigation-controls.service';
@@ -74,7 +74,8 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     private eventManager: JhiEventManager,
     private textEditorBehaviosService: TextEditorBehaviorService,
     private eventEmitterService: EventEmitterService,
-    private navigationControlsService: NavigationControlsService
+    private navigationControlsService: NavigationControlsService,
+    private jhiAlertService: JhiAlertService
   ) {
     this.contentBlocks = [];
     this.subscription = this.contentBlocksService.getTempaltes().subscribe(templates => {
@@ -145,7 +146,10 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   protected onSaveSuccess(res: any): void {
     this.success = true;
     this.eventManager.broadcast(
-      new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.nivelJerarquico.created' })
+      new JhiEventWithContent('constructorApp.validationError', {
+        message: 'constructorApp.curso.nivelJerarquico.created',
+        type: 'success'
+      })
     );
     this.nivel = res.body;
     /*
@@ -170,7 +174,10 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   protected onSaveError(): void {
     this.error = true;
     this.eventManager.broadcast(
-      new JhiEventWithContent('constructorApp.validationError', { message: 'constructorApp.curso.nivelJerarquico.error' })
+      new JhiEventWithContent('constructorApp.validationError', {
+        message: 'constructorApp.curso.nivelJerarquico.error',
+        type: 'danger'
+      })
     );
   }
 
