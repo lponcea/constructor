@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.constructor.multimedia.response.MultimediaResponse;
 import org.constructor.multimedia.response.VideoResponse;
+import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,11 +38,14 @@ public class MultimediaResource {
 	 * @return
 	 */
 	@PostMapping(value = "/fileUpload",  produces = "application/json")
-	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file) {
+	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file, @RequestParam("id") Long id) {
 		VideoResponse vr = new VideoResponse();
-		log.debug("Upload File: {}", file); 
-		if (!file.isEmpty()) {
-			vr = multimediaService.saveFile(file);
+		MultimediaDTO multimediaDTO = new MultimediaDTO();
+		multimediaDTO.setFile(file);
+		multimediaDTO.setId(id);
+		log.debug("Upload File: {}", id); 
+		if (file != null) {
+			vr = multimediaService.saveFile(multimediaDTO);
 		} else {
 			vr.setName("empty file");
 			return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
