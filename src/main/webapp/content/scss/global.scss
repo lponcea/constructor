@@ -1079,27 +1079,6 @@ jhi-login-modal {
     outline: none;
   }
 }
-.bs-succes {
-  background-color: $succes-color;
-  box-shadow: 0 20px 30px rgba(76, 175, 80, 0.1), 0 6px 18px rgba(76, 175, 80, 0.12);
-  &:hover {
-    background-color: #347d37;
-  }
-}
-.bs-danger {
-  background-color: $alert-color;
-  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
-  &:hover {
-    background-color: $alert-hover-color;
-  }
-}
-.color-danger {
-  background-color: $alert-color;
-  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
-  &:hover {
-    background-color: $alert-hover-color;
-  }
-}
 .btn-status.disabled,
 .btn-status:disabled {
   opacity: 0.7;
@@ -3242,16 +3221,113 @@ input[type='file'] {
   }
 }
 
-.danger {
-  background-color: #003170;
-  div {
+// Alert component
+.bs-succes {
+  background-color: $succes-color;
+  box-shadow: 0 20px 30px rgba(76, 175, 80, 0.1), 0 6px 18px rgba(76, 175, 80, 0.12);
+  &:hover {
+    background-color: #347d37;
+  }
+}
+.bs-danger {
+  background-color: $alert-color;
+  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
+  &:hover {
+    background-color: $alert-hover-color;
+  }
+}
+.color-danger {
+  background-color: $alert-color;
+  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
+  &:hover {
+    background-color: $alert-hover-color;
+  }
+}
+
+.alert-nimbus {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-right: 30px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 10px;
+
+  .alert-icon {
+    position: relative;
+    cursor: default;
+    margin-right: 8px;
     color: white;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+  }
+
+  p {
+    font-size: 13px;
+    color: white;
+    line-height: 18px;
+  }
+
+  button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      outline: none;
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .icon {
+      position: relative;
+      cursor: default;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
+
+.danger {
+  background-color: $alert-color;
+  box-shadow: 0 20px 30px rgba(230, 26, 52, 0.1), 0 6px 18px rgba(230, 26, 52, 0.12);
+  .alert-icon:before {
+    content: '\e805';
   }
 }
 
 .info {
-  background-color: yellow;
-  div {
-    color: green;
+  background-color: $succes-color;
+  box-shadow: 0 20px 30px rgba(76, 175, 80, 0.1), 0 6px 18px rgba(76, 175, 80, 0.12);
+  .alert-icon:before {
+    content: '\e80a';
+  }
+}
+.success {
+  background-color: $succes-color;
+  box-shadow: 0 20px 30px rgba(76, 175, 80, 0.1), 0 6px 18px rgba(76, 175, 80, 0.12);
+  .alert-icon:before {
+    content: '\e806';
+  }
+}
+.warning {
+  background-color: $succes-color;
+  box-shadow: 0 20px 30px rgba(76, 175, 80, 0.1), 0 6px 18px rgba(76, 175, 80, 0.12);
+  .alert-icon:before {
+    content: '\e805';
   }
 }
