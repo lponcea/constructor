@@ -36,6 +36,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 	enum extVideo { MP4, VGA};
 	enum extImage { JPG, PNG};
 	enum extDocs { PDF, CSV};
+	enum extAudio{ MP3, WAV};
 
 	/**
 	 * saveFile
@@ -53,6 +54,19 @@ public class MultimediaServiceImpl implements MultimediaService {
 				//Create Path
 				StringBuilder builder = new StringBuilder();
 				PathValidation.createPath(UPLOAD_FOLDER.toString());
+				
+				if (extension.toUpperCase().equals(extAudio.MP3.toString())
+						|| extension.toUpperCase().equals(extAudio.WAV.toString())) {
+					builder.append(UPLOAD_FOLDER.toString());
+					builder.append(File.separator);
+					builder.append(nimbus);
+					builder.append(File.separator);
+					builder.append(idCurso);
+					builder.append(File.separator);
+					builder.append("audio");
+					log.debug("builder audio : {}", builder);
+					PathValidation.createPath(builder.toString());
+				}
 				
 					if (extension.toUpperCase().equals(extVideo.MP4.toString())
 							|| extension.toUpperCase().equals(extVideo.VGA.toString())) {

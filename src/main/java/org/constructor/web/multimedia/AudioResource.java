@@ -1,5 +1,7 @@
+/**
+ * 
+ */
 package org.constructor.web.multimedia;
-
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
+/**
+ * @author Edukai
+ *
+ */
 @RestController
 @RequestMapping(RestConstants.PATH_API)
-public class VideoResource {
-	
+public class AudioResource {
+
 	/**
 	 * path
 	 */
@@ -31,41 +35,42 @@ public class VideoResource {
 	/**
 	 * Logger
 	 */
-	private final Logger log = LoggerFactory.getLogger(VideoResource.class);
+	private final Logger log = LoggerFactory.getLogger(AudioResource.class);
 	
 	
 	/**
 	 * method Get 
 	 *  
-	 * video/mp4
+	 * audio/mpeg
 	 * 
-	 * @param nameVideo
+	 * @param nameAudio
 	 * @return
 	 * @throws IOException 
 	 */
-	@RequestMapping(path = RestConstants.PATH_LOAD_VIDEO, method = RequestMethod.GET, produces = "video/mp4")
+	@RequestMapping(path = RestConstants.PATH_LOAD_AUDIO, method = RequestMethod.GET, produces = "audio/mpeg")
 	@PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
-	public ResponseEntity<byte[]> loadVideo(@RequestParam("file") String nameVideo) throws IOException {
+	public ResponseEntity<byte[]> loadAudio(@RequestParam("file") String nameAudio) throws IOException {
 		
-		log.debug("******** Nimbus Video Request ******");
+		log.debug("******** Nimbus Audio Request ******");
 		log.debug("******** Path:  {} ****** ", PATH);
 		
 		byte[] fileArray = new byte[1];
-		File file = new File(PATH.append(nameVideo).toString());
+		File file = new File(PATH.append(nameAudio).toString());
 		if(!file.exists()) {
 			log.debug("******** Path not found****** ");
 			fileArray[0] = 0;
+			
 			return new ResponseEntity<byte[]>(fileArray,HttpStatus.BAD_REQUEST);
 		} 
-		log.debug("********Load video... ******");
+		log.debug("********Load audio... ******");
 		fileArray = new byte[(int) file.length()];
 		
 		try { 
 			FileInputStream read = new FileInputStream(file);
-			log.debug("******** Reading File: {} *****", nameVideo);
+			log.debug("******** Reading File: {} *****", nameAudio);
 			read.read(fileArray);
 			read.close();
-			log.debug("******** Sending File: {} *****", nameVideo);
+			log.debug("******** Sending File: {} *****", nameAudio);
 			return new ResponseEntity<byte[]>(fileArray,HttpStatus.OK);
 		
 		}catch(IOException ex){
@@ -73,6 +78,4 @@ public class VideoResource {
 		}
 		
 	}
-	
 }
-
