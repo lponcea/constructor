@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
 export class FileUploadService {
   constructor(private http: HttpClient, private domSanitizer: DomSanitizer) {}
 
-  pushFileStorage(file: File): Observable<any> {
+  pushFileStorage(file: File, id: number): Observable<any> {
     const data: FormData = new FormData();
     data.append('file', file);
+    data.append('id', id.toString());
     return this.http.post(SERVER_API_URL + '/api/fileUpload', data);
   }
 
