@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package org.constructor.web.multimedia;
 
 import java.io.File;
@@ -18,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
 /**
  * @author Edukai
  *
@@ -26,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(RestConstants.PATH_API)
-public class ImageResource {
+public class DocsResource {
 	
 	/**
 	 * PATH
@@ -36,29 +38,29 @@ public class ImageResource {
 	/**
 	 * Logger
 	 */
-	private final Logger log = LoggerFactory.getLogger(ImageResource.class);
+	private final Logger log = LoggerFactory.getLogger(DocsResource.class);
 	
 	
 	/**
-	 * method Get  loadImage
-	 * @param nameImage
+	 * method Get  loadDocs
+	 * @param nameDocs
 	 * @return
 	 */
-	@RequestMapping(path = RestConstants.PATH_LOAD_IMAGE, method = RequestMethod.GET)
+	@RequestMapping(path = RestConstants.PATH_LOAD_DOCS, method = RequestMethod.GET )
 	@Secured({ AuthoritiesConstants.ADMIN, AuthoritiesConstants.USER })
-	public ResponseEntity<byte[]> loadImage(@RequestParam("file") String nameImage) throws IOException {
+	public ResponseEntity<byte[]> loadImage(@RequestParam("file") String nameDocs) throws IOException {
 		StringBuilder builder = new StringBuilder();
 		builder.append(PATH);
 		HttpHeaders headers = new HttpHeaders();
 		log.debug("*************Nimbus Image Request*************");
 		log.debug("******** Path:  {}****** ", PATH);
 		byte[] fileArray = new byte[1];
-		File file = new File(builder.append(nameImage).toString());
+		File file = new File(builder.append(nameDocs).toString());
 		
 		if(!file.exists()) {
 			fileArray[0] = 0;
 			log.debug("******** Path not found****** ");
-			headers.setContentType(MediaType.IMAGE_PNG);
+			headers.setContentType(MediaType.APPLICATION_PDF);
 			return new ResponseEntity<>(fileArray,HttpStatus.BAD_REQUEST);
 		} 
 		
@@ -67,18 +69,19 @@ public class ImageResource {
 		
 		try { 
 			FileInputStream read = new FileInputStream(file);
-			log.debug("******** Reading File: {} *****", nameImage);
+			log.debug("******** Reading File: {} *****", nameDocs);
 			read.read(fileArray);
 			read.close();
-			log.debug("******** Sending File: {} *****", nameImage);
-			headers.setContentType(MediaType.IMAGE_PNG);
+			log.debug("******** Sending File: {} *****", nameDocs);
+			headers.setContentType(MediaType.APPLICATION_PDF);
 			return new ResponseEntity<>(fileArray,headers,HttpStatus.OK);
 		
 		}catch(IOException ex){
-			headers.setContentType(MediaType.IMAGE_PNG);
+			headers.setContentType(MediaType.APPLICATION_PDF);
 			return new ResponseEntity<>(fileArray,HttpStatus.BAD_REQUEST);
 		}
 		
 	}
+	
 
 }
