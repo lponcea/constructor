@@ -273,7 +273,7 @@ export class CursoUpdateComponent implements OnInit {
       if (curso.id !== undefined && curso.id !== null) {
         this.subscribeToSaveResponse(this.cursoService.update(cursoFicha));
       } else {
-        this.subscribeToSaveResponse(this.cursoService.create(cursoFicha));
+        this.subscribeToSaveResponse(this.cursoService.create(cursoFicha, this.selectedFiles[0]));
       }
     }
   }
@@ -314,7 +314,9 @@ export class CursoUpdateComponent implements OnInit {
 
   protected onSaveSuccess(res: any): void {
     // Si el curso se guardó correctamente, guardar cover y asignarlo al curso creado.
-    this.upload(res.body.curso.id);
+    if (this.coverPath !== '') {
+      this.upload(res.body.curso.id);
+    }
     this.router.navigate(['/constructor-layout', res.body.curso.id]);
     this.isSaving = false;
   }

@@ -88,7 +88,7 @@ describe('Service Tests', () => {
           returnedFromService
         );
         service
-          .create(new Curso())
+          .create(new Curso(), undefined)
           .pipe(take(1))
           .subscribe(resp => (expectedResult = resp.body));
         const req = httpMock.expectOne({ method: 'POST' });
