@@ -313,10 +313,6 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   protected onSaveSuccess(res: any): void {
-    // Si el curso se guardó correctamente, guardar cover y asignarlo al curso creado.
-    if (this.coverPath !== '') {
-      this.upload(res.body.curso.id);
-    }
     this.router.navigate(['/constructor-layout', res.body.curso.id]);
     this.isSaving = false;
   }
