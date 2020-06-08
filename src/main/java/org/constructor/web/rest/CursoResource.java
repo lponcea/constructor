@@ -22,7 +22,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -56,36 +58,43 @@ public class CursoResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new curso, or with status {@code 400 (Bad Request)} if the curso has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/cursos")
-    public ResponseEntity<Curso> createCurso(@RequestBody Curso curso) throws URISyntaxException {
-        log.debug("REST request to save Curso : {}", curso);
-        if (curso.getId() != null) {
-            throw new BadRequestAlertException("A new curso cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        Curso result = cursoService.save(curso);
-        return ResponseEntity.created(new URI("/api/cursos/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
-    }
+	@PostMapping("/cursos")
+	public ResponseEntity<Curso> createCurso(@RequestBody Curso curso) throws URISyntaxException {
+		log.debug("REST request to save Curso : {}", curso);
+		if (curso.getId() != null) {
+			throw new BadRequestAlertException("A new curso cannot already have an ID", ENTITY_NAME, "idexists");
+		}
+		Curso result = cursoService.save(curso);
+		return ResponseEntity
+				.created(new URI("/api/cursos/" + result.getId())).headers(HeaderUtil
+						.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+				.body(result);
+	}
 
-    @PostMapping("/curso-ficha")
-    public ResponseEntity<CursoFicha> createCursoFicha(Authentication authentication, @RequestBody String cursoFicha) throws URISyntaxException {
-            log.debug("REST request to save Curso : {}", cursoFicha);
-            if(cursoFicha == null) {
-            	throw new BadRequestAlertException("A new curso cannot is empty", ENTITY_NAME, "");
-            }
-            try {
-            CursoFicha cf = new ObjectMapper().readValue(cursoFicha, CursoFicha.class);
-            log.debug("REST request to cf : {}", cf);
-            CursoFicha result = cursoService.save(authentication, cf); 
-            log.debug("result : {}", result);
-            
-            return new ResponseEntity<>(result,HttpStatus.OK);
-            }catch(Exception e) {
-            	log.debug("Exception : {} ", e);
-            	return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
-            }
-        }
+	/**
+	 * Creates the curso ficha.
+	 *
+	 * @param authentication the authentication
+	 * @param course the course
+	 * @param file the file
+	 * @return the response entity
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@PostMapping("/curso-ficha")
+	public ResponseEntity<CursoFicha> createCursoFicha(Authentication authentication,
+			@RequestParam("course") String course, @RequestParam("file") Optional<MultipartFile> file)
+			throws IOException {
+		log.debug("REST request to save Curso : {}", course);
+		if (course == null) {
+			throw new BadRequestAlertException("A new curso cannot is empty", ENTITY_NAME, "");
+		}
+		CursoFicha cf = new ObjectMapper().readValue(course, CursoFicha.class);
+		log.debug("REST request to cf : {}", cf);
+		CursoFicha result = cursoService.save(authentication, cf, file.isPresent() ? file.get() : null);
+		log.debug("result : {}", result);
+
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
     
     /**
      * {@code PUT  /cursos} : Updates an existing curso.
