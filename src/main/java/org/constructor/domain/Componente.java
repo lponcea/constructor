@@ -41,10 +41,13 @@ public class Componente implements Serializable {
     private String contenido;
 	
 	/**
-	 * Int Version 
+	 * Long Version 
 	 */
 	@Column(name = "version")
-    private int version;
+    private Long version;
+	
+	@Column(name = "orden")
+    private Long orden;
 	
 	/**
 	 * tipoComponente
@@ -99,7 +102,7 @@ public class Componente implements Serializable {
 	 * Get
 	 * @return version 
 	 */
-	public int getVersion() {
+	public Long getVersion() {
 		return version;
 	}
 
@@ -107,7 +110,7 @@ public class Componente implements Serializable {
 	 * Set 
 	 * @param version
 	 */
-	public void setVersion(final int version) {
+	public void setVersion(final Long version) {
 		this.version = version;
 	}
 
@@ -142,13 +145,26 @@ public class Componente implements Serializable {
 	public void setBloqueComponentes(final BloqueComponentes bloqueComponentes) {
 		this.bloqueComponentes = bloqueComponentes;
 	}
+	
 
 	/**
-	 * TO String componente
+	 * @return the orden
 	 */
+	public Long getOrden() {
+		return orden;
+	}
+
+	/**
+	 * @param orden the orden to set
+	 */
+	public void setOrden(Long orden) {
+		this.orden = orden;
+	}
+
 	@Override
 	public String toString() {
-		return "Componente [id=" + id + ", contenido=" + contenido + ", version=" + version + "]";
+		return "Componente [id=" + id + ", contenido=" + contenido + ", version=" + version + ", orden=" + orden + "]";
 	}
+
 	
 }

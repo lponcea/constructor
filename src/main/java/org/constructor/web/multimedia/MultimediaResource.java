@@ -63,7 +63,7 @@ public class MultimediaResource {
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping(value = "/deleteCourseCover", produces = "application/json")
+	@DeleteMapping(value = "/courseCover", produces = "application/json")
 	public ResponseEntity<String> deleteCourseCover(@RequestParam("id") Long id) {
 		
 		log.debug("*************************   deleteCourseCover  *******************");
@@ -87,7 +87,7 @@ public class MultimediaResource {
 	 * @param file
 	 * @return
 	 */
-	@DeleteMapping(value = "/deleteFile",  produces = "application/json")
+	@DeleteMapping(value = "/file",  produces = "application/json")
 	public ResponseEntity<String> deleteFile(@RequestParam("file") String file) {
 		
 		log.debug("*************************   deleteFile  *******************");
