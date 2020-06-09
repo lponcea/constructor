@@ -50,6 +50,7 @@ export class CursoUpdateComponent implements OnInit {
   allowedFileTypes: any = ['image/jpg', 'image/png', 'image/jpeg'];
   showUploadButton = false;
   alerts: JhiAlert[] = [];
+  @ViewChild('fileInput', { static: false }) fileInput: any;
 
   changeImage = false;
   selectedFiles = FileList;
@@ -272,7 +273,7 @@ export class CursoUpdateComponent implements OnInit {
       if (curso.id !== undefined && curso.id !== null) {
         this.subscribeToSaveResponse(this.cursoService.update(cursoFicha));
       } else {
-        this.subscribeToSaveResponse(this.cursoService.create(cursoFicha));
+        this.subscribeToSaveResponse(this.cursoService.create(cursoFicha, this.selectedFiles[0]));
       }
     }
   }
@@ -334,10 +335,12 @@ export class CursoUpdateComponent implements OnInit {
     this.changeImage = true;
   }
 
-  upload($event: any): void {
-    $event.preventDefault();
+  /*
+   * Función que sube la imagen seleccionada como portada.
+   */
+  upload(id: number): void {
     this.currentFileUpload = this.selectedFiles[0];
-    this.fileUploadService.pushFileStorage(this.currentFileUpload).subscribe(event => {
+    this.fileUploadService.pushFileStorage(this.currentFileUpload, id).subscribe(event => {
       this.portadaUrl = event.path;
       if (event) {
         this.getCover(event.path);
@@ -353,8 +356,12 @@ export class CursoUpdateComponent implements OnInit {
     });
   }
 
+  /*
+   * Función para mantener en memoria la imagen de portada seleccionada.
+   */
   selectFile(event: any): void {
     if (event.target.files.length) {
+      // Validar tamaño máximo
       if (event.target.files[0].size > this.maxiCoverSize) {
         this.eventManager.broadcast(
           new JhiEventWithContent('constructorApp.validationError', {
@@ -362,6 +369,7 @@ export class CursoUpdateComponent implements OnInit {
           })
         );
         return;
+        // Validar tipo de archivo
       } else if (!this.allowedFileTypes.includes(event.target.files[0].type)) {
         this.eventManager.broadcast(
           new JhiEventWithContent('constructorApp.validationError', {
@@ -372,16 +380,31 @@ export class CursoUpdateComponent implements OnInit {
       } else {
         this.selectedFiles = event.target.files;
         this.showUploadButton = true;
-        this.upload(event);
+        /* Pruebas */
+        const reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = e => {
+          // called once readAsDataURL is completed
+          this.coverPath = e.target!['result'];
+          // this.url = event.target.result;
+        };
+        /* Pruebas */
+        // this.upload(event);
       }
     }
   }
 
   deteleCover(): void {
+    /*
     this.fileUploadService.deleteFile(this.portadaUrl).subscribe(() => {
       this.coverPath = '';
       this.portadaUrl = '';
     });
+    */
+    this.coverPath = '';
+    this.portadaUrl = '';
+    this.selectedFiles = FileList;
+    this.fileInput.nativeElement.value = '';
   }
 
   isValid(controlName: string): boolean {

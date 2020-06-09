@@ -3,10 +3,13 @@ package org.constructor.service.impl;
 import org.constructor.service.CursoService;
 import org.constructor.service.FichaService;
 import org.constructor.service.UserService;
+import org.constructor.service.dto.MultimediaDTO;
+import org.constructor.service.multimedia.MultimediaService;
 import org.constructor.domain.Curso;
 import org.constructor.domain.CursoFicha;
 import org.constructor.domain.Ficha;
 import org.constructor.domain.User;
+import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.repository.CursoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashSet;
 import java.util.List;
@@ -44,6 +48,9 @@ public class CursoServiceImpl implements CursoService {
      */
     @Autowired
     private FichaService fichaService;
+    
+    @Autowired
+    private MultimediaService multimediaService;
     
     /**
      * Service UserService 
@@ -127,40 +134,53 @@ public class CursoServiceImpl implements CursoService {
     }
 
     /**
-     * save
+     * save.
+     *
+     * @param authentication the authentication
+     * @param cursoFicha the curso ficha
+     * @param file the file
+     * @return the curso ficha
      */
     @Override
 	@Transactional
-	public CursoFicha save(Authentication authentication, CursoFicha cursoFicha) {
-			log.debug("Request to save Curso : {}", cursoFicha);
-			Set<User> user = new HashSet<>();
-			Curso curso = new Curso();
-			Ficha ficha =  new Ficha();
-			CursoFicha cf = new CursoFicha();
-			
-			String usuarioNombre = authentication.getName();
-			user = userService.findUserByLogin(usuarioNombre);
-			
-			
-			curso = cursoFicha.getCurso();
-			ficha = cursoFicha.getFicha();
-			
-			log.debug("Request to save Curso : {}", curso);
-			//Insert User whit Curso (JAM)
-			curso.setUser(user);
-			log.debug("update curso whit user  : {}", curso.getUser());
-			curso = cursoRepository.save(curso);
-			
-			log.debug("Request to save ficha : {}", ficha);
-			ficha.setCurso(curso);
-			ficha = fichaService.save(ficha);
-			
-			log.debug("ficha id {}", ficha.getCurso().getId());
-			log.debug("curso id {}", curso.getId());
-			
-			cf.setCurso(curso);
-			cf.setFicha(ficha);
-			
+	public CursoFicha save(Authentication authentication, CursoFicha cursoFicha, MultipartFile file) {
+		log.debug("Request to save Curso : {}", cursoFicha);
+		Set<User> user = new HashSet<>();
+		Curso curso = new Curso();
+		Ficha ficha = new Ficha();
+		CursoFicha cf = new CursoFicha();
+
+		String usuarioNombre = authentication.getName();
+		user = userService.findUserByLogin(usuarioNombre);
+
+		curso = cursoFicha.getCurso();
+		ficha = cursoFicha.getFicha();
+
+		// Insert User whit Curso (JAM)
+		curso.setUser(user);
+		log.debug("update curso whit user  : {}", curso);
+		curso = cursoRepository.save(curso);
+
+		if (file != null) {
+			// Save PortadaUrl
+			MultimediaDTO multimediaDTO = new MultimediaDTO();
+			multimediaDTO.setFile(file);
+			multimediaDTO.setId(curso.getId());
+			VideoResponse respuesta = multimediaService.saveFile(multimediaDTO);
+			curso.setPortadaUrl(respuesta.getPath());
+		}
+
+		log.debug("Request to save ficha : {}", ficha);
+		// Save Ficha
+		ficha.setCurso(curso);
+		ficha = fichaService.save(ficha);
+
+		log.debug("ficha id {}", ficha.getCurso().getId());
+		log.debug("curso id {}", curso.getId());
+
+		cf.setCurso(curso);
+		cf.setFicha(ficha);
+
 		return cf;
 	}
 

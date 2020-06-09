@@ -20,10 +20,16 @@ export class CursoService {
 
   constructor(protected http: HttpClient) {}
 
-  create(curso: any): Observable<EntityResponseType> {
+  create(curso: any, cover?: File): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(curso);
+    const form = new FormData();
+    // const courseBlob = new Blob(JSON.stringify(copy), { type: "application/json"});
+    form.append('course', JSON.stringify(copy));
+    if (cover) {
+      form.append('file', cover);
+    }
     return this.http
-      .post<ICurso>(this.resourceUrlNewBook, copy, { observe: 'response' })
+      .post<ICurso>(this.resourceUrlNewBook, form, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 

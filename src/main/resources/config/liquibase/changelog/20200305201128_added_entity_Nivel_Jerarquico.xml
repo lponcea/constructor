@@ -46,7 +46,7 @@
             <column name="subnivel_jerarquico_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="orden_nivel" type="bigint">
+            <column name="orden" type="bigint">
                 <constraints nullable="true" />
             </column>
         </createTable>

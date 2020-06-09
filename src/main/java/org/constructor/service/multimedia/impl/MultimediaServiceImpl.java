@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import org.constructor.multimedia.response.MultimediaResponse;
 import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.service.CursoService;
+import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,62 +29,72 @@ public class MultimediaServiceImpl implements MultimediaService {
 	@Autowired
 	private  CursoService cursoService;
 	
-	private static final String path =  System.getProperty("user.home") + "/resources" + File.separator;
+	
 	private final Logger log = LoggerFactory.getLogger(MultimediaServiceImpl.class);
-	private static final String upload_folder =  System.getProperty("user.home") + "/resources" + File.separator + "nimbus";
+	private static final StringBuilder UPLOAD_FOLDER = new StringBuilder(System.getProperty("user.home") + "/resources" + File.separator);
+	private static final String nimbus = "nimbus"; 
 	enum extVideo { MP4, VGA};
 	enum extImage { JPG, PNG};
 	enum extDocs { PDF, CSV};
+	enum extAudio{ MP3, WAV};
 
 	/**
 	 * saveFile
 	 */
 	@Override
-	public VideoResponse saveFile(MultipartFile file) {
+	public VideoResponse saveFile(MultimediaDTO file) {
 	    VideoResponse videoResponse = new VideoResponse();
 		try {
-			log.debug("*********************** FileUploadServiceImplement **********************");
-				String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+			log.debug("*** FileUploadServiceImplement ****");
+				MultipartFile multimedia =  file.getFile();
+				String extension = FilenameUtils.getExtension(multimedia.getOriginalFilename());
 				String replace = null; 
-				videoResponse.setName(file.getOriginalFilename());
+				videoResponse.setName(multimedia.getOriginalFilename());
 				//Create Path
 				StringBuilder builder = new StringBuilder();
-				PathValidation.createPath(upload_folder);
+				PathValidation.createPath(UPLOAD_FOLDER.toString());
 				
-					if (extension.toUpperCase().equals(extVideo.MP4.toString())
-							|| extension.toUpperCase().equals(extVideo.VGA.toString())) {
-						builder.append(upload_folder);
-						builder.append(File.separator);
-						builder.append("video");
-						log.debug("builder Video : {}", builder);
-						PathValidation.createPath(builder.toString());
-					}
+				if (extension.toUpperCase().equals(extAudio.MP3.toString())
+						|| extension.toUpperCase().equals(extAudio.WAV.toString())) {
+					buildFile(builder, file);
+					builder.append("audio");
+					PathValidation.createPath(builder.toString());
+				     log.debug("builder audio : {}", builder);
+				}
+
+				if (extension.toUpperCase().equals(extVideo.MP4.toString())
+						|| extension.toUpperCase().equals(extVideo.VGA.toString())) {
+					buildFile(builder, file);
+					builder.append("video");
+					PathValidation.createPath(builder.toString());
+					log.debug("builder Video : {}", builder);
+				}
 				
-					if (extension.toUpperCase().equals(extImage.PNG.toString())
-							|| extension.toUpperCase().equals(extImage.JPG.toString())) {
-						builder.append(upload_folder);
-						builder.append(File.separator);
-						builder.append("image");
-						log.debug("builder image : {}", builder);
-						PathValidation.createPath(builder.toString());
-					}
-				
-					if (extension.toUpperCase().equals(extDocs.PDF.toString())
-							|| extension.toUpperCase().equals(extDocs.CSV.toString())) {
-						builder.append(upload_folder);
-						builder.append(File.separator);
-						builder.append("docs");
-						log.debug("builder docs : {}", builder);
-						PathValidation.createPath(builder.toString());
-					}else {
-						videoResponse.setPath(null);
-					}
+				if (extension.toUpperCase().equals(extImage.PNG.toString())
+						|| extension.toUpperCase().equals(extImage.JPG.toString())) {
+					buildFile(builder, file);
+					builder.append("image");
+					PathValidation.createPath(builder.toString());
+					log.debug("builder image : {}", builder);
 					
+				}
+				
+				if (extension.toUpperCase().equals(extDocs.PDF.toString())
+						|| extension.toUpperCase().equals(extDocs.CSV.toString())) {
+					buildFile(builder, file);
+					builder.append("docs");
+					PathValidation.createPath(builder.toString());
+					log.debug("builder docs : {}", builder);
+				}else {
+					videoResponse.setPath(null);
+				}
+				
 				builder.append(File.separator);
-				builder.append(file.getOriginalFilename());
+				builder.append(multimedia.getOriginalFilename());
+	
 				
 				//Creating and Writing  File
-				byte[] fileBytes = file.getBytes();
+				byte[] fileBytes = multimedia.getBytes();
 				Path path = Paths.get(builder.toString());
 				Files.write(path, fileBytes);
 				int i = builder.indexOf("nimbus");
@@ -97,6 +108,23 @@ public class MultimediaServiceImpl implements MultimediaService {
 			return videoResponse;
 		 } 
 	}
+
+	/**
+	 * StringBuilder carpeteo 
+	 * 
+	 * @param builder
+	 * @param file
+	 * @return
+	 */
+    private StringBuilder buildFile(StringBuilder builder,MultimediaDTO file ) {
+    	Long idCurso = file.getId();
+    	builder.append(UPLOAD_FOLDER.toString());
+		builder.append(nimbus);
+		builder.append(File.separator);
+		builder.append(idCurso);
+		builder.append(File.separator);
+		return builder;
+}
 
 	/**
 	 * deleteCourseCover 
@@ -160,7 +188,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 			return status;
 		}
 		
-		File file = new File(path+pathfile);
+		File file = new File(UPLOAD_FOLDER.append(pathfile).toString());
 		if (file.exists()) {
 
 			if (file.delete()) {

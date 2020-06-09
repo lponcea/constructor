@@ -5,6 +5,7 @@ import org.constructor.domain.CursoFicha;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public interface CursoService {
      */
     Curso save(Curso curso);
     
-    CursoFicha save(Authentication authentication, CursoFicha cursoFicha);
+    CursoFicha save(Authentication authentication, CursoFicha cursoFicha, MultipartFile file);
 
     /**
      * Get all the cursos.

@@ -61,7 +61,7 @@ public class NivelJerarquico implements Serializable  {
 	 * orden_nivel
 	 */
 	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
-	@OrderBy ("orden_nivel")
+	@OrderBy ("orden")
 	private Set<EstructuraJerarquica> estructuraJerarquica = new HashSet<>();
 	
 	/**

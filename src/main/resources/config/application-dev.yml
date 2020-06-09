@@ -67,7 +67,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: jmaldonado@grupoeducare.com
-    password: Soyelmejor16
+    password: Edukai2020!
     protocol: smtp
     tls: true
     properties.mail.smtp:
