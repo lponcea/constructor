@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.constructor.multimedia.response.MultimediaResponse;
 import org.constructor.multimedia.response.VideoResponse;
@@ -12,6 +16,7 @@ import org.constructor.service.CursoService;
 import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.slf4j.Logger;
@@ -19,7 +24,11 @@ import org.slf4j.LoggerFactory;
 
 import liquibase.util.file.FilenameUtils;
 
-
+/**
+ * 
+ * @author Edukai
+ *
+ */
 @Service
 public class MultimediaServiceImpl implements MultimediaService {
 	
@@ -29,49 +38,105 @@ public class MultimediaServiceImpl implements MultimediaService {
 	@Autowired
 	private  CursoService cursoService;
 	
+	/**
+	 * properties audio
+	 */
+	@Value(value = "${multimedia.audio}")
+	private Long audio;
+
+	/**
+	 * properties video
+	 */
+	@Value(value = "${multimedia.video}")
+	private Long video;
+
+	/**
+	 * properties image
+	 */
+	@Value(value = "${multimedia.image}")
+	private Long image;
 	
+	/**
+	 * properties docs
+	 */
+	@Value(value = "${multimedia.image}")
+	private Long docs;
+
+	/**
+	 * Logger
+	 */
 	private final Logger log = LoggerFactory.getLogger(MultimediaServiceImpl.class);
+	
+	/**
+	 * StringBuilder
+	 */
 	private static final StringBuilder UPLOAD_FOLDER = new StringBuilder(System.getProperty("user.home") + "/resources" + File.separator);
+	
+	/**
+	 * String nimbus
+	 */
 	private static final String nimbus = "nimbus"; 
+
+    
+    /**
+	 * formatos de extencion.
+	 *
+	 */
 	enum extVideo { MP4, VGA};
 	enum extImage { JPG, PNG};
 	enum extDocs { PDF, CSV};
 	enum extAudio{ MP3, WAV};
 
-	/**
+	/**     
 	 * saveFile
 	 */
 	@Override
 	public VideoResponse saveFile(MultimediaDTO file) {
 	    VideoResponse videoResponse = new VideoResponse();
+		Timestamp stamp = new Timestamp(System.currentTimeMillis());
+		Date date = new Date(stamp.getTime());
+	    DateFormat hourdateFormat = new SimpleDateFormat("-dd-MM-yyyy-HH.mm.ss");
+	    String time = hourdateFormat.format(date);
 		try {
+			
 			log.debug("*** FileUploadServiceImplement ****");
-				MultipartFile multimedia =  file.getFile();
-				String extension = FilenameUtils.getExtension(multimedia.getOriginalFilename());
+				MultipartFile  multimedia =   file.getFile();
+				String  extension =   FilenameUtils.getExtension( multimedia.getOriginalFilename());
 				String replace = null; 
-				videoResponse.setName(multimedia.getOriginalFilename());
+				videoResponse.setName( multimedia.getOriginalFilename().replace(multimedia.getOriginalFilename(), FilenameUtils.getBaseName(multimedia.getOriginalFilename()).concat(time)
+						 + "." + FilenameUtils.getExtension(multimedia.getOriginalFilename())).toLowerCase() );
 				//Create Path
 				StringBuilder builder = new StringBuilder();
 				PathValidation.createPath(UPLOAD_FOLDER.toString());
 				
+				/**
+				 * if para Audio
+				 */
 				if (extension.toUpperCase().equals(extAudio.MP3.toString())
-						|| extension.toUpperCase().equals(extAudio.WAV.toString())) {
+						|| extension.toUpperCase().equals(extAudio.WAV.toString()) && ((( multimedia.getSize()/1024))/ 1024  ) <=  audio ) {
 					buildFile(builder, file);
 					builder.append("audio");
 					PathValidation.createPath(builder.toString());
 				     log.debug("builder audio : {}", builder);
 				}
 
-				if (extension.toUpperCase().equals(extVideo.MP4.toString())
-						|| extension.toUpperCase().equals(extVideo.VGA.toString())) {
+				/**
+				 * if para Video
+				 */
+				if ((  extension.toUpperCase()).equals(extVideo.MP4.toString())
+						|| extension.toUpperCase().equals( extVideo.VGA.toString() ) && ((( multimedia.getSize()/1024))/ 1024  ) <=  video ) {
+					
 					buildFile(builder, file);
-					builder.append("video");
-					PathValidation.createPath(builder.toString());
+					builder.append( "video" );
+					PathValidation.createPath(builder.toString() );
 					log.debug("builder Video : {}", builder);
-				}
+				}       
 				
-				if (extension.toUpperCase().equals(extImage.PNG.toString())
-						|| extension.toUpperCase().equals(extImage.JPG.toString())) {
+				/**
+				 * if para Image
+				 */
+				if ((extension.toUpperCase()).equals(extImage.PNG.toString())
+						|| extension.toUpperCase().equals(extImage.JPG.toString()) && ((( multimedia.getSize()/1024))/ 1024  ) <=  image ) {
 					buildFile(builder, file);
 					builder.append("image");
 					PathValidation.createPath(builder.toString());
@@ -79,9 +144,12 @@ public class MultimediaServiceImpl implements MultimediaService {
 					
 				}
 				
+				/**
+				 * if para Docs
+				 */
 				if (extension.toUpperCase().equals(extDocs.PDF.toString())
-						|| extension.toUpperCase().equals(extDocs.CSV.toString())) {
-					buildFile(builder, file);
+						|| extension.toUpperCase().equals(extDocs.CSV.toString()) && ((( multimedia.getSize()/1024))/ 1024  ) <=  docs ) {
+					buildFile(builder, file  );
 					builder.append("docs");
 					PathValidation.createPath(builder.toString());
 					log.debug("builder docs : {}", builder);
@@ -90,10 +158,13 @@ public class MultimediaServiceImpl implements MultimediaService {
 				}
 				
 				builder.append(File.separator);
-				builder.append(multimedia.getOriginalFilename());
+				builder.append(multimedia.getOriginalFilename().replace(multimedia.getOriginalFilename(), FilenameUtils.getBaseName(multimedia.getOriginalFilename()).concat(time)
+						 + "." + FilenameUtils.getExtension(multimedia.getOriginalFilename())).toLowerCase());
 	
-				
-				//Creating and Writing  File
+
+				/**
+				 * Creating and Writing  File
+				 */
 				byte[] fileBytes = multimedia.getBytes();
 				Path path = Paths.get(builder.toString());
 				Files.write(path, fileBytes);
@@ -101,7 +172,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 				log.debug("i {}", builder.indexOf("nimbus"));
 				log.debug("path : {}", builder.substring(i));
 				replace = (builder.substring(i)).replace("\\", "/");
-				videoResponse.setPath(replace);
+				videoResponse.setPath(replace );
 				return videoResponse;
 			
 		 }catch(IOException e){
@@ -126,6 +197,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 		return builder;
 }
 
+    
 	/**
 	 * deleteCourseCover 
 	 * 
@@ -136,7 +208,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 		MultimediaResponse multimediaResponse = new MultimediaResponse();
 		String status = "";
 		String filePath = "";
-		String response = "";
+        String response = "";
 		
 		log.debug("*************************   deleteCourseCover *******************");
 		
@@ -165,10 +237,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 			multimediaResponse.setStatus(false);
 			multimediaResponse.setMessage("File not found");
 		}
-		
-		
-		
-		
+
 		return multimediaResponse;
 	}
 
