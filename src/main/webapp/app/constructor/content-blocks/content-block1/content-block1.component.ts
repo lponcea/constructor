@@ -7,7 +7,6 @@ import { BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
   styleUrls: ['./content-block1.component.scss']
 })
 export class ContentBlock1Component {
-  imgSrc = './../../../../content/images/img3.png';
   @Input() contentBlock?: BloqueComponentes;
   @Output() updateBlock = new EventEmitter();
 

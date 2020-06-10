@@ -193,7 +193,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     const componentes = new Array<IComponente>();
     selectedTemplate.tiposComponentes = this.orderTextImage(selectedTemplate.tiposComponentes!);
     for (let i = 0; i < selectedTemplate.tiposComponentes.length; i++) {
-      componentes.push(this.createComponent(selectedTemplate.tiposComponentes[i]));
+      componentes.push(this.createComponent(selectedTemplate.tiposComponentes[i], i + 1));
     }
     return {
       ...new BloqueComponentes(),
@@ -238,13 +238,14 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     return tempArray;
   }
 
-  createComponent(componentBlockType: TipoBloqueComponentes): IComponente {
+  createComponent(componentBlockType: TipoBloqueComponentes, order: number): IComponente {
     return {
       ...new Componente(),
       id: undefined,
       contenido: '',
       tipoComponente: componentBlockType,
-      version: 1
+      version: 1,
+      orden: order
     };
   }
 

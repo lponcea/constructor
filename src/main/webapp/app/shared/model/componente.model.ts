@@ -7,6 +7,7 @@ export interface IComponente {
   version?: number;
   tipoComponente?: ITipoComponente;
   bloqueComponente?: IBloqueComponentes;
+  orden?: number;
 }
 
 export class Componente implements IComponente {
@@ -15,6 +16,7 @@ export class Componente implements IComponente {
     public contenido?: string,
     public version?: number,
     public tipoComponente?: ITipoComponente,
-    public bloqueComponente?: IBloqueComponentes
+    public bloqueComponente?: IBloqueComponentes,
+    public orden?: number
   ) {}
 }

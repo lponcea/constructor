@@ -61,6 +61,7 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
         this.selectedFiles = event.target.files;
         this.fileUploadService.pushFileStorage(this.selectedFiles[0], this.id).subscribe(data => {
           this.fileUploadService.getImage(data.path);
+          this.imageService.setPathUrl(data.path);
         });
       }
     }
@@ -68,6 +69,7 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
 
   deleteImage(): void {
     this.imageService.setImgSrc('');
+    this.imageService.setPathUrl('');
     this.fileInput.nativeElement.value = '';
   }
 

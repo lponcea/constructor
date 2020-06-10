@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from 'app/app.constants';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { ImageService } from './image.service';
 
@@ -31,13 +31,11 @@ export class FileUploadService {
     return this.http.delete(SERVER_API_URL + '/api/deleteFile?file=' + filePath, { responseType: 'text' });
   }
 
-  public getImage(path: string): SafeUrl {
-    let objectUrl: SafeUrl = '';
+  public getImage(path: string): void {
     this.getFile(path).subscribe(data => {
       const imagePath = URL.createObjectURL(data.body);
-      objectUrl = this.domSanitizer.bypassSecurityTrustUrl(imagePath);
+      const objectUrl = this.domSanitizer.bypassSecurityTrustUrl(imagePath);
       this.imageService.setImgSrc(objectUrl);
     });
-    return objectUrl;
   }
 }

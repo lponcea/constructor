@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class ImageService {
   private imgSrc = new Subject<SafeUrl>();
   private editing = new Subject<boolean>();
+  private pathUrl = new Subject<string>();
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   setImgSrc(imgSrc: SafeUrl): void {
     this.imgSrc.next(imgSrc);
@@ -25,5 +26,13 @@ export class ImageService {
 
   getEditing(): Observable<boolean> {
     return this.editing.asObservable();
+  }
+
+  setPathUrl(pathUrl: string): void {
+    this.pathUrl.next(pathUrl);
+  }
+
+  getPathUrl(): Observable<string> {
+    return this.pathUrl.asObservable();
   }
 }
