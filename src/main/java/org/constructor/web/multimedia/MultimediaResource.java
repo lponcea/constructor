@@ -14,6 +14,7 @@ import org.constructor.multimedia.response.MultimediaResponse;
 import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
+import org.constructor.web.rest.errors.ErrorConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,22 +40,34 @@ public class MultimediaResource {
 	 */
 	@PostMapping(value = "/fileUpload",  produces = "application/json")
 	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file, @RequestParam("id") String id) {
-		VideoResponse vr = new VideoResponse();
+		VideoResponse<?> vr = new VideoResponse<Object>();
 		MultimediaDTO multimediaDTO = new MultimediaDTO();
 		multimediaDTO.setFile(file);
 		multimediaDTO.setId(id);
 		log.debug("Upload File: {}", id); 
-		if (file != null) {
-			vr = multimediaService.saveFile(multimediaDTO);
-		} else {
-			vr.setName("empty file");
-			return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
+		
+			if (file.isEmpty()) {
+				vr.setSuccess(Boolean.FALSE);
+				vr.setMessage(ErrorConstants.STATUS_MENSSAGE_FILE);
+	            return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
+			}	
+			else {
+				if (id.isEmpty()) {
+					vr.setSuccess(Boolean.FALSE);
+					vr.setMessage(ErrorConstants.STATUS_MENSSAGE_ID);
+		            return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
+				}
+				
+				else {
+					if (file != null)  {
+						vr = multimediaService.saveFile(multimediaDTO);
+					}
+			        if(vr.getPath() == null) {
+			            
+			            return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
+			        }
+			}
 		}
-		if(vr.getPath() == null) {
-			vr.setName("invalid file");
-			return new ResponseEntity<>(vr,HttpStatus.BAD_REQUEST);
-		}
-		log.debug(vr.getName(),"vr: {}");
 	  return  new ResponseEntity<>(vr,HttpStatus.OK);
 	}
 	

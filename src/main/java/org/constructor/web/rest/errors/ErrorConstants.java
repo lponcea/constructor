@@ -53,6 +53,36 @@ public final class ErrorConstants {
      * EMAIL_NOT_FOUND_TYPE
      */
     public static final URI EMAIL_NOT_FOUND_TYPE = URI.create(PROBLEM_BASE_URL + "/email-not-found");
+    
+    /**
+	 * STATUS_MENSSAGE_200
+	 */
+	public static final String STATUS_MENSSAGE_200 = "Successful response.";
+	
+	/**
+	 * STATUS_MENSSAGE_201
+	 */
+	public static final String STATUS_MENSSAGE_201 =  "";
+	
+	/**
+	 * STATUS_MENSSAGE_ERROR
+	 */
+	public static final String STATUS_MENSSAGE_FILE =  "Empty File.";
+	
+	/**
+	 * STATUS_MENSSAGE_Id
+	 */
+	public static final String STATUS_MENSSAGE_ID =  "Empty id.";
+	
+	/**
+	 * STATUS_MENSSAGE_INVALID
+	 */
+	public static final String STATUS_MENSSAGE_INVALID =  "Invalid File.";
+	
+
+
+	
+	
 
     private ErrorConstants() {
     }

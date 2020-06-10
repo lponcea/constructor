@@ -1,7 +1,14 @@
 package org.constructor.multimedia.response;
 
-public class VideoResponse {
+import org.constructor.utils.ParamOutputTO;
+
+public class VideoResponse<T> extends ParamOutputTO<T> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * String name
 	 */

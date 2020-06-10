@@ -14,7 +14,7 @@ import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.service.CursoService;
 import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
-
+import org.constructor.web.rest.errors.ErrorConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -91,8 +91,9 @@ public class MultimediaServiceImpl implements MultimediaService {
 	 * saveFile
 	 */
 	@Override
-	public VideoResponse saveFile(MultimediaDTO file) {
-	    VideoResponse videoResponse = new VideoResponse();
+	public VideoResponse<?> saveFile(MultimediaDTO file) {
+	    VideoResponse<?> videoResponse = new VideoResponse<>();
+	
 		Timestamp stamp = new Timestamp(System.currentTimeMillis());
 		Date date = new Date(stamp.getTime());
 	    DateFormat hourdateFormat = new SimpleDateFormat("-dd-MM-yyyy-HH.mm.ss");
@@ -103,6 +104,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 				MultipartFile  multimedia =   file.getFile();
 				String  extension =   FilenameUtils.getExtension( multimedia.getOriginalFilename());
 				String replace = null; 
+				
 				videoResponse.setName( multimedia.getOriginalFilename().replace(multimedia.getOriginalFilename(), FilenameUtils.getBaseName(multimedia.getOriginalFilename()).concat(time)
 						 + "." + FilenameUtils.getExtension(multimedia.getOriginalFilename())).toLowerCase() );
 				//Create Path
@@ -172,14 +174,19 @@ public class MultimediaServiceImpl implements MultimediaService {
 				log.debug("i {}", builder.indexOf("nimbus"));
 				log.debug("path : {}", builder.substring(i));
 				replace = (builder.substring(i)).replace("\\", "/");
-				videoResponse.setPath(replace );
+				videoResponse.setPath(replace);
 				return videoResponse;
 			
 		 }catch(Exception e){	
-    		 return videoResponse;	
+			 videoResponse.setSuccess(Boolean.FALSE);
+			 videoResponse.setMessage(ErrorConstants.STATUS_MENSSAGE_INVALID);
+ 
 		 }
-		 
+		return videoResponse;
+		
 	}
+
+
 
 	/**
 	 * StringBuilder carpeteo 

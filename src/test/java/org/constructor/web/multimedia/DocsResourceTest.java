@@ -3,11 +3,8 @@
  */
 package org.constructor.web.multimedia;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import org.constructor.multimedia.response.VideoResponse;
-import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
 import org.constructor.utils.RestConstants;
 import org.junit.Before;
@@ -48,10 +45,7 @@ public class DocsResourceTest {
 		final Long  id =  1l;
 		final String  file =  "musica.pdf";
 		StringBuilder builder = new StringBuilder();
-		MultimediaDTO dto = new MultimediaDTO();
-		VideoResponse value = new VideoResponse();
 		builder.append("string");
-		when(service.saveFile(dto)).thenReturn(value);
 		this.mvc.perform(get("/" + RestConstants.PATH_API + "/" + RestConstants.PATH_LOAD_DOCS)
 		          .param("id", id.toString()).param("file", file.toString()));
 		
@@ -65,10 +59,7 @@ public class DocsResourceTest {
 	@Test
 	public void testLoadDocsEmpty () throws Exception {
 		StringBuilder builder = new StringBuilder();
-		MultimediaDTO dto = new MultimediaDTO();
-		VideoResponse value = new VideoResponse();
 		builder.append("string");
-		when(service.saveFile(dto)).thenReturn(value);
 		this.mvc.perform(get("/" + RestConstants.PATH_API + "/" + RestConstants.PATH_LOAD_DOCS)
 		          .param("id", "").param("file", ""));
 		
