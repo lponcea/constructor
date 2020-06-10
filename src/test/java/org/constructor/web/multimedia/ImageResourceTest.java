@@ -3,11 +3,8 @@
  */
 package org.constructor.web.multimedia;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import org.constructor.multimedia.response.VideoResponse;
-import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
 import org.constructor.utils.RestConstants;
 import org.junit.Before;
@@ -50,10 +47,7 @@ public class ImageResourceTest {
 		final Long  id =  1l;
 		final String  file =  "musica.jpeg";
 		StringBuilder builder = new StringBuilder();
-		MultimediaDTO dto = new MultimediaDTO();
-		VideoResponse value = new VideoResponse();
 		builder.append("string");
-		when(service.saveFile(dto)).thenReturn(value);
 		this.mvc.perform(get("/" + RestConstants.PATH_API + "/" + RestConstants.PATH_LOAD_IMAGE)
 		          .param("id", id.toString()).param("file", file.toString()));
 		
@@ -67,10 +61,7 @@ public class ImageResourceTest {
 	@Test
 	public void testLoadImageEmty () throws Exception {
 		StringBuilder builder = new StringBuilder();
-		MultimediaDTO dto = new MultimediaDTO();
-		VideoResponse value = new VideoResponse();
 		builder.append("string");
-		when(service.saveFile(dto)).thenReturn(value);
 		this.mvc.perform(get("/" + RestConstants.PATH_API + "/" + RestConstants.PATH_LOAD_IMAGE)
 		          .param("id", "").param("file", ""));
 		

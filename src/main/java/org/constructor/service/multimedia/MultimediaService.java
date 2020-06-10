@@ -12,7 +12,7 @@ public interface MultimediaService {
 	 * @param file
 	 * @return
 	 */
-	VideoResponse saveFile(MultimediaDTO file);
+	VideoResponse<?> saveFile(MultimediaDTO file);
 	
 	/**
 	 * deleteCourseCover
