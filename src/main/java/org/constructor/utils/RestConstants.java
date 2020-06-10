@@ -51,4 +51,15 @@ public class RestConstants {
 	* Path para peticiones loadDocs
 	*/
 	public static final String PATH_LOAD_DOCS = "loadDocs";
+	
+	// ---------------Autor--------------------
+	
+	/**
+	* Path para peticiones autor
+	*/
+	public static final String PATH_AUTHOR = "autor";
+	/**
+	* Path para peticiones autor por id
+	*/
+	public static final String PATH_AUTHOR_ID = "autor/{id}";
 }
