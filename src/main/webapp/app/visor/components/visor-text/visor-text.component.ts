@@ -28,6 +28,7 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit, OnInit {
       if (text && this.editing) {
         this.htmlContent = text;
         this.component!.contenido = this.htmlContent;
+        // Actualizar contenido del componente en objeto de bloques de componentes de visorContainer
         this.updateComponent.emit({ newValue: text, type: 'text' });
       }
     });

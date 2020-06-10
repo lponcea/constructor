@@ -11,6 +11,7 @@ import { ContentBlock2Component } from './../constructor/content-blocks/content-
 import { ContentBlock3Component } from './../constructor/content-blocks/content-block3/content-block3.component';
 import { ContentBlock4Component } from './../constructor/content-blocks/content-block4/content-block4.component';
 import { VisorTextComponent } from './../visor/components/visor-text/visor-text.component';
+import { ConstructorImageComponent } from './../constructor/components/constructor-image/constructor-image.component';
 import { TopBarComponent } from './../layouts/top-bar/top-bar.component';
 import { LeftSidebarComponent } from './../layouts/left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './../layouts/right-sidebar/right-sidebar.component';
@@ -33,6 +34,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ContentBlock3Component,
     ContentBlock4Component,
     VisorTextComponent,
+    ConstructorImageComponent,
     TopBarComponent,
     LeftSidebarComponent,
     RightSidebarComponent,

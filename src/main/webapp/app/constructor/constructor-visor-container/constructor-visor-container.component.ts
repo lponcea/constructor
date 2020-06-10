@@ -111,12 +111,20 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Actualizar bloque contenido de componente
   onUpdateBlock($event: Event, index: number): void {
     if (this.contentBlocks[index]) {
       if (this.contentBlocks[index]!.componentes![$event['componentIndex']]) {
         switch ($event['type']) {
+          // Actualizar componente con HTML en string desde textComponent
           case 'text': {
             this.contentBlocks[index]!.componentes![$event['componentIndex']].contenido = $event['newValue'];
+            break;
+          }
+          // Actualizar componente con path de la imagen seleccionada
+          case 'image': {
+            this.contentBlocks[index]!.componentes![$event['componentIndex']].contenido = $event['newValue'];
+            break;
           }
         }
       }

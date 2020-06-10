@@ -13,6 +13,7 @@ export class ContentBlock1Component {
 
   constructor() {}
 
+  // Actualizar valor de componente y del bloque de contenido en visorContainer
   onUpdateComponent($event: Event, index: number): void {
     this.updateBlock.emit({
       newValue: $event['newValue'],

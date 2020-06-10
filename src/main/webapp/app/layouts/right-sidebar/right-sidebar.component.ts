@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
 import { Subscription } from 'rxjs';
 
@@ -7,21 +7,25 @@ import { Subscription } from 'rxjs';
   templateUrl: './right-sidebar.component.html',
   styleUrls: ['./right-sidebar.component.scss']
 })
-export class RightSidebarComponent implements OnInit {
+export class RightSidebarComponent implements OnInit, OnDestroy {
   openTemplateGallery = false;
+  openProperties = false;
   subscription: Subscription;
 
   constructor(private navigationControlsService: NavigationControlsService) {
     this.subscription = this.navigationControlsService.getTemplateGalleryStatus().subscribe(openTemplateGallery => {
-      /*
-      alert(openTemplateGallery);
-      alert(openTemplateGallery.openTemplateGallery);
-      */
       if (openTemplateGallery) {
         this.openTemplateGallery = openTemplateGallery.openTemplateGallery;
       }
     });
+    this.subscription = this.navigationControlsService.getOpenProperties().subscribe(openProperties => {
+      this.openProperties = openProperties;
+    });
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
