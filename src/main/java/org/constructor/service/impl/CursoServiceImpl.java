@@ -164,8 +164,9 @@ public class CursoServiceImpl implements CursoService {
 		if (file != null) {
 			// Save PortadaUrl
 			MultimediaDTO multimediaDTO = new MultimediaDTO();
+			String identificador = "Curso-" + curso.getId();
 			multimediaDTO.setFile(file);
-			multimediaDTO.setId(curso.getId());
+			multimediaDTO.setId(identificador);
 			VideoResponse respuesta = multimediaService.saveFile(multimediaDTO);
 			curso.setPortadaUrl(respuesta.getPath());
 		}

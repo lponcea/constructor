@@ -17,7 +17,10 @@ public class ComponenteDTO {
 	private String contenido;
 	
 	/** The version. */
-	private int version;
+	private Long version;
+	
+	/** The orden. */
+	private Long orden;
 
 	/**
 	 * Gets the id.
@@ -78,7 +81,7 @@ public class ComponenteDTO {
 	 *
 	 * @return the version
 	 */
-	public int getVersion() {
+	public Long getVersion() {
 		return version;
 	}
 
@@ -87,19 +90,28 @@ public class ComponenteDTO {
 	 *
 	 * @param version the new version
 	 */
-	public void setVersion(int version) {
+	public void setVersion(Long version) {
 		this.version = version;
 	}
 
 	/**
-	 * To string.
-	 *
-	 * @return the string
+	 * @return the orden
 	 */
+	public Long getOrden() {
+		return orden;
+	}
+
+	/**
+	 * @param orden the orden to set
+	 */
+	public void setOrden(Long orden) {
+		this.orden = orden;
+	}
+
 	@Override
 	public String toString() {
 		return "ComponenteDTO [id=" + id + ", tipoComponente=" + tipoComponente + ", contenido=" + contenido
-				+ ", version=" + version + "]";
+				+ ", version=" + version + ", orden=" + orden + "]";
 	}
 	
 }

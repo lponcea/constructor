@@ -25,7 +25,7 @@ public class MultimediaDTO implements Serializable  {
 	/**
 	 * Id Long
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * MultipartFile
@@ -46,7 +46,7 @@ public class MultimediaDTO implements Serializable  {
 	 * @param id de id 
 	 * @param file de file
 	 */
-	public MultimediaDTO(final Long id,final  MultipartFile file) {
+	public MultimediaDTO(final String id,final  MultipartFile file) {
 		this.id = id;
 		this.file = file;
 	}
@@ -56,7 +56,7 @@ public class MultimediaDTO implements Serializable  {
 	 * Get 
 	 * @return the id
 	 */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -65,7 +65,7 @@ public class MultimediaDTO implements Serializable  {
 	 * Set
 	 * @param id the id to set
 	 */
-	public void setId(final Long id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 

@@ -103,6 +103,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 					componente.setTipoComponente(componenteDTO.getTipoComponente());
 					componente.setBloqueComponentes(bloqueComponentes);
 					componente.setVersion(componenteDTO.getVersion());
+					componente.setOrden(componenteDTO.getOrden());
 					componenteRepository.save(componente);
 					log.debug("Se guardó correctamente el componente: {}", componente);
 			}
