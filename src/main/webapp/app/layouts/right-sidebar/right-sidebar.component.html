@@ -6,7 +6,7 @@
     <jhi-template-gallery></jhi-template-gallery>
   </div>
 
-  <div *ngIf="openProperties">
+  <div [hidden]="!openProperties">
       <jhi-constructor-component-properties></jhi-constructor-component-properties>
   </div>
 
