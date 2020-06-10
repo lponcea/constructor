@@ -1,7 +1,6 @@
 package org.constructor.service.multimedia.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +14,7 @@ import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.service.CursoService;
 import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -118,7 +118,9 @@ public class MultimediaServiceImpl implements MultimediaService {
 					builder.append("audio");
 					PathValidation.createPath(builder.toString());
 				     log.debug("builder audio : {}", builder);
+				     
 				}
+				
 
 				/**
 				 * if para Video
@@ -130,8 +132,9 @@ public class MultimediaServiceImpl implements MultimediaService {
 					builder.append( "video" );
 					PathValidation.createPath(builder.toString() );
 					log.debug("builder Video : {}", builder);
-				}       
-				
+						
+				}
+
 				/**
 				 * if para Image
 				 */
@@ -155,8 +158,10 @@ public class MultimediaServiceImpl implements MultimediaService {
 					log.debug("builder docs : {}", builder);
 				}else {
 					videoResponse.setPath(null);
+					
+			         
 				}
-				
+
 				builder.append(File.separator);
 				builder.append(multimedia.getOriginalFilename().replace(multimedia.getOriginalFilename(), FilenameUtils.getBaseName(multimedia.getOriginalFilename()).concat(time)
 						 + "." + FilenameUtils.getExtension(multimedia.getOriginalFilename())).toLowerCase());
@@ -175,9 +180,10 @@ public class MultimediaServiceImpl implements MultimediaService {
 				videoResponse.setPath(replace );
 				return videoResponse;
 			
-		 }catch(IOException e){
-			return videoResponse;
-		 } 
+		 }catch(Exception e){	
+    		 return videoResponse;	
+		 }
+		 
 	}
 
 	/**
