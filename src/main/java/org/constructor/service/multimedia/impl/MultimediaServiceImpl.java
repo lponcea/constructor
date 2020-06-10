@@ -118,9 +118,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 					builder.append("audio");
 					PathValidation.createPath(builder.toString());
 				     log.debug("builder audio : {}", builder);
-				     
 				}
-				
 
 				/**
 				 * if para Video
@@ -132,9 +130,8 @@ public class MultimediaServiceImpl implements MultimediaService {
 					builder.append( "video" );
 					PathValidation.createPath(builder.toString() );
 					log.debug("builder Video : {}", builder);
-						
-				}
-
+				}       
+				
 				/**
 				 * if para Image
 				 */
@@ -158,10 +155,8 @@ public class MultimediaServiceImpl implements MultimediaService {
 					log.debug("builder docs : {}", builder);
 				}else {
 					videoResponse.setPath(null);
-					
-			         
 				}
-
+				
 				builder.append(File.separator);
 				builder.append(multimedia.getOriginalFilename().replace(multimedia.getOriginalFilename(), FilenameUtils.getBaseName(multimedia.getOriginalFilename()).concat(time)
 						 + "." + FilenameUtils.getExtension(multimedia.getOriginalFilename())).toLowerCase());
@@ -194,7 +189,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 	 * @return
 	 */
     private StringBuilder buildFile(StringBuilder builder,MultimediaDTO file ) {
-    	Long idCurso = file.getId();
+    	String idCurso = file.getId();
     	builder.append(UPLOAD_FOLDER.toString());
 		builder.append(nimbus);
 		builder.append(File.separator);

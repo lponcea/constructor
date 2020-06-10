@@ -38,7 +38,7 @@ public class MultimediaResource {
 	 * @return
 	 */
 	@PostMapping(value = "/fileUpload",  produces = "application/json")
-	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file, @RequestParam("id") Long id) {
+	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file, @RequestParam("id") String id) {
 		VideoResponse vr = new VideoResponse();
 		MultimediaDTO multimediaDTO = new MultimediaDTO();
 		multimediaDTO.setFile(file);
