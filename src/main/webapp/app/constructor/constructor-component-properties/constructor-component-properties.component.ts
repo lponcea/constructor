@@ -4,7 +4,7 @@ import { ImageService } from 'app/services/image.service';
 import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 import { FileUploadService } from 'app/services/file-upload.service';
 import { CurrentCourseService } from 'app/services/current-course.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'jhi-constructor-component-properties',
@@ -26,8 +26,7 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
     public imageService: ImageService,
     public eventManager: JhiEventManager,
     public fileUploadService: FileUploadService,
-    public currentCourseService: CurrentCourseService,
-    private sanitizer: DomSanitizer
+    public currentCourseService: CurrentCourseService
   ) {
     this.subscription = this.imageService.getImgSrc().subscribe(imgSrc => {
       this.imgSrc = imgSrc;
