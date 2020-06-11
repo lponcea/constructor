@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.constructor.domain.BloqueComponentes;
+import org.constructor.domain.BloquesCurso;
 
 /**
  * The Class NivelJerarquicoResponse.
@@ -29,7 +30,7 @@ public class NivelJerarquicoResponse {
 	private int orden;
 	
 	/** The bloques componentes. */
-	private List<BloqueComponentes> bloquesComponentes;
+	private List<BloquesCurso> bloquesCurso;
 	
 	/**
 	 * Gets the curso id.
@@ -138,36 +139,26 @@ public class NivelJerarquicoResponse {
 	public void setOrden(int orden) {
 		this.orden = orden;
 	}
-	
+		
 	/**
-	 * Gets the bloques componentes.
-	 *
-	 * @return the bloquesComponentes
+	 * @return the bloquesCurso
 	 */
-	public List<BloqueComponentes> getBloquesComponentes() {
-		return bloquesComponentes;
+	public List<BloquesCurso> getBloquesCurso() {
+		return bloquesCurso;
 	}
-	
+
 	/**
-	 * Sets the bloques componentes.
-	 *
-	 * @param bloquesComponentes the bloquesComponentes to set
+	 * @param bloquesCurso the bloquesCurso to set
 	 */
-	public void setBloquesComponentes(List<BloqueComponentes> bloquesComponentes) {
-		this.bloquesComponentes = bloquesComponentes;
+	public void setBloquesCurso(List<BloquesCurso> bloquesCurso) {
+		this.bloquesCurso = bloquesCurso;
 	}
-	
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
+
 	@Override
 	public String toString() {
 		return "NivelJerarquicoResponse [cursoId=" + cursoId + ", nivelId=" + nivelId + ", nombre=" + nombre + ", tipo="
-				+ tipo + ", informacionAdicional=" + informacionAdicional + ", orden=" + orden + ", bloquesComponentes="
-				+ bloquesComponentes + "]";
+				+ tipo + ", informacionAdicional=" + informacionAdicional + ", orden=" + orden + ", bloquesCurso="
+				+ bloquesCurso + "]";
 	}
-	
 
 }

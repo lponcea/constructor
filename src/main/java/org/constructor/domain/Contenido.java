@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +16,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Contenido.
  */
@@ -37,7 +37,8 @@ public class Contenido  implements Serializable {
 	@Column(name = "contenido")
 	private String contenido;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	/** The componente. */
+	@OneToOne
     @JoinColumn(name = "componente_id")
     @JsonIgnore
 	private Componente componente;
@@ -53,6 +54,15 @@ public class Contenido  implements Serializable {
 		this.id = id;
 		this.contenido = contenido;
 	}
+
+	/**
+	 * Instantiates a new contenido.
+	 */
+	public Contenido() {
+		super();
+	}
+
+
 
 	/**
 	 * Gets the id.
@@ -91,6 +101,8 @@ public class Contenido  implements Serializable {
 	}
 
 	/**
+	 * Gets the componente.
+	 *
 	 * @return the componente
 	 */
 	public Componente getComponente() {
@@ -98,10 +110,22 @@ public class Contenido  implements Serializable {
 	}
 
 	/**
+	 * Sets the componente.
+	 *
 	 * @param componente the componente to set
 	 */
 	public void setComponente(Componente componente) {
 		this.componente = componente;
 	}
-	
+
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
+	@Override
+	public String toString() {
+		return "Contenido [id=" + id + ", contenido=" + contenido + "]";
+	}
+
 }

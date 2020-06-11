@@ -49,7 +49,8 @@ public class BloqueComponentes implements Serializable {
 
 	
 	/** The bloques curso. */
-	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="bloqueComponentes", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<BloquesCurso> bloquesCurso;
 	/**
 	 * Gets the id.

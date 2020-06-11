@@ -4,18 +4,23 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.constructor.domain.BloqueComponentes;
+import org.constructor.domain.BloquesCurso;
 import org.constructor.domain.Componente;
+import org.constructor.domain.Contenido;
 import org.constructor.domain.Curso;
 import org.constructor.domain.NivelJerarquico;
 import org.constructor.domain.NivelesCurso;
 import org.constructor.repository.BloqueComponentesRepository;
+import org.constructor.repository.BloquesCursoRepository;
 import org.constructor.repository.ComponenteRepository;
+import org.constructor.repository.ContenidoRepository;
 import org.constructor.repository.CursoRepository;
 import org.constructor.repository.NivelJerarquicoRepository;
 import org.constructor.repository.NivelesCursoRepository;
 import org.constructor.response.NivelJerarquicoResponse;
 import org.constructor.service.NivelJerarquicoService;
 import org.constructor.service.dto.BloqueComponentesDTO;
+import org.constructor.service.dto.BloquesCursoDTO;
 import org.constructor.service.dto.ComponenteDTO;
 import org.constructor.service.dto.NivelJerarquicoDTO;
 import org.slf4j.Logger;
@@ -55,6 +60,13 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 	 /** The niveles curso repository. */
  	@Autowired
 	 private NivelesCursoRepository nivelesCursoRepository;
+ 	
+ 	/** The bloques curso repository. */
+	 @Autowired
+ 	private BloquesCursoRepository bloquesCursoRepository;
+ 	
+	 @Autowired
+	 private ContenidoRepository contenidoRepository;
 	 
 	 
 	 
@@ -87,27 +99,40 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		
 		log.debug("Se guardó correctamente el nivelJerarquico: {}", nivelJerarquico);
 		
-		//Guardando el BloqueComponente
-		/*for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
+		for (BloquesCursoDTO bloquesCursoDTO : nivelJerarquicoDTO.getBloquesCurso()) {
+			//Guardando BloquesCurso y BloqueComponentes
+			BloquesCurso bloquesCurso = new BloquesCurso();
 			BloqueComponentes bloqueComponentes = new BloqueComponentes();
-			bloqueComponentes.setOrden(bloqueDTO.getOrden());
-			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
-				bloqueComponentesRepository.save(bloqueComponentes);
-				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
-				
-			//Guardando Componente
-			for(ComponenteDTO componenteDTO : bloqueDTO.getComponentes()) {
+			bloquesCurso.setIndicadorOriginal(bloquesCursoDTO.getIndicadorOriginal());
+			bloquesCurso.setMostrar(bloquesCursoDTO.getMostrar());
+			bloquesCurso.setNivelJerarquico(nivelJerarquico);
+			bloquesCurso.setOrden(bloquesCursoDTO.getOrden());
+			
+			bloqueComponentes.setOrden(bloquesCursoDTO.getBloqueComponentes().getOrden());
+			bloqueComponentes.setTipoBloqueComponentes(bloquesCursoDTO.getBloqueComponentes().getTipoBloqueComponentes());
+			bloqueComponentesRepository.save(bloqueComponentes);
+			for (ComponenteDTO componenteDTO : bloquesCursoDTO.getBloqueComponentes().getComponentes()) {
+				//Guardando Componente y Contenido
 				Componente componente = new Componente();
-				//componente.setContenido(componenteDTO.getContenido());
-					componente.setTipoComponente(componenteDTO.getTipoComponente());
-					componente.setBloqueComponentes(bloqueComponentes);
-					componente.setVersion(componenteDTO.getVersion());
-					componente.setOrden(componenteDTO.getOrden());
-					componenteRepository.save(componente);
-					log.debug("Se guardó correctamente el componente: {}", componente);
+				Contenido contenido = new Contenido();
+				componente.setBloqueComponentes(bloqueComponentes);
+				componente.setOrden(componenteDTO.getOrden());
+				componente.setTipoComponente(componenteDTO.getTipoComponente());
+				componente.setVersion(componenteDTO.getVersion());
+				componenteRepository.save(componente);
+				
+				contenido.setComponente(componente);
+				contenido.setContenido(componenteDTO.getContenido().getContenido());
+				contenidoRepository.save(contenido);
+				
 			}
-		}*/
-		
+			bloquesCurso.setBloqueComponentes(bloqueComponentes);
+			bloquesCursoRepository.save(bloquesCurso);
+			
+			
+			
+		}
+				
 		//Guardando NivelesCurso
 		Optional<Curso> curso = cursoRepository.findById(nivelJerarquicoDTO.getCursoId());
 		if (curso.isPresent()) {
@@ -194,13 +219,16 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		NivelJerarquico nivelJerarquico = null;
 		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
 		Optional<NivelJerarquico> optionalNivelJerarquico = nivelJerarquicoRepository.findById(id);
+		
 		nivelJerarquico = optionalNivelJerarquico.get();
 		nivelResponse.setNombre(nivelJerarquico.getNombre());
 		nivelResponse.setInformacionAdicional(nivelJerarquico.getInformacionAdicional());
 		nivelResponse.setNivelId(nivelJerarquico.getId());
 		nivelResponse.setTipo(nivelJerarquico.getTipo());
+		nivelResponse.setBloquesCurso(nivelJerarquico.getBloquesCurso().stream().distinct().collect(Collectors.toList()));
 		log.debug("Response nivel {}", nivelResponse);
 		return nivelResponse;
+		
 	}
 
 	/**

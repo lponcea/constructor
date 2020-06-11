@@ -22,9 +22,6 @@
             <column name="bloque_componentes_id" type="bigint">
                 <constraints  nullable="false"/>
             </column>	
-            <column name="contenido" type="varchar(1000)">
-                <constraints  nullable="false"/>
-            </column>	
             <column name="version" type="bigint">
                 <constraints  nullable="false"/>
             </column>	

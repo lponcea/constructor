@@ -16,6 +16,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class BloquesCurso.
  */
@@ -45,12 +48,13 @@ public class BloquesCurso  implements Serializable {
 	private Long indicadorOriginal;
 	
 	/** The nivel jerarquico. */
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nivel_jerarquico_id", nullable=false)
+	@JsonIgnore
 	private NivelJerarquico nivelJerarquico;
 	
 	/** The bloque componentes. */
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "bloque_componentes_id", nullable=false)
 	private BloqueComponentes bloqueComponentes;
 
@@ -69,6 +73,15 @@ public class BloquesCurso  implements Serializable {
 		this.mostrar = mostrar;
 		this.indicadorOriginal = indicadorOriginal;
 	}
+	
+	/**
+	 * Instantiates a new bloques curso.
+	 */
+	public BloquesCurso() {
+		super();
+		
+	}
+
 
 	/**
 	 * Gets the id.
@@ -143,6 +156,8 @@ public class BloquesCurso  implements Serializable {
 	}
 
 	/**
+	 * Gets the nivel jerarquico.
+	 *
 	 * @return the nivelJerarquico
 	 */
 	public NivelJerarquico getNivelJerarquico() {
@@ -150,6 +165,8 @@ public class BloquesCurso  implements Serializable {
 	}
 
 	/**
+	 * Sets the nivel jerarquico.
+	 *
 	 * @param nivelJerarquico the nivelJerarquico to set
 	 */
 	public void setNivelJerarquico(NivelJerarquico nivelJerarquico) {
@@ -157,6 +174,8 @@ public class BloquesCurso  implements Serializable {
 	}
 	
 	/**
+	 * Gets the bloque componentes.
+	 *
 	 * @return the bloqueComponentes
 	 */
 	public BloqueComponentes getBloqueComponentes() {
@@ -164,20 +183,19 @@ public class BloquesCurso  implements Serializable {
 	}
 
 	/**
+	 * Sets the bloque componentes.
+	 *
 	 * @param bloqueComponentes the bloqueComponentes to set
 	 */
 	public void setBloqueComponentes(BloqueComponentes bloqueComponentes) {
 		this.bloqueComponentes = bloqueComponentes;
 	}
 
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
 	@Override
 	public String toString() {
 		return "BloquesCurso [id=" + id + ", orden=" + orden + ", mostrar=" + mostrar + ", indicadorOriginal="
-				+ indicadorOriginal + "]";
+				+ indicadorOriginal + ", bloqueComponentes=" + bloqueComponentes + "]";
 	}
+
+
 }
