@@ -22,9 +22,6 @@
             <column name="bloque_componentes_id" type="bigint">
                 <constraints  nullable="false"/>
             </column>
-            <column name="usuario_id" type="bigint">
-                <constraints  nullable="false"/>
-            </column>
   			<column name="orden" type="bigint">
                 <constraints  nullable="false"/>
             </column>	

@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// TODO: Auto-generated Javadoc
 /**
  * A Componente.
  */
@@ -24,50 +25,43 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "componente")
 public class Componente implements Serializable {
 	
-	/**
-	 * Serializable
-	 */
+	/** Serializable. */
 	private static final long serialVersionUID = 1L;
 	
-	/**
-	 * Long Id 
-	 */
+	/** Long Id. */
 	@Id
 	@OrderBy(value = "id ASC")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 		
-	/**
-	 * Long Version 
-	 */
+	/** Long Version. */
 	@Column(name = "version")
     private Long version;
 	
+	/** The orden. */
 	@Column(name = "orden")
     private Long orden;
 	
-	/**
-	 * tipoComponente
-	 */
+	/** tipoComponente. */
 	
 	@ManyToOne
     @JoinColumn(name = "tipo_componente_id", nullable=false)
     private TipoComponente tipoComponente;
 	
-	/**
-	 * bloqueComponentes
-	 */
+	/** bloqueComponentes. */
 	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "bloque_componentes_id", nullable=false)
     private BloqueComponentes bloqueComponentes; 
 	
+	/** The contenido. */
 	@OneToOne(mappedBy = "componente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Contenido contenido;
 
 	
 	/**
-	 * Get
+	 * Get.
+	 *
 	 * @return id
 	 */
 	public Long getId() {
@@ -75,31 +69,35 @@ public class Componente implements Serializable {
 	}
 
 	/**
-	 * Set
-	 * @param id
+	 * Set.
+	 *
+	 * @param id the new id
 	 */
 	public void setId(final Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * Get
-	 * @return version 
+	 * Get.
+	 *
+	 * @return version
 	 */
 	public Long getVersion() {
 		return version;
 	}
 
 	/**
-	 * Set 
-	 * @param version
+	 * Set .
+	 *
+	 * @param version the new version
 	 */
 	public void setVersion(final Long version) {
 		this.version = version;
 	}
 
 	/**
-	 * Get
+	 * Get.
+	 *
 	 * @return tipoComponente
 	 */
 	public TipoComponente getTipoComponente() {
@@ -107,15 +105,17 @@ public class Componente implements Serializable {
 	}
 	
 	/**
-	 * Set 
-	 * @param tipoComponente
+	 * Set .
+	 *
+	 * @param tipoComponente the new tipo componente
 	 */
 	public void setTipoComponente(final TipoComponente tipoComponente) {
 		this.tipoComponente = tipoComponente;
 	}
 
 	/**
-	 * Get 
+	 * Get .
+	 *
 	 * @return bloqueComponentes
 	 */
 	public BloqueComponentes getBloqueComponentes() {
@@ -123,8 +123,9 @@ public class Componente implements Serializable {
 	}
 	
 	/**
-	 * Set 
-	 * @param bloqueComponentes
+	 * Set .
+	 *
+	 * @param bloqueComponentes the new bloque componentes
 	 */
 	public void setBloqueComponentes(final BloqueComponentes bloqueComponentes) {
 		this.bloqueComponentes = bloqueComponentes;
@@ -132,6 +133,8 @@ public class Componente implements Serializable {
 	
 
 	/**
+	 * Gets the orden.
+	 *
 	 * @return the orden
 	 */
 	public Long getOrden() {
@@ -139,6 +142,8 @@ public class Componente implements Serializable {
 	}
 
 	/**
+	 * Sets the orden.
+	 *
 	 * @param orden the orden to set
 	 */
 	public void setOrden(Long orden) {
@@ -146,6 +151,8 @@ public class Componente implements Serializable {
 	}
 	
 	/**
+	 * Gets the contenido.
+	 *
 	 * @return the contenido
 	 */
 	public Contenido getContenido() {
@@ -153,12 +160,19 @@ public class Componente implements Serializable {
 	}
 
 	/**
+	 * Sets the contenido.
+	 *
 	 * @param contenido the contenido to set
 	 */
 	public void setContenido(Contenido contenido) {
 		this.contenido = contenido;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Componente [id=" + id + ", contenido=" + contenido + ", version=" + version + ", orden=" + orden + "]";

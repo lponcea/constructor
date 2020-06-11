@@ -59,8 +59,7 @@ public class NivelJerarquico implements Serializable  {
 	private Set<NivelesCurso> nivelesCurso = new HashSet<>(); 
 	
 	/** The bloques curso. */
-	@OneToMany(mappedBy = "nivelJerarquico")
-	@JsonIgnore
+	@OneToMany(mappedBy = "nivelJerarquico", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE )
 	private Set<BloquesCurso> bloquesCurso;
 	
 
@@ -190,17 +189,12 @@ public class NivelJerarquico implements Serializable  {
 		this.bloquesCurso = bloquesCurso;
 	}
 
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
 	@Override
 	public String toString() {
 		return "NivelJerarquico [id=" + id + ", nombre=" + nombre + ", informacionAdicional=" + informacionAdicional
-				+ ", tipo=" + tipo + ", estructuraJerarquica=" + estructuraJerarquica + ", nivelesCurso=" + nivelesCurso
+				+ ", tipo=" + tipo + ", estructuraJerarquica=" + estructuraJerarquica + ", bloquesCurso=" + bloquesCurso
 				+ "]";
 	}
 
-
+	
 }
