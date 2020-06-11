@@ -17,12 +17,12 @@
         <div
           class="artboard-mini"
           [ngClass]="{'ab-mini-select': selectedContentBlockIndex == index}"
-          [style.backgroundImage]="'url(' + contentBlock.tipoBloqueComponentes.iconPath + ')'"
+          [style.backgroundImage]="'url(' + contentBlock.bloqueComponentes.tipoBloqueComponentes.iconPath + ')'"
           (click)="selectContentBlock(index)">
         </div>
         <!-- <div class="artboard-mini ab-mini-1 ab-mini-select"></div> -->
         <div class="ab-mini-desc">
-          <p>{{contentBlock.name}}</p>
+          <p>{{contentBlock.bloqueComponentes.name}}</p>
           <div class="delete-ab" (click)="deleteContentBlock(index)">
             <i class="icon ni-delete"></i>
             <p>Eliminar</p>

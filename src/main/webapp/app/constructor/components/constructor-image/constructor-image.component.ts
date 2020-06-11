@@ -54,7 +54,7 @@ export class ConstructorImageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (this.component && this.component.contenido) {
+    if (this.component && this.component.contenido && this.component.contenido.contenido !== '') {
       this.getImage(this.component.contenido.contenido!);
     }
   }

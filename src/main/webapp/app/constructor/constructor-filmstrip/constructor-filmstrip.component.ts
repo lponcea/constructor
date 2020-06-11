@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
-import { BlockSelectionService } from 'app/services/block-selection.service';
 import { ContentBlocksService } from 'app/services/content-blocks.service';
 import { NavigationControlsService } from '../../services/navigation-controls.service';
 import { Subscription } from 'rxjs';
@@ -49,11 +48,7 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit, 
     }
   ];
 
-  constructor(
-    private contentBlocksService: ContentBlocksService,
-    private blockSelectionService: BlockSelectionService,
-    private navigationControlsService: NavigationControlsService
-  ) {
+  constructor(private contentBlocksService: ContentBlocksService, private navigationControlsService: NavigationControlsService) {
     this.contentBlocks = [];
     this.subscription = this.contentBlocksService.getContentBlocks().subscribe(contentBlocks => {
       if (contentBlocks) {
@@ -107,17 +102,6 @@ export class ConstructorFilmstripComponent implements OnInit, AfterContentInit, 
    */
   deleteContentBlock(index: number): void {
     this.contentBlocksService.setIndexBlockToDelete(index);
-  }
-
-  getBlockIcon(blockId: number): string {
-    let path = '';
-    for (let i = 0; i < this.templates.length; i++) {
-      if (this.templates[i].id === blockId) {
-        path = this.templates[i].iconPath!;
-        break;
-      }
-    }
-    return path;
   }
 
   ngOnDestroy(): void {

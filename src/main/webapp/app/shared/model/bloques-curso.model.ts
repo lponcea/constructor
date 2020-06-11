@@ -4,8 +4,8 @@ export interface IBloquesCurso {
   id?: number;
   bloqueComponentes?: IBloqueComponentes;
   orden?: number;
-  mostrar?: boolean;
-  indicadorOriginal?: boolean;
+  mostrar?: number;
+  indicadorOriginal?: number;
 }
 
 export class BloquesCurso implements IBloquesCurso {
@@ -13,7 +13,7 @@ export class BloquesCurso implements IBloquesCurso {
     public id?: number,
     public bloqueComponentes?: IBloqueComponentes,
     public orden?: number,
-    public mostrar?: boolean,
-    public indicadorOriginal?: boolean
+    public mostrar?: number,
+    public indicadorOriginal?: number
   ) {}
 }

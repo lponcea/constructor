@@ -61,11 +61,6 @@ export class TemplateGalleryComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectTemplate(selectedTemplate: any): void {
-    this.contentBlocksService.setSelectedBlock(selectedTemplate);
-    this.navigationControlsService.setOpenTemplateGallery(false);
-  }
-
   selectContentBlock(selectedContentBlockIndex: number): void {
     this.textEditorBehaviosService.setShowTextEditor(false);
     this.selectedContentBlockIndex = selectedContentBlockIndex;

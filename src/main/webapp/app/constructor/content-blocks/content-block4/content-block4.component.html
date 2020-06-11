@@ -1,12 +1,12 @@
 <!-- Bloque de contenido: Texto con imagen-->
-  <div class="col-cb-text-img" *ngIf="contentBlock && contentBlock.componentes">
+  <div class="col-cb-text-img" *ngIf="contentBlock && contentBlock.bloqueComponentes.componentes">
 
-    <div *ngFor="let component of orderTextImage(contentBlock.componentes); let index = index;">
+    <div *ngFor="let component of orderTextImage(contentBlock.bloqueComponentes.componentes); let index = index;">
       <div *ngIf="component.tipoComponente.nombre === 'text'" class="b-paragraph-text">
-          <div *ngIf="contentBlock && contentBlock.tipoBloqueComponentes">
+          <div *ngIf="contentBlock && contentBlock.bloqueComponentes.tipoBloqueComponentes">
               <jhi-visor-text
                 [component]="component"
-                [templateType]="contentBlock.tipoBloqueComponentes"
+                [templateType]="contentBlock.bloqueComponentes.tipoBloqueComponentes"
                 (updateComponent)="onUpdateComponent($event, index)">
               </jhi-visor-text>
           </div>

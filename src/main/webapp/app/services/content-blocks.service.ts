@@ -7,7 +7,7 @@ import { ITipoBloqueComponentes } from 'app/shared/model/tipo-bloque-componentes
   providedIn: 'root'
 })
 export class ContentBlocksService {
-  selectedBlock = new Subject<any>();
+  selectedBlock = new Subject<ITipoBloqueComponentes>();
   contentBlocks = new Subject<IBloqueComponentes[]>();
   indexBlockToDelete = new Subject<number>();
   templates = new Subject<ITipoBloqueComponentes[]>();
@@ -15,14 +15,12 @@ export class ContentBlocksService {
 
   constructor() {}
 
-  getSelectedBlock(): Observable<any> {
+  getSelectedBlock(): Observable<ITipoBloqueComponentes> {
     return this.selectedBlock.asObservable();
   }
 
-  setSelectedBlock(selectedBlock: any): void {
-    this.selectedBlock.next({
-      selectedBlock
-    });
+  setSelectedBlock(selectedBlock: IBloqueComponentes): void {
+    this.selectedBlock.next(selectedBlock);
   }
 
   getContentBlocks(): Observable<IBloqueComponentes[]> {
