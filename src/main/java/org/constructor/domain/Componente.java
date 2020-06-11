@@ -2,13 +2,16 @@ package org.constructor.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
@@ -33,13 +36,7 @@ public class Componente implements Serializable {
 	@OrderBy(value = "id ASC")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
-	/**
-	 * String Contenido 
-	 */
-	@Column(name = "contenido")
-    private String contenido;
-	
+		
 	/**
 	 * Long Version 
 	 */
@@ -64,6 +61,9 @@ public class Componente implements Serializable {
 	@ManyToOne
     @JoinColumn(name = "bloque_componentes_id", nullable=false)
     private BloqueComponentes bloqueComponentes; 
+	
+	@OneToOne(mappedBy = "componente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Contenido contenido;
 
 	
 	/**
@@ -80,22 +80,6 @@ public class Componente implements Serializable {
 	 */
 	public void setId(final Long id) {
 		this.id = id;
-	}
-
-	/**
-	 * Get
-	 * @return contenido
-	 */
-	public String getContenido() {
-		return contenido;
-	}
-
-	/**
-	 * Set
-	 * @param contenido
-	 */
-	public void setContenido(final String contenido) {
-		this.contenido = contenido;
 	}
 
 	/**
@@ -159,6 +143,20 @@ public class Componente implements Serializable {
 	 */
 	public void setOrden(Long orden) {
 		this.orden = orden;
+	}
+	
+	/**
+	 * @return the contenido
+	 */
+	public Contenido getContenido() {
+		return contenido;
+	}
+
+	/**
+	 * @param contenido the contenido to set
+	 */
+	public void setContenido(Contenido contenido) {
+		this.contenido = contenido;
 	}
 
 	@Override

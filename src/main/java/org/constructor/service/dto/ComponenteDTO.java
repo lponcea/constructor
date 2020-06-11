@@ -13,15 +13,16 @@ public class ComponenteDTO {
 	/** The tipo componente. */
 	private TipoComponente tipoComponente;
 	
-	/** The contenido. */
-	private String contenido;
 	
 	/** The version. */
 	private Long version;
 	
 	/** The orden. */
 	private Long orden;
-
+	
+	/** The contenido. */
+	private ContenidoDTO contenido;
+ 
 	/**
 	 * Gets the id.
 	 *
@@ -59,24 +60,6 @@ public class ComponenteDTO {
 	}
 
 	/**
-	 * Gets the contenido.
-	 *
-	 * @return the contenido
-	 */
-	public String getContenido() {
-		return contenido;
-	}
-
-	/**
-	 * Sets the contenido.
-	 *
-	 * @param contenido the new contenido
-	 */
-	public void setContenido(String contenido) {
-		this.contenido = contenido;
-	}
-
-	/**
 	 * Gets the version.
 	 *
 	 * @return the version
@@ -106,6 +89,21 @@ public class ComponenteDTO {
 	 */
 	public void setOrden(Long orden) {
 		this.orden = orden;
+	}
+	
+
+	/**
+	 * @return the contenido
+	 */
+	public ContenidoDTO getContenido() {
+		return contenido;
+	}
+
+	/**
+	 * @param contenido the contenido to set
+	 */
+	public void setContenido(ContenidoDTO contenido) {
+		this.contenido = contenido;
 	}
 
 	@Override

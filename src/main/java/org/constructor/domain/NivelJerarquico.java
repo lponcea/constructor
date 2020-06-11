@@ -20,6 +20,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// TODO: Auto-generated Javadoc
 /**
  * A NivelJeraquico.
  */
@@ -27,76 +28,63 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "nivel_jerarquico")
 public class NivelJerarquico implements Serializable  {
 		
-	/**
-	 * Serializable
-	 */
+	/** Serializable. */
 	private static final long serialVersionUID = 1L;
 		
-	/**
-	 * Long id
-	 */
+	/** Long id. */
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	/**
-	 * String nombre
-	 */
+	/** String nombre. */
 	@Column(name = "nombre")
     private String nombre;
 	
-	/**
-	 * int informacionAdicional
-	 */
+	/** int informacionAdicional. */
 	@Column(name = "informacion_adicional")
     private int  informacionAdicional;
 	
-	/**
-	 * String tipo 
-	 */
+	/** String tipo. */
 	@Column(name = "tipo")
     private String  tipo;
 	
-	/**
-	 * orden_nivel
-	 */
+	/** orden_nivel. */
 	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER)
 	@OrderBy ("orden")
 	private Set<EstructuraJerarquica> estructuraJerarquica = new HashSet<>();
-	
-	/**
-	 * orden
-	 */
-	@OneToMany(mappedBy="nivelJerarquico", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-	@OrderBy("orden")
-	private List<BloqueComponentes> bloquesComponentes = new ArrayList<>();
-	
-	/**
-	 * nivelJerarquico
-	 */
+		
+	/** nivelJerarquico. */
 	@OneToMany(mappedBy = "nivelJerarquico")
 	@JsonIgnore
 	private Set<NivelesCurso> nivelesCurso = new HashSet<>(); 
 	
+	/** The bloques curso. */
+	@OneToMany(mappedBy = "nivelJerarquico")
+	@JsonIgnore
+	private Set<BloquesCurso> bloquesCurso;
+	
 
 	/**
-	 * Get
-	 * @return the id 
+	 * Get.
+	 *
+	 * @return the id
 	 */
 	public Long getId() {
 		return id;
 	}
 
 	/**
-	 * Set
-	 * @param id
+	 * Set.
+	 *
+	 * @param id the new id
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
 	/**
-	 * Get
+	 * Get.
+	 *
 	 * @return the informacionAdicional
 	 */
 	public int getInformacionAdicional() {
@@ -104,15 +92,17 @@ public class NivelJerarquico implements Serializable  {
 	}
 
 	/**
-	 * Set
-	 * @param informacionAdicional
+	 * Set.
+	 *
+	 * @param informacionAdicional the new informacion adicional
 	 */
 	public void setInformacionAdicional(int informacionAdicional) {
 		this.informacionAdicional = informacionAdicional;
 	}
 
 	/**
-	 * Get 
+	 * Get .
+	 *
 	 * @return the estructuraJerarquica
 	 */
 	public Set<EstructuraJerarquica> getEstructuraJerarquica() {
@@ -120,15 +110,17 @@ public class NivelJerarquico implements Serializable  {
 	}
 
 	/**
-	 * Set
-	 * @param estructuraJerarquica
+	 * Set.
+	 *
+	 * @param estructuraJerarquica the new estructura jerarquica
 	 */
 	public void setEstructuraJerarquica(Set<EstructuraJerarquica> estructuraJerarquica) {
 		this.estructuraJerarquica = estructuraJerarquica;
 	}
 
 	/**
-	 * Get
+	 * Get.
+	 *
 	 * @return the nombre
 	 */
 	public String getNombre() {
@@ -136,31 +128,17 @@ public class NivelJerarquico implements Serializable  {
 	}
 
 	/**
-	 * Set
-	 * @param nombre
+	 * Set.
+	 *
+	 * @param nombre the new nombre
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	/**
-	 * Get
-	 * @return the bloquesComponentes
-	 */
-	public List<BloqueComponentes> getBloquesComponentes() {
-		return bloquesComponentes;
-	}
-
-	/**
-	 * Set
-	 * @param bloquesComponentes
-	 */
-	public void setBloquesComponentes(List<BloqueComponentes> bloquesComponentes) {
-		this.bloquesComponentes = bloquesComponentes;
-	}
-
-	/**
-	 * Get
+	 * Get.
+	 *
 	 * @return the tipo
 	 */
 	public String getTipo() {
@@ -168,14 +146,17 @@ public class NivelJerarquico implements Serializable  {
 	}
 
 	/**
-	 * Set
-	 * @param tipo
+	 * Set.
+	 *
+	 * @param tipo the new tipo
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	
 	/**
+	 * Gets the niveles curso.
+	 *
 	 * @return the nivelesCurso
 	 */
 	public Set<NivelesCurso> getNivelesCurso() {
@@ -183,6 +164,8 @@ public class NivelJerarquico implements Serializable  {
 	}
 
 	/**
+	 * Sets the niveles curso.
+	 *
 	 * @param nivelesCurso the nivelesCurso to set
 	 */
 	public void setNivelesCurso(Set<NivelesCurso> nivelesCurso) {
@@ -190,13 +173,34 @@ public class NivelJerarquico implements Serializable  {
 	}
 
 	/**
-	 * toString
+	 * Gets the bloques curso.
+	 *
+	 * @return the bloquesCurso
+	 */
+	public Set<BloquesCurso> getBloquesCurso() {
+		return bloquesCurso;
+	}
+
+	/**
+	 * Sets the bloques curso.
+	 *
+	 * @param bloquesCurso the bloquesCurso to set
+	 */
+	public void setBloquesCurso(Set<BloquesCurso> bloquesCurso) {
+		this.bloquesCurso = bloquesCurso;
+	}
+
+	/**
+	 * To string.
+	 *
+	 * @return the string
 	 */
 	@Override
 	public String toString() {
 		return "NivelJerarquico [id=" + id + ", nombre=" + nombre + ", informacionAdicional=" + informacionAdicional
-				+ ", tipo=" + tipo + ", estructuraJerarquica=" + estructuraJerarquica + ", bloquesComponentes="
-				+ bloquesComponentes + "]";
+				+ ", tipo=" + tipo + ", estructuraJerarquica=" + estructuraJerarquica + ", nivelesCurso=" + nivelesCurso
+				+ "]";
 	}
+
 
 }
