@@ -3,12 +3,11 @@
 .properties-c-component {
   position: relative;
   width: 100%;
-  // height: calc(100vh - 405px);
-  height: 200px;
+  height: calc(100vh - 405px);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  // border-bottom: 1px solid $border-component;
+  border-bottom: 1px solid $border-component;
 }
 .c-component-title {
   position: absolute;
@@ -65,5 +64,51 @@
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 20px;
+  }
+}
+.cover-upload-c {
+  h6 {
+    font-size: 13px;
+    color: $blue-nimbus-dark;
+  }
+}
+.row-up-image-area {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $border-component;
+  div {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      position: relative;
+      width: 90%;
+      height: auto;
+      border-radius: 6px;
+    }
+  }
+}
+.row-sidebar-up-image-btn {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 12px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  button {
+    height: 28px;
+    font-size: 13px;
+    padding-left: 12px;
+    padding-right: 12px;
+    letter-spacing: 0px;
+    border-radius: 8px;
   }
 }

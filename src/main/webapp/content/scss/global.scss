@@ -985,21 +985,23 @@ jhi-login-modal {
 .main-btn {
   position: relative;
   width: auto;
-  height: 32px;
+  // height: 32px;
+  height: 30px;
   font-size: 13px;
   font-weight: 400;
   color: $btn-text-white;
   cursor: pointer;
   text-align: center;
   border: none;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
   letter-spacing: 1px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 20px 30px rgba(16, 18, 51, 0.1), 0 6px 18px rgba(16, 18, 51, 0.12);
-  border-radius: 18px;
+  // border-radius: 18px;
+  border-radius: 14px;
   background-color: $main-btn-color;
   transition: all 0.3s ease;
   &:hover {
