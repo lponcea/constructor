@@ -27,7 +27,7 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit, OnInit {
     this.subscription = this.textService.getText().subscribe(text => {
       if (text && this.editing) {
         this.htmlContent = text;
-        this.component!.contenido = this.htmlContent;
+        this.component!.contenido!.contenido = this.htmlContent;
         // Actualizar contenido del componente en objeto de bloques de componentes de visorContainer
         this.updateComponent.emit({ newValue: text, type: 'text' });
       }
@@ -44,7 +44,7 @@ export class VisorTextComponent implements OnDestroy, AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.htmlContent = this.component!.contenido!;
+    this.htmlContent = this.component!.contenido!.contenido!;
   }
 
   ngAfterViewInit(): void {}

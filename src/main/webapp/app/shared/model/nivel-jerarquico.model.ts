@@ -1,12 +1,13 @@
 import { TipoNivelJerarquico } from './enumerations/tipo-nivel-jerarquico.model';
 import { IBloqueComponentes } from './bloque-componentes.model';
+import { IBloquesCurso } from './bloques-curso.model';
 
 export interface INivelJerarquico {
   nivelId?: number;
   nombre?: string;
   tipo?: TipoNivelJerarquico;
   informacionAdicional?: 0;
-  bloquesComponentes?: IBloqueComponentes[];
+  bloquesCurso?: IBloquesCurso[];
   cursoId?: number;
   orden?: number;
 }
@@ -16,7 +17,7 @@ export class NivelJerarquico implements INivelJerarquico {
   public nombre?: string | undefined;
   public tipo?: TipoNivelJerarquico;
   public informacionAdicional?: 0;
-  public bloquesComponentes?: IBloqueComponentes[];
+  public bloquesCurso?: IBloquesCurso[];
   public cursoId?: number;
   public orden?: number;
 }
