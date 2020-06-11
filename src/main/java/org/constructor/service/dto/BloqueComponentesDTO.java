@@ -21,8 +21,6 @@ public class BloqueComponentesDTO {
 	
 	/** The componentes. */
 	private Set<ComponenteDTO> componentes;
-	
-	
 
 	/**
 	 * Gets the id.

@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// TODO: Auto-generated Javadoc
 /**
  * A BloqueComponentes.
  */
@@ -40,19 +41,16 @@ public class BloqueComponentes implements Serializable {
 	/** The componente. */
 	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Componente> componente = new HashSet<>();
-	
-	/** The nivel jerarquico. */
-	@JsonIgnore
-	@ManyToOne
-    @JoinColumn(name = "nivel_jerarquico_id", nullable=false)
-    private NivelJerarquico nivelJerarquico;
-	
-	
+		
 	/** The tipo bloque componentes. */
 	@ManyToOne
     @JoinColumn(name = "tipo_bloque_componentes_id", nullable=false)
     private TipoBloqueComponentes tipoBloqueComponentes;
 
+	
+	/** The bloques curso. */
+	@OneToMany(mappedBy="bloqueComponentes", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<BloquesCurso> bloquesCurso;
 	/**
 	 * Gets the id.
 	 *
@@ -83,7 +81,7 @@ public class BloqueComponentes implements Serializable {
 	/**
 	 * Sets the orden componente.
 	 *
-	 * @param ordenComponente the new orden componente
+	 * @param orden the new orden
 	 */
 	public void setOrden(int orden) {
 		this.orden = orden;
@@ -108,24 +106,6 @@ public class BloqueComponentes implements Serializable {
 	}
 
 	/**
-	 * Gets the nivel jerarquico.
-	 *
-	 * @return the nivel jerarquico
-	 */
-	public NivelJerarquico getNivelJerarquico() {
-		return nivelJerarquico;
-	}
-
-	/**
-	 * Sets the nivel jerarquico.
-	 *
-	 * @param nivelJerarquico the new nivel jerarquico
-	 */
-	public void setNivelJerarquico(NivelJerarquico nivelJerarquico) {
-		this.nivelJerarquico = nivelJerarquico;
-	}
-
-	/**
 	 * Gets the tipo bloque componentes.
 	 *
 	 * @return the tipo bloque componentes
@@ -141,6 +121,20 @@ public class BloqueComponentes implements Serializable {
 	 */
 	public void setTipoBloqueComponentes(TipoBloqueComponentes tipoBloqueComponentes) {
 		this.tipoBloqueComponentes = tipoBloqueComponentes;
+	}
+
+	/**
+	 * @return the bloquesCurso
+	 */
+	public Set<BloquesCurso> getBloquesCurso() {
+		return bloquesCurso;
+	}
+
+	/**
+	 * @param bloquesCurso the bloquesCurso to set
+	 */
+	public void setBloquesCurso(Set<BloquesCurso> bloquesCurso) {
+		this.bloquesCurso = bloquesCurso;
 	}
 
 	/**

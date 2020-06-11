@@ -88,18 +88,17 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		log.debug("Se guardó correctamente el nivelJerarquico: {}", nivelJerarquico);
 		
 		//Guardando el BloqueComponente
-		for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
+		/*for (BloqueComponentesDTO bloqueDTO : nivelJerarquicoDTO.getBloquesComponentes()) {
 			BloqueComponentes bloqueComponentes = new BloqueComponentes();
 			bloqueComponentes.setOrden(bloqueDTO.getOrden());
 			bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
-				bloqueComponentes.setNivelJerarquico(nivelJerarquico);
 				bloqueComponentesRepository.save(bloqueComponentes);
 				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
 				
 			//Guardando Componente
 			for(ComponenteDTO componenteDTO : bloqueDTO.getComponentes()) {
 				Componente componente = new Componente();
-				componente.setContenido(componenteDTO.getContenido());
+				//componente.setContenido(componenteDTO.getContenido());
 					componente.setTipoComponente(componenteDTO.getTipoComponente());
 					componente.setBloqueComponentes(bloqueComponentes);
 					componente.setVersion(componenteDTO.getVersion());
@@ -107,7 +106,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 					componenteRepository.save(componente);
 					log.debug("Se guardó correctamente el componente: {}", componente);
 			}
-		}
+		}*/
 		
 		//Guardando NivelesCurso
 		Optional<Curso> curso = cursoRepository.findById(nivelJerarquicoDTO.getCursoId());
@@ -141,20 +140,13 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            .filter(Optional::isPresent)
 		            .map(Optional::get)
 		            .map( nivel ->{
-		            	nivel.getBloquesComponentes().stream().collect(Collectors.toSet()).forEach(
-		            			bloque -> {
-		            				log.debug("Eliminando bloques: {}", bloque.getId());
-		            				bloqueComponentesRepository.deleteById(bloque.getId());
-		            			}
-		            			);
-		            	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
+		          /*  	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
 		            			bloqueDTO -> {
 		            				if(!bloqueDTO.getComponentes().isEmpty()) {
 		            				BloqueComponentes bloqueComponentes = new BloqueComponentes();
 		            				bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
 		            				bloqueComponentes.setOrden(bloqueDTO.getOrden());
 		            				log.debug("Bloque vaciooooo: {}", bloqueDTO.getComponentes());
-		            				bloqueComponentes.setNivelJerarquico(nivel);
 		            				bloqueComponentesRepository.save(bloqueComponentes);
 		            				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
 		            				bloqueDTO.getComponentes().stream().forEach(
@@ -162,7 +154,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            							Componente componente = new Componente();
 		            							componente.setVersion(componenteDTO.getVersion());
 		            							componente.setTipoComponente(componenteDTO.getTipoComponente());
-		            							componente.setContenido(componenteDTO.getContenido());
+		            							//componente.setContenido(componenteDTO.getContenido());
 		            							componente.setBloqueComponentes(bloqueComponentes);
 		            							componenteRepository.save(componente);
 		            							log.debug("Se guardó correctamente el componente: {}", componente);
@@ -171,8 +163,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            				}
 		            				
 		            			}
-		            			);
-		            	log.debug("Se guardó correctamente el componente: {}", nivel.getBloquesComponentes());
+		            			);*/
 		            	return nivel;
 		            		}
 		            		);
@@ -204,7 +195,6 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		NivelJerarquicoResponse nivelResponse = new NivelJerarquicoResponse();
 		Optional<NivelJerarquico> optionalNivelJerarquico = nivelJerarquicoRepository.findById(id);
 		nivelJerarquico = optionalNivelJerarquico.get();
-		nivelResponse.setBloquesComponentes(nivelJerarquico.getBloquesComponentes().stream().distinct().collect(Collectors.toList()));
 		nivelResponse.setNombre(nivelJerarquico.getNombre());
 		nivelResponse.setInformacionAdicional(nivelJerarquico.getInformacionAdicional());
 		nivelResponse.setNivelId(nivelJerarquico.getId());

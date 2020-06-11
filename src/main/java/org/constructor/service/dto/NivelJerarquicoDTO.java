@@ -25,8 +25,8 @@ public class NivelJerarquicoDTO {
 	/** The informacion adicional. */
 	private int informacionAdicional;
 	
-	/** The bloques componentes. */
-	private Set<BloqueComponentesDTO> bloquesComponentes;
+	/** The bloques curso. */
+	private Set<BloquesCursoDTO> bloquesCurso;
 
 	/**
 	 * Gets the curso id.
@@ -114,23 +114,6 @@ public class NivelJerarquicoDTO {
 		this.informacionAdicional = informacionAdicional;
 	}
 
-	/**
-	 * Gets the bloques componentes.
-	 *
-	 * @return the bloques componentes
-	 */
-	public Set<BloqueComponentesDTO> getBloquesComponentes() {
-		return bloquesComponentes;
-	}
-
-	/**
-	 * Sets the bloques componentes.
-	 *
-	 * @param bloquesComponentes the new bloques componentes
-	 */
-	public void setBloquesComponentes(Set<BloqueComponentesDTO> bloquesComponentes) {
-		this.bloquesComponentes = bloquesComponentes;
-	}
 
 	/**
 	 * Gets the orden nivel.
@@ -149,18 +132,27 @@ public class NivelJerarquicoDTO {
 	public void setOrden(int orden) {
 		this.orden = orden;
 	}
+	
+
+	/**
+	 * @return the bloquesCurso
+	 */
+	public Set<BloquesCursoDTO> getBloquesCurso() {
+		return bloquesCurso;
+	}
+
+	/**
+	 * @param bloquesCurso the bloquesCurso to set
+	 */
+	public void setBloquesCurso(Set<BloquesCursoDTO> bloquesCurso) {
+		this.bloquesCurso = bloquesCurso;
+	}
 
 	@Override
 	public String toString() {
 		return "NivelJerarquicoDTO [cursoId=" + cursoId + ", nivelId=" + nivelId + ", nombre=" + nombre + ", tipo="
-				+ tipo + ", orden=" + orden + ", informacionAdicional=" + informacionAdicional + ", bloquesComponentes="
-				+ bloquesComponentes + "]";
+				+ tipo + ", orden=" + orden + ", informacionAdicional=" + informacionAdicional + ", bloquesCurso="
+				+ bloquesCurso + "]";
 	}
-
-	/**
-	 * To string.
-	 *
-	 * @return the string
-	 */
-		
+	
 }
