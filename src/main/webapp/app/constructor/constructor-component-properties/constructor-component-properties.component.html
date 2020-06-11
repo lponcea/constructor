@@ -1,6 +1,8 @@
 
 <div class="properties-c-component">
+
   <!-- Header -->
+
   <div class="c-component-title">
     <div class="cct-link">
       <i class="icon ni-arrow"></i>
@@ -8,40 +10,37 @@
     </div>
     <i class="icon ni-menudots"></i>
   </div>
+
   <!-- End Header -->
+
   <div class="c-component-content">
     <div class="row-c-component-c">
 
-    </div>
-  </div>
+      <!-- Subir archivo -->
+        <div class="cover-upload-c">
+          <h6>Subir imagen</h6>
 
-  <!-- Subir archivo -->
-  <div class="rg-col-2">
-      <div class="cover-upload-c">
-          <label class="label-cover-c">Subir portada</label>
-          <div class="cover-upload-img-row">
-            <div class="cover-path-area">
-
+            <div class="row-up-image-area">
               <div *ngIf="imgSrc !== ''">
-                <img [src]="imgSrc" alt="" class="cover-upload-img" style="width: 100px;">
+                <img [src]="imgSrc" alt="" class="cover-upload-img">
               </div>
               <div *ngIf="imgSrc === ''">
-                <img [src]="defaultImageUrl" alt="" style="width: 100px;">
+                <img [src]="defaultImageUrl" alt="">
               </div>
-
             </div>
-            <div class="row-uic">
+
+            <div class="row-sidebar-up-image-btn">
               <button (click)="deleteImage()" class="secondary-btn text-transform-none" *ngIf="this.imgSrc !== ''">Eliminar imagen</button>
               <button type="button" class="main-btn" (click)="fileInput.click()">
                   <span>Subir</span>
                   <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" />
               </button>
             </div>
-          </div>
 
-      </div>
+        </div>
+      <!-- Subir archivo -->
+
     </div>
-    <!-- Subir archivo -->
+  </div>
 
 </div>
-

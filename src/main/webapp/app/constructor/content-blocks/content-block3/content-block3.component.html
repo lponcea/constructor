@@ -1,7 +1,7 @@
 <!-- Bloque de contenido: Imagen-->
 <div class="col-cb-img" *ngIf="contentBlock && contentBlock.componentes">
-    <div class="tt" *ngFor="let component of contentBlock.componentes; let index = index;">
-        <jhi-constructor-image 
+    <div class="row-cb-img" *ngFor="let component of contentBlock.componentes; let index = index;">
+        <jhi-constructor-image
             [component]="component"
             (updateComponent)="onUpdateComponent($event, index)">
         </jhi-constructor-image>
