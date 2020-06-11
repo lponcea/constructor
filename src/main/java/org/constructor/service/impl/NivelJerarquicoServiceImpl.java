@@ -111,6 +111,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 			bloqueComponentes.setOrden(bloquesCursoDTO.getBloqueComponentes().getOrden());
 			bloqueComponentes.setTipoBloqueComponentes(bloquesCursoDTO.getBloqueComponentes().getTipoBloqueComponentes());
 			bloqueComponentesRepository.save(bloqueComponentes);
+			
 			for (ComponenteDTO componenteDTO : bloquesCursoDTO.getBloqueComponentes().getComponentes()) {
 				//Guardando Componente y Contenido
 				Componente componente = new Componente();
@@ -164,31 +165,52 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            .findById(nivelJerarquicoDTO.getNivelId()))
 		            .filter(Optional::isPresent)
 		            .map(Optional::get)
-		            .map( nivel ->{
-		          /*  	nivelJerarquicoDTO.getBloquesComponentes().stream().forEach(
-		            			bloqueDTO -> {
-		            				if(!bloqueDTO.getComponentes().isEmpty()) {
+		            .map( nivel -> {
+		            	nivel.getBloquesCurso().stream().collect(Collectors.toSet()).forEach(
+		            			bloqueCurso -> {
+		            				log.debug("Eliminando bloques: {}", bloqueCurso.getId());
+		            				bloqueComponentesRepository.deleteById(bloqueCurso.getId());
+		            			}
+		            			);
+		            	nivel.setNombre(nivelJerarquicoDTO.getNombre());
+		            	nivel.setInformacionAdicional(nivelJerarquicoDTO.getInformacionAdicional());
+		            	nivel.setTipo(nivelJerarquicoDTO.getTipo());
+		            	nivelJerarquicoDTO.getBloquesCurso().stream().forEach(
+		            			bloqueCursoDTO -> {
+		            				BloquesCurso bloquesCurso = new BloquesCurso();
 		            				BloqueComponentes bloqueComponentes = new BloqueComponentes();
-		            				bloqueComponentes.setTipoBloqueComponentes(bloqueDTO.getTipoBloqueComponentes());
-		            				bloqueComponentes.setOrden(bloqueDTO.getOrden());
-		            				log.debug("Bloque vaciooooo: {}", bloqueDTO.getComponentes());
+		            				bloquesCurso.setIndicadorOriginal(bloqueCursoDTO.getIndicadorOriginal());
+		            				bloquesCurso.setMostrar(bloqueCursoDTO.getMostrar());
+		            				bloquesCurso.setOrden(bloqueCursoDTO.getOrden());
+		            				bloquesCurso.setNivelJerarquico(nivel);
+		            				
+		            				bloqueComponentes.setOrden(bloqueCursoDTO.getBloqueComponentes().getOrden());
+		            				bloqueComponentes.setTipoBloqueComponentes(bloqueCursoDTO.getBloqueComponentes().getTipoBloqueComponentes());
 		            				bloqueComponentesRepository.save(bloqueComponentes);
-		            				log.debug("Se guardó correctamente el bloqueComponentes: {}", bloqueComponentes);
-		            				bloqueDTO.getComponentes().stream().forEach(
+		            				
+		            				bloqueCursoDTO.getBloqueComponentes().getComponentes().stream().forEach(
 		            						componenteDTO -> {
 		            							Componente componente = new Componente();
-		            							componente.setVersion(componenteDTO.getVersion());
-		            							componente.setTipoComponente(componenteDTO.getTipoComponente());
-		            							//componente.setContenido(componenteDTO.getContenido());
+		            							Contenido contenido = new Contenido();
+		            							
 		            							componente.setBloqueComponentes(bloqueComponentes);
+		            							componente.setOrden(componenteDTO.getOrden());
+		            							componente.setTipoComponente(componenteDTO.getTipoComponente());
+		            							componente.setVersion(componenteDTO.getVersion());
 		            							componenteRepository.save(componente);
-		            							log.debug("Se guardó correctamente el componente: {}", componente);
+		            							
+		            							contenido.setComponente(componente);
+		            							contenido.setContenido(componenteDTO.getContenido().getContenido());
+		            							contenidoRepository.save(contenido);
+		            							
 		            						}
 		            						);
-		            				}
 		            				
+		            				bloquesCurso.setBloqueComponentes(bloqueComponentes);
+		            				bloquesCursoRepository.save(bloquesCurso);
 		            			}
-		            			);*/
+		            			);
+		        
 		            	return nivel;
 		            		}
 		            		);
