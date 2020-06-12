@@ -148,7 +148,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<INivelJerarquico>>): void {
     result.subscribe(
-      res => this.onSaveSuccess(res),
+      res => this.onSaveSuccess(res.body),
       () => this.onSaveError()
     );
   }
@@ -167,7 +167,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     */
     this.contentBlocks = [];
     // this.contentBlocks = this.orderTextImageLevel(res.body.bloquesComponentes);
-    this.contentBlocks = res.body.bloquesComponentes;
+    this.contentBlocks = res.body.bloquesCurso;
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
     // this.updateContentBlocks(res.body.bloquesComponentes);
   }
