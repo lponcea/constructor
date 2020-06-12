@@ -148,7 +148,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<INivelJerarquico>>): void {
     result.subscribe(
-      res => this.onSaveSuccess(res.body),
+      res => this.onSaveSuccess(res),
       () => this.onSaveError()
     );
   }
