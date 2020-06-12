@@ -159,8 +159,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
  	 * @throws Exception the exception
  	 */
  	public Optional<NivelJerarquico> updateNivelJerarquico(NivelJerarquicoDTO nivelJerarquicoDTO) throws Exception{
-		 
-		 
+ 				 
 		return Optional.of(nivelJerarquicoRepository
 		            .findById(nivelJerarquicoDTO.getNivelId()))
 		            .filter(Optional::isPresent)
@@ -169,7 +168,7 @@ public class NivelJerarquicoServiceImpl  implements NivelJerarquicoService {
 		            	nivel.getBloquesCurso().stream().collect(Collectors.toSet()).forEach(
 		            			bloqueCurso -> {
 		            				log.debug("Eliminando bloques: {}", bloqueCurso.getId());
-		            				bloqueComponentesRepository.deleteById(bloqueCurso.getId());
+		            				bloquesCursoRepository.deleteById(bloqueCurso.getId());
 		            			}
 		            			);
 		            	nivel.setNombre(nivelJerarquicoDTO.getNombre());

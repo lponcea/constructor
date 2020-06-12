@@ -48,7 +48,7 @@ public class BloquesCurso  implements Serializable {
 	private Long indicadorOriginal;
 	
 	/** The nivel jerarquico. */
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "nivel_jerarquico_id", nullable=false)
 	@JsonIgnore
 	private NivelJerarquico nivelJerarquico;
