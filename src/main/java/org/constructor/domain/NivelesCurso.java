@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -58,6 +59,7 @@ public class NivelesCurso  implements Serializable{
 	 * orden_nivel
 	 */
 	@Column(name = "orden")
+	@OrderBy
     private int ordenNivel;
 
 	/**
