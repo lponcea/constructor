@@ -276,6 +276,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   deleteContentBlock(index: number): void {
     if (index > -1) {
       this.contentBlocks.splice(index, 1);
+      this.updateBlocksOrder();
       this.contentBlocksService.setContentBlocks(this.contentBlocks);
     }
   }
