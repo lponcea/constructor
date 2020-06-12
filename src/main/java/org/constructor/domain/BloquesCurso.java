@@ -39,7 +39,7 @@ public class BloquesCurso  implements Serializable {
 	/** The orden. */
 	
 	@Column(name = "orden")
-	@OrderBy( "orden")
+	
 	private Long orden;
 	
 	/** The mostrar. */
