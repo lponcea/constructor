@@ -37,8 +37,9 @@ public class BloquesCurso  implements Serializable {
     private Long id;
 	
 	/** The orden. */
+	
 	@Column(name = "orden")
-	@OrderBy
+	@OrderBy( "orden")
 	private Long orden;
 	
 	/** The mostrar. */
