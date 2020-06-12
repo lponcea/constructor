@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -37,6 +38,7 @@ public class BloquesCurso  implements Serializable {
 	
 	/** The orden. */
 	@Column(name = "orden")
+	@OrderBy
 	private Long orden;
 	
 	/** The mostrar. */
