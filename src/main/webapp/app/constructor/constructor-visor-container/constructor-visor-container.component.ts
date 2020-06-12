@@ -13,6 +13,8 @@ import { JhiEventManager, JhiEventWithContent, JhiAlertService } from 'ng-jhipst
 import { TextEditorBehaviorService } from 'app/services/text-editor-behavior.service';
 import { EventEmitterService } from 'app/services/event-emitter.service';
 import { NavigationControlsService } from 'app/services/navigation-controls.service';
+import { IContenido, Contenido } from 'app/shared/model/contenido.model';
+import { IBloquesCurso, BloquesCurso } from 'app/shared/model/bloques-curso.model';
 
 @Component({
   selector: 'jhi-constructor-visor-container',
@@ -24,7 +26,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   templates: ITipoBloqueComponentes[] = [];
   selectedTemplateType = '';
   selectedBlock = -1;
-  contentBlocks = Array<IBloqueComponentes>();
+  contentBlocks = Array<IBloquesCurso>();
   nivel: NivelJerarquico = {
     nivelId: undefined,
     cursoId: 11,
@@ -32,7 +34,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     tipo: TipoNivelJerarquico['L'],
     informacionAdicional: 0,
     orden: 1,
-    bloquesComponentes: undefined
+    bloquesCurso: undefined
   };
   tiposComponente: TipoComponente[] = [
     {
@@ -57,7 +59,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
         this.nivel.cursoId = this._curso.id;
         this.contentBlocks = [];
         // this.contentBlocks = this.orderTextImageLevel(this.nivel.bloquesComponentes!);
-        this.contentBlocks = this.nivel.bloquesComponentes!;
+        this.contentBlocks = this.nivel.bloquesCurso!;
         this.nivel.nivelId = this._curso.nivelesCurso[0].nivelJerarquico.id;
         this.contentBlocksService.setContentBlocks(this.contentBlocks);
       }
@@ -83,7 +85,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     });
     this.subscription = this.contentBlocksService.getSelectedBlock().subscribe(selectedBlock => {
       if (selectedBlock !== undefined) {
-        this.contentBlocks.splice(this.selectedBlock + 1, 0, this.createContentBlock(selectedBlock.selectedBlock));
+        this.contentBlocks.splice(this.selectedBlock + 1, 0, this.createCourseBlocks(selectedBlock));
         this.updateBlocksOrder();
         if (this.contentBlocks.length <= 1) {
           this.selectedBlock = 0;
@@ -114,16 +116,16 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   // Actualizar bloque contenido de componente
   onUpdateBlock($event: Event, index: number): void {
     if (this.contentBlocks[index]) {
-      if (this.contentBlocks[index]!.componentes![$event['componentIndex']]) {
+      if (this.contentBlocks[index]!.bloqueComponentes!.componentes![$event['componentIndex']]) {
         switch ($event['type']) {
           // Actualizar componente con HTML en string desde textComponent
           case 'text': {
-            this.contentBlocks[index]!.componentes![$event['componentIndex']].contenido = $event['newValue'];
+            this.contentBlocks[index]!.bloqueComponentes!.componentes![$event['componentIndex']].contenido!.contenido = $event['newValue'];
             break;
           }
           // Actualizar componente con path de la imagen seleccionada
           case 'image': {
-            this.contentBlocks[index]!.componentes![$event['componentIndex']].contenido = $event['newValue'];
+            this.contentBlocks[index]!.bloqueComponentes!.componentes![$event['componentIndex']].contenido!.contenido = $event['newValue'];
             break;
           }
         }
@@ -134,7 +136,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
   save(): void {
     this.success = false;
     this.error = false;
-    this.nivel.bloquesComponentes = this.contentBlocks;
+    this.nivel.bloquesCurso = this.contentBlocks;
     if (this.nivel.nivelId) {
       this.subscribeToSaveResponse(this.nivelJerarquicoService.update(this.nivel));
     } else {
@@ -165,7 +167,7 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     */
     this.contentBlocks = [];
     // this.contentBlocks = this.orderTextImageLevel(res.body.bloquesComponentes);
-    this.contentBlocks = res.body.bloquesComponentes;
+    this.contentBlocks = res.body.bloquesCurso;
     this.contentBlocksService.setContentBlocks(this.contentBlocks);
     // this.updateContentBlocks(res.body.bloquesComponentes);
   }
@@ -187,6 +189,17 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
         type: 'danger'
       })
     );
+  }
+
+  createCourseBlocks(selectedTemplate: ITipoBloqueComponentes): IBloquesCurso {
+    return {
+      ...new BloquesCurso(),
+      id: undefined,
+      bloqueComponentes: this.createContentBlock(selectedTemplate),
+      orden: this.determineNewBlockOrder(),
+      mostrar: 1,
+      indicadorOriginal: 1
+    };
   }
 
   createContentBlock(selectedTemplate: ITipoBloqueComponentes): IBloqueComponentes {
@@ -242,10 +255,17 @@ export class ConstructorVisorContainerComponent implements OnInit, OnDestroy {
     return {
       ...new Componente(),
       id: undefined,
-      contenido: '',
+      contenido: this.createContenido(''),
       tipoComponente: componentBlockType,
       version: 1,
       orden: order
+    };
+  }
+
+  createContenido(contenido: string): IContenido {
+    return {
+      ...new Contenido(),
+      contenido
     };
   }
 

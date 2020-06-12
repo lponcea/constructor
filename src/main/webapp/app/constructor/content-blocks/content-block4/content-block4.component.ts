@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { BloqueComponentes } from 'app/shared/model/bloque-componentes.model';
 import { IComponente } from 'app/shared/model/componente.model';
+import { BloquesCurso } from 'app/shared/model/bloques-curso.model';
 
 @Component({
   selector: 'jhi-content-block4',
@@ -9,7 +9,7 @@ import { IComponente } from 'app/shared/model/componente.model';
 })
 export class ContentBlock4Component {
   imgSrc = './../../../../content/images/cover_upload.png';
-  @Input() contentBlock?: BloqueComponentes;
+  @Input() contentBlock?: BloquesCurso;
   @Output() updateBlock = new EventEmitter();
 
   constructor() {}
