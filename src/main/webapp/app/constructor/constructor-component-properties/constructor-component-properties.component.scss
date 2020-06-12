@@ -3,7 +3,7 @@
 .properties-c-component {
   position: relative;
   width: 100%;
-  height: calc(100vh - 405px);
+  height: calc(100vh - 130px);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -79,6 +79,8 @@
   padding-top: 5px;
   padding-bottom: 12px;
   border-bottom: 1px solid $border-component;
+  display: flex;
+  justify-content: center;
   div {
     position: relative;
     width: 100%;
@@ -86,11 +88,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
+    height: 140px;
+    overflow: hidden;
+    border: 1px solid $border-component;
+    background-color: white;
     img {
       position: relative;
-      width: 90%;
+      width: 100%;
       height: auto;
-      border-radius: 6px;
     }
   }
 }
