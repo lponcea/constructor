@@ -10,8 +10,10 @@ import { ContentBlock1Component } from './../constructor/content-blocks/content-
 import { ContentBlock2Component } from './../constructor/content-blocks/content-block2/content-block2.component';
 import { ContentBlock3Component } from './../constructor/content-blocks/content-block3/content-block3.component';
 import { ContentBlock4Component } from './../constructor/content-blocks/content-block4/content-block4.component';
+import { ContentBlock5Component } from './../constructor/content-blocks/content-block5/content-block5.component';
 import { VisorTextComponent } from './../visor/components/visor-text/visor-text.component';
 import { ConstructorImageComponent } from './../constructor/components/constructor-image/constructor-image.component';
+import { ConstructorVideoComponent } from './../constructor/components/constructor-video/constructor-video.component';
 import { TopBarComponent } from './../layouts/top-bar/top-bar.component';
 import { LeftSidebarComponent } from './../layouts/left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './../layouts/right-sidebar/right-sidebar.component';
@@ -33,8 +35,10 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ContentBlock2Component,
     ContentBlock3Component,
     ContentBlock4Component,
+    ContentBlock5Component,
     VisorTextComponent,
     ConstructorImageComponent,
+    ConstructorVideoComponent,
     TopBarComponent,
     LeftSidebarComponent,
     RightSidebarComponent,

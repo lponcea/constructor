@@ -46,7 +46,7 @@ export class ConstructorImageComponent implements OnInit, OnDestroy {
   }
 
   public getImage(path: string): void {
-    this.fileUploadService.getFile(path).subscribe(data => {
+    this.fileUploadService.getImageFile(path).subscribe(data => {
       const imagePath = URL.createObjectURL(data.body);
       const objectUrl = this.domSanitizer.bypassSecurityTrustUrl(imagePath);
       this.imgSrc = objectUrl;

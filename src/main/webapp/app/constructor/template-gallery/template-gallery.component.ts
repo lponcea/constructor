@@ -24,6 +24,11 @@ export class TemplateGalleryComponent implements OnInit {
       text: 'Imagen',
       filter: 'image',
       selected: false
+    },
+    {
+      text: 'Video',
+      filter: 'video',
+      selected: false
     }
   ];
   private _templates: ITipoBloqueComponentes[] = [];

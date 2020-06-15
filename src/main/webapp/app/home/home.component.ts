@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit {
   }
 
   private getCover(path: string, index: number): void {
-    this.fileUploadService.getFile(path).subscribe(data => {
+    this.fileUploadService.getImageFile(path).subscribe(data => {
       const coverPath = URL.createObjectURL(data.body);
       const objectUrl = this.sanitizer.bypassSecurityTrustUrl(coverPath);
       this.cursos[index].sanitizedPortadaUrl = objectUrl;

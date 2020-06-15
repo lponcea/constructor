@@ -5,6 +5,7 @@ import { JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 import { FileUploadService } from 'app/services/file-upload.service';
 import { CurrentCourseService } from 'app/services/current-course.service';
 import { SafeUrl } from '@angular/platform-browser';
+import { VideoService } from 'app/services/video.service';
 
 @Component({
   selector: 'jhi-constructor-component-properties',
@@ -15,21 +16,30 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
   subscription: Subscription;
   imgSrc: SafeUrl = '';
   defaultImageUrl = './../../../content/images/cover_upload.png';
+  videoSrc: SafeUrl = '';
+  defaultVideoUrl = './../../../content/images/cover_upload.png';
   maxImageSize = 30000000;
-  allowedFileTypes: any = ['image/jpg', 'image/png', 'image/jpeg'];
+  allowedFileTypes: any = ['image/jpg', 'image/png', 'image/jpeg', 'video/mp4'];
   selectedFiles = [];
   id = 0; // Id de curso o módulo a guardar.
   type = 'course'; // course, module
   @ViewChild('fileInput', { static: false }) fileInput: any;
+  fileFormat = '';
 
   constructor(
     public imageService: ImageService,
+    public videoService: VideoService,
     public eventManager: JhiEventManager,
     public fileUploadService: FileUploadService,
     public currentCourseService: CurrentCourseService
   ) {
     this.subscription = this.imageService.getImgSrc().subscribe(imgSrc => {
       this.imgSrc = imgSrc;
+      this.fileFormat = 'image';
+    });
+    this.subscription = this.videoService.getVideoSrc().subscribe(videoSrc => {
+      this.videoSrc = videoSrc;
+      this.fileFormat = 'video';
     });
     if (this.type === 'course') {
       this.subscription = this.currentCourseService.getCurrentCourse().subscribe(currentCourse => {
@@ -59,8 +69,18 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
       } else {
         this.selectedFiles = event.target.files;
         this.fileUploadService.pushFileStorage(this.selectedFiles[0], this.id).subscribe(data => {
-          this.fileUploadService.getImage(data.path);
-          this.imageService.setPathUrl(data.path);
+          switch (this.fileFormat) {
+            case 'image': {
+              this.fileUploadService.getImage(data.path);
+              this.imageService.setPathUrl(data.path);
+              break;
+            }
+            case 'video': {
+              this.fileUploadService.getVideoPreviewFile(data.path);
+              this.videoService.setPathUrl(data.path);
+              break;
+            }
+          }
         });
       }
     }

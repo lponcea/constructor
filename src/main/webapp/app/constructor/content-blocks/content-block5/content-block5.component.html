@@ -1,0 +1,13 @@
+<!-- Bloque de contenido: Imagen-->
+<div class="col-cb-img" *ngIf="contentBlock && contentBlock.bloqueComponentes.componentes">
+        <div class="row-cb-img" *ngFor="let component of contentBlock.bloqueComponentes.componentes; let index = index;">
+            <jhi-constructor-video
+                [component]="component"
+                (updateComponent)="onUpdateComponent($event, index)">
+            </jhi-constructor-video>
+            <!--
+            <img [src]="imgSrc" alt="">
+            -->
+        </div>
+    </div>
+    

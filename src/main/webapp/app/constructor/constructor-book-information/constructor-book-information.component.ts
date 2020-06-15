@@ -31,7 +31,7 @@ export class ConstructorBookInformationComponent implements OnInit {
   ngOnInit(): void {}
 
   private getCover(path: string): void {
-    this.fileUploadService.getFile(path).subscribe(data => {
+    this.fileUploadService.getImageFile(path).subscribe(data => {
       const coverPath = URL.createObjectURL(data.body);
       const objectUrl = this.sanitizer.bypassSecurityTrustUrl(coverPath);
       this.portadaUrl = objectUrl;

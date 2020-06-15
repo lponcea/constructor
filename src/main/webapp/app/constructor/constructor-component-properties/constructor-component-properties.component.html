@@ -21,11 +21,13 @@
           <h6>Subir imagen</h6>
 
             <div class="row-up-image-area">
-              <div *ngIf="imgSrc !== ''">
-                <img [src]="imgSrc" alt="" class="cover-upload-img">
+              <div *ngIf="fileFormat === 'image'">
+                <img [src]="defaultImageUrl" alt="" class="cover-upload-img" *ngIf="imgSrc === ''">
+                <img [src]="imgSrc" alt="" class="cover-upload-img" *ngIf="imgSrc !== ''">
               </div>
-              <div *ngIf="imgSrc === ''">
-                <img [src]="defaultImageUrl" alt="">
+              <div *ngIf="fileFormat === 'video'">
+                <img [src]="defaultVideoUrl" alt="" *ngIf="videoSrc === ''">
+                <video [src]="url" height="200" controls *ngIf="videoSrc === ''"></video>
               </div>
             </div>
 

@@ -350,7 +350,7 @@ export class CursoUpdateComponent implements OnInit {
   }
 
   getCover(path: string): void {
-    this.fileUploadService.getFile(path).subscribe(data => {
+    this.fileUploadService.getImageFile(path).subscribe(data => {
       const objectUrl = URL.createObjectURL(data.body);
       this.coverPath = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
     });

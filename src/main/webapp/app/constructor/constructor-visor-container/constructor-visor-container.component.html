@@ -34,6 +34,9 @@
           <div *ngIf="block.bloqueComponentes.tipoBloqueComponentes.nombre == 'imagen_texto'">
             <jhi-content-block4 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block4>
           </div>
+          <div *ngIf="block.bloqueComponentes.tipoBloqueComponentes.nombre == 'video'">
+            <jhi-content-block5 [contentBlock]="block" (updateBlock)="onUpdateBlock($event, index)"></jhi-content-block5>
+          </div>
 
         </div>
         <!-- Add content -->

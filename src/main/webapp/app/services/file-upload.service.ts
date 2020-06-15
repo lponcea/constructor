@@ -18,8 +18,22 @@ export class FileUploadService {
     return this.http.post(SERVER_API_URL + '/api/fileUpload', data);
   }
 
-  getFile(filePath: string): Observable<HttpResponse<Blob>> {
+  getImageFile(filePath: string): Observable<HttpResponse<Blob>> {
     return this.http.get(SERVER_API_URL + '/api/loadImage?file=' + filePath, {
+      observe: 'response',
+      responseType: 'blob'
+    });
+  }
+
+  getVideoFile(filePath: string): Observable<HttpResponse<Blob>> {
+    return this.http.get(SERVER_API_URL + '/api/loadVideo?file=' + filePath, {
+      observe: 'response',
+      responseType: 'blob'
+    });
+  }
+
+  getVideoPreviewFile(filePath: string): Observable<HttpResponse<Blob>> {
+    return this.http.get(SERVER_API_URL + '/api/previewVideo?file=' + filePath, {
       observe: 'response',
       responseType: 'blob'
     });
@@ -32,7 +46,7 @@ export class FileUploadService {
   }
 
   public getImage(path: string): void {
-    this.getFile(path).subscribe(data => {
+    this.getImageFile(path).subscribe(data => {
       const imagePath = URL.createObjectURL(data.body);
       const objectUrl = this.domSanitizer.bypassSecurityTrustUrl(imagePath);
       this.imageService.setImgSrc(objectUrl);

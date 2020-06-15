@@ -1,0 +1,2 @@
+<video class="block-img" [src]="videoScr" (click)="selectVideo()" *ngIf="!videoSrc == ''"></video>
+<img class="block-img" [src]="defaultVideoUrl" (click)="selectVideo()" *ngIf="videoSrc == ''">
