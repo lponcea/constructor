@@ -36,10 +36,16 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
     this.subscription = this.imageService.getImgSrc().subscribe(imgSrc => {
       this.imgSrc = imgSrc;
       this.fileFormat = 'image';
+      if (this.imgSrc === '') {
+        this.fileInput.nativeElement.value = '';
+      }
     });
     this.subscription = this.videoService.getVideoSrc().subscribe(videoSrc => {
       this.videoSrc = videoSrc;
       this.fileFormat = 'video';
+      if (this.videoSrc === '') {
+        this.fileInput.nativeElement.value = '';
+      }
     });
     if (this.type === 'course') {
       this.subscription = this.currentCourseService.getCurrentCourse().subscribe(currentCourse => {
@@ -76,7 +82,7 @@ export class ConstructorComponentPropertiesComponent implements OnInit, OnDestro
               break;
             }
             case 'video': {
-              this.fileUploadService.getVideoPreviewFile(data.path);
+              this.fileUploadService.getVideo(data.path);
               this.videoService.setPathUrl(data.path);
               break;
             }

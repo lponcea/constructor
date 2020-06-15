@@ -22,12 +22,14 @@
 
             <div class="row-up-image-area">
               <div *ngIf="fileFormat === 'image'">
+                Imagen
                 <img [src]="defaultImageUrl" alt="" class="cover-upload-img" *ngIf="imgSrc === ''">
                 <img [src]="imgSrc" alt="" class="cover-upload-img" *ngIf="imgSrc !== ''">
               </div>
               <div *ngIf="fileFormat === 'video'">
+                Video
                 <img [src]="defaultVideoUrl" alt="" *ngIf="videoSrc === ''">
-                <video [src]="url" height="200" controls *ngIf="videoSrc === ''"></video>
+                <video [src]="videoSrc" height="200" controls *ngIf="videoSrc !== ''"></video>
               </div>
             </div>
 

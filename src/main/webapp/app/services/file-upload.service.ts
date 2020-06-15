@@ -4,12 +4,18 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { ImageService } from './image.service';
+import { VideoService } from './video.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileUploadService {
-  constructor(private http: HttpClient, private domSanitizer: DomSanitizer, private imageService: ImageService) {}
+  constructor(
+    private http: HttpClient,
+    private domSanitizer: DomSanitizer,
+    private imageService: ImageService,
+    private videoService: VideoService
+  ) {}
 
   pushFileStorage(file: File, id: number): Observable<any> {
     const data: FormData = new FormData();
@@ -33,7 +39,7 @@ export class FileUploadService {
   }
 
   getVideoPreviewFile(filePath: string): Observable<HttpResponse<Blob>> {
-    return this.http.get(SERVER_API_URL + '/api/previewVideo?file=' + filePath, {
+    return this.http.get(SERVER_API_URL + '/api/videoPreview?file=' + filePath, {
       observe: 'response',
       responseType: 'blob'
     });
@@ -50,6 +56,14 @@ export class FileUploadService {
       const imagePath = URL.createObjectURL(data.body);
       const objectUrl = this.domSanitizer.bypassSecurityTrustUrl(imagePath);
       this.imageService.setImgSrc(objectUrl);
+    });
+  }
+
+  public getVideo(path: string): void {
+    this.getVideoPreviewFile(path).subscribe(data => {
+      const videoPath = URL.createObjectURL(data.body);
+      const objectUrl = this.domSanitizer.bypassSecurityTrustUrl(videoPath);
+      this.videoService.setVideoSrc(objectUrl);
     });
   }
 }
