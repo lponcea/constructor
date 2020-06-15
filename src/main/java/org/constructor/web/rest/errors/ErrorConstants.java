@@ -62,7 +62,7 @@ public final class ErrorConstants {
 	/**
 	 * STATUS_MENSSAGE_201
 	 */
-	public static final String STATUS_MENSSAGE_201 =  "";
+	public static final String STATUS_MENSSAGE_201 =  "No se ha encontrado información para los parámetros indicados.";
 	
 	/**
 	 * STATUS_MENSSAGE_ERROR

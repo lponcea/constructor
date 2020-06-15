@@ -26,6 +26,8 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.google.protobuf.ServiceException;
@@ -57,18 +59,44 @@ public class EntityResponse extends ResponseEntityExceptionHandler {
      * @param request WebRequest
      * @return the ApiError object
      */
-    @Override
+	@Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(
-            MissingServletRequestParameterException ex, HttpHeaders headers,
-            HttpStatus status, WebRequest request) {
+            MissingServletRequestParameterException ex,HttpHeaders headers,
+            HttpStatus status, WebRequest request ) {
     	final HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-        final String error = "Parámetro requerido: " + ex.getParameterName();
+        final String error = "Parámetro requerido: " + ex.getParameterName() ;
         final ParamOutputTO<Void> response = new ParamOutputTO<>();
         response.setSuccess(Boolean.FALSE);
 		response.setMessage(error);
+
         return new ResponseEntity<>(response, httpStatus);
     }
     
+	
+	/**
+	 *  handleMissingServletRequestPart  
+	 *  exception for file parameter
+	 */
+	@Override
+    protected ResponseEntity<Object>handleMissingServletRequestPart(MissingServletRequestPartException ex,
+    		HttpHeaders headers, HttpStatus
+    		status, WebRequest request) {
+    	final HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        final String error = "Parámetro requerido: " + ex.getRequestPartName() ;
+        final ParamOutputTO<Void> response = new ParamOutputTO<>();
+        response.setSuccess(Boolean.FALSE);
+		response.setMessage(error);
+
+        return new ResponseEntity<>(response, httpStatus);
+    }
+    
+	
+	
+    /**
+     * NoResultException
+     * @param exc
+     * @return
+     */
 	@ExceptionHandler(NoResultException.class)
 	public ResponseEntity<ParamOutputTO<Void>> createResponseEntity(final NoResultException exc) {
 		LOG.info("Ingresando al handler para NoResultException");
