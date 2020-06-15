@@ -26,7 +26,6 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -90,8 +89,6 @@ public class EntityResponse extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, httpStatus);
     }
     
-	
-	
     /**
      * NoResultException
      * @param exc
@@ -106,6 +103,7 @@ public class EntityResponse extends ResponseEntityExceptionHandler {
 		response.setMessage(ErrorConstants.STATUS_MENSSAGE_201);
 		return new ResponseEntity<>(response, httpStatus);
 	}
+	
 	/**
 	 *  ResponseEntity
 	 * @param exc
@@ -146,6 +144,11 @@ public class EntityResponse extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>(response, httpStatus);
 	}
 	
+	/**
+	 * DataAccessException exception for 500
+	 * @param exc
+	 * @return
+	 */
 	@ExceptionHandler(DataAccessException.class)
 	public ResponseEntity<ParamOutputTO<Void>> sqlResponseEntity(final DataAccessException exc) {
 		LOG.info("Ingresando al handler para DataAccessException");
