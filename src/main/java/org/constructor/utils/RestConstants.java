@@ -31,6 +31,8 @@ public class RestConstants {
 	 */
 	public static final String PATH_LOAD_VIDEO = "loadVideo";
 	
+	public static final String PATH_PREVIEW_VIDEO =  "preViewVideo";
+	
 	// ---------------Audio--------------------
 	
 	/**
