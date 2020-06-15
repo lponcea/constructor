@@ -14,12 +14,13 @@ import org.constructor.multimedia.response.MultimediaResponse;
 import org.constructor.multimedia.response.VideoResponse;
 import org.constructor.service.dto.MultimediaDTO;
 import org.constructor.service.multimedia.MultimediaService;
+import org.constructor.utils.RestConstants;
 import org.constructor.web.rest.errors.ErrorConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(RestConstants.PATH_API)
 public class MultimediaResource {
 	
 	/**
@@ -38,7 +39,7 @@ public class MultimediaResource {
 	 * @param file
 	 * @return
 	 */
-	@PostMapping(value = "/fileUpload",  produces = "application/json")
+	@PostMapping(path = RestConstants.PATH_FILE_UPLOAD,  produces = "application/json")
 	public ResponseEntity<VideoResponse>  uploadFile( @RequestParam("file") MultipartFile file, @RequestParam("id") String id) {
 		VideoResponse<?> vr = new VideoResponse<Object>();
 		MultimediaDTO multimediaDTO = new MultimediaDTO();
@@ -76,7 +77,7 @@ public class MultimediaResource {
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping(value = "/courseCover", produces = "application/json")
+	@DeleteMapping(path = RestConstants.PATH_COURSE_COVER, produces = "application/json")
 	public ResponseEntity<String> deleteCourseCover(@RequestParam("id") Long id) {
 		
 		log.debug("*************************   deleteCourseCover  *******************");
@@ -100,7 +101,7 @@ public class MultimediaResource {
 	 * @param file
 	 * @return
 	 */
-	@DeleteMapping(value = "/file",  produces = "application/json")
+	@DeleteMapping(path = RestConstants.PATH_FILE,  produces = "application/json")
 	public ResponseEntity<String> deleteFile(@RequestParam("file") String file) {
 		
 		log.debug("*************************   deleteFile  *******************");

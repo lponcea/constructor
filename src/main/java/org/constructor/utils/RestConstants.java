@@ -22,7 +22,23 @@ public class RestConstants {
 	 * PAHT api
 	 */
 	public static final String PATH_API = "api";
+	
+	// ---------------Multimedia--------------------
 
+	/**
+	 * Path para peticiones fileUpload
+	 */
+	public static final String PATH_FILE_UPLOAD =  "fileUpload";
+	
+	/**
+	 * Path para peticiones courseCover
+	 */
+	public static final String PATH_COURSE_COVER =  "courseCover";
+	
+	/**
+	 * Path para peticiones file
+	 */
+	public static final String PATH_FILE =  "file";
 	
 	// ---------------Video--------------------
 	
@@ -30,6 +46,13 @@ public class RestConstants {
 	 * Path para peticiones loadVideo
 	 */
 	public static final String PATH_LOAD_VIDEO = "loadVideo";
+	
+	/**
+	 * Path para peticiones preViewVideo
+	 */
+	public static final String PATH_PREVIEW_VIDEO =  "preViewVideo";
+	
+	
 	
 	// ---------------Audio--------------------
 	
