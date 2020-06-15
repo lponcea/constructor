@@ -48,9 +48,9 @@ public class RestConstants {
 	public static final String PATH_LOAD_VIDEO = "loadVideo";
 	
 	/**
-	 * Path para peticiones preViewVideo
+	 * Path para peticiones videoPreview
 	 */
-	public static final String PATH_PREVIEW_VIDEO =  "preViewVideo";
+	public static final String PATH_PREVIEW_VIDEO =  "videoPreview";
 	
 	
 	
