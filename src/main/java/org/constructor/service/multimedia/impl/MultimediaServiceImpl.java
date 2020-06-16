@@ -59,7 +59,7 @@ public class MultimediaServiceImpl implements MultimediaService {
 	/**
 	 * properties docs
 	 */
-	@Value(value = "${multimedia.image}")
+	@Value(value = "${multimedia.docs}")
 	private Long docs;
 
 	/**
